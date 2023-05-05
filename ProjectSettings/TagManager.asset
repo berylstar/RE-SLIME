@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - BlockingLayer
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 2575844907
+    locked: 0
+  - name: Field
+    uniqueID: 2077396393
+    locked: 0
+  - name: Item
+    uniqueID: 785671537
+    locked: 0
+  - name: Unit
+    uniqueID: 460637147
     locked: 0
