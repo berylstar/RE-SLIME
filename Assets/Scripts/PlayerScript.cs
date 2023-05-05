@@ -8,20 +8,20 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        float dx = 0;
-        float dy = 0;
+        int dx = 0;
+        int dy = 0;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            dx = -0.6f;
+            dx = -1;
         else if (Input.GetKeyDown(KeyCode.RightArrow))
-            dx = 0.6f;
+            dx = 1;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-            dy = 0.6f;
+            dy = 1;
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-            dy = -0.6f;
+            dy = -1;
 
         if (dx != 0)
-            dy = 0f;
+            dy = 0;
 
         if (dx != 0 || dy != 0)
         {

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPC
+  - Monster
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -41,10 +44,10 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Floor
+  - name: Field
     uniqueID: 2575844907
     locked: 0
-  - name: Field
+  - name: Sculpture
     uniqueID: 2077396393
     locked: 0
   - name: Item
