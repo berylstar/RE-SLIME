@@ -6,11 +6,18 @@ public class BoardManager : MonoBehaviour
 {
     public GameController GC;
 
+    [Header("FIELDS")]
     public Sprite[] imageFields;
 
+    [Header("SCULPTURES")]
     public GameObject[] sculptures;
 
+    [Header("MONSTERS")]
+    public GameObject[] monsters;
+
     private readonly List<Vector3> gridPositions = new List<Vector3>();
+    private List<MonsterScript> monsterGroup;
+
     private Transform objectHolder;
 
     // 오브젝트들이 생성될 그리드 리스트 초기화
@@ -25,11 +32,6 @@ public class BoardManager : MonoBehaviour
                 gridPositions.Add(new Vector3(x, y, 0));
             }
         }
-    }
-
-    public void TEST()
-    {
-        FloorSetup(Random.Range(0, 101));
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
@@ -69,6 +71,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    // 무작위 위치에 오브젝트 배치
     private void LayoutObjectAtRandom(GameObject[] tileArray, int min, int max)
     {
         int objectCount = Random.Range(min, max + 1);
@@ -80,17 +83,44 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    // 해당 층수에 맞게 레벨 세팅
     private void FloorSetup(int floor)
     {
         if (GameObject.Find("ObjectHolder"))
             Destroy(GameObject.Find("ObjectHolder"));
 
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
+        monsterGroup = new List<MonsterScript>();
 
         InitialGrid();
         SetField(floor);
         RemovePositionAwayFrom(GC.player.GetComponent<Transform>().position);
 
         LayoutObjectAtRandom(sculptures, 2, 5);
+
+        LayoutObjectAtRandom(monsters, 1, 4);
+    }
+
+    public void AddMonster(MonsterScript mon)
+    {
+        monsterGroup.Add(mon);
+    }
+
+    public void RemoveMonster(MonsterScript mon)
+    {
+        monsterGroup.Remove(mon);
+
+        if (monsterGroup.Count <= 0)
+        {
+            print("NO MONSTER");
+            TEST();
+        }
+            
+    }
+
+
+    public void TEST()
+    {
+        FloorSetup(Random.Range(0, 101));
     }
 }

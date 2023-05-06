@@ -4,37 +4,47 @@ using UnityEngine;
 
 public class PlayerScript : MovingObject
 {
-    private static readonly WaitForSeconds delay_01s = new WaitForSeconds(0.1f);
+    public GameObject[] punches;
+
+    private bool isAlive = true;
 
     private void Update()
     {
-        int dx = 0;
-        int dy = 0;
+        if (!isAlive)
+            return;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            dx = -1;
+            PlayerMove(-1, 0);
         else if (Input.GetKeyDown(KeyCode.RightArrow))
-            dx = 1;
+            PlayerMove(1, 0);
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-            dy = 1;
+            PlayerMove(0, 1);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-            dy = -1;
+            PlayerMove(0, -1);
 
-        if (dx != 0)
-            dy = 0;
+        if (Input.GetKeyDown(KeyCode.Space))
+            StartCoroutine(PunchAttack());
+    }
 
-        if (dx != 0 || dy != 0)
-        {
-            StartCoroutine(AniMove());
-            Move(dx, dy);
-        }
-            
+    private void PlayerMove(int dx, int dy)
+    {
+        StartCoroutine(AniMove());
+        Move(dx, dy);
     }
 
     IEnumerator AniMove()
     {
         ani.SetTrigger("MoveStart");
-        yield return delay_01s;
+        yield return GameController.delay_01s;
         ani.SetTrigger("MoveEnd");
+    }
+
+    IEnumerator PunchAttack()
+    {
+        int dir = direction;
+
+        punches[dir].SetActive(true);
+        yield return GameController.delay_01s;
+        punches[dir].SetActive(false);
     }
 }
