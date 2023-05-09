@@ -6,16 +6,18 @@ public class MovingObject : MonoBehaviour
 {
     public LayerMask blockingLayer;
 
+    protected BoardManager BM;
     protected Rigidbody2D rb2d;
     protected SpriteRenderer sr;
     protected Animator ani;
 
     [HideInInspector] public int direction = 0;     // L, R, U, D
-    private readonly float movetime = (1 / 0.05f);
+    protected readonly float movetime = (1 / 0.05f);
     private bool isMoving = false;
 
     protected virtual void Start()
     {
+        BM = GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardManager>();
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();

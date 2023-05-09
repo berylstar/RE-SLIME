@@ -32,6 +32,14 @@ public class PlayerScript : MovingObject
         Move(dx, dy);
     }
 
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if(collision.CompareTag("Stair") && collision.GetComponent<BoxCollider2D>().isTrigger)
+    //     {
+    //         BM.TEST();
+    //     }
+    // }
+
     IEnumerator AniMove()
     {
         ani.SetTrigger("MoveStart");

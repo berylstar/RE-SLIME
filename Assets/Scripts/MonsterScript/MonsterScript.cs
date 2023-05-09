@@ -22,13 +22,10 @@ public class MonsterScript : MovingObject
     public int AP;
     public bool isAlive = true;
 
-    private BoardManager BM;
-
     protected override void Start()
     {
         base.Start();
 
-        BM = GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardManager>();
         BM.AddMonster(this);
     }
 

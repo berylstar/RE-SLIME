@@ -11,6 +11,7 @@ public class BoardManager : MonoBehaviour
 
     [Header("SCULPTURES")]
     public GameObject[] sculptures;
+    public GameObject stair;
 
     [Header("MONSTERS")]
     public GameObject[] monsters;
@@ -71,7 +72,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    // 무작위 위치에 오브젝트 배치
+    // 오브젝트 그룹에서 무작위로 선택해 무작위 위치에 배치
     private void LayoutObjectAtRandom(GameObject[] tileArray, int min, int max)
     {
         int objectCount = Random.Range(min, max + 1);
@@ -81,6 +82,16 @@ public class BoardManager : MonoBehaviour
             GameObject instance = Instantiate(tileArray[Random.Range(0, tileArray.Length)], RandomPosition(), Quaternion.identity) as GameObject;
             instance.transform.SetParent(objectHolder);
         }
+    }
+
+    // 계단 배치
+    // 현재 상태 : 계단 주변 좌표 제외하지 않음 => 벽 같은 거로 막힐 가능성 있음. 추후에 벽 그룹 만들고 계단 주변 좌표 제거 후 계단보다 늦게 배치 예상
+    private void LayoutStair()
+    {
+        //GameObject instance = Instantiate(stair, RandomPosition(), Quaternion.identity) as GameObject;
+        //instance.transform.SetParent(objectHolder);
+
+        stair.transform.position = RandomPosition();
     }
 
     // 해당 층수에 맞게 레벨 세팅
@@ -95,6 +106,8 @@ public class BoardManager : MonoBehaviour
         InitialGrid();
         SetField(floor);
         RemovePositionAwayFrom(GC.player.GetComponent<Transform>().position);
+
+        LayoutStair();
 
         LayoutObjectAtRandom(sculptures, 2, 5);
 
@@ -112,15 +125,14 @@ public class BoardManager : MonoBehaviour
 
         if (monsterGroup.Count <= 0)
         {
-            print("NO MONSTER");
-            TEST();
+            stair.GetComponent<StairScript>().StairOpen();
+            print("OPEN");
         }
-            
     }
-
 
     public void TEST()
     {
+        GameController.floor += 1;
         FloorSetup(Random.Range(0, 101));
     }
 }
