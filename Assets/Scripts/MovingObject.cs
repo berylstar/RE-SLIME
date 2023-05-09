@@ -12,8 +12,9 @@ public class MovingObject : MonoBehaviour
     protected Animator ani;
 
     [HideInInspector] public int direction = 0;     // L, R, U, D
-    protected readonly float movetime = (1 / 0.05f);
+    protected float movetime = (1 / 0.05f);
     private bool isMoving = false;
+    protected bool isAlive = true;
 
     protected virtual void Start()
     {
@@ -36,9 +37,8 @@ public class MovingObject : MonoBehaviour
         RaycastHit2D hit = Physics2D.Linecast(end, end, blockingLayer);
 
         sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
-
-                                                                                                // 이동 불가 케이스
-        if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))
+                                                                        
+        if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
 
         if (end.x < 0 || end.x > 9 || end.y < 0 || end.y > 9)

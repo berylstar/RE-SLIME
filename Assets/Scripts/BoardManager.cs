@@ -88,9 +88,6 @@ public class BoardManager : MonoBehaviour
     // 현재 상태 : 계단 주변 좌표 제외하지 않음 => 벽 같은 거로 막힐 가능성 있음. 추후에 벽 그룹 만들고 계단 주변 좌표 제거 후 계단보다 늦게 배치 예상
     private void LayoutStair()
     {
-        //GameObject instance = Instantiate(stair, RandomPosition(), Quaternion.identity) as GameObject;
-        //instance.transform.SetParent(objectHolder);
-
         stair.transform.position = RandomPosition();
     }
 
@@ -126,8 +123,13 @@ public class BoardManager : MonoBehaviour
         if (monsterGroup.Count <= 0)
         {
             stair.GetComponent<StairScript>().StairOpen();
-            print("OPEN");
         }
+    }
+
+    public void NextFloor()
+    {
+        GameController.floor += 1;
+        FloorSetup(GameController.floor);
     }
 
     public void TEST()

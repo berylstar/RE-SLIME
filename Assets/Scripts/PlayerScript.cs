@@ -6,7 +6,12 @@ public class PlayerScript : MovingObject
 {
     public GameObject[] punches;
 
-    private bool isAlive = true;
+    protected override void Start()
+    {
+        base.Start();
+
+        movetime *= GameController.playerSpeed;
+    }
 
     private void Update()
     {
@@ -26,19 +31,19 @@ public class PlayerScript : MovingObject
             StartCoroutine(PunchAttack());
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Monster") && isAlive)
+        {
+            StartCoroutine(PlayerDamaged(collision.GetComponent<MonsterScript>()));
+        }
+    }
+
     private void PlayerMove(int dx, int dy)
     {
         StartCoroutine(AniMove());
         Move(dx, dy);
     }
-
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if(collision.CompareTag("Stair") && collision.GetComponent<BoxCollider2D>().isTrigger)
-    //     {
-    //         BM.TEST();
-    //     }
-    // }
 
     IEnumerator AniMove()
     {
@@ -54,5 +59,27 @@ public class PlayerScript : MovingObject
         punches[dir].SetActive(true);
         yield return GameController.delay_01s;
         punches[dir].SetActive(false);
+    }
+
+    IEnumerator PlayerDamaged(MonsterScript MS)
+    {
+        GameController.PlayerHP -= MS.AP;
+
+        sr.color = new Color(255, 0, 0);
+        yield return GameController.delay_01s;
+        sr.color = new Color(255, 255, 255);
+
+        if (GameController.PlayerHP <= 0)
+        {
+            StartCoroutine(PlayerDie());
+        }
+    }
+
+    IEnumerator PlayerDie()
+    {
+        isAlive = false;
+        ani.SetTrigger("PlayerDie");
+        yield return GameController.delay_3s;
+        Time.timeScale = 0;
     }
 }

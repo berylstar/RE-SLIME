@@ -20,7 +20,6 @@ public class MonsterScript : MovingObject
     public MonsterType type;
     public int HP;
     public int AP;
-    public bool isAlive = true;
 
     protected override void Start()
     {
