@@ -58,3 +58,6 @@ TagManager:
   - name: Unit
     uniqueID: 460637147
     locked: 0
+  - name: Canvas
+    uniqueID: 2249645491
+    locked: 0

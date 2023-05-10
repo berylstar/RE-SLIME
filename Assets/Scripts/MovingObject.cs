@@ -11,7 +11,7 @@ public class MovingObject : MonoBehaviour
     protected SpriteRenderer sr;
     protected Animator ani;
 
-    [HideInInspector] public int direction = 0;     // L, R, U, D
+    protected int direction = 0;     // L, R, U, D
     protected float movetime = (1 / 0.05f);
     private bool isMoving = false;
     protected bool isAlive = true;

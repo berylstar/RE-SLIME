@@ -36,6 +36,11 @@ public class MonsterScript : MovingObject
         }
     }
 
+    public bool Alive()
+    {
+        return isAlive;
+    }
+
     IEnumerator Damaged()
     {
         HP -= GameController.playerAP;

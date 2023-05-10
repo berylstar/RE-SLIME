@@ -9,7 +9,8 @@ public class StairScript : MonoBehaviour
 
     public Sprite imgStairClose;
     public Sprite imgStairOpen;
-    public Sprite imgStairLong;
+    public Sprite imgStairCloseLong;
+    public Sprite imgStairOpenLong;
 
     public BoardManager BM;
 
@@ -23,7 +24,7 @@ public class StairScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            BM.TEST();
+            BM.NextFloor();
             StairClose();
         }
     }
@@ -31,7 +32,11 @@ public class StairScript : MonoBehaviour
     private void StairClose()
     {
         bc2d.isTrigger = false;
-        sr.sprite = imgStairClose;
+
+        if (GameController.floor % 10 == 0)
+            sr.sprite = imgStairCloseLong;
+        else
+            sr.sprite = imgStairClose;
     }
 
     public void StairOpen()
@@ -41,7 +46,7 @@ public class StairScript : MonoBehaviour
         if (GameController.floor % 10 == 0)
         {
             bc2d.size = new Vector2 (2.4f, 0.5f);
-            sr.sprite = imgStairLong;
+            sr.sprite = imgStairOpenLong;
         }
         else
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MovingObject
 {
+    public GameObject punchZip;
     public GameObject[] punches;
 
     protected override void Start()
@@ -15,7 +16,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (!isAlive)
+        if (!isAlive || GameController.pause)
             return;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -26,6 +27,8 @@ public class PlayerScript : MovingObject
             PlayerMove(0, 1);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
             PlayerMove(0, -1);
+
+        punchZip.transform.position = this.transform.position;
 
         if (Input.GetKeyDown(KeyCode.Space))
             StartCoroutine(PunchAttack());
@@ -56,6 +59,7 @@ public class PlayerScript : MovingObject
     {
         int dir = direction;
 
+        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
         punches[dir].SetActive(true);
         yield return GameController.delay_01s;
         punches[dir].SetActive(false);
@@ -63,15 +67,18 @@ public class PlayerScript : MovingObject
 
     IEnumerator PlayerDamaged(MonsterScript MS)
     {
-        GameController.PlayerHP -= MS.AP;
-
-        sr.color = new Color(255, 0, 0);
-        yield return GameController.delay_01s;
-        sr.color = new Color(255, 255, 255);
-
-        if (GameController.PlayerHP <= 0)
+        if (MS.Alive())
         {
-            StartCoroutine(PlayerDie());
+            GameController.PlayerHP -= MS.AP;
+
+            sr.color = new Color(255, 0, 0);
+            yield return GameController.delay_025s;
+            sr.color = new Color(255, 255, 255);
+
+            if (GameController.PlayerHP <= 0)
+            {
+                StartCoroutine(PlayerDie());
+            }
         }
     }
 

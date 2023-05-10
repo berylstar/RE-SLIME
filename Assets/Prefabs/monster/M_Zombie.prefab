@@ -167,8 +167,6 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 64
-  direction: 0
   type: 1
   HP: 20
-  AP: 2
-  isAlive: 1
+  AP: 5
