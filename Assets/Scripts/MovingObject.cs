@@ -36,8 +36,6 @@ public class MovingObject : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(end, end, blockingLayer);
 
-        sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
-                                                                        
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
 
@@ -47,6 +45,7 @@ public class MovingObject : MonoBehaviour
         if (!isMoving)
         {
             StartCoroutine(SmoothMovement(end));
+            sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
             return true;
         }
         else

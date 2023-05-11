@@ -7,6 +7,8 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
+    public UIScript US;
+
     protected override void Start()
     {
         base.Start();
@@ -28,10 +30,16 @@ public class PlayerScript : MovingObject
         else if (Input.GetKeyDown(KeyCode.DownArrow))
             PlayerMove(0, -1);
 
-        punchZip.transform.position = this.transform.position;
 
         if (Input.GetKeyDown(KeyCode.Space))
             StartCoroutine(PunchAttack());
+
+        punchZip.transform.position = this.transform.position;
+
+        if (GameController.playerHP <= 0)
+        {
+            StartCoroutine(PlayerDie());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,7 +67,7 @@ public class PlayerScript : MovingObject
     {
         int dir = direction;
 
-        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
+        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder;
         punches[dir].SetActive(true);
         yield return GameController.delay_01s;
         punches[dir].SetActive(false);
@@ -69,16 +77,11 @@ public class PlayerScript : MovingObject
     {
         if (MS.Alive())
         {
-            GameController.PlayerHP -= MS.AP;
+            GameController.ChangeHP(-MS.AP);
 
             sr.color = new Color(255, 0, 0);
             yield return GameController.delay_025s;
             sr.color = new Color(255, 255, 255);
-
-            if (GameController.PlayerHP <= 0)
-            {
-                StartCoroutine(PlayerDie());
-            }
         }
     }
 
@@ -87,6 +90,32 @@ public class PlayerScript : MovingObject
         isAlive = false;
         ani.SetTrigger("PlayerDie");
         yield return GameController.delay_3s;
-        Time.timeScale = 0;
+
+        // US.PlayerDie();
+        US.panelDie.SetActive(true);
+        yield return GameController.delay_3s;
+        
+
+        if (GameController.playerLife > 0)
+        {
+            // REBORN
+            GameController.playerLife -= 1;
+            GameController.playerHP = GameController.playerMaxHP;
+            GameController.savedFloor = GameController.floor - 1;
+            GameController.floor = 0;
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            // GAME OVER
+        }
+
+        US.panelDie.SetActive(false);
+    }
+
+    public bool Alive()
+    {
+        return isAlive;
     }
 }

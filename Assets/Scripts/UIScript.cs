@@ -7,6 +7,7 @@ public class UIScript : MonoBehaviour
 {
     [Header ("Panel")]
     public GameObject panelESC;
+    public GameObject panelDie;
 
     [Header("Text")]
     public Text textFloor;
@@ -19,7 +20,11 @@ public class UIScript : MonoBehaviour
         textFloor.text = "FLOOR\n" + GameController.floor + " F";
         textCoin.text = "COIN\nx " + GameController.coin;
 
-        textPlayerHP.text = "HP : " + GameController.PlayerHP + " / " + GameController.playerMaxHP;
+        textPlayerHP.text = "HP : " + GameController.playerHP + " / " + GameController.playerMaxHP;
+        textPlayerAP.text = "AP : " + GameController.playerAP;
+        textPlayerDP.text = "DP : " + GameController.playerDP;
+        textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed;
+        textPlayerTimeDamage.text = "HP -" + GameController.playerTimeDamage + " (/ ps)";
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Pause();
@@ -40,5 +45,17 @@ public class UIScript : MonoBehaviour
             GameController.pause = false;
         }
             
+    }
+
+    public void PlayerDie()
+    {
+        StartCoroutine(PanelDie());
+    }
+
+    IEnumerator PanelDie()
+    {
+        panelDie.SetActive(true);
+        yield return GameController.delay_3s;
+        panelDie.SetActive(false);
     }
 }

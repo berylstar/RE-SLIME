@@ -146,6 +146,9 @@ public class BoardManager : MonoBehaviour
 
     public void NextFloor()
     {
+        if (GameController.floor == 0)
+            GameController.floor = GameController.savedFloor;
+
         GameController.floor += 1;
         FloorSetup(GameController.floor);
     }

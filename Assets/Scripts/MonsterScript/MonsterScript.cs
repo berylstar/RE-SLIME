@@ -50,7 +50,10 @@ public class MonsterScript : MovingObject
         sr.color = new Color(255, 255, 255);
 
         if (HP <= 0)
+        {
+            StopAllCoroutines();
             StartCoroutine(Die());
+        }
     }
 
     IEnumerator Die()

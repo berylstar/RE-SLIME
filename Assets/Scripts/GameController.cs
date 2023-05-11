@@ -15,11 +15,12 @@ public class GameController : MonoBehaviour
 
     // STATUS
     public static int floor = 0;
+    public static int savedFloor = 0;
     public static int coin = 0;
 
     public static int playerLife = 3;
     public static int playerMaxHP = 100;
-    public static int PlayerHP = 100;
+    public static int playerHP = 100;
     public static int playerAP = 10;
     public static int playerDP = 0;
     public static float playerSpeed = 3;            // 나중에 1로 수정. 지금은 테스트용 3
@@ -28,4 +29,8 @@ public class GameController : MonoBehaviour
     // GAME SYSYTEM
     public static bool pause = false;
 
+    public static void ChangeHP(int ch)
+    {
+        playerHP = Mathf.Min(playerMaxHP, Mathf.Max(0, playerHP + ch));
+    }
 }

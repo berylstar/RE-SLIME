@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8306997219190760334}
   - component: {fileID: 8306997219190760335}
   - component: {fileID: 8306997219190760333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: S_Gravestone
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

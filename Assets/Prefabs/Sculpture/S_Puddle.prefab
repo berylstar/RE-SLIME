@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8554478738043012681}
   - component: {fileID: 8554478738043012680}
   - component: {fileID: 8554478738043012682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: S_Puddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

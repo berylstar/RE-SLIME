@@ -21,3 +21,8 @@
 - 펀치랑 플레이어랑 분리
 - GameController 에 게임시스템 변수를 static으로 넣어서 관리. pause 변수를 넣어서 Time.timescale = 0인지 아닌지 판별
 - Stair 오브젝트 관련 디테일화
+
+2023.05.11		RE-SLIME 개발 5일차 = 
+- StopAllCoroutines를 통해서 몬스터가 죽어도 이동하는 것 방지
+- 플레이어 죽어서 부활하는 것까지 구현. 게임오버 구현할 예정
+- NPC 킹슬라임과 상점관 구현할 예정

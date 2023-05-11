@@ -24,6 +24,9 @@ public class StairScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (GameController.floor == 0)
+                StartCoroutine(TimeDamage(collision.GetComponent<PlayerScript>()));
+
             BM.NextFloor();
             StairClose();
         }
@@ -52,6 +55,15 @@ public class StairScript : MonoBehaviour
         {
             bc2d.size = new Vector2(0.5f, 0.5f);
             sr.sprite = imgStairOpen;
+        }
+    }
+
+    IEnumerator TimeDamage(PlayerScript player)
+    {
+        while (player.Alive())
+        {
+            GameController.ChangeHP(-1);
+            yield return GameController.delay_1s;
         }
     }
 }
