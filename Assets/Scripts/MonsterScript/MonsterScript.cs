@@ -66,5 +66,6 @@ public class MonsterScript : MovingObject
         Destroy(this.gameObject);
 
         // 아이템 드롭
+        BM.ItemDrop(transform.position);
     }
 }

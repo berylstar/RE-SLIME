@@ -91,10 +91,8 @@ public class PlayerScript : MovingObject
         ani.SetTrigger("PlayerDie");
         yield return GameController.delay_3s;
 
-        // US.PlayerDie();
         US.panelDie.SetActive(true);
         yield return GameController.delay_3s;
-        
 
         if (GameController.playerLife > 0)
         {
@@ -110,8 +108,6 @@ public class PlayerScript : MovingObject
         {
             // GAME OVER
         }
-
-        US.panelDie.SetActive(false);
     }
 
     public bool Alive()

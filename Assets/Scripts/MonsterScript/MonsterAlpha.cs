@@ -37,8 +37,8 @@ public class MonsterAlpha : MonsterScript
     {
         while (isAlive)
         {
-            RandomMove();
             yield return GameController.delay_1s;
+            RandomMove();
         }
     }
 

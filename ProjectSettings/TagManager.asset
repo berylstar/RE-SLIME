@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Punch
   - Stair
+  - Item
   layers:
   - Default
   - TransparentFX

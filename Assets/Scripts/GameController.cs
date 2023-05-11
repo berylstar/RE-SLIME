@@ -16,8 +16,8 @@ public class GameController : MonoBehaviour
     // STATUS
     public static int floor = 0;
     public static int savedFloor = 0;
-    public static int coin = 0;
 
+    // PLAYER
     public static int playerLife = 3;
     public static int playerMaxHP = 100;
     public static int playerHP = 100;
@@ -25,6 +25,13 @@ public class GameController : MonoBehaviour
     public static int playerDP = 0;
     public static float playerSpeed = 3;            // 나중에 1로 수정. 지금은 테스트용 3
     public static float playerTimeDamage = 1;
+
+    // ITEM
+    public static int coin = 0;
+    public static int probCoin = 10;
+    public static bool canRedCoin = false;
+    public static int potionEff = 5;
+    public static int probPotion = 10;
 
     // GAME SYSYTEM
     public static bool pause = false;

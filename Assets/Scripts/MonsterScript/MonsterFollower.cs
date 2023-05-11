@@ -41,8 +41,8 @@ public class MonsterFollower : MonsterScript
     {
         while (isAlive)
         {
-            MoveToPlayer();
             yield return GameController.delay_1s;
+            MoveToPlayer();
         }
     }
 }

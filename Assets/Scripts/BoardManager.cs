@@ -16,6 +16,9 @@ public class BoardManager : MonoBehaviour
     [Header("MONSTERS")]
     public GameObject[] monsters;
 
+    [Header("ITEMS")]
+    public GameObject[] items;
+
     private readonly List<Vector3> gridPositions = new List<Vector3>();
     private List<MonsterScript> monsterGroup;
 
@@ -62,9 +65,8 @@ public class BoardManager : MonoBehaviour
     // 그리드 리스트 내 원하는 좌표 반환
     private Vector3 ReturnPosition(int x, int y)
     {
-        int idx = x * 10 + y;
-        Vector3 pos = gridPositions[idx];
-        gridPositions.RemoveAt(idx);
+        Vector3 pos = new Vector3(x, y, 0);
+        gridPositions.Remove(pos);
         return pos;
     }
 
@@ -75,7 +77,7 @@ public class BoardManager : MonoBehaviour
         {
             for (int j = -1; j < 2; j++)
             {
-                Vector3 removePos = new Vector3(pos.x + i, pos.y + j, 0);
+                Vector3 removePos = new Vector3((int)pos.x + i, (int)pos.y + j, 0);
                 gridPositions.Remove(removePos);
             }
         }
@@ -109,6 +111,16 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    // 계단과 OnTrigger 작동 함수
+    public void NextFloor()
+    {
+        if (GameController.floor == 0)
+            GameController.floor = GameController.savedFloor;
+
+        GameController.floor += 1;
+        FloorSetup(GameController.floor);
+    }
+
     // 해당 층수에 맞게 레벨 세팅
     private void FloorSetup(int floor)
     {
@@ -123,17 +135,20 @@ public class BoardManager : MonoBehaviour
         RemovePositionAwayFrom(GC.player.GetComponent<Transform>().position);
 
         LayoutStair(floor);
+        RemovePositionAwayFrom(stair.GetComponent<Transform>().position);
 
         LayoutObjectAtRandom(sculptures, 2, 5);
 
         LayoutObjectAtRandom(monsters, 1, 4);
     }
 
+    // 몬스터가 생성될 때 몬스터 그룹에 추가
     public void AddMonster(MonsterScript mon)
     {
         monsterGroup.Add(mon);
     }
 
+    // 몬스터 죽을 때 몬스터 그룹에서 제거
     public void RemoveMonster(MonsterScript mon)
     {
         monsterGroup.Remove(mon);
@@ -144,12 +159,20 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public void NextFloor()
+    // 몬스터가 죽을 때 랜덤으로 아이템 드롭
+    public void ItemDrop(Vector3 pos)
     {
-        if (GameController.floor == 0)
-            GameController.floor = GameController.savedFloor;
+        int iRand = Random.Range(0, 101);
+        GameObject go;
 
-        GameController.floor += 1;
-        FloorSetup(GameController.floor);
+        if (iRand <= GameController.probCoin)
+            go = items[0];
+        else if (100 - GameController.probPotion <= iRand)
+            go = items[1];
+        else
+            return;
+
+        GameObject instance = Instantiate(go, pos, Quaternion.identity) as GameObject;
+        instance.transform.SetParent(objectHolder);
     }
 }

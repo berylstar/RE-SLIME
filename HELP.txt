@@ -1,0 +1,76 @@
+HOW TO
+이동	:	방향키
+펀치	:	스페이스 바
+옵션	:	ESC
+인벤토리	:	I
+
+
+<몬스터>
+NAME		HP	AP	TYPE
+				NORMAL	: 일반 몬스터
+				FOLLOW	: 플레이어를 향해 움직이는 모느터
+				QUICK	: 빠른 템포로 움직이는 몬스터
+				SHOOTER: 투사체를 발사하는 몬스터
+				DASH	: 돌진하는 몬스터
+				ALPHA	: 투명해지는 몬스터
+				SPAWN	: 오브젝트를 소환하는 몬스터
+				BOSS	: 보스 몬스터
+
+#1 ~ 20 : Lower of Tower
+Spider		10	5	SPAWN - WEB
+Frog		10	10	
+Bat		5	5	QUICK
+Skeleton		15	5	
+
+# 21 ~ 40 : Graveyard
+Zombie				FOLLOW
+Werewolf
+Ghost				ALPHA
+Scarecrow			SHOOTER - CROW
+
+# 41 ~ 60 : Lava Land
+Firebat				QUICK, DASH
+Ember				SHOOTER - FIRE
+Golem
+Flamesnake			SHOOTER - FIRE x4, 이동X
+
+# 61 ~ 80 : Magical Library
+Wizard				SHOOTER - MAGIC
+Candle				SPAWN - MINI EMBER
+Witch				DASH, ALPHA
+Book
+
+# 81 ~ 100
+
+
+<장비>
+3D 안경
+바나나
+배터리
+쌍안경
+초승달
+행운의 주사위
+권투 글러브
+황금 열쇠
+반돌
+하트스톤
+하이바
+각얼음
+오래된 기계
+투명 망토
+만두
+금속 탐지기
+보너스 버섯
+빨간 고추
+돼지 저금통
+치즈 피자
+독사과
+롤러스케이트
+저주받은 해골
+빨대
+부적
+천둥번개
+황금 티켓
+신호등
+거북이 등껍질
+헤어 왁스

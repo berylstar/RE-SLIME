@@ -22,7 +22,10 @@
 - GameController 에 게임시스템 변수를 static으로 넣어서 관리. pause 변수를 넣어서 Time.timescale = 0인지 아닌지 판별
 - Stair 오브젝트 관련 디테일화
 
-2023.05.11		RE-SLIME 개발 5일차 = 
+2023.05.11		RE-SLIME 개발 5일차 = 3.5시간
 - StopAllCoroutines를 통해서 몬스터가 죽어도 이동하는 것 방지
-- 플레이어 죽어서 부활하는 것까지 구현. 게임오버 구현할 예정
+- 플레이어 죽어서 부활하는 것까지 구현. 나중에 게임오버 구현할 예정
 - NPC 킹슬라임과 상점관 구현할 예정
+- Stair과 충돌인식으로 NextFloor함수를 불러오는 과정에서 플레이어의 좌표값이 정수가 아닌값이 들어가는 오류 발견
+- 몬스터가 죽으면 ItemDrop 함수 BoardManager 스크립트에 구현 완료
+- SculptureScript 구현할 예정. 거미줄은 느려지게 같은 효과

@@ -1846,6 +1846,10 @@ MonoBehaviour:
   - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
   - {fileID: 6484742795607083952, guid: 0f2dc02a2ebed6c4c9747b5cf1b67a2f, type: 3}
   - {fileID: 8346040232776648719, guid: d0831f8f6eb8ce444bdd04759f0d80bc, type: 3}
+  - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
+  items:
+  - {fileID: 2992278746923005060, guid: f4993742bd635f049930132c5f4aad16, type: 3}
+  - {fileID: 1549850051594685311, guid: 8ace544024ca82948ba1ae0be49aa107, type: 3}
 --- !u!114 &715514220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3203,7 +3207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP -- (/ ps)
+  m_Text: 'TimeDamage : --'
 --- !u!222 &1843431191
 CanvasRenderer:
   m_ObjectHideFlags: 0
