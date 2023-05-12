@@ -12,7 +12,7 @@ public class MovingObject : MonoBehaviour
     protected Animator ani;
 
     protected int direction = 0;     // L, R, U, D
-    protected float movetime = (1 / 0.05f);
+    protected float movetime;
     private bool isMoving = false;
     protected bool isAlive = true;
 
@@ -24,6 +24,7 @@ public class MovingObject : MonoBehaviour
         ani = GetComponent<Animator>();
     }
 
+    // MovingObject 이동 함수
     protected bool Move(int xDir, int yDir)
     {
         if      (xDir < 0) { direction = 0; sr.flipX = false; }
@@ -52,6 +53,7 @@ public class MovingObject : MonoBehaviour
             return false;
     }
 
+    // 매끄러운 이동을 위한 코루틴
     protected IEnumerator SmoothMovement(Vector3 end)
     {
         isMoving = true;
@@ -68,5 +70,10 @@ public class MovingObject : MonoBehaviour
 
         rb2d.MovePosition(end);
         isMoving = false;
+    }
+
+    public bool CheckAlive()
+    {
+        return isAlive;
     }
 }

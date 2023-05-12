@@ -14,6 +14,7 @@ public class ItemScript : MonoBehaviour
 {
     public ItemType itemType;
 
+    // 플레이어와 충돌 감지로 아이템 효과 발동
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

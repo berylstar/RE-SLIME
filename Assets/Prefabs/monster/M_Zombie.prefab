@@ -168,5 +168,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   type: 1
-  HP: 20
+  HP: 25
   AP: 5
+  speed: 10

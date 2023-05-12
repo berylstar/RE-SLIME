@@ -8,6 +8,7 @@ public class UIScript : MonoBehaviour
     [Header ("Panel")]
     public GameObject panelESC;
     public GameObject panelDie;
+    public GameObject panelNextFloor;
 
     [Header("Text")]
     public Text textFloor;
@@ -23,7 +24,7 @@ public class UIScript : MonoBehaviour
         textPlayerHP.text = "HP : " + GameController.playerHP + " / " + GameController.playerMaxHP;
         textPlayerAP.text = "AP : " + GameController.playerAP;
         textPlayerDP.text = "DP : " + GameController.playerDP;
-        textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed;
+        textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed / 20;        // 기본 스피드 20
         textPlayerTimeDamage.text = "TimeDamage : -" + GameController.playerTimeDamage;
 
         if (Input.GetKeyDown(KeyCode.Escape))

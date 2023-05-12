@@ -7,13 +7,11 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
-    public UIScript US;
-
     protected override void Start()
     {
         base.Start();
 
-        movetime *= GameController.playerSpeed;
+        movetime = GameController.playerSpeed;
     }
 
     private void Update()
@@ -21,6 +19,7 @@ public class PlayerScript : MovingObject
         if (!isAlive || GameController.pause)
             return;
 
+        // Input : 방향키 = 플레이어 이동
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             PlayerMove(-1, 0);
         else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -30,7 +29,7 @@ public class PlayerScript : MovingObject
         else if (Input.GetKeyDown(KeyCode.DownArrow))
             PlayerMove(0, -1);
 
-
+        // Input : 스페이스바 = 펀치 공격
         if (Input.GetKeyDown(KeyCode.Space))
             StartCoroutine(PunchAttack());
 
@@ -44,18 +43,21 @@ public class PlayerScript : MovingObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 몬스터와 충돌 감지
         if (collision.CompareTag("Monster") && isAlive)
         {
             StartCoroutine(PlayerDamaged(collision.GetComponent<MonsterScript>()));
         }
     }
 
+    // Input 받아서 MovingObject의 Move 함수 실행
     private void PlayerMove(int dx, int dy)
     {
         StartCoroutine(AniMove());
         Move(dx, dy);
     }
 
+    // 플레이어 이동 애니메이션 코루틴
     IEnumerator AniMove()
     {
         ani.SetTrigger("MoveStart");
@@ -63,8 +65,16 @@ public class PlayerScript : MovingObject
         ani.SetTrigger("MoveEnd");
     }
 
+    // 플레이어 이동속도 변경 함수
+    public void ApplyMoveSpeed()
+    {
+        movetime = GameController.playerSpeed;
+    }
+
+    // 플레이어 펀치 공격 코루틴
     IEnumerator PunchAttack()
     {
+        // 펀치 도중에 플레이어 방향 바뀔 때 대비하여 방향변수 저장
         int dir = direction;
 
         punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder;
@@ -73,9 +83,10 @@ public class PlayerScript : MovingObject
         punches[dir].SetActive(false);
     }
 
+    // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
     IEnumerator PlayerDamaged(MonsterScript MS)
     {
-        if (MS.Alive())
+        if (MS.CheckAlive())
         {
             GameController.ChangeHP(-MS.AP);
 
@@ -85,13 +96,14 @@ public class PlayerScript : MovingObject
         }
     }
 
+    // 플레이어 HP가 0이하가 되면 실행되는 코루틴
     IEnumerator PlayerDie()
     {
         isAlive = false;
         ani.SetTrigger("PlayerDie");
         yield return GameController.delay_3s;
 
-        US.panelDie.SetActive(true);
+        BM.US.panelDie.SetActive(true);
         yield return GameController.delay_3s;
 
         if (GameController.playerLife > 0)
@@ -110,8 +122,4 @@ public class PlayerScript : MovingObject
         }
     }
 
-    public bool Alive()
-    {
-        return isAlive;
-    }
 }

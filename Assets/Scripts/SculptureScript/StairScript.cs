@@ -24,6 +24,7 @@ public class StairScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            // 시간 데미지는 처음에만 코루틴 실행하도록
             if (GameController.floor == 0)
                 StartCoroutine(TimeDamage(collision.GetComponent<PlayerScript>()));
 
@@ -36,7 +37,7 @@ public class StairScript : MonoBehaviour
     {
         bc2d.isTrigger = false;
 
-        if (GameController.floor % 10 == 0)
+        if (GameController.floor % 20 == 19)
             sr.sprite = imgStairCloseLong;
         else
             sr.sprite = imgStairClose;
@@ -46,7 +47,7 @@ public class StairScript : MonoBehaviour
     {
         bc2d.isTrigger = true;
 
-        if (GameController.floor % 10 == 0)
+        if (GameController.floor % 20 == 19)
         {
             bc2d.size = new Vector2 (2.4f, 0.5f);
             sr.sprite = imgStairOpenLong;
@@ -60,7 +61,7 @@ public class StairScript : MonoBehaviour
 
     IEnumerator TimeDamage(PlayerScript player)
     {
-        while (player.Alive())
+        while (player.CheckAlive())
         {
             GameController.ChangeHP(-1);
             yield return GameController.delay_1s;

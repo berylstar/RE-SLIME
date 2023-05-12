@@ -170,3 +170,4 @@ MonoBehaviour:
   type: 2
   HP: 5
   AP: 5
+  speed: 10

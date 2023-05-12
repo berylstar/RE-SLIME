@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     public GameController GC;
+    public UIScript US;
 
     [Header("FIELDS")]
     public Sprite[] imageFields;
@@ -119,6 +120,14 @@ public class BoardManager : MonoBehaviour
 
         GameController.floor += 1;
         FloorSetup(GameController.floor);
+        StartCoroutine(NextFloorEffect());
+    }
+
+    IEnumerator NextFloorEffect()
+    {
+        US.panelNextFloor.SetActive(true);
+        yield return GameController.delay_01s;
+        US.panelNextFloor.SetActive(false);
     }
 
     // 해당 층수에 맞게 레벨 세팅
@@ -172,7 +181,8 @@ public class BoardManager : MonoBehaviour
         else
             return;
 
-        GameObject instance = Instantiate(go, pos, Quaternion.identity) as GameObject;
+        //GameObject instance = Instantiate(go, pos, Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(go, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity) as GameObject;
         instance.transform.SetParent(objectHolder);
     }
 }

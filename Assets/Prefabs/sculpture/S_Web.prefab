@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4242034724283205100}
   - component: {fileID: 4242034724283205101}
   - component: {fileID: 4242034724283205103}
+  - component: {fileID: 7281710770192274000}
   m_Layer: 6
   m_Name: S_Web
   m_TagString: Untagged
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &7281710770192274000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4242034724283205106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 045ae32b3647ade4c9099144e82e77e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sculptureType: 0

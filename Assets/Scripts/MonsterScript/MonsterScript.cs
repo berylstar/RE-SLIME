@@ -20,27 +20,27 @@ public class MonsterScript : MovingObject
     public MonsterType type;
     public int HP;
     public int AP;
+    public float speed;
 
     protected override void Start()
     {
         base.Start();
+
+        movetime = speed;
 
         BM.AddMonster(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 펀치와 충돌 감지로 몬스터 데미지
         if (collision.CompareTag("Punch") && isAlive)
         {
             StartCoroutine(Damaged());
         }
     }
 
-    public bool Alive()
-    {
-        return isAlive;
-    }
-
+    // 몬스터 피해입을 때 실행할 코루틴
     IEnumerator Damaged()
     {
         HP -= GameController.playerAP;
@@ -51,11 +51,13 @@ public class MonsterScript : MovingObject
 
         if (HP <= 0)
         {
+            // 이동하는 도중에 죽을 때 바로 죽게 하기 위해
             StopAllCoroutines();
             StartCoroutine(Die());
         }
     }
 
+    // 몬스터 죽었을 때 실행할 코루틴
     IEnumerator Die()
     {
         isAlive = false;

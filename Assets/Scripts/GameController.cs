@@ -23,8 +23,8 @@ public class GameController : MonoBehaviour
     public static int playerHP = 100;
     public static int playerAP = 10;
     public static int playerDP = 0;
-    public static float playerSpeed = 3;            // 나중에 1로 수정. 지금은 테스트용 3
-    public static float playerTimeDamage = 1;
+    public static float playerSpeed = 60f;
+    public static float playerTimeDamage = 1f;
 
     // ITEM
     public static int coin = 0;
