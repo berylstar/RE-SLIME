@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterAlpha : MonsterScript
+public class MonsterShooter : MonsterScript
 {
-    private bool isTransparent = false;
+    public GameObject bullet;
 
-    private Color32 colorO = new Color32(255, 255, 255, 255);
-    private Color32 colorT = new Color32(255, 255, 255, 50);
+    private Transform tf;
 
     protected override void Start()
     {
         base.Start();
 
-        type = MonsterType.ALPHA;
+        type = MonsterType.SHOOTER;
+
+        tf = GetComponent<Transform>();
 
         StartCoroutine(MonsterMove());
-
-        StartCoroutine(Transparent());
+        StartCoroutine(Shoot());
     }
 
     private void RandomMove()
@@ -44,15 +44,18 @@ public class MonsterAlpha : MonsterScript
         }
     }
 
-    IEnumerator Transparent()
+    IEnumerator Shoot()
     {
-        while (isAlive)
+        while(isAlive)
         {
-            int iRand = Random.Range(0, 5);
-            isTransparent = iRand < 4 ? true : false;
-            sr.color = isTransparent ? colorT : colorO;
-
             yield return GameController.delay_1s;
+
+            int iRand = Random.Range(0, 6);
+            if (iRand < 1)
+            {
+                GameObject bbb = Instantiate(bullet, tf.position, Quaternion.identity);
+                bbb.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+            }
         }
     }
 }

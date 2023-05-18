@@ -10,6 +10,8 @@ public class MonsterFollower : MonsterScript
     {
         base.Start();
 
+        type = MonsterType.FOLLOW;
+
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine(MonsterMove());
     }

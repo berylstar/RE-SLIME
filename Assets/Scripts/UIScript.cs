@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-    [Header ("Panel")]
+    [Header("Panel")]
     public GameObject panelESC;
     public GameObject panelDie;
     public GameObject panelNextFloor;
@@ -14,6 +14,17 @@ public class UIScript : MonoBehaviour
     public Text textFloor;
     public Text textLife, textCoin;
     public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage;
+
+    [Header("Dialogue")]
+    public GameObject panelDialogue;
+    public Image imageCharacter;
+    public Text textTalker, textDialogue;
+
+    [Header("Shop")]
+    public GameObject panelShop;
+
+    [Header("Box")]
+    public GameObject panelBox;
 
     private void Update()
     {

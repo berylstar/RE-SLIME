@@ -8,6 +8,8 @@ public class MonsterQuick : MonsterScript
     {
         base.Start();
 
+        type = MonsterType.QUICK;
+
         StartCoroutine(MonsterMove());
     }
 

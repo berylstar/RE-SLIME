@@ -7,9 +7,13 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
+    private Animator ani;
+
     protected override void Start()
     {
         base.Start();
+
+        ani = GetComponent<Animator>();
 
         movetime = GameController.playerSpeed;
     }

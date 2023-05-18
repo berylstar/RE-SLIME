@@ -17,14 +17,18 @@ public enum MonsterType
 public class MonsterScript : MovingObject
 {
     [Header("STATUS")]
-    public MonsterType type;
     public int HP;
     public int AP;
     public float speed;
+    protected MonsterType type;
+
+    private Animator ani;
 
     protected override void Start()
     {
         base.Start();
+
+        ani = GetComponent<Animator>();
 
         movetime = speed;
 

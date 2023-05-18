@@ -8,6 +8,8 @@ public class MonsterNormal : MonsterScript
     {
         base.Start();
 
+        type = MonsterType.NORMAL;
+
         StartCoroutine(MonsterMove());
     }
 

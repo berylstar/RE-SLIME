@@ -10,6 +10,8 @@ public class MonsterBig : MonsterScript
     {
         base.Start();
 
+        type = MonsterType.NORMAL;
+
         tf = GetComponent<Transform>();
         tf.position = new Vector2(tf.position.x + 0.5f, tf.position.y);
 
