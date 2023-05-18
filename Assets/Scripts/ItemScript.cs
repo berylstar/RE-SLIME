@@ -29,6 +29,10 @@ public class ItemScript : MonoBehaviour
         {
             GameController.coin += 1;
         }
+        else if (itemType == ItemType.REDCOIN)
+        {
+            GameController.coin += 3;
+        }
         else if (itemType == ItemType.POTION)
         {
             GameController.ChangeHP(GameController.potionEff);

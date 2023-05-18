@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     public static int playerAP = 10;
     public static int playerDP = 0;
     public static float playerSpeed = 60f;
+    public static float tempSpeed = playerSpeed;
     public static float playerTimeDamage = 1f;
 
     // ITEM

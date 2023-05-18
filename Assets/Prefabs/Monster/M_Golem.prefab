@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4913986751722077796}
   - component: {fileID: 4913986751722077797}
   - component: {fileID: 4913986751722077798}
-  - component: {fileID: 7545965218577723547}
+  - component: {fileID: 163382495556915653}
   m_Layer: 6
   m_Name: M_Golem
   m_TagString: Monster
@@ -118,10 +118,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3, y: 0.3}
+  m_Offset: {x: 0, y: 0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.25, y: 0.25}
+    pivot: {x: 0.5, y: 0.25}
     oldSize: {x: 1.2, y: 1.2}
     newSize: {x: 0.6, y: 0.6}
     adaptiveTilingThreshold: 0.5
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7545965218577723547
+--- !u!114 &163382495556915653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4913986751722077784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
+  m_Script: {fileID: 11500000, guid: c78da2d50190d8d4da91719b5c876775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockingLayer:

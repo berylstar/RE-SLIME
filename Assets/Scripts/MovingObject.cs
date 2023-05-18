@@ -13,7 +13,7 @@ public class MovingObject : MonoBehaviour
 
     protected int direction = 0;     // L, R, U, D
     protected float movetime;
-    private bool isMoving = false;
+    protected bool isMoving = false;
     protected bool isAlive = true;
 
     protected virtual void Start()

@@ -104,10 +104,11 @@ public class BoardManager : MonoBehaviour
             stair.transform.position = RandomPosition();
         else
         {
-            ReturnPosition(4, 9);
-            ReturnPosition(5, 9);
-            ReturnPosition(6, 9);
-            ReturnPosition(7, 9);
+            for (int i = 4; i < 8; i++)
+            {
+                ReturnPosition(i, 9);
+            }
+
             stair.transform.position = new Vector3 (4.5f, 9f, 0f);
         }
     }
@@ -123,6 +124,7 @@ public class BoardManager : MonoBehaviour
         StartCoroutine(NextFloorEffect());
     }
 
+    // 층 넘어갈 때 효과
     IEnumerator NextFloorEffect()
     {
         US.panelNextFloor.SetActive(true);
