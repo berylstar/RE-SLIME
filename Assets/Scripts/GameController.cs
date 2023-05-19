@@ -24,7 +24,8 @@ public class GameController : MonoBehaviour
     public static int playerAP = 10;
     public static int playerDP = 0;
     public static float playerSpeed = 60f;
-    public static float tempSpeed = playerSpeed;
+    //public static float tempSpeed = playerSpeed;
+    public static List<float> speedStack = new List<float>();
     public static float playerTimeDamage = 1f;
 
     // ITEM
@@ -40,5 +41,17 @@ public class GameController : MonoBehaviour
     public static void ChangeHP(int ch)
     {
         playerHP = Mathf.Min(playerMaxHP, Mathf.Max(0, playerHP + ch));
+    }
+
+    public static void SpeedStackIn(float speed)
+    {
+        speedStack.Add(speed);
+    }
+
+    public static void SpeedStackOut()
+    {
+        int idx = speedStack.Count - 1;
+        playerSpeed = speedStack[idx];
+        speedStack.RemoveAt(idx);
     }
 }

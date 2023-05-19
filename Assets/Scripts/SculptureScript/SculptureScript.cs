@@ -36,7 +36,7 @@ public class SculptureScript : MonoBehaviour
         {
             if (sculptureType == SculptureType.WEB)
             {
-                GameController.playerSpeed = GameController.tempSpeed;
+                GameController.SpeedStackOut();
                 player.ApplyMoveSpeed();
             }
         }
@@ -58,14 +58,13 @@ public class SculptureScript : MonoBehaviour
 
     IEnumerator WebEffect(PlayerScript player)
     {
-        GameController.tempSpeed = GameController.playerSpeed;
-
+        GameController.SpeedStackIn(GameController.playerSpeed);
         GameController.playerSpeed /= 2;
         player.ApplyMoveSpeed();
 
         yield return GameController.delay_3s;
 
-        GameController.playerSpeed = GameController.tempSpeed;
+        GameController.SpeedStackOut();
         player.ApplyMoveSpeed();
 
         isEffected = false;

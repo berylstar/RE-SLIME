@@ -13,7 +13,7 @@ NAME		HP	AP	TYPE
 				SHOOTER: 투사체를 발사하는 몬스터
 				DASH	: 돌진하는 몬스터
 				ALPHA	: 투명해지는 몬스터
-				SPAWN	: 오브젝트를 소환하는 몬스터
+				SPAWNER: 오브젝트를 소환하는 몬스터
 				BOSS	: 보스 몬스터
 
 #1 ~ 20 : Lower of Tower

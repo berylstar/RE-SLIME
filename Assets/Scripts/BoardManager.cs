@@ -174,17 +174,16 @@ public class BoardManager : MonoBehaviour
     public void ItemDrop(Vector3 pos)
     {
         int iRand = Random.Range(0, 101);
-        GameObject go;
+        GameObject item;
 
         if (iRand <= GameController.probCoin)
-            go = items[0];
+            item = items[0];
         else if (100 - GameController.probPotion <= iRand)
-            go = items[1];
+            item = items[1];
         else
             return;
 
-        //GameObject instance = Instantiate(go, pos, Quaternion.identity) as GameObject;
-        GameObject instance = Instantiate(go, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(item, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity) as GameObject;
         instance.transform.SetParent(objectHolder);
     }
 }

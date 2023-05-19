@@ -10,7 +10,7 @@ public enum MonsterType
     SHOOTER,    // 투사체 발사
     DASH,       // 돌진
     ALPHA,      // 투명화
-    SPAWN,      // 오브젝트 소환
+    SPAWNER,    // 오브젝트 소환
     BOSS,       // 보스 몬스터 - 보상 드롭
 }
 
@@ -26,7 +26,7 @@ public class MonsterScript : MovingObject
     {
         base.Start();
 
-        movetime = speed;
+        moveSpeed = speed;
 
         BM.AddMonster(this);
     }

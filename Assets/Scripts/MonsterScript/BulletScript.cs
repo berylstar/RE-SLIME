@@ -30,16 +30,11 @@ public class BulletScript : MonoBehaviour
         int xDir = 0;
         int yDir = 0;
 
-        if      (direction == 0) { xDir = -1; yDir = 0; }
-        else if (direction == 1) { xDir = 1; yDir = 0; }
-        else if (direction == 2) { xDir = 0; yDir = 1; }
-        else if (direction == 3) { xDir = 0; yDir = -1; }
+        if      (direction == 0) { xDir = -1; yDir = 0; sr.flipX = false; }
+        else if (direction == 1) { xDir = 1; yDir = 0; sr.flipX = true; }
+        else if (direction == 2) { xDir = 0; yDir = 1; tf.rotation = Quaternion.Euler(0, 0, -90); }
+        else if (direction == 3) { xDir = 0; yDir = -1; tf.rotation = Quaternion.Euler(0, 0, 90); }
         else { return; }
-
-        if      (xDir < 0) { sr.flipX = false; }
-        else if (xDir > 0) { sr.flipX = true; }
-        else if (yDir > 0) { tf.rotation = Quaternion.Euler(0, 0, -90); }
-        else if (yDir < 0) { tf.rotation = Quaternion.Euler(0, 0, 90); }
 
         Vector2 start = transform.position;
         Vector2 end = start + new Vector2(xDir, yDir);

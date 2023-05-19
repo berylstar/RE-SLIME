@@ -11,7 +11,7 @@ public class PlayerScript : MovingObject
     {
         base.Start();
 
-        movetime = GameController.playerSpeed;
+        moveSpeed = GameController.playerSpeed;
     }
 
     private void Update()
@@ -82,7 +82,7 @@ public class PlayerScript : MovingObject
     // 플레이어 이동속도 변경 함수
     public void ApplyMoveSpeed()
     {
-        movetime = GameController.playerSpeed;
+        moveSpeed = GameController.playerSpeed;
     }
 
     // 플레이어 펀치 공격 코루틴

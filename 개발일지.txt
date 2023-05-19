@@ -40,5 +40,8 @@
 - MonsterShooter 구현 중
 - 프리팹에서 참조할때 하이라키에 있는 오브젝트는 불가능하지만, 프리팹으로 저장된 오브젝트는 가능하다.
 
-2023.05.19		RE-SLIME 개발 8일차
+2023.05.19		RE-SLIME 개발 8일차 = 3.5시간
 - MonsterShooter & BulletScript 개발 완료
+- speedStack을 만들어 여러 거미줄 효과도 받을 수 있도록 설정
+- MonsterSpawner 구현 완료
+- MonsterDash 구현 완료

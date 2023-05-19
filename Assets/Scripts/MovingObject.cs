@@ -10,7 +10,7 @@ public class MovingObject : MonoBehaviour
     protected Animator ani;
 
     protected int direction = 0;     // L, R, U, D
-    protected float movetime;
+    protected float moveSpeed;
     protected bool isMoving = false;
     protected bool isAlive = true;
 
@@ -60,7 +60,7 @@ public class MovingObject : MonoBehaviour
 
         while (sqrRemainDistance > float.Epsilon)
         {
-            Vector3 newPos = Vector3.MoveTowards(rb2d.position, end, movetime * Time.deltaTime);
+            Vector3 newPos = Vector3.MoveTowards(rb2d.position, end, moveSpeed * Time.deltaTime);
             rb2d.MovePosition(newPos);
             sqrRemainDistance = (transform.position - end).sqrMagnitude;
             yield return null;
