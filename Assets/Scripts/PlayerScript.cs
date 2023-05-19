@@ -7,13 +7,9 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
-    private Animator ani;
-
     protected override void Start()
     {
         base.Start();
-
-        ani = GetComponent<Animator>();
 
         movetime = GameController.playerSpeed;
     }
@@ -50,7 +46,21 @@ public class PlayerScript : MovingObject
         // 몬스터와 충돌 감지
         if (collision.CompareTag("Monster") && isAlive)
         {
-            StartCoroutine(PlayerDamaged(collision.GetComponent<MonsterScript>()));
+            MonsterScript monster = collision.GetComponent<MonsterScript>();
+
+            if (monster.CheckAlive())
+            {
+                GameController.ChangeHP(-monster.AP);
+                StartCoroutine(DamagedAni());
+            }
+        }
+        else if (collision.CompareTag("Bullet") && isAlive)
+        {
+            BulletScript bullet = collision.GetComponent<BulletScript>();
+
+            GameController.ChangeHP(-bullet.damage);
+            StartCoroutine(DamagedAni());
+            Destroy(collision.gameObject);
         }
     }
 
@@ -88,16 +98,11 @@ public class PlayerScript : MovingObject
     }
 
     // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
-    IEnumerator PlayerDamaged(MonsterScript MS)
+    IEnumerator DamagedAni()
     {
-        if (MS.CheckAlive())
-        {
-            GameController.ChangeHP(-MS.AP);
-
-            sr.color = new Color(255, 0, 0);
-            yield return GameController.delay_025s;
-            sr.color = new Color(255, 255, 255);
-        }
+        sr.color = new Color(255, 0, 0);
+        yield return GameController.delay_025s;
+        sr.color = new Color(255, 255, 255);
     }
 
     // 플레이어 HP가 0이하가 되면 실행되는 코루틴

@@ -10,6 +10,7 @@ TagManager:
   - Punch
   - Stair
   - Item
+  - Bullet
   layers:
   - Default
   - TransparentFX

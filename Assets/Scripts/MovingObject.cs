@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    public LayerMask blockingLayer;
-
     protected BoardManager BM;
     protected Rigidbody2D rb2d;
     protected SpriteRenderer sr;
+    protected Animator ani;
 
     protected int direction = 0;     // L, R, U, D
     protected float movetime;
@@ -20,6 +19,7 @@ public class MovingObject : MonoBehaviour
         BM = GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardManager>();
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        ani = GetComponent<Animator>();
     }
 
     // MovingObject 이동 함수
@@ -33,7 +33,7 @@ public class MovingObject : MonoBehaviour
         Vector2 start = transform.position;
         Vector2 end = start + new Vector2(xDir, yDir);
 
-        RaycastHit2D hit = Physics2D.Linecast(start, end, blockingLayer);   // end, end 에서 실험용으로 바꿔봄
+        RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));   // end, end 에서 실험용으로 바꿔봄
 
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;

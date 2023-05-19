@@ -22,13 +22,9 @@ public class MonsterScript : MovingObject
     public float speed;
     protected MonsterType type;
 
-    private Animator ani;
-
     protected override void Start()
     {
         base.Start();
-
-        ani = GetComponent<Animator>();
 
         movetime = speed;
 

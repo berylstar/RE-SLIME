@@ -54,6 +54,7 @@ public class MonsterShooter : MonsterScript
             if (iRand < 1)
             {
                 GameObject bbb = Instantiate(bullet, tf.position, Quaternion.identity);
+                bbb.GetComponent<BulletScript>().direction = direction;
                 bbb.transform.SetParent(GameObject.Find("ObjectHolder").transform);
             }
         }
