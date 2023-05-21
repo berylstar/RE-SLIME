@@ -56,16 +56,16 @@ public class PlayerScript : MovingObject
 
             if (monster.CheckAlive())
             {
-                GameController.ChangeHP(-monster.AP);
-                StartCoroutine(Damaged());
+                StartCoroutine(Damaged(-monster.AP));
             }
         }
+
+        // 투사체와 충돌 감지
         else if (collision.CompareTag("Bullet"))
         {
             BulletScript bullet = collision.GetComponent<BulletScript>();
 
-            GameController.ChangeHP(-bullet.damage);
-            StartCoroutine(Damaged());
+            StartCoroutine(Damaged(-bullet.damage));
             Destroy(collision.gameObject);
         }
     }
@@ -73,16 +73,14 @@ public class PlayerScript : MovingObject
     // Input 받아서 MovingObject의 Move 함수 실행
     private void PlayerMove(int dx, int dy)
     {
-        StartCoroutine(AniMove());
-        Move(dx, dy);
-    }
+        if (dx != 0)
+            ani.SetTrigger("MoveLR");
+        else if (dy == 1)
+            ani.SetTrigger("MoveUp");
+        else if (dy == -1)
+            ani.SetTrigger("MoveDown");
 
-    // 플레이어 이동 애니메이션 코루틴
-    IEnumerator AniMove()
-    {
-        ani.SetTrigger("MoveStart");
-        yield return GameController.delay_01s;
-        ani.SetTrigger("MoveEnd");
+        Move(dx, dy);
     }
 
     // 플레이어 이동속도 변경 함수
@@ -103,12 +101,21 @@ public class PlayerScript : MovingObject
         punches[dir].SetActive(false);
     }
 
-    // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
-    IEnumerator Damaged()
+    public void PlayerDamaged(int dam)
     {
+        StartCoroutine(Damaged(dam));
+    }
+
+    // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
+    IEnumerator Damaged(int dam)
+    {
+        GameController.ChangeHP(dam);
+
         sr.color = new Color(255, 0, 0);
         invincivity = true;
+
         yield return GameController.delay_05s;
+
         sr.color = new Color(255, 255, 255);
         invincivity = false;
     }

@@ -11,7 +11,7 @@ public enum SculptureType
 
 public class SculptureScript : MonoBehaviour
 {
-    public SculptureType sculptureType;
+    public SculptureType type;
 
     private PlayerScript player;
     private bool isEffected = false;
@@ -30,11 +30,20 @@ public class SculptureScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            print("OUT");
+        }
+    }
+
+    // 거미줄 밟고 디버프 사라지기 전에 거미줄이 파괴될 때
     private void OnDestroy()
     {
         if (isEffected)
         {
-            if (sculptureType == SculptureType.WEB)
+            if (type == SculptureType.WEB)
             {
                 GameController.SpeedStackOut();
                 player.ApplyMoveSpeed();
@@ -42,20 +51,26 @@ public class SculptureScript : MonoBehaviour
         }
     }
 
+    // Sculpture 효과
     public void SculptureEffect(PlayerScript player)
     {
-        if (sculptureType == SculptureType.WEB)
+        if (type == SculptureType.WEB)
         {
             StartCoroutine(WebEffect(player));
         }
-        else if (sculptureType == SculptureType.GRASS)
+        else if (type == SculptureType.GRASS)
         {
             
+        }
+        else if (type == SculptureType.LAVA)
+        {
+            StartCoroutine(LavaEffect(player));
         }
 
         isEffected = true;
     }
 
+    // 거미줄 효과 코루틴
     IEnumerator WebEffect(PlayerScript player)
     {
         GameController.SpeedStackIn(GameController.playerSpeed);
@@ -66,6 +81,16 @@ public class SculptureScript : MonoBehaviour
 
         GameController.SpeedStackOut();
         player.ApplyMoveSpeed();
+
+        isEffected = false;
+    }
+
+    IEnumerator LavaEffect(PlayerScript player)
+    {
+        player.PlayerDamaged(-1);
+        print(-1);
+
+        yield return GameController.delay_1s;
 
         isEffected = false;
     }

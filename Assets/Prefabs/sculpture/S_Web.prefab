@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7281710770192274000}
   m_Layer: 6
   m_Name: S_Web
-  m_TagString: Untagged
+  m_TagString: Sculpture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045ae32b3647ade4c9099144e82e77e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sculptureType: 0
+  type: 0

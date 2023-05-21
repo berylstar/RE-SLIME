@@ -11,6 +11,7 @@ TagManager:
   - Stair
   - Item
   - Bullet
+  - Sculpture
   layers:
   - Default
   - TransparentFX
