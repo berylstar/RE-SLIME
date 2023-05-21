@@ -36,6 +36,8 @@ public class GameController : MonoBehaviour
 
     // GAME SYSYTEM
     public static bool pause = false;
+    public static bool tutorialFirst = false;
+    public static bool tutorialShop = false;
 
     public static void ChangeHP(int ch)
     {

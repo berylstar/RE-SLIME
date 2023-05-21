@@ -20,10 +20,10 @@ public class UIScript : MonoBehaviour
     public Image imageCharacter;
     public Text textTalker, textDialogue;
 
-    [Header("Shop")]
+    [Header("CoffinShop")]
     public GameObject panelShop;
 
-    [Header("Box")]
+    [Header("TreasureBox")]
     public GameObject panelBox;
 
     private void Update()
@@ -56,6 +56,5 @@ public class UIScript : MonoBehaviour
             Time.timeScale = 1;
             GameController.pause = false;
         }
-            
     }
 }

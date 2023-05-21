@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7848166887568026625}
   - component: {fileID: 7848166887568026624}
   - component: {fileID: 7848166887568026627}
+  - component: {fileID: 1549535575562493241}
   m_Layer: 6
   m_Name: N_KingSlime
   m_TagString: NPC
@@ -151,3 +152,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1549535575562493241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848166887568026637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3806c4d3c7a2942a0c1ff5f56b5449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  US: {fileID: 0}

@@ -25,7 +25,7 @@ public class MonsterBig : MonsterScript
 
         int iRand = Random.Range(0, 9);
 
-        if (iRand <= 1) { xDir = 1; }
+        if (iRand <= 1 && (tf.position.x < 8)) { xDir = 1; }
         else if (iRand <= 3) { xDir = -1; }
         else if (iRand <= 5) { yDir = 1; }
         else if (iRand <= 7) { yDir = -1; }
