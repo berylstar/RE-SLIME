@@ -7,6 +7,8 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
+    private bool invincivity = false;
+
     protected override void Start()
     {
         base.Start();
@@ -43,23 +45,27 @@ public class PlayerScript : MovingObject
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 죽었거나 무적일때 충돌 감지 하지않음
+        if (!isAlive || invincivity)
+            return;
+
         // 몬스터와 충돌 감지
-        if (collision.CompareTag("Monster") && isAlive)
+        if (collision.CompareTag("Monster"))
         {
             MonsterScript monster = collision.GetComponent<MonsterScript>();
 
             if (monster.CheckAlive())
             {
                 GameController.ChangeHP(-monster.AP);
-                StartCoroutine(DamagedAni());
+                StartCoroutine(Damaged());
             }
         }
-        else if (collision.CompareTag("Bullet") && isAlive)
+        else if (collision.CompareTag("Bullet"))
         {
             BulletScript bullet = collision.GetComponent<BulletScript>();
 
             GameController.ChangeHP(-bullet.damage);
-            StartCoroutine(DamagedAni());
+            StartCoroutine(Damaged());
             Destroy(collision.gameObject);
         }
     }
@@ -91,18 +97,20 @@ public class PlayerScript : MovingObject
         // 펀치 도중에 플레이어 방향 바뀔 때 대비하여 방향변수 저장
         int dir = direction;
 
-        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder;
+        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
         punches[dir].SetActive(true);
         yield return GameController.delay_01s;
         punches[dir].SetActive(false);
     }
 
     // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
-    IEnumerator DamagedAni()
+    IEnumerator Damaged()
     {
         sr.color = new Color(255, 0, 0);
-        yield return GameController.delay_025s;
+        invincivity = true;
+        yield return GameController.delay_05s;
         sr.color = new Color(255, 255, 255);
+        invincivity = false;
     }
 
     // 플레이어 HP가 0이하가 되면 실행되는 코루틴

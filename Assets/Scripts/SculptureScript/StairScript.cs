@@ -61,9 +61,17 @@ public class StairScript : MonoBehaviour
 
     IEnumerator TimeDamage(PlayerScript player)
     {
+        float time = 0f;
         while (player.CheckAlive())
         {
-            GameController.ChangeHP(-1);
+            time += GameController.playerTimeDamage;
+            
+            if (time >= 1)
+            {
+                GameController.ChangeHP(-1);
+                time = 0f;
+            }
+
             yield return GameController.delay_1s;
         }
     }

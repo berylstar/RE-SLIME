@@ -20,11 +20,10 @@ public class GameController : MonoBehaviour
     // PLAYER
     public static int playerLife = 3;
     public static int playerMaxHP = 100;
-    public static int playerHP = 100;
+    public static int playerHP = playerMaxHP;
     public static int playerAP = 10;
     public static int playerDP = 0;
     public static float playerSpeed = 60f;
-    //public static float tempSpeed = playerSpeed;
     public static List<float> speedStack = new List<float>();
     public static float playerTimeDamage = 1f;
 

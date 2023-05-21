@@ -34,56 +34,14 @@ public class MonsterDash : MonsterScript
         {
             yield return GameController.delay_1s;
 
-            int iRand = Random.Range(0, 20);
+            int iRand = Random.Range(0, 6);
 
-            if (iRand <= 4)
-            {
+            if (iRand == 0)
                 StartCoroutine(Dash());
-
-                print("DASH");
-            }
             else
                 RandomMove();
         }
     }
-
-    //private void Dashh()
-    //{
-    //    Vector2 start = transform.position;
-    //    Vector2 end = transform.position;
-
-    //    if      (direction == 0) { sr.flipX = false; end = new Vector2(0, start.y); }
-    //    else if (direction == 1) { sr.flipX = true; end = new Vector2(9, start.y); }
-    //    else if (direction == 2) { end = new Vector2(start.x, 9); }
-    //    else if (direction == 3) { end = new Vector2(start.x, 0); }
-
-    //    if (!isMoving)
-    //    {
-    //        moveSpeed = 80f;
-    //        StartCoroutine(SmoothMovement(end));
-    //        sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
-    //        moveSpeed = speed;
-    //    }
-    //}
-
-    //// 매끄러운 이동을 위한 코루틴
-    //private IEnumerator SmoothMovementt(Vector3 end)
-    //{
-    //    isMoving = true;
-
-    //    float sqrRemainDistance = (transform.position - end).sqrMagnitude;
-
-    //    while (sqrRemainDistance > float.Epsilon)
-    //    {
-    //        Vector3 newPos = Vector3.MoveTowards(rb2d.position, end, 50 * Time.deltaTime);
-    //        rb2d.MovePosition(newPos);
-    //        sqrRemainDistance = (transform.position - end).sqrMagnitude;
-    //        yield return null;
-    //    }
-
-    //    rb2d.MovePosition(end);
-    //    isMoving = false;
-    //}
 
     IEnumerator Dash()
     {
@@ -99,13 +57,10 @@ public class MonsterDash : MonsterScript
         {
             isMoving = true;
 
-            float sqrRemainDistance = (start - end).sqrMagnitude;
-
-            while (sqrRemainDistance > float.Epsilon)
+            while (((Vector2)transform.position - end).sqrMagnitude > float.Epsilon)
             {
                 Vector3 newPos = Vector3.MoveTowards(rb2d.position, end, 80 * Time.deltaTime);
                 rb2d.MovePosition(newPos);
-                sqrRemainDistance = (start - end).sqrMagnitude;
                 yield return null;
             }
 

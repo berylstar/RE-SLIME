@@ -45,3 +45,7 @@
 - speedStack을 만들어 여러 거미줄 효과도 받을 수 있도록 설정
 - MonsterSpawner 구현 완료
 - MonsterDash 구현 완료
+
+2023.05.21		RE-SLIME 개발 9일차 = 
+- 플레이어 피격시 무적 추가
+- MonsterDash 오류 해결

@@ -36,7 +36,7 @@ public class UIScript : MonoBehaviour
         textPlayerAP.text = "AP : " + GameController.playerAP;
         textPlayerDP.text = "DP : " + GameController.playerDP;
         textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed / 20;        // 기본 스피드 20
-        textPlayerTimeDamage.text = "TimeDamage : -" + GameController.playerTimeDamage;
+        textPlayerTimeDamage.text = "TimeDamage : " + GameController.playerTimeDamage;
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Pause();
