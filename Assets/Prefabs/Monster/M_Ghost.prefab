@@ -164,10 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc97ba22fb7dfc46a488d9f60fadc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockingLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  type: 5
   HP: 15
   AP: 5
   speed: 20
+  transparentPercent: 50

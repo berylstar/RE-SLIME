@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MonsterShooter : MonsterScript
 {
+    [Header("SHOOTER")]
     public GameObject bullet;
+    public int shootPercent;    
 
     private Transform tf;
 
@@ -50,8 +52,8 @@ public class MonsterShooter : MonsterScript
         {
             yield return GameController.delay_1s;
 
-            int iRand = Random.Range(0, 6);
-            if (iRand < 1)
+            int iRand = Random.Range(0, 100);
+            if (iRand <= shootPercent)
             {
                 GameObject bbb = Instantiate(bullet, tf.position, Quaternion.identity);
                 bbb.GetComponent<BulletScript>().direction = direction;

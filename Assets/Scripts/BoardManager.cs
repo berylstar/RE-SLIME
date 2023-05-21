@@ -42,13 +42,15 @@ public class BoardManager : MonoBehaviour
     // 레벨 디자인에 맞춰 field 이미지 변환
     private void SetField(int floor)
     {
-        Sprite sp = null;
+        Sprite sp;
 
-        if      (floor <= 20) { sp = imageFields[Random.Range(0, 4)]; }
-        else if (floor <= 40) { sp = imageFields[Random.Range(4, 7)]; }
-        else if (floor <= 60) { sp = imageFields[Random.Range(7, 10)]; }
-        else if (floor <= 80) { sp = imageFields[Random.Range(10, 12)]; }
-        else                  { sp = imageFields[Random.Range(0, 12)]; }
+        // if      (floor <= 20) { sp = imageFields[Random.Range(0, 4)]; }
+        // else if (floor <= 40) { sp = imageFields[Random.Range(4, 7)]; }
+        // else if (floor <= 60) { sp = imageFields[Random.Range(7, 10)]; }
+        // else if (floor <= 80) { sp = imageFields[Random.Range(10, 12)]; }
+        // else                  { sp = imageFields[Random.Range(0, 12)]; }
+
+        sp = imageFields[Random.Range(0, 12)];
 
         GC.field.GetComponent<SpriteRenderer>().sprite = sp;
         GC.field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));

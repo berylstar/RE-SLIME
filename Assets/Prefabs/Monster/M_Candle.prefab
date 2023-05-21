@@ -168,3 +168,4 @@ MonoBehaviour:
   AP: 10
   speed: 10
   spawn: {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
+  spawnPercent: 75

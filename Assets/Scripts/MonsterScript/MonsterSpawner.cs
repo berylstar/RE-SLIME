@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MonsterSpawner : MonsterScript
 {
+    [Header("SPAWNER")]
     public GameObject spawn;
+    public int spawnPercent;
 
     private Transform tf;
 
@@ -49,9 +51,9 @@ public class MonsterSpawner : MonsterScript
         {
             yield return GameController.delay_3s;
 
-            int iRand = Random.Range(0, 6);
+            int iRand = Random.Range(0, 100);
 
-            if (iRand < 1)
+            if (iRand <= spawnPercent)
             {
                 GameObject sss = Instantiate(spawn, tf.position, Quaternion.identity);
                 sss.transform.SetParent(GameObject.Find("ObjectHolder").transform);

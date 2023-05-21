@@ -14,7 +14,9 @@ public class SculptureScript : MonoBehaviour
     public SculptureType type;
 
     private PlayerScript player;
+
     private bool isEffected = false;
+    private bool isOn = false;
 
     private void Start()
     {
@@ -30,11 +32,12 @@ public class SculptureScript : MonoBehaviour
         }
     }
 
+    // 조형물밖으로 나갈 때 감지
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            print("OUT");
+            isOn = false;
         }
     }
 
@@ -52,20 +55,18 @@ public class SculptureScript : MonoBehaviour
     }
 
     // Sculpture 효과
-    public void SculptureEffect(PlayerScript player)
+    private void SculptureEffect(PlayerScript player)
     {
+        isOn = true;
+
         if (type == SculptureType.WEB)
-        {
             StartCoroutine(WebEffect(player));
-        }
+
         else if (type == SculptureType.GRASS)
-        {
-            
-        }
+            StartCoroutine(GrassEffect(player));
+
         else if (type == SculptureType.LAVA)
-        {
             StartCoroutine(LavaEffect(player));
-        }
 
         isEffected = true;
     }
@@ -85,12 +86,21 @@ public class SculptureScript : MonoBehaviour
         isEffected = false;
     }
 
+    // 풀숲 효과 코루틴
+    IEnumerator GrassEffect(PlayerScript player)
+    {
+        yield return null;
+    }
+
+    // 용암 효과 코루틴
     IEnumerator LavaEffect(PlayerScript player)
     {
-        player.PlayerDamaged(-1);
-        print(-1);
+        while (isOn)
+        {
+            player.PlayerDamaged(-1);
 
-        yield return GameController.delay_1s;
+            yield return GameController.delay_1s;
+        }
 
         isEffected = false;
     }

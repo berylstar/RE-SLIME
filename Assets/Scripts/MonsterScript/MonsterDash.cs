@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MonsterDash : MonsterScript
 {
+    [Header("DASH")]
+    public int dashPercent;
+
     protected override void Start()
     {
         base.Start();
@@ -34,9 +37,9 @@ public class MonsterDash : MonsterScript
         {
             yield return GameController.delay_1s;
 
-            int iRand = Random.Range(0, 6);
+            int iRand = Random.Range(0, 100);
 
-            if (iRand == 0)
+            if (iRand <= dashPercent)
                 StartCoroutine(Dash());
             else
                 RandomMove();

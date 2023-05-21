@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour
     [Header("STATUS")]
     public int damage;
     public float moveSpeed;
-    public int direction;
+    [HideInInspector] public int direction;
 
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;

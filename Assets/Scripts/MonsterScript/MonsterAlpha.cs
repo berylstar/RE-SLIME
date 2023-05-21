@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MonsterAlpha : MonsterScript
 {
+    [Header("ALPHA")]
+    public int transparentPercent;
+
     private bool isTransparent = false;
 
     private Color32 colorO = new Color32(255, 255, 255, 255);
@@ -16,7 +19,6 @@ public class MonsterAlpha : MonsterScript
         type = MonsterType.ALPHA;
 
         StartCoroutine(MonsterMove());
-
         StartCoroutine(Transparent());
     }
 
@@ -48,8 +50,8 @@ public class MonsterAlpha : MonsterScript
     {
         while (isAlive)
         {
-            int iRand = Random.Range(0, 5);
-            isTransparent = iRand < 4 ? true : false;
+            int iRand = Random.Range(0, 100);
+            isTransparent = (iRand <= transparentPercent) ? true : false;
             sr.color = isTransparent ? colorT : colorO;
 
             yield return GameController.delay_1s;
