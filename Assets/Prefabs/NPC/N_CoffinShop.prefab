@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4951040019639784870}
   - component: {fileID: 4951040019639784856}
   - component: {fileID: 4951040019639784857}
-  - component: {fileID: 4511467208788638803}
+  - component: {fileID: 7822290379765303964}
   m_Layer: 6
-  m_Name: N_Coffin
+  m_Name: N_CoffinShop
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4511467208788638803
+--- !u!114 &7822290379765303964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4951040019639784858}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff3806c4d3c7a2942a0c1ff5f56b5449, type: 3}
+  m_Script: {fileID: 11500000, guid: 323009463fb538f44bf91b1118be3aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1

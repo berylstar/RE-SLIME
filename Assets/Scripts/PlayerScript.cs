@@ -18,7 +18,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (!isAlive || GameController.pause)
+        if (!isAlive || GameController.pause || GameController.inDialogue)
             return;
 
         // Input : 방향키 = 플레이어 이동
@@ -33,8 +33,12 @@ public class PlayerScript : MovingObject
 
         // Input : 스페이스바 = 펀치 공격
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             StartCoroutine(PunchAttack());
+        }
 
+        // ESC : 메뉴 -> UIScript에 구현되어 있음
+            
         punchZip.transform.position = this.transform.position;
 
         if (GameController.playerHP <= 0)

@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
 
     // GAME SYSYTEM
     public static bool pause = false;
+    public static bool inDialogue = false;
     public static bool tutorialFirst = false;
     public static bool tutorialShop = false;
 

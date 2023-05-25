@@ -57,4 +57,19 @@ public class UIScript : MonoBehaviour
             GameController.pause = false;
         }
     }
+
+    public void Dialogue(Sprite character, string who, string talk)
+    {
+        GameController.inDialogue = true;
+        panelDialogue.SetActive(true);
+        imageCharacter.sprite = character;
+        textTalker.text = who;
+        textDialogue.text = talk;
+    }
+
+    public void EndDialogue()
+    {
+        GameController.inDialogue = false;
+        panelDialogue.SetActive(false);
+    }
 }
