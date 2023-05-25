@@ -56,4 +56,32 @@ public class GameController : MonoBehaviour
         playerSpeed = speedStack[idx];
         speedStack.RemoveAt(idx);
     }
+
+    public static void Restart()
+    {
+        floor = 0;
+        savedFloor = 0;
+
+        playerLife = 3;
+        playerMaxHP = 100;
+        playerHP = playerMaxHP;
+        playerAP = 10;
+        playerDP = 0;
+        playerSpeed = 60f;
+        speedStack = new List<float>();
+        playerTimeDamage = 1f;
+
+        coin = 0;
+        probCoin = 10;
+        canRedCoin = false;
+        potionEff = 5;
+        probPotion = 10;
+
+        pause = false;
+        inDialogue = false;
+        tutorialFirst = false;
+        tutorialShop = false;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
 }

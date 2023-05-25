@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
     [Header("Panel")]
-    public GameObject panelESC;
     public GameObject panelDie;
     public GameObject panelNextFloor;
 
@@ -14,6 +13,11 @@ public class UIScript : MonoBehaviour
     public Text textFloor;
     public Text textLife, textCoin;
     public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage;
+
+    [Header("ESC")]
+    public GameObject panelESC;
+    public GameObject escPick;
+    private int escIndex = 0;
 
     [Header("Dialogue")]
     public GameObject panelDialogue;
@@ -39,22 +43,56 @@ public class UIScript : MonoBehaviour
         textPlayerTimeDamage.text = "TimeDamage : " + GameController.playerTimeDamage;
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            Pause();
+            ESC();
+
+        if (GameController.pause)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))   escIndex -= 1;
+            if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex += 1;
+
+            if      (escIndex < 0) escIndex = 2;
+            else if (escIndex > 2) escIndex = 0;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                ESCSelect();
+
+            escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, -escIndex * 100, 0f);
+        }
     }
 
-    public void Pause()
+    private void ESC()
     {
         if (!GameController.pause)
         {
             panelESC.SetActive(true);
             Time.timeScale = 0;
             GameController.pause = true;
+
+            escIndex = 0;
+            escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
         }
         else
         {
             panelESC.SetActive(false);
             Time.timeScale = 1;
             GameController.pause = false;
+        }
+    }
+
+    private void ESCSelect()
+    {
+        if (escIndex == 0)
+        {
+            ESC();
+        }
+        else if (escIndex == 1)
+        {
+            print("OPTION");
+        }
+        else if (escIndex == 2)
+        {
+            ESC();
+            GameController.Restart();
         }
     }
 
