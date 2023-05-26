@@ -9,7 +9,7 @@ public class UIScript : MonoBehaviour
     public GameObject panelDie;
     public GameObject panelNextFloor;
 
-    [Header("Text")]
+    [Header("UI Text")]
     public Text textFloor;
     public Text textLife, textCoin;
     public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage;
@@ -32,9 +32,9 @@ public class UIScript : MonoBehaviour
 
     private void Update()
     {
-        textLife.text = "SLIME\nx " + GameController.playerLife;
+        textLife.text = "\nx " + GameController.playerLife;
         textFloor.text = "FLOOR\n" + GameController.floor + " F";
-        textCoin.text = "COIN\nx " + GameController.coin;
+        textCoin.text = "\nx " + GameController.coin;
 
         textPlayerHP.text = "HP : " + GameController.playerHP + " / " + GameController.playerMaxHP;
         textPlayerAP.text = "AP : " + GameController.playerAP;
@@ -45,7 +45,7 @@ public class UIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             ESC();
 
-        if (GameController.pause)
+        if (GameController.esc)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))   escIndex -= 1;
             if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex += 1;
@@ -62,11 +62,11 @@ public class UIScript : MonoBehaviour
 
     private void ESC()
     {
-        if (!GameController.pause)
+        if (!GameController.esc)
         {
             panelESC.SetActive(true);
             Time.timeScale = 0;
-            GameController.pause = true;
+            GameController.esc = true;
 
             escIndex = 0;
             escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
@@ -75,7 +75,7 @@ public class UIScript : MonoBehaviour
         {
             panelESC.SetActive(false);
             Time.timeScale = 1;
-            GameController.pause = false;
+            GameController.esc = false;
         }
     }
 
@@ -98,7 +98,7 @@ public class UIScript : MonoBehaviour
 
     public void Dialogue(Sprite character, string who, string talk)
     {
-        GameController.inDialogue = true;
+        GameController.inDiaglogue = true;
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
         textTalker.text = who;
@@ -107,7 +107,7 @@ public class UIScript : MonoBehaviour
 
     public void EndDialogue()
     {
-        GameController.inDialogue = false;
+        GameController.inDiaglogue = false;
         panelDialogue.SetActive(false);
     }
 }

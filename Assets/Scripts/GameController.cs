@@ -35,10 +35,16 @@ public class GameController : MonoBehaviour
     public static int probPotion = 10;
 
     // GAME SYSYTEM
-    public static bool pause = false;
-    public static bool inDialogue = false;
+    public static bool esc = false;
+    public static bool inDiaglogue = false;
+    public static bool inInven = false;
     public static bool tutorialFirst = false;
     public static bool tutorialShop = false;
+
+    public static bool DontMove()
+    {
+        return esc || inDiaglogue || inInven;
+    }
 
     public static void ChangeHP(int ch)
     {
@@ -59,28 +65,7 @@ public class GameController : MonoBehaviour
 
     public static void Restart()
     {
-        floor = 0;
-        savedFloor = 0;
-
-        playerLife = 3;
-        playerMaxHP = 100;
-        playerHP = playerMaxHP;
-        playerAP = 10;
-        playerDP = 0;
-        playerSpeed = 60f;
-        speedStack = new List<float>();
-        playerTimeDamage = 1f;
-
-        coin = 0;
-        probCoin = 10;
-        canRedCoin = false;
-        potionEff = 5;
-        probPotion = 10;
-
-        pause = false;
-        inDialogue = false;
-        tutorialFirst = false;
-        tutorialShop = false;
+        // 변수들 리셋 시켜줘야 함
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }

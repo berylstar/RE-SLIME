@@ -58,3 +58,8 @@
 - ESC Paenl 구현 완료
 - Canvas에서는 anchoredPosition을 사용한다.
 - 장비 구현에 대해 생각해보자
+
+2023.05.26		RE-SLIME 개발 11일차 = 4.5시간
+- 인벤토리 이미지 제작
+- 장비 구현 초기 단계
+- 인벤토리 UI 에 trash collider를 넣어서 커서가 잡고 있는 것 구현

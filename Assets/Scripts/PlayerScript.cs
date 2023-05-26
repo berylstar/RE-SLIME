@@ -18,7 +18,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (!isAlive || GameController.pause || GameController.inDialogue)
+        if (!isAlive || GameController.DontMove())
             return;
 
         // Input : 방향키 = 플레이어 이동
@@ -36,6 +36,8 @@ public class PlayerScript : MovingObject
         {
             StartCoroutine(PunchAttack());
         }
+
+        // I : 인벤토리 -> EquipScript에 구현되어 있음
 
         // ESC : 메뉴 -> UIScript에 구현되어 있음
             

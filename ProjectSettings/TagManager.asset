@@ -12,6 +12,7 @@ TagManager:
   - Item
   - Bullet
   - Sculpture
+  - Equip
   layers:
   - Default
   - TransparentFX
@@ -60,6 +61,9 @@ TagManager:
     locked: 0
   - name: Unit
     uniqueID: 460637147
+    locked: 0
+  - name: Equip
+    uniqueID: 3205112461
     locked: 0
   - name: Canvas
     uniqueID: 2249645491

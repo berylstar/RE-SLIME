@@ -33,7 +33,7 @@ public class MovingObject : MonoBehaviour
         Vector2 start = transform.position;
         Vector2 end = start + new Vector2(xDir, yDir);
 
-        RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));   // end, end 에서 실험용으로 바꿔봄
+        RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
 
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
