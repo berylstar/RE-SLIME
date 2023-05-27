@@ -5,7 +5,7 @@ using UnityEngine;
 public class CursorScript : MonoBehaviour
 {
     public InventoryScript IS;
-    public int cursorIndex = 0;
+    public int posIndex = 0;
 
     private Transform tf;
     private SpriteRenderer sr;
@@ -33,32 +33,34 @@ public class CursorScript : MonoBehaviour
         MoveCursor();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Equip"))
-        {
-            on = collision.gameObject;
-        }
-        else
-        {
-            on = null;
-        }
+        on = null;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        on = collision.gameObject;
+    }
 
     private void MoveCursor()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && cursorIndex % 3 > 0) cursorIndex -= 1;
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && cursorIndex % 3 < 2) cursorIndex += 1;
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && cursorIndex > 2) cursorIndex -= 3;
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && cursorIndex < 15) cursorIndex += 3;
+        int change = 0;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && posIndex % 3 > 0) change = -1;
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && posIndex % 3 < 2) change = 1;
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && posIndex > 2) change = -3;
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && posIndex < 15) change = 3;
         else return;
 
-        tf.position = IS.ReturnGrid(cursorIndex);
+        posIndex += change;
+
+        tf.position = IS.ReturnGrid(posIndex);
 
         if (pick)
         {
-            pick.transform.position = IS.ReturnGrid(cursorIndex);
+            //pick.transform.position = IS.ReturnGrid(posIndex);
+            pick.GetComponent<EquipScript>().Move(change);
         }
     }
 }

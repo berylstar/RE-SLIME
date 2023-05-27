@@ -11,7 +11,7 @@ public class InventoryScript : MonoBehaviour
 
     private List<Vector3> equipGrid = new List<Vector3>();
 
-    private void Start()
+    private void Awake()
     {
         InitialGrid();
     }
@@ -23,7 +23,7 @@ public class InventoryScript : MonoBehaviour
             GameController.inInven = !GameController.inInven;
 
             cursor.SetActive(GameController.inInven);
-            cursor.GetComponent<CursorScript>().cursorIndex = 0;
+            cursor.GetComponent<CursorScript>().posIndex = 0;
             cursor.transform.position = equipGrid[0];
         }
     }

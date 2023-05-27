@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EquipScript : MonoBehaviour
 {
+    public List<int> posIndex = new List<int>();
+
     private InventoryScript IS;
     private Transform tf;
 
@@ -11,11 +13,14 @@ public class EquipScript : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         IS = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
+
+        tf.position = IS.ReturnGrid(posIndex[0]);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Move(int i)
     {
-        if (collision.transform.name == "Cursor")
-            return;
+        posIndex[0] += i;
+
+        tf.position = IS.ReturnGrid(posIndex[0]);
     }
 }
