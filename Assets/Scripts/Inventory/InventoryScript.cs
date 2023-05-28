@@ -5,9 +5,10 @@ using UnityEngine;
 public class InventoryScript : MonoBehaviour
 {
     public List<GameObject> equips = new List<GameObject>();
+    public List<int> equipOverlap = new List<int>();
+    public GameObject textOverlapped;
 
     public GameObject cursor;
-    public GameObject iconC, iconV;
 
     private List<Vector3> equipGrid = new List<Vector3>();
 
@@ -18,7 +19,8 @@ public class InventoryScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        // 장비가 겹쳐있으면 인벤토리가 닫히지 않음
+        if (Input.GetKeyDown(KeyCode.I) && CheckOverlap())
         {
             GameController.inInven = !GameController.inInven;
 
@@ -54,31 +56,55 @@ public class InventoryScript : MonoBehaviour
     {
         if (cv == "C")
         {
+            if (GameController.skillC && equip != GameController.skillC)
+            {
+                GameController.skillC.iconC.SetActive(false);
+            }
+
             if (equip == GameController.skillV)
             {
                 GameController.skillV = null;
-                iconV.SetActive(false);
+                equip.iconV.SetActive(false);
             }
 
             GameController.skillC = equip;
-            iconC.SetActive(true);
-            iconC.transform.position = ReturnGrid(equip.posIndex[0]);
+            equip.iconC.SetActive(true);
         }
         else if (cv == "V")
         {
+            if (GameController.skillV && equip != GameController.skillV)
+            {
+                GameController.skillV.iconV.SetActive(false);
+            }
+
             if (equip == GameController.skillC)
             {
                 GameController.skillC = null;
-                iconC.SetActive(false);
+                equip.iconC.SetActive(false);
             }
 
             GameController.skillV = equip;
-            iconV.SetActive(true);
-            iconV.transform.position = ReturnGrid(equip.posIndex[0]);
+            equip.iconV.SetActive(true);
         }
         else
             return;
 
         print((GameController.skillC, GameController.skillV));
+    }
+
+    // 인벤토리에 장비가 겹쳐있는지 확인
+    private bool CheckOverlap()
+    {
+        for (int i = 0; i < equipOverlap.Count; i++)
+        {
+            if (equipOverlap[i] > 1)
+            {
+                textOverlapped.SetActive(true);
+                return false;
+            }
+        }
+
+        textOverlapped.SetActive(false);
+        return true;
     }
 }
