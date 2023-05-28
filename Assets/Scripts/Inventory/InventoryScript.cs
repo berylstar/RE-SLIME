@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
-    public List<GameObject> equips = new List<GameObject>();
     public List<int> equipOverlap = new List<int>();
     public GameObject textOverlapped;
 

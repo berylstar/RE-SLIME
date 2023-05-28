@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     // STATUS
     public static int floor = 0;
     public static int savedFloor = 0;
+    public static List<EquipScript> equips = new List<EquipScript>();
 
     // PLAYER
     public static int playerLife = 3;
@@ -40,12 +41,11 @@ public class GameController : MonoBehaviour
     public static bool esc = false;
     public static bool inDiaglogue = false;
     public static bool inInven = false;
-    public static bool tutorialFirst = false;
-    public static bool tutorialShop = false;
+    public static bool inShop = false;
 
     public static bool DontMove()
     {
-        return esc || inDiaglogue || inInven;
+        return esc || inDiaglogue || inInven || inShop;
     }
 
     public static void ChangeHP(int ch)

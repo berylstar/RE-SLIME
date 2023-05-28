@@ -20,7 +20,7 @@ public class KingslimeScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.inDiaglogue)
+        if (!GameController.inDiaglogue || !GameController.inInven)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -46,6 +46,7 @@ public class KingslimeScript : MonoBehaviour
         }
     }
 
+    // 바로 다시 NPC와 대화를 막기위한 잠깐의 딜레이
     IEnumerator LittleTime()
     {
         yield return GameController.delay_01s;

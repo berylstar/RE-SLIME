@@ -1,26 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CoffinshopScript : MonoBehaviour
 {
     private UIScript US;
+
+    public int shopIndex = 0;
 
     private void Start()
     {
         US = GameObject.Find("CONTROLLER").GetComponent<UIScript>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.CompareTag("Punch"))
+        if (!GameController.inShop || !GameController.inInven)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            US.panelShop.SetActive(true);
+            StartCoroutine(CloseShop());
         }
     }
 
-    IEnumerator LittleTime()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Punch") && !GameController.inShop)
+        {
+            US.panelShop.SetActive(true);
+            GameController.inShop = true;
+        }
+    }
+
+    IEnumerator CloseShop()
+    {
+        US.panelShop.SetActive(false);
         yield return GameController.delay_01s;
+        GameController.inShop = false;
     }
 }
