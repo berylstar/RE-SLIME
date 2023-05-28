@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
     public static float playerSpeed = 60f;
     public static List<float> speedStack = new List<float>();
     public static float playerTimeDamage = 1f;
+    public static EquipScript skillC = null;
+    public static EquipScript skillV = null;
 
     // ITEM
     public static int coin = 0;

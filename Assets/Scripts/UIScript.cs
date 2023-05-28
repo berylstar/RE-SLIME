@@ -32,9 +32,9 @@ public class UIScript : MonoBehaviour
 
     private void Update()
     {
-        textLife.text = "\nx " + GameController.playerLife;
+        textLife.text = "SLIME\nx " + GameController.playerLife;
         textFloor.text = "FLOOR\n" + GameController.floor + " F";
-        textCoin.text = "\nx " + GameController.coin;
+        textCoin.text = "COIN\nx " + GameController.coin;
 
         textPlayerHP.text = "HP : " + GameController.playerHP + " / " + GameController.playerMaxHP;
         textPlayerAP.text = "AP : " + GameController.playerAP;

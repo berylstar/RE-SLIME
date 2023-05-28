@@ -5,12 +5,11 @@ using UnityEngine;
 public class CursorScript : MonoBehaviour
 {
     public InventoryScript IS;
-    public int posIndex = 0;
 
     private Transform tf;
     private SpriteRenderer sr;
-    private PolygonCollider2D pc;
 
+    private int posIndex = 0;
     private GameObject pick = null;
     private GameObject on = null;
 
@@ -18,6 +17,8 @@ public class CursorScript : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
+
+        CursorReset();
     }
 
     private void Update()
@@ -28,19 +29,33 @@ public class CursorScript : MonoBehaviour
             else pick = null;
         }
 
+        if (Input.GetKeyDown(KeyCode.C) && pick)
+        {
+            IS.SetSkill("C", pick.GetComponent<EquipScript>());
+            pick = null;
+        }
+
+        if (Input.GetKeyDown(KeyCode.V) && pick)
+        {
+            IS.SetSkill("V", pick.GetComponent<EquipScript>());
+            pick = null;
+        }
+
+
         sr.color = pick ? new Color32(255, 255, 0, 255) : new Color32(255, 255, 255, 255);
 
         MoveCursor();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        on = null;
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    on = null;
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        on = collision.gameObject;
+        if (collision.CompareTag("Equip"))
+            on = collision.gameObject;
     }
 
     private void MoveCursor()
@@ -59,8 +74,14 @@ public class CursorScript : MonoBehaviour
 
         if (pick)
         {
-            //pick.transform.position = IS.ReturnGrid(posIndex);
             pick.GetComponent<EquipScript>().Move(change);
         }
+    }
+
+    public void CursorReset()
+    {
+        posIndex = 0;
+        tf.position = IS.ReturnGrid(0);
+        pick = null;
     }
 }

@@ -37,10 +37,22 @@ public class PlayerScript : MovingObject
             StartCoroutine(PunchAttack());
         }
 
+        // C : 스킬 1
+        if (Input.GetKeyDown(KeyCode.C) && GameController.skillC)
+        {
+            GameController.skillC.Skill();
+        }
+
+        // V : 스킬 2
+        if (Input.GetKeyDown(KeyCode.V) && GameController.skillV)
+        {
+            GameController.skillV.Skill();
+        }
+
         // I : 인벤토리 -> EquipScript에 구현되어 있음
 
         // ESC : 메뉴 -> UIScript에 구현되어 있음
-            
+
         punchZip.transform.position = this.transform.position;
 
         if (GameController.playerHP <= 0)
