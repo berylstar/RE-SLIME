@@ -94,6 +94,9 @@ public class InventoryScript : MonoBehaviour
     // 인벤토리에 장비가 겹쳐있는지 확인
     private bool CheckOverlap()
     {
+        if (!GameController.inInven)
+            return true;
+
         for (int i = 0; i < equipOverlap.Count; i++)
         {
             if (equipOverlap[i] > 1)

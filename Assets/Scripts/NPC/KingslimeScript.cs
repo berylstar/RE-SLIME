@@ -20,7 +20,7 @@ public class KingslimeScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.inDiaglogue || !GameController.inInven)
+        if (!GameController.inDiaglogue)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
