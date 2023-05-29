@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class EquipScript : MonoBehaviour
 {
-    public List<int> posIndex = new List<int>();
-
+    [Header("Information")]
+    public string EquipName;
+    public string sub;
+    public string effect;
     public float coolTime;
+
+    [Header("")]
+    public List<int> posIndex = new List<int>();
     public GameObject iconC, iconV;
 
     private InventoryScript IS;

@@ -1313,8 +1313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 03000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 03000000
   iconC: {fileID: 1782079595}
   iconV: {fileID: 576680702}
 --- !u!1 &275534239
@@ -1958,8 +1961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 0f0000001000000011000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 0f0000001000000011000000
   iconC: {fileID: 1430981849}
   iconV: {fileID: 911919303}
 --- !u!1 &427903821
@@ -2662,7 +2668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &568524631
 Transform:
   m_ObjectHideFlags: 0
@@ -2817,8 +2823,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 040000000700000008000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 040000000700000008000000
   iconC: {fileID: 2095110950}
   iconV: {fileID: 2035964765}
 --- !u!1 &576680702
@@ -3540,7 +3549,7 @@ GameObject:
   - component: {fileID: 811743191}
   - component: {fileID: 811743190}
   m_Layer: 5
-  m_Name: stand2
+  m_Name: ImageStand_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3740,7 +3749,7 @@ GameObject:
   - component: {fileID: 844074658}
   - component: {fileID: 844074657}
   m_Layer: 5
-  m_Name: stand1
+  m_Name: ImageStand_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4132,8 +4141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 06000000090000000a000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 06000000090000000a000000
   iconC: {fileID: 107354378}
   iconV: {fileID: 259751845}
 --- !u!1 &927420884
@@ -4384,8 +4396,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 000000000100000002000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 000000000100000002000000
   iconC: {fileID: 1670240000}
   iconV: {fileID: 2143915723}
 --- !u!1 &991944957
@@ -6348,8 +6363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 0c0000000d000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 0c0000000d000000
   iconC: {fileID: 1846507666}
   iconV: {fileID: 1468534755}
 --- !u!1 &1468534755
@@ -7179,7 +7197,7 @@ GameObject:
   - component: {fileID: 1722811015}
   - component: {fileID: 1722811014}
   m_Layer: 5
-  m_Name: stand3
+  m_Name: ImageStand_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7503,8 +7521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 05000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 05000000
   iconC: {fileID: 1906195464}
   iconV: {fileID: 1101578291}
 --- !u!4 &1779114824 stripped
@@ -7830,8 +7851,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posIndex: 0b0000000e000000
+  EquipName: 
+  sub: 
+  effect: 
   coolTime: 0
+  posIndex: 0b0000000e000000
   iconC: {fileID: 141833977}
   iconV: {fileID: 400883294}
 --- !u!1 &1843431188
