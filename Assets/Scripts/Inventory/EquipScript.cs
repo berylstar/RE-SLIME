@@ -65,7 +65,7 @@ public class EquipScript : MonoBehaviour
         return true;
     }
 
-    // PlayerScript에서 스킬 사용 -> 나중에 구현
+    // PlayerScript에서 Input 받아서 스킬 사용 -> 나중에 구현
     public void Skill()
     {
         if (coolTime > 0)

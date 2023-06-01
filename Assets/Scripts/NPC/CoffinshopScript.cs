@@ -16,7 +16,7 @@ public class CoffinshopScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.inShop || !GameController.inInven)
+        if (!GameController.inShop)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
