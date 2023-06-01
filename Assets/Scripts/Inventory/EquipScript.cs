@@ -27,14 +27,15 @@ public class EquipScript : MonoBehaviour
         tf.position = IS.ReturnGrid(posIndex[0]);
         sr.sortingOrder = 18 - posIndex[0];
 
-        Fill(1);
+        FillIC(1);
     }
 
-    private void Fill(int v)
+    // invenchecker의 값 변경함으로써 겹침 확인
+    private void FillIC(int v)
     {
         for (int i = 0; i < posIndex.Count; i++)
         {
-            IS.equipOverlap[posIndex[i]] += v;
+            IS.invenChecker[posIndex[i]] += v;
         }
     }
 
@@ -48,21 +49,23 @@ public class EquipScript : MonoBehaviour
                 return false;
         }
 
-        Fill(-1);
+        // 이동하기 전 인덱스의 invenchecker 값 감소
+        FillIC(-1);
 
         for (int i = 0; i < posIndex.Count; i++)
         {
             posIndex[i] += m;
         }
 
-        Fill(1);
+        // 이동 후 인덱스의 invenchecker 값 증가
+        FillIC(1);
 
         tf.position = IS.ReturnGrid(posIndex[0]);
         sr.sortingOrder = 18 - posIndex[0];
         return true;
     }
 
-    // PlayerScript에서 스킬 사용
+    // PlayerScript에서 스킬 사용 -> 나중에 구현
     public void Skill()
     {
         if (coolTime > 0)

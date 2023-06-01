@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
-    public List<int> equipOverlap = new List<int>();
+    public List<int> invenChecker = new List<int>();
     public GameObject textOverlapped;
 
     public GameObject cursor;
@@ -94,12 +94,13 @@ public class InventoryScript : MonoBehaviour
     // 인벤토리에 장비가 겹쳐있는지 확인
     private bool CheckOverlap()
     {
+        // 겹쳐있어서 열어야 될때
         if (!GameController.inInven)
             return true;
 
-        for (int i = 0; i < equipOverlap.Count; i++)
+        for (int i = 0; i < invenChecker.Count; i++)
         {
-            if (equipOverlap[i] > 1)
+            if (invenChecker[i] > 1)
             {
                 textOverlapped.SetActive(true);
                 return false;

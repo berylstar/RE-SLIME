@@ -7,7 +7,7 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
-    private bool invincivity = false;
+    private bool invincivity = false;   // ¹«Àû
 
     protected override void Start()
     {
