@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
+    public static InventoryScript inst = null;
+
     public List<int> invenChecker = new List<int>();
     public GameObject textOverlapped;
 
@@ -13,6 +15,11 @@ public class InventoryScript : MonoBehaviour
 
     private void Awake()
     {
+        // 인벤토리는 씬이 재시작되어도 유지
+        if (inst == null) inst = this;
+        else if (inst != this) Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+
         InitialGrid();
     }
 

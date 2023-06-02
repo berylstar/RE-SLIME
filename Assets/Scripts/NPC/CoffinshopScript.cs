@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class CoffinshopScript : MonoBehaviour
 {
+    public Text tName, tModifier, tEffect, tGrade, tPrice;
+    public List<Image> stands = new List<Image>();
+
+    public List<Sprite> equipImages = new List<Sprite>();
+
     private UIScript US;
 
     public int shopIndex = 0;
@@ -39,5 +44,15 @@ public class CoffinshopScript : MonoBehaviour
         US.panelShop.SetActive(false);
         yield return GameController.delay_01s;
         GameController.inShop = false;
+    }
+
+    public void TEST()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            int iRand = Random.Range(0, equipImages.Count);
+            stands[i].sprite = equipImages[iRand];
+            stands[i].SetNativeSize();
+        }
     }
 }
