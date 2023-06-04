@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
     // STATUS
     public static int floor = 0;
     public static int savedFloor = 0;
-    public static List<EquipScript> equips = new List<EquipScript>();
 
     // PLAYER
     public static int playerLife = 3;

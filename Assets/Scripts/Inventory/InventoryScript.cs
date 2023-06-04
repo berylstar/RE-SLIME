@@ -6,8 +6,9 @@ public class InventoryScript : MonoBehaviour
 {
     public static InventoryScript inst = null;
 
-    public List<int> invenChecker = new List<int>();
-    public GameObject textOverlapped;
+    public List<EquipScript> equips = new List<EquipScript>();
+    public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public GameObject objectOverlapped;
 
     public GameObject cursor;
 
@@ -94,8 +95,6 @@ public class InventoryScript : MonoBehaviour
         }
         else
             return;
-
-        print((GameController.skillC, GameController.skillV));
     }
 
     // 인벤토리에 장비가 겹쳐있는지 확인
@@ -109,12 +108,12 @@ public class InventoryScript : MonoBehaviour
         {
             if (invenChecker[i] > 1)
             {
-                textOverlapped.SetActive(true);
+                objectOverlapped.SetActive(true);
                 return false;
             }
         }
 
-        textOverlapped.SetActive(false);
+        objectOverlapped.SetActive(false);
         return true;
     }
 }

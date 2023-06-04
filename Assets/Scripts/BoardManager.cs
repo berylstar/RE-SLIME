@@ -102,7 +102,7 @@ public class BoardManager : MonoBehaviour
     // 현재 상태 : 계단 주변 좌표 제외하지 않음 => 벽 같은 거로 막힐 가능성 있음. 추후에 벽 그룹 만들고 계단 주변 좌표 제거 후 계단보다 늦게 배치 예상
     private void LayoutStair(int floor)
     {
-        if (floor % 10 != 0)
+        if (floor % 20 != 19)
             stair.transform.position = RandomPosition();
         else
         {

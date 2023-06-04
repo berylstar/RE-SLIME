@@ -2,13 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EquipType
+{
+    PASSIVE,
+    ACTIVE,
+    SKILL
+}
+
 public class EquipScript : MonoBehaviour
 {
     [Header("Information")]
-    public string EquipName;
-    public string sub;
+    public int number;
+    public string EName;
+    public string adject;
     public string effect;
+    public string grade;
+    public int price;
+    public EquipType type;
     public float coolTime;
+    public bool gotten = false;
 
     [Header("")]
     public List<int> posIndex = new List<int>();
@@ -24,10 +36,24 @@ public class EquipScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         IS = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
 
-        tf.position = IS.ReturnGrid(posIndex[0]);
-        sr.sortingOrder = 18 - posIndex[0];
+        gameObject.SetActive(false);
+    }
 
+    public void GetThis()
+    {
+        tf.position = IS.ReturnGrid(posIndex[0]);
+        gotten = true;
         FillIC(1);
+
+        gameObject.SetActive(true);
+    }
+
+    public void RemoveThis()
+    {
+        gotten = false;
+        FillIC(-1);
+
+        gameObject.SetActive(false);
     }
 
     // invenchecker의 값 변경함으로써 겹침 확인
@@ -70,7 +96,10 @@ public class EquipScript : MonoBehaviour
     {
         if (coolTime > 0)
             return;
+    }
 
-        print(tf.name);
+    public Sprite ReturnSprite()
+    {
+        return sr.sprite;
     }
 }
