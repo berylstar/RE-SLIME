@@ -45,12 +45,17 @@ public class UIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             ESC();
 
+        InESCKeyInput();
+    }
+
+    private void InESCKeyInput()
+    {
         if (GameController.esc)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))   escIndex -= 1;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex -= 1;
             if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex += 1;
 
-            if      (escIndex < 0) escIndex = 2;
+            if (escIndex < 0) escIndex = 2;
             else if (escIndex > 2) escIndex = 0;
 
             if (Input.GetKeyDown(KeyCode.Space))

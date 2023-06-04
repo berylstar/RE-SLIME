@@ -20,7 +20,7 @@ public class KingslimeScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.inDiaglogue)
+        if (!GameController.inDiaglogue || GameController.Pause(0))
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -29,8 +29,8 @@ public class KingslimeScript : MonoBehaviour
 
             if (ii >= img.Count)
             {
-                US.EndDialogue();
-                StartCoroutine(LittleTime());
+                StartCoroutine(CloseTutorial());
+                GameController.coin += 5;       // 테스트용
                 return;
             }
 
@@ -47,8 +47,10 @@ public class KingslimeScript : MonoBehaviour
     }
 
     // 바로 다시 NPC와 대화를 막기위한 잠깐의 딜레이
-    IEnumerator LittleTime()
+    IEnumerator CloseTutorial()
     {
+        US.EndDialogue();
+
         yield return GameController.delay_01s;
 
         ii = 0;

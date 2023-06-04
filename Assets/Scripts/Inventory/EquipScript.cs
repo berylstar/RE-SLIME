@@ -26,23 +26,25 @@ public class EquipScript : MonoBehaviour
     public List<int> posIndex = new List<int>();
     public GameObject iconC, iconV;
 
-    private InventoryScript IS;
+    private InventoryScript INVEN;
     private Transform tf;
     private SpriteRenderer sr;
 
-    private void Start()
+    private void Awake()
     {
         tf = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
-        IS = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
+        INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
 
+        sr.sortingOrder = 10 - posIndex.Count;
         gameObject.SetActive(false);
     }
 
     public void GetThis()
     {
-        tf.position = IS.ReturnGrid(posIndex[0]);
+        tf.position = INVEN.ReturnGrid(posIndex[0]);
         gotten = true;
+        INVEN.countOfEquips -= 1;
         FillIC(1);
 
         gameObject.SetActive(true);
@@ -51,6 +53,7 @@ public class EquipScript : MonoBehaviour
     public void RemoveThis()
     {
         gotten = false;
+        INVEN.countOfEquips += 1;
         FillIC(-1);
 
         gameObject.SetActive(false);
@@ -61,7 +64,7 @@ public class EquipScript : MonoBehaviour
     {
         for (int i = 0; i < posIndex.Count; i++)
         {
-            IS.invenChecker[posIndex[i]] += v;
+            INVEN.invenChecker[posIndex[i]] += v;
         }
     }
 
@@ -86,8 +89,7 @@ public class EquipScript : MonoBehaviour
         // 이동 후 인덱스의 invenchecker 값 증가
         FillIC(1);
 
-        tf.position = IS.ReturnGrid(posIndex[0]);
-        sr.sortingOrder = 18 - posIndex[0];
+        tf.position = INVEN.ReturnGrid(posIndex[0]);
         return true;
     }
 

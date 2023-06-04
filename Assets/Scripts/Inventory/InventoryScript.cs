@@ -7,9 +7,9 @@ public class InventoryScript : MonoBehaviour
     public static InventoryScript inst = null;
 
     public List<EquipScript> equips = new List<EquipScript>();
+    public int countOfEquips;
     public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     public GameObject objectOverlapped;
-
     public GameObject cursor;
 
     private List<Vector3> equipGrid = new List<Vector3>();
@@ -27,14 +27,12 @@ public class InventoryScript : MonoBehaviour
     private void Update()
     {
         // 장비가 겹쳐있으면 인벤토리가 닫히지 않음
-        if (Input.GetKeyDown(KeyCode.I) && CheckOverlap())
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            GameController.inInven = !GameController.inInven;
+            if (GameController.inInven && CheckOverlap())
+                return;
 
-            cursor.SetActive(GameController.inInven);
-
-            if (!GameController.inInven)
-                cursor.GetComponent<CursorScript>().CursorReset();
+            OpenInventory();
         }
     }
 
@@ -97,23 +95,30 @@ public class InventoryScript : MonoBehaviour
             return;
     }
 
-    // 인벤토리에 장비가 겹쳐있는지 확인
-    private bool CheckOverlap()
+    // 인벤토리에 장비가 겹쳐있는지 확인. 오버랩=True
+    public bool CheckOverlap()
     {
-        // 겹쳐있어서 열어야 될때
-        if (!GameController.inInven)
-            return true;
-
         for (int i = 0; i < invenChecker.Count; i++)
         {
             if (invenChecker[i] > 1)
             {
                 objectOverlapped.SetActive(true);
-                return false;
+                return true;
             }
         }
 
         objectOverlapped.SetActive(false);
-        return true;
+        return false;
+    }
+
+    // 인벤토리 열고 닫는 함수
+    public void OpenInventory()
+    {
+        GameController.inInven = !GameController.inInven;
+
+        cursor.SetActive(GameController.inInven);
+
+        if (!GameController.inInven)
+            cursor.GetComponent<CursorScript>().CursorReset();
     }
 }

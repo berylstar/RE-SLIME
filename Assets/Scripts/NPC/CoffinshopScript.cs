@@ -5,9 +5,14 @@ using UnityEngine.UI;
 
 public class CoffinshopScript : MonoBehaviour
 {
-    public Text tName, tModifier, tEffect, tGrade, tPrice;
+    [Header ("UI")]
+    public Sprite imgSoldout;
+    public Text textName, textAdject, textEffect, textGrade, textPrice;
     public List<Image> stands = new List<Image>();
     public List<GameObject> picks = new List<GameObject>();
+    
+    [Header("SHOP")]
+    public List<EquipScript> onStands = new List<EquipScript>() { null, null, null };
 
     private UIScript US;
     private InventoryScript INVEN;
@@ -18,24 +23,36 @@ public class CoffinshopScript : MonoBehaviour
     {
         US = GameObject.Find("CONTROLLER").GetComponent<UIScript>();
         INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
+
+        PutEquipsOnStand();
     }
 
     private void Update()
     {
-        if (!GameController.inShop)
+        if (!GameController.inShop || GameController.Pause(2))
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (si == 0)
+            {
                 StartCoroutine(CloseShop());
-        }
 
+                if (INVEN.CheckOverlap())
+                    INVEN.OpenInventory();
+            }
+            else
+                BuyEquip(si);
+        }
+        
+        // 상점 커서 이동
         if (Input.GetKeyDown(KeyCode.LeftArrow)) MovePick(-1);
         if (Input.GetKeyDown(KeyCode.RightArrow)) MovePick(1);
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetPick(0);
         if (Input.GetKeyDown(KeyCode.UpArrow) && si == 0) SetPick(1);
+
+        ShowEquipInfo(si);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -80,23 +97,70 @@ public class CoffinshopScript : MonoBehaviour
         picks[si].SetActive(true);
     }
 
-    public void TEST()
+    //상점 이미지 업데이트
+    private void DisplayEquip(int idx, Sprite image)
     {
-        for (int i = 0; i < 3; i++)
+        stands[idx].sprite = image;
+        stands[idx].SetNativeSize();
+    }
+
+    // 상점 텍스트 업데이트
+    private void ShowEquipInfo(int idx)
+    {
+        if (idx == 0 || onStands[idx - 1] == null)
         {
-            int iRand = Random.Range(0, INVEN.equips.Count);
-            stands[i].sprite = INVEN.equips[iRand].ReturnSprite();
-            stands[i].SetNativeSize();
+            textName.text = "";
+            textAdject.text = "";
+            textEffect.text = "";
+            textGrade.text = "";
+            textPrice.text = "";
+        }
+        else
+        {
+            textName.text = onStands[idx-1].EName;
+            textAdject.text = onStands[idx-1].adject;
+            textEffect.text = onStands[idx-1].effect;
+            textGrade.text = onStands[idx-1].grade;
+            textPrice.text = "x " + onStands[idx-1].price;
         }
     }
 
-    public void TEST2()
+    // 가판대에 장비 세팅
+    private void PutEquipsOnStand()
     {
-        int iRand = Random.Range(0, INVEN.equips.Count);
+        if (INVEN.countOfEquips < 3)
+        {
+            print("ERROR");
+            return;
+        }
 
-        if (INVEN.equips[iRand].gotten)
+        for (int i = 0; i < 3; i++)
+        {
+            int iRand = Random.Range(0, INVEN.countOfEquips);
+            onStands[i] = INVEN.equips[iRand];
+
+            DisplayEquip(i, onStands[i].ReturnSprite());
+        }
+    }
+
+    // 가판대에서 장비 구매
+    private void BuyEquip(int i)
+    {
+        if (onStands[i-1] == null || onStands[i-1].gotten)
             return;
 
-        INVEN.equips[iRand].GetThis();
+        if (onStands[i-1].price > GameController.coin)
+            return;
+
+        GameController.coin -= onStands[i-1].price;
+        onStands[i-1].GetThis();
+        onStands[i-1] = null;
+
+        DisplayEquip(i-1, imgSoldout);
+    }
+
+    public void TEST()
+    {
+        PutEquipsOnStand();
     }
 }

@@ -42,9 +42,13 @@ public class GameController : MonoBehaviour
     public static bool inInven = false;
     public static bool inShop = false;
 
-    public static bool DontMove()
+    public static bool Pause(int i)
     {
-        return esc || inDiaglogue || inInven || inShop;
+        // 우선 순위대로
+        // 0      1              2          3
+        // esc -> inDiaglogue -> inInven -> inShop;
+
+        return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3));
     }
 
     public static void ChangeHP(int ch)
