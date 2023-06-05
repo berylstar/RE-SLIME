@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour
         // static 변수들 리셋 시켜줘야 함
         Destroy(GameObject.Find("INVENTORY"));
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

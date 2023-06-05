@@ -11,7 +11,7 @@ public class KingslimeScript : MonoBehaviour
     public List<string> talk = new List<string>();
 
     private UIScript US;
-    private int ii = 0;
+    private int index = 0;
 
     private void Start()
     {
@@ -25,22 +25,21 @@ public class KingslimeScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ii += 1;
+            index += 1;
 
-            if (ii >= img.Count)
+            if (index >= img.Count)
             {
                 StartCoroutine(CloseTutorial());
                 GameController.coin += 5;       // 테스트용
-                return;
             }
-
-            US.Dialogue(img[ii], talker[ii], talk[ii]);
+            else
+                US.Dialogue(img[index], talker[index], talk[index]);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch") && ii == 0)
+        if (collision.CompareTag("Punch") && index == 0)
         {
             US.Dialogue(img[0], talker[0], talk[0]);
         }
@@ -53,6 +52,6 @@ public class KingslimeScript : MonoBehaviour
 
         yield return GameController.delay_01s;
 
-        ii = 0;
+        index = 0;
     }
 }
