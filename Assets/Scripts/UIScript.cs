@@ -45,43 +45,32 @@ public class UIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             ESC();
 
-        InESCKeyInput();
+        if (GameController.esc)
+            InESCKeyInput();
     }
 
     private void InESCKeyInput()
     {
-        if (GameController.esc)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex -= 1;
-            if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex += 1;
+        if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex -= 1;
+        if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex += 1;
 
-            if (escIndex < 0) escIndex = 2;
-            else if (escIndex > 2) escIndex = 0;
+        if (escIndex < 0) escIndex = 2;
+        else if (escIndex > 2) escIndex = 0;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-                ESCSelect();
+        if (Input.GetKeyDown(KeyCode.Space))
+            ESCSelect();
 
-            escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, -escIndex * 100, 0f);
-        }
+        escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, -escIndex * 100, 0f);
     }
 
     private void ESC()
     {
-        if (!GameController.esc)
-        {
-            panelESC.SetActive(true);
-            Time.timeScale = 0;
-            GameController.esc = true;
+        GameController.esc = !GameController.esc;
+        panelESC.SetActive(GameController.esc);
+        Time.timeScale = (GameController.esc) ? 0 : 1;
 
-            escIndex = 0;
-            escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
-        }
-        else
-        {
-            panelESC.SetActive(false);
-            Time.timeScale = 1;
-            GameController.esc = false;
-        }
+        escIndex = 0;
+        escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
     }
 
     private void ESCSelect()

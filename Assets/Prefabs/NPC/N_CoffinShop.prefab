@@ -144,3 +144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323009463fb538f44bf91b1118be3aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  imgSoldout: {fileID: 21300000, guid: bd08d53e4f0b3b449884953e50471891, type: 3}
+  textName: {fileID: 0}
+  textAdject: {fileID: 0}
+  textEffect: {fileID: 0}
+  textGrade: {fileID: 0}
+  textPrice: {fileID: 0}
+  stands: []
+  picks: []
+  onStands:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
