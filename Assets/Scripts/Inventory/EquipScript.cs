@@ -4,9 +4,16 @@ using UnityEngine;
 
 public enum EquipType
 {
-    PASSIVE,
-    ACTIVE,
-    SKILL
+    PASSIVE = 0,
+    ACTIVE = 1,
+    SKILL = 2,
+}
+
+public enum EquipGrade
+{
+    NORMAL = 1,
+    RARE = 2,
+    UNIQUE = 3,
 }
 
 public class EquipScript : MonoBehaviour
@@ -16,9 +23,9 @@ public class EquipScript : MonoBehaviour
     public string EName;
     public string adject;
     public string effect;
-    public string grade;
     public int price;
     public EquipType type;
+    public EquipGrade grade;
     public float coolTime;
     public bool gotten = false;
 
@@ -44,7 +51,8 @@ public class EquipScript : MonoBehaviour
     {
         tf.position = INVEN.ReturnGrid(posIndex[0]);
         gotten = true;
-        INVEN.countOfEquips -= 1;
+        INVEN.countOfEquips[0] -= 1;
+        INVEN.countOfEquips[(int)grade] -= 1;
         FillIC(1);
 
         gameObject.SetActive(true);
@@ -53,7 +61,7 @@ public class EquipScript : MonoBehaviour
     public void RemoveThis()
     {
         gotten = false;
-        INVEN.countOfEquips += 1;
+        INVEN.countOfEquips[0] += 1;
         FillIC(-1);
 
         gameObject.SetActive(false);

@@ -7,8 +7,8 @@ public class InventoryScript : MonoBehaviour
     public static InventoryScript inst = null;
 
     public List<EquipScript> equips = new List<EquipScript>();
-    public int countOfEquips;
-    public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    public List<int> countOfEquips = new List<int>() { 0, 0, 0, 0 };
+    public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public GameObject objectOverlapped;
     public GameObject cursor;
 

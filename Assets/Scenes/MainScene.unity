@@ -501,9 +501,9 @@ MonoBehaviour:
   EName: "\uB9C8\uC74C\uC758 \uB3CC"
   adject: "\uD558\uD2B8\uC2A4\uD1A4"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000010000000300000004000000
@@ -687,9 +687,9 @@ MonoBehaviour:
   EName: "\uBC18 \uB3CC"
   adject: "\uB098\uBA38\uC9C0 \uBC18\uCABD\uC740 \uC5B4\uB514\uC5D0"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000003000000
@@ -1541,9 +1541,9 @@ MonoBehaviour:
   EName: "\uB3FC\uC9C0 \uC800\uAE08\uD1B5"
   adject: "\uD2F0\uB04C \uBAA8\uC544 \uD0DC\uC0B0"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000001000000
@@ -1721,9 +1721,9 @@ MonoBehaviour:
   EName: "\uB3C5\uC0AC\uACFC"
   adject: "\uB9C8\uB140\uC758 \uC560\uC7A5\uD488"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000
@@ -2693,9 +2693,9 @@ MonoBehaviour:
   EName: "\uB9CC\uB450"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000
@@ -3592,9 +3592,9 @@ MonoBehaviour:
   EName: "\uACE8\uB4E0 \uD2F0\uCF13"
   adject: "\uC0C1\uC810 VIP \uACE0\uAC1D"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000100000002000000
@@ -4113,7 +4113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NORMAL
+  m_Text: -----
 --- !u!222 &462850227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4600,9 +4600,9 @@ MonoBehaviour:
   EName: "\uC5D0\uB108\uC9C0 \uB4DC\uB9C1\uD06C"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000003000000
@@ -4926,7 +4926,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "- \uAE08\uC18D \uD0D0\uC9C0\uAE30 -"
+  m_Text: Coffin Shop
 --- !u!222 &565407548
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5118,9 +5118,9 @@ MonoBehaviour:
   adject: "\uB9DB\uC788\uC73C\uBA74 \uBC14\uB098\uB098, \uBC14\uB098\uB098\uB294
     \uAE38\uC5B4"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000300000004000000
@@ -5421,9 +5421,9 @@ MonoBehaviour:
   EName: "\uD5E4\uC5B4 \uC641\uC2A4"
   adject: "\uB358\uC804\uC5D0\uC11C\uB3C4 \uBA4B\uC744 \uCC59\uAE30\uC790"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000
@@ -5582,13 +5582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 0
+  number: 30
   EName: "3D\uC548\uACBD"
   adject: "\uB098\uB294 3D\uB85C \uBCF8\uB2E4"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000001000000
@@ -6041,9 +6041,9 @@ MonoBehaviour:
   EName: "\uC0AC\uAE30 \uC8FC\uC0AC\uC704"
   adject: "\u265A\u265A\uC8FC\u2606\uC0AC\u2606\uC704\u265A\u265A\uAD74\uB9B4\uC2DC$$HP\u261C\u261C50%\uC99D\uC815\u203B"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000010000000300000004000000
@@ -6475,7 +6475,7 @@ MonoBehaviour:
   textTalker: {fileID: 1998384492}
   textDialogue: {fileID: 1617543608}
   panelShop: {fileID: 1200077765}
-  panelBox: {fileID: 0}
+  panelBox: {fileID: 1208244637}
 --- !u!1 &724730944
 GameObject:
   m_ObjectHideFlags: 0
@@ -6836,9 +6836,9 @@ MonoBehaviour:
   EName: "\uD669\uAE08 \uC5F4\uC1E0"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000300000006000000
@@ -7537,9 +7537,9 @@ MonoBehaviour:
   EName: "\uCD08\uC2B9\uB2EC"
   adject: "\uC18C\uC6D0\uC744 \uB4E4\uC5B4\uC8FC\uB294 \uC791\uC740 \uB2EC"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 010000000300000004000000
@@ -8092,9 +8092,9 @@ MonoBehaviour:
   EName: "\uD22C\uBA85 \uB9DD\uD1A0"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000300000004000000
@@ -8313,9 +8313,9 @@ MonoBehaviour:
   EName: "\uAC74\uC804\uC9C0"
   adject: "\uCDA9\uC804 \uC644\uB8CC - !"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000300000006000000
@@ -8683,9 +8683,9 @@ MonoBehaviour:
   EName: "\uB9DD\uC6D0\uACBD"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000100000002000000
@@ -9307,9 +9307,9 @@ MonoBehaviour:
   EName: "\uD558\uC774\uBC14"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000100000004000000
@@ -10026,9 +10026,9 @@ MonoBehaviour:
   EName: ESP-8266
   adject: "\uD3EC\uC158 \uC0DD\uC0B0\uC5D0 \uC4F0\uC774\uB294 \uAE30\uACC4 ?"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000001000000
@@ -10245,7 +10245,7 @@ GameObject:
   - component: {fileID: 1208244640}
   - component: {fileID: 1208244639}
   m_Layer: 5
-  m_Name: PanelTreasureBox
+  m_Name: PanelBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11053,9 +11053,9 @@ MonoBehaviour:
   EName: "\uB4F1\uAECD\uC9C8"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000010000000300000004000000
@@ -11321,9 +11321,9 @@ MonoBehaviour:
   EName: "\uCC9C\uB465 \uBC88\uAC1C"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000030000000400000007000000
@@ -11640,7 +11640,7 @@ MonoBehaviour:
   - {fileID: 1297337204}
   - {fileID: 587935429}
   - {fileID: 623545905}
-  countOfEquips: 30
+  countOfEquips: 1e000000000000000000000000000000
   invenChecker: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   objectOverlapped: {fileID: 1108502671}
   cursor: {fileID: 826197181}
@@ -11778,9 +11778,9 @@ MonoBehaviour:
   EName: "\uCCAD\uC591 \uACE0\uCD94"
   adject: "\uB9F5\uB2E4\uB2C8\uAE4C\uC694"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000001000000
@@ -12778,9 +12778,9 @@ MonoBehaviour:
   EName: "\uCE58\uC988 \uD53C\uC790"
   adject: "\uB048\uC801\uAC70\uB9AC\uB294 \uCE58\uC988"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000001000000
@@ -13484,7 +13484,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: "\uCF54\uC778 \uB4DC\uB86D\uD655\uB960 + 10%\n\u313B\u3147\u313B\u3147\u313B\u3147\u3139\u3147\u3139\u3147\u3139"
+  m_Text: 
 --- !u!222 &1534275673
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13734,9 +13734,9 @@ MonoBehaviour:
   EName: "\uC2E0\uD638\uB4F1"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000300000006000000
@@ -14002,9 +14002,9 @@ MonoBehaviour:
   EName: "\uC778\uB77C\uC778 \uC2A4\uCF00\uC774\uD2B8"
   adject: "\uAC70\uAFB8\uB85C \uD574\uB3C4 \uC778\uB77C\uC778"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 010000000300000004000000
@@ -15020,9 +15020,9 @@ MonoBehaviour:
   EName: "\uC5BC\uC74C"
   adject: "\uAE08\uBC29 \uB179\uC544\uBC84\uB9B4\uC9C0\uB3C4"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000
@@ -15362,9 +15362,9 @@ MonoBehaviour:
   EName: "\uBD80\uC801"
   adject: "\uAC15\uC2DC \uC774\uB9C8\uC5D0 \uBD99\uD600\uC8FC\uC138\uC694"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000003000000
@@ -15840,7 +15840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC090\uBE44\uBE44\uBE44\uBE44\uBE44\uBE45 -!"
+  m_Text: Welcome !
 --- !u!222 &1876397839
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16545,9 +16545,9 @@ MonoBehaviour:
   EName: "\uBE68\uB300"
   adject: "\uD3EC\uC158\uB3C4 \uBE68\uC544\uBA39\uC5B4\uC57C \uC81C \uB9DB"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 000000000300000006000000
@@ -16763,9 +16763,9 @@ MonoBehaviour:
   EName: "\uC800\uC8FC\uBC1B\uC740 \uD574\uACE8"
   adject: "\uC800\uC8FC\uAC00 \uAE43\uB4E0 \uAC70 \uB9DE\uB098\uC694"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 00000000010000000300000004000000
@@ -16937,9 +16937,9 @@ MonoBehaviour:
   EName: "\uAE08\uC18D \uD0D0\uC9C0\uAE30"
   adject: "\uC090\uBE44\uBE44\uBE44\uBE44\uBE45 - !"
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0000000003000000
@@ -17513,9 +17513,9 @@ MonoBehaviour:
   EName: "\uBCF5\uC2F1 \uAE00\uB7EC\uBE0C"
   adject: 
   effect: 
-  grade: 
   price: 1
   type: 0
+  grade: 1
   coolTime: 0
   gotten: 0
   posIndex: 0100000003000000040000000600000007000000

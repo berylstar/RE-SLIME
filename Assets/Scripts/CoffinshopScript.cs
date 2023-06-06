@@ -97,30 +97,30 @@ public class CoffinshopScript : MonoBehaviour
         picks[si].SetActive(true);
     }
 
-    //상점 이미지 업데이트
+    // 가판대 이미지 업데이트
     private void DisplayEquip(int idx, Sprite image)
     {
         stands[idx].sprite = image;
         stands[idx].SetNativeSize();
     }
 
-    // 상점 텍스트 업데이트
+    // 가판대와 픽에 따라 텍스트 업데이트
     private void ShowEquipInfo(int idx)
     {
         if (idx == 0 || onStands[idx - 1] == null)
         {
-            textName.text = "";
-            textAdject.text = "";
+            textName.text = "Coffin Shop";
+            textAdject.text = "Welcome !";
             textEffect.text = "";
-            textGrade.text = "";
-            textPrice.text = "";
+            textGrade.text = "-----";
+            textPrice.text = "ONLY";
         }
         else
         {
-            textName.text = onStands[idx-1].EName;
+            textName.text = "- " + onStands[idx-1].EName + " -";
             textAdject.text = onStands[idx-1].adject;
             textEffect.text = onStands[idx-1].effect;
-            textGrade.text = onStands[idx-1].grade;
+            textGrade.text = onStands[idx-1].grade.ToString();
             textPrice.text = "x " + onStands[idx-1].price;
         }
     }
@@ -128,7 +128,7 @@ public class CoffinshopScript : MonoBehaviour
     // 가판대에 장비 세팅
     private void PutEquipsOnStand()
     {
-        if (INVEN.countOfEquips < 3)
+        if (INVEN.countOfEquips[0] < 3)
         {
             print("ERROR");
             return;
@@ -136,11 +136,21 @@ public class CoffinshopScript : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            int iRand = Random.Range(0, INVEN.countOfEquips);
+            int iRand = Random.Range(0, INVEN.countOfEquips[0]);
             onStands[i] = INVEN.equips[iRand];
 
             DisplayEquip(i, onStands[i].ReturnSprite());
         }
+        ////////
+        //int i = 0;
+        //int rating = Random.Range(1, 101);
+
+        //if (rating <= GameController.ShopRating[0])
+        //{
+        //    int iRand = Random.Range(0, INVEN.countOfEquips[1]);
+        //    onStands[i] = INVEN.equips[iRand];
+        //    DisplayEquip(i, onStands[i].ReturnSprite());
+        //}
     }
 
     // 가판대에서 장비 구매

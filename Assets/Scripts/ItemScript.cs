@@ -37,6 +37,10 @@ public class ItemScript : MonoBehaviour
         {
             GameController.ChangeHP(GameController.potionEff);
         }
+        else if (itemType == ItemType.BOX)
+        {
+
+        }
 
         Destroy(this.gameObject);
     }
