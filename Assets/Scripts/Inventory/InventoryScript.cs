@@ -6,8 +6,14 @@ public class InventoryScript : MonoBehaviour
 {
     public static InventoryScript inst = null;
 
-    public List<EquipScript> equips = new List<EquipScript>();
-    public List<int> countOfEquips = new List<int>() { 0, 0, 0, 0 };
+    [Header("EQUIPS")]
+    public List<EquipScript> equipsNormal = new List<EquipScript>();
+    public List<EquipScript> equipsRare = new List<EquipScript>();
+    public List<EquipScript> equipsUnique = new List<EquipScript>();
+
+    public List<int> countOfEquips = new List<int>() { 0, 0, 0, 0 };        // Hierachy에서 설정할 것
+
+    [Header("INVENTORY")]
     public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public GameObject objectOverlapped;
     public GameObject cursor;

@@ -44,6 +44,13 @@ public class CursorScript : MonoBehaviour
             pick = null;
         }
 
+        // Input : R = 장비 제거
+        if (Input.GetKeyDown(KeyCode.R) && pick)
+        {
+            pick.GetComponent<EquipScript>().RemoveThis();
+            pick = null;
+        }
+
         sr.color = pick ? new Color32(255, 255, 0, 255) : new Color32(255, 255, 255, 255);
 
         // Input : 방향키 = 인벤토리 내 커서 조종

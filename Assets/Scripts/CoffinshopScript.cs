@@ -134,32 +134,41 @@ public class CoffinshopScript : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < 3; i++)
-        {
-            int iRand = Random.Range(0, INVEN.countOfEquips[0]);
-            onStands[i] = INVEN.equips[iRand];
-
-            DisplayEquip(i, onStands[i].ReturnSprite());
-        }
-        ////////
-        //int i = 0;
-        //int rating = Random.Range(1, 101);
-
-        //if (rating <= GameController.ShopRating[0])
+        //for (int i = 0; i < 3; i++)
         //{
-        //    int iRand = Random.Range(0, INVEN.countOfEquips[1]);
+        //    int iRand = Random.Range(0, INVEN.countOfEquips[0]);
         //    onStands[i] = INVEN.equips[iRand];
+
         //    DisplayEquip(i, onStands[i].ReturnSprite());
         //}
+
+        // 장비 등급에 따른 가판대 세팅
+        for (int i = 0; i < 3; i++)
+        {
+            int iGrade = Random.Range(1, 101);
+
+            if (iGrade <= GameController.ShopGrade[1])
+            {
+                onStands[i] = INVEN.equipsRare[Random.Range(0, INVEN.countOfEquips[2])];
+                DisplayEquip(i, onStands[i].ReturnSprite());
+            }
+            else if (iGrade >= 100 - GameController.ShopGrade[2])
+            {
+                onStands[i] = INVEN.equipsUnique[Random.Range(0, INVEN.countOfEquips[3])];
+                DisplayEquip(i, onStands[i].ReturnSprite());
+            }
+            else
+            {
+                onStands[i] = INVEN.equipsNormal[Random.Range(0, INVEN.countOfEquips[1])];
+                DisplayEquip(i, onStands[i].ReturnSprite());
+            }
+        }
     }
 
     // 가판대에서 장비 구매
     private void BuyEquip(int i)
     {
-        if (onStands[i-1] == null || onStands[i-1].gotten)
-            return;
-
-        if (onStands[i-1].price > GameController.coin)
+        if (onStands[i-1] == null || onStands[i-1].gotten || onStands[i - 1].price > GameController.coin)
             return;
 
         GameController.coin -= onStands[i-1].price;

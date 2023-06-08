@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     public static float playerTimeDamage = 1f;
     public static EquipScript skillC = null;
     public static EquipScript skillV = null;
-    public static List<int> ShopRating = new List<int>() { 70, 20, 10 };
+    public static List<int> ShopGrade = new List<int>() { 75, 20, 5 };
 
     // ITEM
     public static int coin = 0;

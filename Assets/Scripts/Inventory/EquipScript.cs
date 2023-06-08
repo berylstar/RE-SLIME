@@ -44,6 +44,10 @@ public class EquipScript : MonoBehaviour
         INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
 
         sr.sortingOrder = 10 - posIndex.Count;
+
+        INVEN.countOfEquips[0] += 1;
+        INVEN.countOfEquips[(int)grade] += 1;
+
         gameObject.SetActive(false);
     }
 
@@ -56,15 +60,20 @@ public class EquipScript : MonoBehaviour
         FillIC(1);
 
         gameObject.SetActive(true);
+
+        // EFFECT
     }
 
     public void RemoveThis()
     {
         gotten = false;
         INVEN.countOfEquips[0] += 1;
+        INVEN.countOfEquips[(int)grade] += 1;
         FillIC(-1);
 
         gameObject.SetActive(false);
+
+        // UNEFFECT
     }
 
     // invenchecker의 값 변경함으로써 겹침 확인

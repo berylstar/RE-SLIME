@@ -7,6 +7,7 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
+    private bool canPunch = true;       // 펀치 쿨타임
     private bool invincivity = false;   // 무적
 
     protected override void Start()
@@ -32,7 +33,7 @@ public class PlayerScript : MovingObject
             PlayerMove(0, -1);
 
         // Input : 스페이스바 = 펀치 공격
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canPunch)
         {
             StartCoroutine(PunchAttack());
         }
@@ -110,6 +111,8 @@ public class PlayerScript : MovingObject
     // 플레이어 펀치 공격 코루틴
     IEnumerator PunchAttack()
     {
+        StartCoroutine(PunchCooltime());
+
         // 펀치 도중에 플레이어 방향 바뀔 때 대비하여 방향변수 저장
         int dir = direction;
 
@@ -117,6 +120,15 @@ public class PlayerScript : MovingObject
         punches[dir].SetActive(true);
         yield return GameController.delay_01s;
         punches[dir].SetActive(false);
+    }
+
+    // 펀치 공격 쿨타임 코루틴
+    IEnumerator PunchCooltime()
+    {
+        canPunch = false;
+        yield return GameController.delay_025s;
+        canPunch = true;
+
     }
 
     public void PlayerDamaged(int dam)
