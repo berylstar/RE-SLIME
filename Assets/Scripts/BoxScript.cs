@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TreasureBoxScript : MonoBehaviour
+public class BoxScript : MonoBehaviour
 {
     public Sprite coinMunch, potion, nope;
     public Text textName, textAdject, textEffect;
@@ -13,7 +13,7 @@ public class TreasureBoxScript : MonoBehaviour
     private UIScript US;
 
     private bool isPicked = false;
-    public int bi = 0;
+    private int bi = 0;
 
     private void Start()
     {
@@ -47,7 +47,6 @@ public class TreasureBoxScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SetReward();
             US.panelBox.SetActive(true);
             GameController.inBox = true;
         }
@@ -60,6 +59,7 @@ public class TreasureBoxScript : MonoBehaviour
         yield return GameController.delay_01s;
 
         GameController.inBox = false;
+        SetReward();
         this.gameObject.SetActive(false);
     }
 
@@ -68,19 +68,18 @@ public class TreasureBoxScript : MonoBehaviour
         stands[0].sprite = coinMunch;
         stands[1].sprite = potion;
         isPicked = false;
-        bi = 0;
-        picks[bi].SetActive(true);
+        SetPick(0);
+        picks[bi].SetActive(false);
     }
 
-    private void SetPick(int v)
+    private void SetPick(int idx)
     {
-        bi = v;
-
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; ++i)
         {
             picks[i].SetActive(false);
         }
 
+        bi = idx;
         picks[bi].SetActive(true);
     }
 
