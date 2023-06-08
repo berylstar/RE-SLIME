@@ -27,7 +27,7 @@ public class EquipScript : MonoBehaviour
     public EquipType type;
     public EquipGrade grade;
     public float coolTime;
-    public bool gotten = false;
+    public bool isEffected = false;
 
     [Header("")]
     public List<int> posIndex = new List<int>();
@@ -45,35 +45,43 @@ public class EquipScript : MonoBehaviour
 
         sr.sortingOrder = 10 - posIndex.Count;
 
-        INVEN.countOfEquips[0] += 1;
-        INVEN.countOfEquips[(int)grade] += 1;
-
         gameObject.SetActive(false);
+    }
+
+    private List<EquipScript> ReturnGrade()
+    {
+        if (grade == EquipGrade.NORMAL)
+            return INVEN.equipsNormal;
+        else if (grade == EquipGrade.RARE)
+            return INVEN.equipsRare;
+        else if (grade == EquipGrade.UNIQUE)
+            return INVEN.equipsUnique;
+        else
+            return null;
     }
 
     public void GetThis()
     {
         tf.position = INVEN.ReturnGrid(posIndex[0]);
-        gotten = true;
-        INVEN.countOfEquips[0] -= 1;
-        INVEN.countOfEquips[(int)grade] -= 1;
         FillIC(1);
 
-        gameObject.SetActive(true);
+        INVEN.GottenEquips.Add(this);
+        ReturnGrade().Remove(this);
 
-        // EFFECT
+        gameObject.SetActive(true);
     }
 
     public void RemoveThis()
     {
-        gotten = false;
-        INVEN.countOfEquips[0] += 1;
-        INVEN.countOfEquips[(int)grade] += 1;
         FillIC(-1);
+
+        INVEN.GottenEquips.Remove(this);
+        ReturnGrade().Add(this);
 
         gameObject.SetActive(false);
 
         // UNEFFECT
+        UnEffect();
     }
 
     // invenchecker의 값 변경함으로써 겹침 확인
@@ -120,5 +128,21 @@ public class EquipScript : MonoBehaviour
     public Sprite ReturnSprite()
     {
         return sr.sprite;
+    }
+
+    public void ApplyEffect()
+    {
+        // 효과발동
+        print((tf.name, "효과 발동"));
+
+        isEffected = true;
+    }
+
+    public void UnEffect()
+    {
+        // 효과 해제
+        print((tf.name, "효과 해제"));
+
+        isEffected = false;
     }
 }

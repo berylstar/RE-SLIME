@@ -10,8 +10,7 @@ public class InventoryScript : MonoBehaviour
     public List<EquipScript> equipsNormal = new List<EquipScript>();
     public List<EquipScript> equipsRare = new List<EquipScript>();
     public List<EquipScript> equipsUnique = new List<EquipScript>();
-
-    public List<int> countOfEquips = new List<int>() { 0, 0, 0, 0 };        // Hierachy에서 설정할 것
+    public List<EquipScript> GottenEquips = new List<EquipScript>();
 
     [Header("INVENTORY")]
     public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -36,7 +35,9 @@ public class InventoryScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (GameController.inInven && CheckOverlap())
+            {
                 return;
+            }
 
             OpenInventory();
         }
@@ -114,6 +115,7 @@ public class InventoryScript : MonoBehaviour
         }
 
         objectOverlapped.SetActive(false);
+        EquipEffect();
         return false;
     }
 
@@ -126,5 +128,40 @@ public class InventoryScript : MonoBehaviour
 
         if (!GameController.inInven)
             cursor.GetComponent<CursorScript>().CursorReset();
+    }
+
+    // 장비 효과 발동
+    private void EquipEffect()
+    {
+        for (int i = 0; i < GottenEquips.Count; i++)
+        {
+            if (!GottenEquips[i].isEffected)
+                GottenEquips[i].ApplyEffect();
+        }
+    }
+
+    public void ShuffleEquipList()
+    {
+        ShuffleList<EquipScript>(equipsNormal);
+        ShuffleList<EquipScript>(equipsRare);
+        ShuffleList<EquipScript>(equipsUnique);
+    }
+
+    private List<T> ShuffleList<T> (List<T> list)
+    {
+        int random1, random2;
+        T temp;
+
+        for (int i = 0; i < list.Count; ++i)
+        {
+            random1 = Random.Range(0, list.Count);
+            random2 = Random.Range(0, list.Count);
+
+            temp = list[random1];
+            list[random1] = list[random2];
+            list[random2] = temp;
+        }
+
+        return list;
     }
 }

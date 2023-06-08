@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
 
     public GameObject player;
     public GameObject field;
+    public GameObject kingslime;
+    public GameObject coffinshop;
+    public GameObject treasurebox;
 
     // STATUS
     public static int floor = 0;
@@ -42,14 +45,15 @@ public class GameController : MonoBehaviour
     public static bool inDiaglogue = false;
     public static bool inInven = false;
     public static bool inShop = false;
+    public static bool inBox = false;
 
     public static bool Pause(int i)
     {
         // 우선 순위대로
-        // 0      1              2          3
-        // esc -> inDiaglogue -> inInven -> inShop;
+        // 0      1              2          3         4       5
+        // esc -> inDiaglogue -> inInven -> inShop -> inBox / all
 
-        return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3));
+        return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3)) || (inBox && (i >= 4));
     }
 
     public static void ChangeHP(int ch)

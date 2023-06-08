@@ -7,7 +7,6 @@ public enum ItemType
     COIN,       // 코인
     REDCOIN,    // 레드 코인
     POTION,     // 포션
-    BOX,        // 상자
 }
 
 public class ItemScript : MonoBehaviour
@@ -36,10 +35,6 @@ public class ItemScript : MonoBehaviour
         else if (itemType == ItemType.POTION)
         {
             GameController.ChangeHP(GameController.potionEff);
-        }
-        else if (itemType == ItemType.BOX)
-        {
-
         }
 
         Destroy(this.gameObject);

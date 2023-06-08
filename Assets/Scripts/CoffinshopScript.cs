@@ -109,8 +109,8 @@ public class CoffinshopScript : MonoBehaviour
     {
         if (idx == 0 || onStands[idx - 1] == null)
         {
-            textName.text = "Coffin Shop";
-            textAdject.text = "Welcome !";
+            textName.text = "해 골 상 점";
+            textAdject.text = "";
             textEffect.text = "";
             textGrade.text = "-----";
             textPrice.text = "ONLY";
@@ -125,41 +125,28 @@ public class CoffinshopScript : MonoBehaviour
         }
     }
 
-    // 가판대에 장비 세팅
+    // 장비 등급에 따른 가판대에 장비 세팅
     private void PutEquipsOnStand()
     {
-        if (INVEN.countOfEquips[0] < 3)
-        {
-            print("ERROR");
-            return;
-        }
+        INVEN.ShuffleEquipList();
 
-        //for (int i = 0; i < 3; i++)
-        //{
-        //    int iRand = Random.Range(0, INVEN.countOfEquips[0]);
-        //    onStands[i] = INVEN.equips[iRand];
-
-        //    DisplayEquip(i, onStands[i].ReturnSprite());
-        //}
-
-        // 장비 등급에 따른 가판대 세팅
         for (int i = 0; i < 3; i++)
         {
             int iGrade = Random.Range(1, 101);
 
-            if (iGrade <= GameController.ShopGrade[1])
+            if (iGrade <= GameController.ShopGrade[1] && i <= INVEN.equipsRare.Count)
             {
-                onStands[i] = INVEN.equipsRare[Random.Range(0, INVEN.countOfEquips[2])];
+                onStands[i] = INVEN.equipsRare[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
-            else if (iGrade >= 100 - GameController.ShopGrade[2])
+            else if (iGrade >= 100 - GameController.ShopGrade[2] && i <= INVEN.equipsUnique.Count)
             {
-                onStands[i] = INVEN.equipsUnique[Random.Range(0, INVEN.countOfEquips[3])];
+                onStands[i] = INVEN.equipsUnique[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
             else
             {
-                onStands[i] = INVEN.equipsNormal[Random.Range(0, INVEN.countOfEquips[1])];
+                onStands[i] = INVEN.equipsNormal[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
         }
@@ -168,7 +155,7 @@ public class CoffinshopScript : MonoBehaviour
     // 가판대에서 장비 구매
     private void BuyEquip(int i)
     {
-        if (onStands[i-1] == null || onStands[i-1].gotten || onStands[i - 1].price > GameController.coin)
+        if (onStands[i-1] == null || onStands[i - 1].price > GameController.coin)
             return;
 
         GameController.coin -= onStands[i-1].price;
