@@ -7,8 +7,8 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
-    private bool canPunch = true;       // 펀치 쿨타임
-    private bool invincivity = false;   // 무적
+    public bool canPunch = true;       // 펀치 쿨타임
+    public bool invincivity = false;   // 무적
 
     protected override void Start()
     {
@@ -16,7 +16,7 @@ public class PlayerScript : MovingObject
 
         moveSpeed = GameController.playerSpeed;
 
-        //StartCoroutine(GameController.TimeDamage(this));
+        StartCoroutine(GameController.TimeDamage(this));
     }
 
     private void Update()
@@ -77,7 +77,7 @@ public class PlayerScript : MovingObject
 
             if (monster.CheckAlive())
             {
-                StartCoroutine(Damaged(-monster.AP));
+                StartCoroutine(Damaged(-monster.AP + GameController.playerDP));
             }
         }
 
@@ -86,7 +86,7 @@ public class PlayerScript : MovingObject
         {
             BulletScript bullet = collision.GetComponent<BulletScript>();
 
-            StartCoroutine(Damaged(-bullet.damage));
+            StartCoroutine(Damaged(-bullet.damage + GameController.playerDP));
             Destroy(collision.gameObject);
         }
     }
@@ -141,6 +141,9 @@ public class PlayerScript : MovingObject
     // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
     IEnumerator Damaged(int dam)
     {
+        if (dam >= 0)
+            yield return null;
+
         GameController.ChangeHP(dam);
 
         sr.color = new Color(255, 0, 0);

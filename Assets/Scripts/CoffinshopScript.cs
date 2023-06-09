@@ -134,12 +134,12 @@ public class CoffinshopScript : MonoBehaviour
         {
             int iGrade = Random.Range(1, 101);
 
-            if (iGrade <= GameController.ShopGrade[1] && i <= INVEN.equipsRare.Count)
+            if (iGrade <= GameController.ShopGrade[0] && i <= INVEN.equipsRare.Count)
             {
                 onStands[i] = INVEN.equipsRare[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
-            else if (iGrade >= 100 - GameController.ShopGrade[2] && i <= INVEN.equipsUnique.Count)
+            else if (iGrade >= 100 - GameController.ShopGrade[1] && i <= INVEN.equipsUnique.Count)
             {
                 onStands[i] = INVEN.equipsUnique[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());

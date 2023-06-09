@@ -26,7 +26,8 @@ public class EquipScript : MonoBehaviour
     public int price;
     public EquipType type;
     public EquipGrade grade;
-    public float coolTime;
+    public int coolTime;
+    private bool inCoolTime = false;
     public bool isEffected = false;
 
     [Header("")]
@@ -34,6 +35,7 @@ public class EquipScript : MonoBehaviour
     public GameObject iconC, iconV;
 
     private InventoryScript INVEN;
+    private EquipEffector EFFECTOR;
     private Transform tf;
     private SpriteRenderer sr;
 
@@ -42,6 +44,7 @@ public class EquipScript : MonoBehaviour
         tf = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
         INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
+        EFFECTOR = GameObject.Find("INVENTORY").GetComponent<EquipEffector>();
 
         sr.sortingOrder = 10 - posIndex.Count;
 
@@ -80,7 +83,6 @@ public class EquipScript : MonoBehaviour
 
         gameObject.SetActive(false);
 
-        // UNEFFECT
         UnEffect();
     }
 
@@ -118,11 +120,33 @@ public class EquipScript : MonoBehaviour
         return true;
     }
 
-    // PlayerScript에서 Input 받아서 스킬 사용 -> 나중에 구현
     public void Skill()
     {
-        if (coolTime > 0)
+        if (inCoolTime)
             return;
+
+        StartCoroutine(OnCoolTime());
+        EFFECTOR.EquipSkill(number);
+
+        if (type == EquipType.ACTIVE)
+            RemoveThis();
+    }
+
+    // 스킬 쿨타임 구현
+    IEnumerator OnCoolTime()
+    {
+        int time = coolTime;
+        inCoolTime = true;
+        sr.color = new Color32(255, 255, 255, 150);
+
+        while (time > 0)
+        {
+            yield return GameController.delay_1s;
+            time -= 1;
+        }
+
+        inCoolTime = false;
+        sr.color = new Color32(255, 255, 255, 255);
     }
 
     public Sprite ReturnSprite()
@@ -132,16 +156,14 @@ public class EquipScript : MonoBehaviour
 
     public void ApplyEffect()
     {
-        // 효과발동
-        print((tf.name, "효과 발동"));
+        EFFECTOR.EquipEffect(number);
 
         isEffected = true;
     }
 
     public void UnEffect()
     {
-        // 효과 해제
-        print((tf.name, "효과 해제"));
+        EFFECTOR.EquipUnEffect(number);
 
         isEffected = false;
     }

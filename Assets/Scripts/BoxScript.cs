@@ -27,9 +27,9 @@ public class BoxScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (bi == 0)
+            if (isPicked)
                 StartCoroutine(CloseBox());
-            else
+            else if (bi != 0)
                 GetEquip(bi);
         }
 

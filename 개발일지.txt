@@ -104,3 +104,4 @@
 2023.06.09		RE-SLIME 개발 19일차
 - TimeDamage 코루틴을 StairScript에서 GameController로 옮기고, PlayerScript에서 실행
 - NPC는 프리팹으로 설정하지 않음. CONTROLLER에 넣어놨다가 필요할 때 gameObject.setActive(true)할 예정
+- 장비 효과 구현 준비 완료
