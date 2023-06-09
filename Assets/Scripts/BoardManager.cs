@@ -44,13 +44,11 @@ public class BoardManager : MonoBehaviour
     {
         Sprite sp;
 
-        // if      (floor <= 20) { sp = imageFields[Random.Range(0, 4)]; }
-        // else if (floor <= 40) { sp = imageFields[Random.Range(4, 7)]; }
-        // else if (floor <= 60) { sp = imageFields[Random.Range(7, 10)]; }
-        // else if (floor <= 80) { sp = imageFields[Random.Range(10, 12)]; }
-        // else                  { sp = imageFields[Random.Range(0, 12)]; }
-
-        sp = imageFields[Random.Range(0, 12)];
+        if (floor <= 20) { sp = imageFields[Random.Range(0, 4)]; }
+        else if (floor <= 40) { sp = imageFields[Random.Range(4, 7)]; }
+        else if (floor <= 60) { sp = imageFields[Random.Range(7, 10)]; }
+        else if (floor <= 80) { sp = imageFields[Random.Range(10, 12)]; }
+        else { sp = imageFields[Random.Range(0, 12)]; }
 
         GC.field.GetComponent<SpriteRenderer>().sprite = sp;
         GC.field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
@@ -119,8 +117,11 @@ public class BoardManager : MonoBehaviour
     public void NextFloor()
     {
         if (GameController.floor == 0)
+        {
             GameController.floor = GameController.savedFloor;
-
+            HideNPC();
+        }
+            
         GameController.floor += 1;
         FloorSetup(GameController.floor);
         StartCoroutine(NextFloorEffect());
@@ -132,6 +133,16 @@ public class BoardManager : MonoBehaviour
         US.panelNextFloor.SetActive(true);
         yield return GameController.delay_01s;
         US.panelNextFloor.SetActive(false);
+    }
+
+    private void SetSculptures()
+    {
+
+    }
+
+    private void SetMonsters()
+    {
+
     }
 
     // 해당 층수에 맞게 레벨 세팅
@@ -148,8 +159,10 @@ public class BoardManager : MonoBehaviour
         RemovePositionAwayFrom(GC.player.GetComponent<Transform>().position);
 
         LayoutStair(floor);
-        RemovePositionAwayFrom(stair.GetComponent<Transform>().position);
+        //RemovePositionAwayFrom(stair.GetComponent<Transform>().position);
+        RemovePositionAwayFrom(stair.transform.position);
 
+                                                    // 추후에 조형물과 몬스터는 레벨에 따라 배치해야함
         LayoutObjectAtRandom(sculptures, 2, 5);
 
         LayoutObjectAtRandom(monsters, 1, 4);
@@ -181,11 +194,23 @@ public class BoardManager : MonoBehaviour
         if (iRand <= GameController.probCoin)
             item = items[0];
         else if (100 - GameController.probPotion <= iRand)
-            item = items[1];
+        {
+            if (GameController.RedCoin && 95 <= iRand)
+                item = items[2];
+            else
+                item = items[1];
+        }
         else
             return;
 
         GameObject instance = Instantiate(item, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity) as GameObject;
         instance.transform.SetParent(objectHolder);
+    }
+
+    private void HideNPC()
+    {
+        GC.kingslime.SetActive(false);
+        GC.coffinshop.SetActive(false);
+        GC.treasurebox.SetActive(false);
     }
 }

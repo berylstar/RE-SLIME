@@ -15,6 +15,8 @@ public class PlayerScript : MovingObject
         base.Start();
 
         moveSpeed = GameController.playerSpeed;
+
+        //StartCoroutine(GameController.TimeDamage(this));
     }
 
     private void Update()

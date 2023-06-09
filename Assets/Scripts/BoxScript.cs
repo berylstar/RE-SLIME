@@ -88,13 +88,13 @@ public class BoxScript : MonoBehaviour
         if (idx == 1)
         {
             textName.text = "코인 더미";
-            textAdject.text = "";
+            textAdject.text = "이제 나도 부자 ?";
             textEffect.text = "COIN + 5";
         }
         else if (idx == 2)
         {
             textName.text = "대용량 포션";
-            textAdject.text = "";
+            textAdject.text = "갈증 완벽 해결";
             textEffect.text = "HP + 30";
         }
         else

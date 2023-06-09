@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
     // ITEM
     public static int coin = 0;
     public static int probCoin = 10;
-    public static bool canRedCoin = false;
+    public static bool RedCoin = false;
     public static int potionEff = 5;
     public static int probPotion = 10;
 
@@ -59,6 +59,28 @@ public class GameController : MonoBehaviour
     public static void ChangeHP(int ch)
     {
         playerHP = Mathf.Min(playerMaxHP, Mathf.Max(0, playerHP + ch));
+    }
+
+    // 시간 데미지
+    public static IEnumerator TimeDamage(PlayerScript player)
+    {
+        float time = 0f;
+
+        while (true)
+        {
+            if (player.CheckAlive() && floor > 0 && !Pause(5))
+            {
+                time += playerTimeDamage;
+
+                if (time >= 1)
+                {
+                    ChangeHP(-1);
+                    time = 0f;
+                }
+            }
+
+            yield return delay_1s;
+        }
     }
 
     public static void SpeedStackIn(float speed)
