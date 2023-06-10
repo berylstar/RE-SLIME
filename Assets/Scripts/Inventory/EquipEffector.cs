@@ -17,6 +17,7 @@ public class EquipEffector : MonoBehaviour
     private int pepper = 2;
     private int straw = 3;
     private int goldenticket = 2;
+    private int plask = 2;
 
     public void EquipEffect(int i, EquipScript equip)
     {
@@ -84,6 +85,11 @@ public class EquipEffector : MonoBehaviour
         else if (i == 31)            // 마지막 잎새
         {
             GameController.effLastleaf = equip;
+        }
+        else if (i == 32)            // 플라스크
+        {
+            GameController.playerAP += plask;
+            GameController.playerDP -= plask;
         }
         else
             return;
@@ -153,6 +159,11 @@ public class EquipEffector : MonoBehaviour
         else if (i == 31)            // 마지막 잎새
         {
             GameController.effLastleaf = null;
+        }
+        else if (i == 32)            // 플라스크
+        {
+            GameController.playerAP -= plask;
+            GameController.playerDP += plask;
         }
         else
             return;
