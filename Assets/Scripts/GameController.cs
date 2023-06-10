@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
 
     public GameObject player;
     public GameObject field;
+    public GameObject stair;
     public GameObject kingslime;
     public GameObject coffinshop;
     public GameObject treasurebox;
@@ -21,7 +22,7 @@ public class GameController : MonoBehaviour
     public static int savedFloor = 0;
 
     // PLAYER
-    public static int playerLife = 3;
+    public static int playerLife = 1;
     public static int playerMaxHP = 100;
     public static int playerHP = playerMaxHP;
     public static int playerAP = 10;
@@ -39,6 +40,11 @@ public class GameController : MonoBehaviour
     public static bool RedCoin = false;
     public static int potionEff = 5;
     public static int probPotion = 10;
+
+    // EQUIPS
+    public static bool effBattery = false;
+    public static bool effcrescent = false;
+    public static EquipScript effLastleaf = null;
 
     // GAME SYSYTEM
     public static bool esc = false;

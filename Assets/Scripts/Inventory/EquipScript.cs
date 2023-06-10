@@ -81,9 +81,21 @@ public class EquipScript : MonoBehaviour
         INVEN.GottenEquips.Remove(this);
         ReturnGrade().Add(this);
 
-        gameObject.SetActive(false);
-
         UnEffect();
+
+        if (iconC.activeInHierarchy)
+        {
+            GameController.skillC = null;
+            iconC.SetActive(false);
+        }
+        else if (iconV.activeInHierarchy)
+        {
+            GameController.skillV = null;
+            iconV.SetActive(false);
+        }
+            
+
+        gameObject.SetActive(false);
     }
 
     // invenchecker의 값 변경함으로써 겹침 확인
@@ -156,14 +168,14 @@ public class EquipScript : MonoBehaviour
 
     public void ApplyEffect()
     {
-        EFFECTOR.EquipEffect(number);
+        EFFECTOR.EquipEffect(number, this);
 
         isEffected = true;
     }
 
     public void UnEffect()
     {
-        EFFECTOR.EquipUnEffect(number);
+        EFFECTOR.EquipUnEffect(number, this);
 
         isEffected = false;
     }

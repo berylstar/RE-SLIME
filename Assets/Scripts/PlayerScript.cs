@@ -21,7 +21,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (!isAlive || GameController.Pause(3))
+        if (!isAlive || GameController.Pause(10))
             return;
 
         // Input : 방향키 = 플레이어 이동
@@ -58,7 +58,7 @@ public class PlayerScript : MovingObject
 
         punchZip.transform.position = this.transform.position;
 
-        if (GameController.playerHP <= 0)
+        if (GameController.playerHP <= 0 && !Cresent())
         {
             StartCoroutine(PlayerDie());
         }
@@ -71,7 +71,7 @@ public class PlayerScript : MovingObject
             return;
 
         // 몬스터와 충돌 감지
-        if (collision.CompareTag("Monster"))
+        if (collision.CompareTag("Monster") && !Battery())
         {
             MonsterScript monster = collision.GetComponent<MonsterScript>();
 
@@ -82,7 +82,7 @@ public class PlayerScript : MovingObject
         }
 
         // 투사체와 충돌 감지
-        else if (collision.CompareTag("Bullet"))
+        else if (collision.CompareTag("Bullet") && !Battery())
         {
             BulletScript bullet = collision.GetComponent<BulletScript>();
 
@@ -130,7 +130,6 @@ public class PlayerScript : MovingObject
         canPunch = false;
         yield return GameController.delay_025s;
         canPunch = true;
-
     }
 
     public void PlayerDamaged(int dam)
@@ -165,13 +164,16 @@ public class PlayerScript : MovingObject
         BM.US.panelDie.SetActive(true);
         yield return GameController.delay_3s;
 
-        if (GameController.playerLife > 0)
+        if (GameController.playerLife > 0 || Lastleaf())
         {
             // REBORN
             GameController.playerLife -= 1;
             GameController.playerHP = GameController.playerMaxHP;
             GameController.savedFloor = GameController.floor - 1;
             GameController.floor = 0;
+
+            while (GameController.speedStack.Count > 0)
+                GameController.SpeedStackOut();
 
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         }
@@ -181,4 +183,47 @@ public class PlayerScript : MovingObject
         }
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////
+    private bool Battery()
+    {
+        if (GameController.effBattery && Random.Range(0, 10) <= 0)
+        {
+            StartCoroutine(BatteryCo());
+            return true;
+        }
+        return false;
+    }
+
+    
+    IEnumerator BatteryCo()
+    {
+        sr.color = new Color(255, 255, 0);
+        invincivity = true;
+
+        yield return GameController.delay_1s;
+
+        sr.color = new Color(255, 255, 255);
+        invincivity = false;
+    }
+    
+    private bool Cresent()
+    {
+        if (GameController.effcrescent && Random.Range(0, 19) <= 0)
+        {
+            GameController.ChangeHP(GameController.playerMaxHP / 2);
+            return true;
+        }
+        return false;
+    }
+
+    private bool Lastleaf()
+    {
+        if (GameController.effLastleaf != null && GameController.playerLife == 0)
+        {
+            GameController.playerLife += 1;
+            GameController.effLastleaf.RemoveThis();
+            return true;
+        }
+        return false;
+    }
 }

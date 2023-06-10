@@ -66,6 +66,9 @@ public class InventoryScript : MonoBehaviour
     // 인벤토리에서 장비를 스킬로 등록
     public void SetSkill(string cv, EquipScript equip)
     {
+        if (equip.type == EquipType.PASSIVE)
+            return;
+
         if (cv == "C")
         {
             if (GameController.skillC && equip != GameController.skillC)

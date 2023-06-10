@@ -4,50 +4,69 @@ using UnityEngine;
 
 public class EquipEffector : MonoBehaviour
 {
-    private GameController GC;
+    private int banana = 15;
+    private int binocular = 3;
+    private int gloves = 6;
+    private int halfstone = 10;
+    private int heartstone = 25;
+    private int helmet = 1;
+    private float ice = 10f;
+    private int machine = 3;
+    private int mandoo = 5;
+    private int metaldetector = 3;
+    private int pepper = 2;
+    private int straw = 3;
+    private int goldenticket = 2;
 
-    private void Start()
+    public void EquipEffect(int i, EquipScript equip)
     {
-        GC = GameObject.Find("CONTROLLER").GetComponent<GameController>();
-    }
-
-    public void EquipEffect(int i)
-    {
-        if (i == 3)                  // 망원경
+        if (i == 2)                  // 건전지
         {
-            GameController.probPotion += 3;
-            GameController.probCoin += 3;
+            GameController.effBattery = true;
+        }
+        else if (i == 3)             // 망원경
+        {
+            GameController.probPotion += binocular;
+            GameController.probCoin += binocular;
+        }
+        else if (i == 4)             // 초승달
+        {
+            GameController.effcrescent = true;
+        }
+        else if (i == 7)             // 복싱 글러브
+        {
+            GameController.playerAP += gloves;
         }
         else if (i == 9)             // 반 돌
         {
-            GameController.playerMaxHP += 10;
+            GameController.playerMaxHP += halfstone;
             GameController.playerHP = Mathf.Max(GameController.playerHP, GameController.playerMaxHP);
         }
         else if (i == 10)            // 마음의 돌
         {
-            GameController.playerMaxHP += 20;
+            GameController.playerMaxHP += heartstone;
             GameController.playerHP = Mathf.Max(GameController.playerHP, GameController.playerMaxHP);
         }
         else if (i == 11)            // 하이바
         {
-            GameController.playerDP += 1;
+            GameController.playerDP += helmet;
         }
         else if (i == 12)            // 각얼음
         {
-            GameController.playerSpeed += 10;
-            GC.player.GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.playerSpeed += ice;
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
         }
         else if (i == 13)            // ESP-8266
         {
-            GameController.probPotion += 3;
+            GameController.probPotion += machine;
         }
         else if (i == 16)            // 금속 탐지기
         {
-            GameController.probCoin += 3;
+            GameController.probCoin += metaldetector;
         }
         else if (i == 17)            // 청양 고추
         {
-            GameController.playerAP += 3;
+            GameController.playerAP += pepper;
         }
         else if (i == 18)            // 돼지 저금통
         {
@@ -55,52 +74,68 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 23)            // 빨대
         {
-            GameController.potionEff += 3;
+            GameController.potionEff += straw;
         }
         else if (i == 26)            // 골든 티켓
         {
-            GameController.ShopGrade[0] += 2;
-            GameController.ShopGrade[1] += 2;
+            GameController.ShopGrade[0] += goldenticket;
+            GameController.ShopGrade[1] += goldenticket;
+        }
+        else if (i == 31)            // 마지막 잎새
+        {
+            GameController.effLastleaf = equip;
         }
         else
             return;
     }
 
-    public void EquipUnEffect(int i)
+    public void EquipUnEffect(int i, EquipScript equip)
     {
-        if (i == 3)                 // 망원경
+        if (i == 2)                  // 건전지
         {
-            GameController.probPotion -= 3;
-            GameController.probCoin -= 3;
+            GameController.effBattery = false;
+        }
+        else if(i == 3)              // 망원경
+        {
+            GameController.probPotion -= binocular;
+            GameController.probCoin -= binocular;
+        }
+        else if (i == 4)             // 초승달
+        {
+            GameController.effcrescent = false;
+        }
+        else if (i == 7)             // 복싱 글러브
+        {
+            GameController.playerAP -= gloves;
         }
         else if (i == 9)             // 반 돌
         {
-            GameController.playerMaxHP -= 10;
+            GameController.playerMaxHP -= halfstone;
         }
         else if (i == 10)            // 마음의 돌
         {
-            GameController.playerMaxHP -= 20;
+            GameController.playerMaxHP -= heartstone;
         }
         else if (i == 11)            // 하이바
         {
-            GameController.playerDP -= 1;
+            GameController.playerDP -= helmet;
         }
         else if (i == 12)            // 각얼음
         {
-            GameController.playerSpeed -= 10;
-            GC.player.GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.playerSpeed -= ice;
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
         }
         else if (i == 13)            // ESP-8266
         {
-            GameController.probPotion -= 3;
+            GameController.probPotion -= machine;
         }
         else if (i == 16)            // 금속 탐지기
         {
-            GameController.probCoin -= 3;
+            GameController.probCoin -= metaldetector;
         }
         else if (i == 17)            // 청양 고추
         {
-            GameController.playerAP -= 3;
+            GameController.playerAP -= pepper;
         }
         else if (i == 18)            // 돼지 저금통
         {
@@ -108,12 +143,16 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 23)            // 빨대
         {
-            GameController.potionEff -= 3;
+            GameController.potionEff -= straw;
         }
         else if (i == 26)            // 골든 티켓
         {
-            GameController.ShopGrade[0] -= 2;
-            GameController.ShopGrade[1] -= 2;
+            GameController.ShopGrade[0] -= goldenticket;
+            GameController.ShopGrade[1] -= goldenticket;
+        }
+        else if (i == 31)            // 마지막 잎새
+        {
+            GameController.effLastleaf = null;
         }
         else
             return;
@@ -123,11 +162,15 @@ public class EquipEffector : MonoBehaviour
     {
         if (i == 1)                 // 바나나
         {
-            GameController.ChangeHP(15);
+            GameController.ChangeHP(banana);
         }
         else if (i == 5)            // 사기 주사위
         {
             GameController.ChangeHP(Random.Range(-5, 5));
+        }
+        else if (i == 8)            // 녹슨 열쇠
+        {
+            Key();
         }
         else if (i == 14)           // 투명 망토
         {
@@ -135,7 +178,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 15)           // 만두
         {
-            GameController.ChangeHP(5);
+            GameController.ChangeHP(mandoo);
         }
         else
             return;
@@ -143,10 +186,19 @@ public class EquipEffector : MonoBehaviour
 
     IEnumerator Cloak()
     {
-        GC.player.GetComponent<PlayerScript>().invincivity = true;
-        GC.player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 50);
+        GameObject player = GameObject.Find("PLAYER");
+
+        player.GetComponent<PlayerScript>().invincivity = true;
+        player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 50);
         yield return GameController.delay_3s;
-        GC.player.GetComponent<PlayerScript>().invincivity = false;
-        GC.player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        player.GetComponent<PlayerScript>().invincivity = false;
+        player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+    }
+
+    private void Key()
+    {
+        StairScript stair = GameObject.Find("STAIR").GetComponent<StairScript>();
+
+        stair.StairOpen();
     }
 }
