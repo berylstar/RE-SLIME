@@ -62,9 +62,10 @@ public class MonsterScript : MovingObject
     {
         isAlive = false;
         ani.SetTrigger("MonsterDie");
-        yield return GameController.delay_05s;
-
         BM.RemoveMonster(this);
+        this.gameObject.tag = "Untagged";
+
+        yield return GameController.delay_1s;
         Destroy(this.gameObject);
 
         // 아이템 드롭
