@@ -73,6 +73,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.RedCoin = true;
         }
+        else if (i == 21)            // 인라인 스케이트
+        {
+            GameController.effSkate = true;
+        }
         else if (i == 23)            // 빨대
         {
             GameController.potionEff += straw;
@@ -147,6 +151,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.RedCoin = false;
         }
+        else if (i == 21)            // 인라인 스케이트
+        {
+            GameController.effSkate = false;
+        }
         else if (i == 23)            // 빨대
         {
             GameController.potionEff -= straw;
@@ -190,6 +198,16 @@ public class EquipEffector : MonoBehaviour
         else if (i == 15)           // 만두
         {
             GameController.ChangeHP(mandoo);
+        }
+        else if (i == 22)           // 미래 기술 6호
+        {
+            GameController.savedFloor = GameController.floor - 1;
+            GameController.floor = 0;
+
+            while (GameController.speedStack.Count > 0)
+                GameController.SpeedStackOut();
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         }
         else
             return;

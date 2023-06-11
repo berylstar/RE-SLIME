@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9043970307731784601}
   - component: {fileID: 9043970307731784600}
   - component: {fileID: 9043970307731784603}
-  - component: {fileID: 4320971270972369976}
+  - component: {fileID: 2022560734996843079}
   m_Layer: 6
   m_Name: M_Witch
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4320971270972369976
+--- !u!114 &2022560734996843079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +161,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9043970307731784613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78da2d50190d8d4da91719b5c876775, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc97ba22fb7dfc46a488d9f60fadc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 35
+  HP: 20
   AP: 5
-  speed: 30
+  speed: 20
+  transparentPercent: 30

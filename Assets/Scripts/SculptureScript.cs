@@ -26,6 +26,9 @@ public class SculptureScript : MonoBehaviour
     // 충돌 감지로 조형물 효과 발동
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameController.effSkate)
+            return;
+
         if (collision.CompareTag("Player") && !isEffected)
         {
             SculptureEffect(collision.GetComponent<PlayerScript>());

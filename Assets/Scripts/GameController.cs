@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     // EQUIPS
     public static bool effBattery = false;
     public static bool effcrescent = false;
+    public static bool effSkate = false;
     public static EquipScript effLastleaf = null;
 
     // GAME SYSYTEM

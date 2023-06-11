@@ -35,10 +35,12 @@ public class MovingObject : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
 
-        if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
+        if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Monster")))       // 이동 불가 케이스
             return false;
 
-        if (end.x < 0 || end.x > 9 || end.y < 0 || end.y > 9)
+        int a = (int)sr.sprite.rect.width / 120;
+
+        if (end.x - a < 0 || end.x + a > 9 || end.y < 0 || end.y > 9)
             return false;
 
         if (!isMoving)

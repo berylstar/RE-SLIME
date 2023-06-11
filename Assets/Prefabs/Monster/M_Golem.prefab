@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4913986751722077796}
   - component: {fileID: 4913986751722077797}
   - component: {fileID: 4913986751722077798}
-  - component: {fileID: 163382495556915653}
+  - component: {fileID: 8014442692003426882}
   m_Layer: 6
   m_Name: M_Golem
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &163382495556915653
+--- !u!114 &8014442692003426882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,13 +161,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4913986751722077784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78da2d50190d8d4da91719b5c876775, type: 3}
+  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockingLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  type: 0
   HP: 35
   AP: 5
   speed: 5

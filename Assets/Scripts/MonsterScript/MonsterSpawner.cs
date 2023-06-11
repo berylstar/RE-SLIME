@@ -55,7 +55,7 @@ public class MonsterSpawner : MonsterScript
 
             if (iRand <= spawnPercent)
             {
-                GameObject sss = Instantiate(spawn, tf.position, Quaternion.identity);
+                GameObject sss = Instantiate(spawn, BM.SpawnPosition(), Quaternion.identity);
                 sss.transform.SetParent(GameObject.Find("ObjectHolder").transform);
             }
         }

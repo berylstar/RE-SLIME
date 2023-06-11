@@ -20,24 +20,25 @@ NAME		HP	AP	TYPE
 Spider		10	5	SPAWN - WEB
 Frog		10	10	
 Bat		5	5	QUICK
-Skeleton		15	5	
+Skeleton		15	5
+Tree	
 
 # 21 ~ 40 : Graveyard
 Zombie				FOLLOW
 Werewolf
 Ghost				ALPHA
 Scarecrow			SHOOTER - CROW
+Witch				DASH, ALPHA
 
 # 41 ~ 60 : Lava Land
 Firebat				QUICK, DASH
 Ember				SHOOTER - FIRE
 Golem
-Flamesnake			SHOOTER - FIRE x4, 이동X
+Flamesnake			SHOOTER - FIRE, SPAWNER - LAVA, 이동X
 
 # 61 ~ 80 : Magical Library
 Wizard				SHOOTER - MAGIC
 Candle				SPAWN - MINI EMBER
-Witch				DASH, ALPHA
 Book
 
 # 81 ~ 100
@@ -65,7 +66,7 @@ Book
 - 18	돼지저금통		RARE		레드 코인 등장
 - 19	치즈 피자					
 - 20	독사과					
-- 21	인라인 스케이트				
+- 21	인라인 스케이트		UNIQUE		모든 바닥 효과 무시	
 - 22	미래 기술 6호				액티브 : 0층 복귀				
 - 23	빨대			RARE		포션 회복량 +3
 - 24	부적					

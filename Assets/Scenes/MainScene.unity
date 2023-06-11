@@ -6666,11 +6666,13 @@ MonoBehaviour:
   - {fileID: 254159276128100321, guid: 750bd06613a8190448afb178bfb4c499, type: 3}
   - {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
   - {fileID: 1640113148994668561, guid: b408d51283c50ef4b810124e42549572, type: 3}
+  - {fileID: 218805512634659363, guid: 19b33437de53a4b4fb6bd1a01dfe9621, type: 3}
   - {fileID: 6484742795607083952, guid: 0f2dc02a2ebed6c4c9747b5cf1b67a2f, type: 3}
   - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
   - {fileID: 4913986751722077784, guid: 014674e448f787544a111512e06c6a28, type: 3}
   - {fileID: 3038600472547292134, guid: 5b19c5584bd19b9429ae9e4569f9e083, type: 3}
   - {fileID: 1821157012979008744, guid: 6f674aed0c988bd4191905b095108cf3, type: 3}
+  - {fileID: 3314698917802450420, guid: 7548c890777ce4845aab6c4bc8bdfd2a, type: 3}
   - {fileID: 2885614016224662446, guid: 043430c85de175f42b0aa87b0f3c580c, type: 3}
   - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
   - {fileID: 6652352449710847486, guid: 0f9bb46416eca4e4787aae9caaf857e5, type: 3}
@@ -8980,8 +8982,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54.5}
-  m_SizeDelta: {x: -814, y: -217}
+  m_AnchoredPosition: {x: 0, y: -28.5}
+  m_SizeDelta: {x: -710, y: -165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &927420886
 MonoBehaviour:
@@ -8996,7 +8998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14229,8 +14231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54.5}
-  m_SizeDelta: {x: -814, y: -217}
+  m_AnchoredPosition: {x: 0, y: -28.5}
+  m_SizeDelta: {x: -710, y: -165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495907169
 MonoBehaviour:
@@ -14245,7 +14247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15080,7 +15082,7 @@ MonoBehaviour:
   number: 21
   EName: "\uC778\uB77C\uC778 \uC2A4\uCF00\uC774\uD2B8"
   adject: "\uAC70\uAFB8\uB85C \uD574\uB3C4 \uC778\uB77C\uC778"
-  effect: 
+  effect: "\uBAA8\uB4E0 \uBC14\uB2E5 \uD6A8\uACFC \uBB34\uC2DC"
   price: 1
   type: 0
   grade: 2
@@ -18103,9 +18105,9 @@ MonoBehaviour:
   number: 22
   EName: "\uBBF8\uB798 \uAE30\uC220 6\uD638"
   adject: "\uC2DC\uAC04 \uC5EC\uD589\uC790\uC758 \uAC00\uBC29\uC5D0\uC11C \uBC1C\uACAC\uB418\uC5C8\uB2E4\uB124\uC694."
-  effect: 
+  effect: "\uC0AC\uC6A9 : 0\uCE35\uC73C\uB85C \uBCF5\uADC0"
   price: 1
-  type: 0
+  type: 1
   grade: 2
   coolTime: 0
   isEffected: 0

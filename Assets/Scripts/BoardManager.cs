@@ -163,9 +163,9 @@ public class BoardManager : MonoBehaviour
         RemovePositionAwayFrom(stair.transform.position);
 
                                                     // 추후에 조형물과 몬스터는 레벨에 따라 배치해야함
-        LayoutObjectAtRandom(sculptures, 2, 5);
+        LayoutObjectAtRandom(sculptures, 2, 10);
 
-        LayoutObjectAtRandom(monsters, 1, 4);
+        LayoutObjectAtRandom(monsters, 2, 8);
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가
@@ -212,5 +212,12 @@ public class BoardManager : MonoBehaviour
         GC.kingslime.SetActive(false);
         GC.coffinshop.SetActive(false);
         GC.treasurebox.SetActive(false);
+    }
+
+    public Vector3 SpawnPosition()
+    {
+        int idx = Random.Range(0, gridPositions.Count);
+        Vector3 pos = gridPositions[idx];
+        return pos;
     }
 }
