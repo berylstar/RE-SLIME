@@ -8,14 +8,11 @@ public class MonsterSpawner : MonsterScript
     public GameObject spawn;
     public int spawnPercent;
 
-    private Transform tf;
-
     protected override void Start()
     {
         base.Start();
 
         type = MonsterType.SPAWNER;
-        tf = GetComponent<Transform>();
 
         StartCoroutine(MonsterMove());
         StartCoroutine(Spawn());
@@ -51,13 +48,14 @@ public class MonsterSpawner : MonsterScript
         {
             yield return GameController.delay_3s;
 
-            int iRand = Random.Range(0, 100);
-
-            if (iRand <= spawnPercent)
-            {
-                GameObject sss = Instantiate(spawn, BM.SpawnPosition(), Quaternion.identity);
-                sss.transform.SetParent(GameObject.Find("ObjectHolder").transform);
-            }
+            if (Random.Range(0, 100) <= spawnPercent)
+                ani.SetTrigger("Spawn");
         }
+    }
+
+    private void SpawnAnimator()
+    {
+        GameObject product = Instantiate(spawn, BM.SpawnPosition(), Quaternion.identity);
+        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

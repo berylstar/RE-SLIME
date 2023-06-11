@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1640113148994668588}
   - component: {fileID: 1640113148994668591}
   - component: {fileID: -4947565229345276662}
-  - component: {fileID: 2763802993033068131}
   m_Layer: 6
   m_Name: M_Firebat
   m_TagString: Monster
@@ -167,20 +166,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 10
   AP: 10
-  speed: 0
-  dashPercent: 60
---- !u!114 &2763802993033068131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640113148994668561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8f6b1fb92e165499bf9893cd4f2642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 10
-  AP: 10
   speed: 20
+  dashPercent: 60
