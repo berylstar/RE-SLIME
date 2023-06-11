@@ -57,18 +57,20 @@ public class MonsterScript : MovingObject
         }
     }
 
-    // 몬스터 죽었을 때 실행할 코루틴
     IEnumerator Die()
     {
         isAlive = false;
         ani.SetTrigger("MonsterDie");
-        BM.RemoveMonster(this);
         this.gameObject.tag = "Untagged";
 
-        yield return GameController.delay_1s;
-        Destroy(this.gameObject);
+        yield return null;
+    }
 
-        // 아이템 드롭
+    // Disappear 애니매이션까지 끝나면 Animator에서 실행
+    private void Disappear()
+    {
+        BM.RemoveMonster(this);
         BM.ItemDrop(transform.position);
+        Destroy(this.gameObject);
     }
 }

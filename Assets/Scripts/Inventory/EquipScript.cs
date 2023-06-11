@@ -45,9 +45,7 @@ public class EquipScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
         EFFECTOR = GameObject.Find("INVENTORY").GetComponent<EquipEffector>();
-
-        sr.sortingOrder = 10 - posIndex.Count;
-
+        
         gameObject.SetActive(false);
     }
 

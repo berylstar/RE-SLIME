@@ -140,9 +140,16 @@ public class BoardManager : MonoBehaviour
 
     }
 
-    private void SetMonsters()
+    private void SetMonsters(int min, int max)
     {
+        int objectCount = Random.Range(min, max + 1);
 
+        for (int i = 0; i < objectCount; i++)
+        {
+            GameObject go = monsters[Random.Range(0, monsters.Length)];
+            GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
+            instance.transform.SetParent(objectHolder);
+        }
     }
 
     // 해당 층수에 맞게 레벨 세팅
@@ -165,7 +172,7 @@ public class BoardManager : MonoBehaviour
                                                     // 추후에 조형물과 몬스터는 레벨에 따라 배치해야함
         LayoutObjectAtRandom(sculptures, 2, 10);
 
-        LayoutObjectAtRandom(monsters, 2, 8);
+        SetMonsters(2, 8);
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가
@@ -214,10 +221,25 @@ public class BoardManager : MonoBehaviour
         GC.treasurebox.SetActive(false);
     }
 
+    // 소환한 포지션을 그리드 포지션에서 제거하지 않음 => 엄청 많이 생겼을 때 자리 없는 것을 방지하기 위해
     public Vector3 SpawnPosition()
     {
         int idx = Random.Range(0, gridPositions.Count);
         Vector3 pos = gridPositions[idx];
+        return pos;
+    }
+
+    // 그리드 리스트 내 랜덤 위치 반환
+    private Vector3 RandomMonsterPosition(GameObject go)
+    {
+        int idx = Random.Range(0, gridPositions.Count);
+        Vector3 pos = gridPositions[idx];
+
+        int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 120);
+
+        pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 8.5f, pos.y, pos.z);
+
+        gridPositions.RemoveAt(idx);
         return pos;
     }
 }
