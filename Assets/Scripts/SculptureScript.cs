@@ -5,8 +5,9 @@ using UnityEngine;
 public enum SculptureType
 {
     WEB,        // 거미줄 = 잠시동안 플레이어 이동속도 감소
-    GRASS,      // 풀 숲 = 들어가 있으면 오브젝트 투명화
     LAVA,       // 용암 - 플레이어가 위에 올라와 있으면 데미지
+    GRASS,      // 풀 숲 = 들어가 있으면 오브젝트 투명화
+    ICY,        // 얼음 = 이동하면 그 방향으로 미끄러지게
 }
 
 public class SculptureScript : MonoBehaviour
@@ -32,6 +33,14 @@ public class SculptureScript : MonoBehaviour
         if (collision.CompareTag("Player") && !isEffected)
         {
             SculptureEffect(collision.GetComponent<PlayerScript>());
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && type == SculptureType.ICY)
+        {
+            IcyEffect(player);
         }
     }
 
@@ -65,11 +74,11 @@ public class SculptureScript : MonoBehaviour
         if (type == SculptureType.WEB)
             StartCoroutine(WebEffect(player));
 
-        else if (type == SculptureType.GRASS)
-            StartCoroutine(GrassEffect(player));
-
         else if (type == SculptureType.LAVA)
             StartCoroutine(LavaEffect(player));
+
+        else if (type == SculptureType.GRASS)
+            GrassEffect(player);
 
         isEffected = true;
     }
@@ -90,9 +99,9 @@ public class SculptureScript : MonoBehaviour
     }
 
     // 풀숲 효과 코루틴
-    IEnumerator GrassEffect(PlayerScript player)
+    private void GrassEffect(PlayerScript player)
     {
-        yield return null;
+
     }
 
     // 용암 효과 코루틴
@@ -104,6 +113,13 @@ public class SculptureScript : MonoBehaviour
 
             yield return GameController.delay_1s;
         }
+
+        isEffected = false;
+    }
+
+    private void IcyEffect(PlayerScript player)
+    {
+        player.DirectionMove();
 
         isEffected = false;
     }

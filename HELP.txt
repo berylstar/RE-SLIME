@@ -6,7 +6,6 @@ HOW TO
 
 
 ###################################<몬스터>
-NAME		HP	AP	TYPE
 				NORMAL	: 일반 몬스터
 				FOLLOW	: 플레이어를 향해 움직이는 모느터
 				QUICK	: 빠른 템포로 움직이는 몬스터
@@ -16,6 +15,7 @@ NAME		HP	AP	TYPE
 				SPAWNER: 오브젝트를 소환하는 몬스터
 				BOSS	: 보스 몬스터
 
+NAME		HP	AP	TYPE
 #1 ~ 20 : Lower of Tower
 Spider		10	5	SPAWN - WEB
 Frog		10	10	

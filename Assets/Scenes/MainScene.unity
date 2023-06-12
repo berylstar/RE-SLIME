@@ -6658,6 +6658,7 @@ MonoBehaviour:
   - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
   - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
   - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
+  - {fileID: 7627762053222131929, guid: fdea810ffd2ec354aad1fcf05c1d1a22, type: 3}
   stair: {fileID: 192884805}
   monsters:
   - {fileID: 254159276128100321, guid: 750bd06613a8190448afb178bfb4c499, type: 3}

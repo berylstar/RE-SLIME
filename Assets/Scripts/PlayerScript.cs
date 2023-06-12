@@ -183,6 +183,14 @@ public class PlayerScript : MovingObject
         }
     }
 
+    public void DirectionMove()
+    {
+        if (direction == 0)      Move(-1, 0);
+        else if (direction == 1) Move(1, 0);
+        else if (direction == 2) Move(0, 1);
+        else if (direction == 3) Move(0, -1);
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////
     private bool Battery()
     {
