@@ -59,8 +59,8 @@ public class MonsterShooter : MonsterScript
 
     private void ShootAnimator()
     {
-        GameObject bbb = Instantiate(bullet, tf.position, Quaternion.identity);
-        bbb.GetComponent<BulletScript>().direction = direction;
-        bbb.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+        GameObject product = Instantiate(bullet, tf.position, Quaternion.identity);
+        product.GetComponent<BulletScript>().direction = direction;
+        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 218805512634659359}
   - component: {fileID: 218805512634659358}
   - component: {fileID: 218805512634659357}
-  - component: {fileID: 218805512634659365}
   - component: {fileID: 218805512634659364}
   m_Layer: 6
   m_Name: M_Flamesnake
@@ -97,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 218805512634659363}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 334d212a508204049aed18da1c44eacc, type: 2}
+  m_Controller: {fileID: 22100000, guid: b92a9ea5a69250946890be8e45423cee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -153,23 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &218805512634659365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218805512634659363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6b689d304b27f4ca8bf779d9b4f14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 30
-  AP: 5
-  speed: 0
-  bullet: {fileID: 9161836580905074611, guid: c7c3855087bea0147a61a6cc451ed805, type: 3}
-  shootPercent: 50
 --- !u!114 &218805512634659364
 MonoBehaviour:
   m_ObjectHideFlags: 0

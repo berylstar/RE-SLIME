@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6652352449710847426}
   - component: {fileID: 6652352449710847427}
   - component: {fileID: 6652352449710847424}
-  - component: {fileID: 1489113111506495949}
+  - component: {fileID: -3628542165418069790}
   m_Layer: 6
   m_Name: M_Wizard
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1489113111506495949
+--- !u!114 &-3628542165418069790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,11 +161,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6652352449710847486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: debb1edcb1ab8a847b44bcefdbc3f761, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e6b689d304b27f4ca8bf779d9b4f14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 10
   AP: 10
   speed: 10
-  spawn: {fileID: 2151527592746679646, guid: ce840f92ccebe7f47b9ab1bfb7ff1bf9, type: 3}
-  spawnPercent: 60
+  bullet: {fileID: 2151527592746679646, guid: ce840f92ccebe7f47b9ab1bfb7ff1bf9, type: 3}
+  shootPercent: 50

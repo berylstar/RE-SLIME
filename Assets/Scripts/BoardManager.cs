@@ -236,9 +236,8 @@ public class BoardManager : MonoBehaviour
         Vector3 pos = gridPositions[idx];
 
         int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 120);
-        print(a);
 
-        pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 8.5f, pos.y, pos.z);
+        pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
 
         gridPositions.RemoveAt(idx);
         return pos;
