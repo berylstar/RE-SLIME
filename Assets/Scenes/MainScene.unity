@@ -6661,7 +6661,7 @@ MonoBehaviour:
   - {fileID: 7627762053222131929, guid: fdea810ffd2ec354aad1fcf05c1d1a22, type: 3}
   stair: {fileID: 192884805}
   monsters:
-  - {fileID: 218805512634659363, guid: 19b33437de53a4b4fb6bd1a01dfe9621, type: 3}
+  - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
   items:
   - {fileID: 2992278746923005060, guid: f4993742bd635f049930132c5f4aad16, type: 3}
   - {fileID: 1549850051594685311, guid: 8ace544024ca82948ba1ae0be49aa107, type: 3}

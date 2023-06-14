@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterDash : MonsterScript
+public class MonsterDasher : MonsterScript
 {
     [Header("DASH")]
     public int dashPercent;
@@ -40,21 +40,28 @@ public class MonsterDash : MonsterScript
             int iRand = Random.Range(0, 100);
 
             if (iRand <= dashPercent)
-                StartCoroutine(Dash());
+                ani.SetTrigger("Dash");
             else
                 RandomMove();
         }
     }
 
+    private void DashAnimator()
+    {
+        StartCoroutine(Dash());
+    }
+
     IEnumerator Dash()
     {
         Vector2 start = transform.position;
-        Vector2 end = transform.position;
+        Vector2 end;
 
-        if (direction == 0) { sr.flipX = false; end = new Vector2(0, start.y); }
-        else if (direction == 1) { sr.flipX = true; end = new Vector2(9, start.y); }
-        else if (direction == 2) { end = new Vector2(start.x, 9); }
-        else if (direction == 3) { end = new Vector2(start.x, 0); }
+        int iRand = Random.Range(0, 3);
+
+        if (iRand == 0) { sr.flipX = false; end = new Vector2(0, start.y); }
+        else if (iRand == 1) { sr.flipX = true; end = new Vector2(9, start.y); }
+        else if (iRand == 2) { end = new Vector2(start.x, 9); }
+        else { end = new Vector2(start.x, 0); }
 
         if (!isMoving)
         {
@@ -62,7 +69,7 @@ public class MonsterDash : MonsterScript
 
             while (((Vector2)transform.position - end).sqrMagnitude > float.Epsilon)
             {
-                Vector3 newPos = Vector3.MoveTowards(rb2d.position, end, 80 * Time.deltaTime);
+                Vector3 newPos = Vector3.MoveTowards(rb2d.position, end, 3 * speed * Time.deltaTime);
                 rb2d.MovePosition(newPos);
                 yield return null;
             }
