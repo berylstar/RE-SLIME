@@ -52,13 +52,15 @@ public class MonsterShooter : MonsterScript
         {
             yield return GameController.delay_1s;
 
-            int iRand = Random.Range(0, 100);
-            if (iRand <= shootPercent)
-            {
-                GameObject bbb = Instantiate(bullet, tf.position, Quaternion.identity);
-                bbb.GetComponent<BulletScript>().direction = direction;
-                bbb.transform.SetParent(GameObject.Find("ObjectHolder").transform);
-            }
+            if (Random.Range(0, 100) <= shootPercent)
+                ani.SetTrigger("Shoot");
         }
+    }
+
+    private void ShootAnimator()
+    {
+        GameObject bbb = Instantiate(bullet, tf.position, Quaternion.identity);
+        bbb.GetComponent<BulletScript>().direction = direction;
+        bbb.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

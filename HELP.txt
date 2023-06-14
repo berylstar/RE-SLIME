@@ -21,7 +21,7 @@ Spider		10	5	SPAWN - WEB
 Frog		10	10	
 Bat		5	5	QUICK
 Skeleton		15	5
-Tree	
+Yeti
 
 # 21 ~ 40 : Graveyard
 Zombie				FOLLOW
@@ -40,6 +40,7 @@ Flamesnake			SHOOTER - FIRE, SPAWNER - LAVA, 이동X
 Wizard				SHOOTER - MAGIC
 Candle				SPAWN - MINI EMBER
 Book
+Mouse Knight / Alien
 
 # 81 ~ 100
 
