@@ -36,14 +36,14 @@ public class MonsterScript : MovingObject
         // 펀치와 충돌 감지로 몬스터 데미지
         if (collision.CompareTag("Punch") && isAlive)
         {
-            StartCoroutine(Damaged());
+            StartCoroutine(Damaged(GameController.playerAP));
         }
     }
 
     // 몬스터 피해입을 때 실행할 코루틴
-    IEnumerator Damaged()
+    IEnumerator Damaged(int damage)
     {
-        HP -= GameController.playerAP;
+        HP -= damage;
 
         sr.color = new Color(255, 0, 0);
         yield return GameController.delay_01s;
@@ -55,6 +55,11 @@ public class MonsterScript : MovingObject
             StopAllCoroutines();
             StartCoroutine(Die());
         }
+    }
+
+    public void MonsterDamage(int d)
+    {
+        StartCoroutine(Damaged(d));
     }
 
     IEnumerator Die()

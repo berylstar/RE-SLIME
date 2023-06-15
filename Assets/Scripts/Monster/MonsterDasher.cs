@@ -13,7 +13,18 @@ public class MonsterDasher : MonsterScript
 
         type = MonsterType.DASH;
 
-        StartCoroutine(MoveOrDash());
+        if (speed > 0)
+            StartCoroutine(MonsterMove());
+        StartCoroutine(Dash());
+    }
+
+    IEnumerator MonsterMove()
+    {
+        while (isAlive)
+        {
+            yield return GameController.delay_1s;
+            RandomMove();
+        }
     }
 
     private void RandomMove()
@@ -31,7 +42,7 @@ public class MonsterDasher : MonsterScript
         Move(xDir, yDir);
     }
 
-    IEnumerator MoveOrDash()
+    IEnumerator Dash()
     {
         while (isAlive)
         {
@@ -41,27 +52,23 @@ public class MonsterDasher : MonsterScript
 
             if (iRand <= dashPercent)
                 ani.SetTrigger("Dash");
-            else
-                RandomMove();
         }
     }
 
     private void DashAnimator()
     {
-        StartCoroutine(Dash());
+        StartCoroutine(DashCo(Random.Range(0, 3)));
     }
 
-    IEnumerator Dash()
+    IEnumerator DashCo(int dir)
     {
         Vector2 start = transform.position;
         Vector2 end;
 
-        int iRand = Random.Range(0, 3);
-
-        if (iRand == 0) { sr.flipX = false; end = new Vector2(0, start.y); }
-        else if (iRand == 1) { sr.flipX = true; end = new Vector2(9, start.y); }
-        else if (iRand == 2) { end = new Vector2(start.x, 9); }
-        else { end = new Vector2(start.x, 0); }
+        if (dir == 0) { sr.flipX = false; end = new Vector2(0, start.y); direction = 0; }
+        else if (dir == 1) { sr.flipX = true; end = new Vector2(9, start.y); direction = 1; }
+        else if (dir == 2) { end = new Vector2(start.x, 9); direction = 2; }
+        else { end = new Vector2(start.x, 0); direction = 3; }
 
         if (!isMoving)
         {

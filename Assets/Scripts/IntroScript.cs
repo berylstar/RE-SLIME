@@ -17,18 +17,28 @@ public class IntroScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (index == 0)
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-            }
-            else if (index == 1)
-            {
-                print("OPTION");
-            }
-            else
-            {
-                Application.Quit();
-            }
+            ButtonClick();
         }
+    }
+
+    public void ButtonClick()
+    {
+        if (index == 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
+        else if (index == 1)
+        {
+            print("OPTION");
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
+
+    public void SetIndex(int i)
+    {
+        index = i;
     }
 }

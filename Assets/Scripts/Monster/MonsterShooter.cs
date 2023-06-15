@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSpawner : MonsterScript
+public class MonsterShooter : MonsterScript
 {
-    [Header("SPAWNER")]
-    public GameObject spawn;
-    public int spawnPercent;
+    [Header("SHOOTER")]
+    public GameObject bullet;
+    public int shootPercent;    
+
+    private Transform tf;
 
     protected override void Start()
     {
         base.Start();
 
-        type = MonsterType.SPAWNER;
+        type = MonsterType.SHOOTER;
 
-        StartCoroutine(MonsterMove());
-        StartCoroutine(Spawn());
+        tf = GetComponent<Transform>();
+
+        if (speed > 0)
+            StartCoroutine(MonsterMove());
+        StartCoroutine(Shoot());
     }
 
     private void RandomMove()
@@ -42,20 +47,21 @@ public class MonsterSpawner : MonsterScript
         }
     }
 
-    IEnumerator Spawn()
+    IEnumerator Shoot()
     {
         while(isAlive)
         {
-            yield return GameController.delay_3s;
+            yield return GameController.delay_1s;
 
-            if (Random.Range(0, 100) <= spawnPercent)
-                ani.SetTrigger("Spawn");
+            if (Random.Range(0, 100) <= shootPercent)
+                ani.SetTrigger("Shoot");
         }
     }
 
-    private void SpawnAnimator()
+    private void ShootAnimator()
     {
-        GameObject product = Instantiate(spawn, BM.SpawnPosition(), Quaternion.identity);
+        GameObject product = Instantiate(bullet, tf.position, Quaternion.identity);
+        product.GetComponent<BulletScript>().direction = direction;
         product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

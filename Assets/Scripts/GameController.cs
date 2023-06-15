@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public GameObject field;
     public GameObject stair;
     public GameObject kingslime;
+    public GameObject sign;
     public GameObject coffinshop;
     public GameObject treasurebox;
 

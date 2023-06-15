@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb1edcb1ab8a847b44bcefdbc3f761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 30
-  AP: 5
+  HP: 25
+  AP: 3
   speed: 0
   spawn: {fileID: 5360196784861406231, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
-  spawnPercent: 50
+  spawnPercent: 60

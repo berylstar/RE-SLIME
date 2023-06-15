@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6b689d304b27f4ca8bf779d9b4f14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
-  AP: 10
-  speed: 10
+  HP: 15
+  AP: 2
+  speed: 5
   bullet: {fileID: 318261643184950488, guid: 334791ecf0f6ad44a87730144588eca4, type: 3}
-  shootPercent: 50
+  shootPercent: 40

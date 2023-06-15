@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4123743951846585466}
   - component: {fileID: 4123743951846585465}
   - component: {fileID: 3376360080030612581}
+  - component: {fileID: 9213942943909991854}
   m_Layer: 6
   m_Name: M_Box
   m_TagString: Monster
@@ -96,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 4123743951846585415}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: f0dc7bc6d5d29c64fa1cc99e72e0853c, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3517350891ad471498180c70b9af5d85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -167,3 +168,20 @@ MonoBehaviour:
   HP: 15
   AP: 5
   speed: 10
+--- !u!114 &9213942943909991854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123743951846585415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: debb1edcb1ab8a847b44bcefdbc3f761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 15
+  AP: 5
+  speed: 0
+  spawn: {fileID: 168918671173395162, guid: a247c847e3f19eb46917158dcef4e626, type: 3}
+  spawnPercent: 50

@@ -21,7 +21,7 @@ public class BoardManager : MonoBehaviour
     public GameObject[] items;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
-    private List<MonsterScript> monsterGroup;
+    private List<MonsterScript> livingMonsters;
 
     private Transform objectHolder;
 
@@ -159,7 +159,7 @@ public class BoardManager : MonoBehaviour
             Destroy(GameObject.Find("ObjectHolder"));
 
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
-        monsterGroup = new List<MonsterScript>();
+        livingMonsters = new List<MonsterScript>();
 
         InitialGrid();
         SetField(floor);
@@ -178,15 +178,15 @@ public class BoardManager : MonoBehaviour
     // 몬스터가 생성될 때 몬스터 그룹에 추가
     public void AddMonster(MonsterScript mon)
     {
-        monsterGroup.Add(mon);
+        livingMonsters.Add(mon);
     }
 
     // 몬스터 죽을 때 몬스터 그룹에서 제거
     public void RemoveMonster(MonsterScript mon)
     {
-        monsterGroup.Remove(mon);
+        livingMonsters.Remove(mon);
 
-        if (monsterGroup.Count <= 0)
+        if (livingMonsters.Count <= 0)
         {
             stair.GetComponent<StairScript>().StairOpen();
         }
@@ -217,6 +217,7 @@ public class BoardManager : MonoBehaviour
     private void HideNPC()
     {
         GC.kingslime.SetActive(false);
+        GC.sign.SetActive(false);
         GC.coffinshop.SetActive(false);
         GC.treasurebox.SetActive(false);
     }
@@ -235,11 +236,20 @@ public class BoardManager : MonoBehaviour
         int idx = Random.Range(0, gridPositions.Count);
         Vector3 pos = gridPositions[idx];
 
-        int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 120);
+        int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 60) - 1;
 
         pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
 
         gridPositions.RemoveAt(idx);
         return pos;
+    }
+
+    ////////////////////////////////////
+    public void EquipThunder()
+    {
+        for (int i = 0; i < livingMonsters.Count; i++)
+        {
+            livingMonsters[i].MonsterDamage(5);
+        }
     }
 }

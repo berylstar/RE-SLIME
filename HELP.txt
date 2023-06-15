@@ -15,46 +15,50 @@ HOW TO
 				SPAWNER: 오브젝트를 소환하는 몬스터
 				BOSS	: 보스 몬스터
 
-NAME		HP	AP	TYPE
+NAME		HP	AP	SPEED	TYPE
 #1 ~ 20 : Lower of Tower
-Spider		10	5	SPAWN - WEB
-Frog		10	10	
-Bat		5	5	QUICK
-Skeleton		15	5
-Yeti
+Spider		10	3	10	SPAWN - WEB (40%)
+Frog		12	3	15	
+Bat		7	2	20	QUICK
+Skel		15	2	10
+Yeti		10	3	10	FOLLOW
 
 # 21 ~ 40 : Graveyard
-Zombie				FOLLOW
-Werewolf
-Ghost				ALPHA
-Scarecrow			SHOOTER - CROW
-Witch				DASH, ALPHA
+Zombie		21	2	5	FOLLOW
+Werewolf		25	3	10
+Ghost		12	2	20	ALPHA (50%)
+Scarecrow	15	2	5	SHOOTER - CROW (3, 30 - 40%)
+Witch		10	2	20	DASH
 
-# 41 ~ 60 : Lava Land
-Firebat				QUICK, DASH
-Ember				SHOOTER - FIRE
-Golem
-Flamesnake			SHOOTER - FIRE, SPAWNER - LAVA, 이동X
+# 41 ~ 60 : Lava Land	
+Firebat		18	2	20	QUICK, DASH (60%)
+Ember		20	2	10	SHOOTER - FIRE (50%)
+Golem		43	3	5
+Flamesnake	25	3	0	SPAWNER - LAVA (60%)
+volcano
+	
+# 61 ~ 80 : Magical Library	
+Wizard					SHOOTER - MAGIC
+Candle					SPAWN - MINI EMBER
+Book					
+Knight						
+Box						
 
-# 61 ~ 80 : Magical Library
-Wizard				SHOOTER - MAGIC
-Candle				SPAWN - MINI EMBER
-Book
-Mouse Knight / Alien
+box tree
 
 # 81 ~ 100
 
 
-###################################<몬스터> NORMAL, RARE, UNIQUE
+###################################<장비> NORMAL, RARE, UNIQUE
   NO.	이름		가격	레어도		효과
 - 1	바나나			RARE		액티브 : HP +15
 - 2	건전지			RARE		일정 확률로 공격 방어
 - 3	망원경			RARE		아이템 드롭률 +3%
-- 4	초승달					낮은 확률로 부활
+- 4	초승달			NORMAL		낮은 확률로 부활
 - 5	사기 주사위		RARE		스킬 : HP -5 ~ +5
-- 6	에너지 드링크
-- 7	복싱 글러브		RARE		공격력 +6		
-- 8	녹슨 열쇠					사용 : 계단 열기
+- 6	에너지 드링크		NORMAL		이동 속도 +15
+- 7	복싱 글러브		NORMAL		공격력 +6		
+- 8	녹슨 열쇠			RARE		사용 : 계단 열기
 - 9	반 돌			NORMAL		최대 체력 +10
 - 10	마음의 돌			RARE		최대 체력 +25
 - 11	하이바			NORMAL		방어력 +1
@@ -64,23 +68,23 @@ Mouse Knight / Alien
 - 15	만두			NORMAL		액티브 : HP +5
 - 16	금속 탐지기		NORMAL		코인 드롭률 +3%
 - 17	청양 고추			NORMAL		공격력 +2
-- 18	돼지저금통		RARE		레드 코인 등장
+- 18	돼지저금통				레드 코인 등장
 - 19	치즈 피자					
 - 20	독사과					
-- 21	인라인 스케이트		UNIQUE		모든 바닥 효과 무시	
-- 22	미래 기술 6호				액티브 : 0층 복귀				
+- 21	인라인 스케이트				모든 바닥 효과 무시	
+- 22	미래 기술 6호		NORMAL		액티브 : 0층 복귀				
 - 23	빨대			RARE		포션 회복량 +3
-- 24	부적					
-- 25	천둥 번개					스킬 : 전체 적에게 10 데미지
+- 24	부적			NORMAL		방어력 +1, 공격력-2
+- 25	천둥 번개			RARE		스킬 : 전체 적에게 5 데미지
 - 26	골든 티켓			RARE		상점 레어도 증가
-- 27	신호등					스킬 : 3초간 모두 정지
-- 28	등껍질					시간 데미지 -
+- 27	신호등					
+- 28	등껍질					
 - 29	헤어 왁스			
 - 30	3D안경					
-- 31	마지막 잎새		UNIQUE		목숨 0 되었을 때 +1
-- 32	실험용 플라스크		RARE		공격력 +2 / 방어력 -2
+- 31	마지막 잎새		RARE		목숨 0 되었을 때 +1
+- 32	실험용 플라스크		NORMAL		공격력 +2 / 방어력 -2
 - 33
-- 34
+- 34	고대 도서			RARE		스킬 : 원거리 공격
 - 35
 - 36
 - 37	파란 장미

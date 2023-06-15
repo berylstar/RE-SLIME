@@ -10,6 +10,8 @@ public class PlayerScript : MovingObject
     public bool canPunch = true;       // 펀치 쿨타임
     public bool invincivity = false;   // 무적
 
+    public GameObject bullet;
+
     protected override void Start()
     {
         base.Start();
@@ -58,7 +60,7 @@ public class PlayerScript : MovingObject
 
         punchZip.transform.position = this.transform.position;
 
-        if (GameController.playerHP <= 0 && !Cresent())
+        if (GameController.playerHP <= 0 && !EquipCresent())
         {
             StartCoroutine(PlayerDie());
         }
@@ -71,7 +73,7 @@ public class PlayerScript : MovingObject
             return;
 
         // 몬스터와 충돌 감지
-        if (collision.CompareTag("Monster") && !Battery())
+        if (collision.CompareTag("Monster") && !EquipBattery())
         {
             MonsterScript monster = collision.GetComponent<MonsterScript>();
 
@@ -82,7 +84,7 @@ public class PlayerScript : MovingObject
         }
 
         // 투사체와 충돌 감지
-        else if (collision.CompareTag("Bullet") && !Battery())
+        else if (collision.CompareTag("Bullet") && !EquipBattery())
         {
             BulletScript bullet = collision.GetComponent<BulletScript>();
 
@@ -164,7 +166,7 @@ public class PlayerScript : MovingObject
         BM.US.panelDie.SetActive(true);
         yield return GameController.delay_3s;
 
-        if (GameController.playerLife > 0 || Lastleaf())
+        if (GameController.playerLife > 0 || EquipLastleaf())
         {
             // REBORN
             GameController.playerLife -= 1;
@@ -192,7 +194,7 @@ public class PlayerScript : MovingObject
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////
-    private bool Battery()
+    private bool EquipBattery()
     {
         if (GameController.effBattery && Random.Range(0, 10) <= 0)
         {
@@ -214,7 +216,7 @@ public class PlayerScript : MovingObject
         invincivity = false;
     }
     
-    private bool Cresent()
+    private bool EquipCresent()
     {
         if (GameController.effcrescent && Random.Range(0, 19) <= 0)
         {
@@ -224,7 +226,7 @@ public class PlayerScript : MovingObject
         return false;
     }
 
-    private bool Lastleaf()
+    private bool EquipLastleaf()
     {
         if (GameController.effLastleaf != null && GameController.playerLife == 0)
         {
@@ -233,5 +235,12 @@ public class PlayerScript : MovingObject
             return true;
         }
         return false;
+    }
+
+    public void EquipBook()
+    {
+        GameObject product = Instantiate(bullet, transform.position, Quaternion.identity);
+        product.GetComponent<BulletScript>().direction = direction;
+        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

@@ -38,7 +38,7 @@ public class MovingObject : MonoBehaviour
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Monster")))       // 이동 불가 케이스
             return false;
 
-        int a = (int)sr.sprite.rect.width / 120;
+        int a = (int)(sr.sprite.rect.width / 60) - 1;
 
         if (end.x - a < 0 || end.x + a > 9 || end.y < 0 || end.y > 9)
             return false;

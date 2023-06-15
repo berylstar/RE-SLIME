@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkelAni
+  m_Controller: {fileID: 9100000, guid: 15506d07120d5df4898451c160d63534, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9e0a1c2b1c3033f4197e916a313d3727, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 63bd4ce5466d7c64dbf0196747dedb12, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9e9c369000e303943aca6329fa768ac7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0d6eaa585acf7de428ba7f76c0ea533e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d385e826da289d45a7ae050e778da21, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6d385e826da289d45a7ae050e778da21, type: 2}

@@ -34,6 +34,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.effcrescent = true;
         }
+        else if (i == 6)             // 에너지 드링크
+        {
+            GameController.playerSpeed += 15;
+        }
         else if (i == 7)             // 복싱 글러브
         {
             GameController.playerAP += gloves;
@@ -81,6 +85,11 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.potionEff += straw;
         }
+        else if (i == 24)            // 부적
+        {
+            GameController.playerDP += 1;
+            GameController.playerAP -= 2;
+        }
         else if (i == 26)            // 골든 티켓
         {
             GameController.ShopGrade[0] += goldenticket;
@@ -113,6 +122,10 @@ public class EquipEffector : MonoBehaviour
         else if (i == 4)             // 초승달
         {
             GameController.effcrescent = false;
+        }
+        else if (i == 6)             // 에너지 드링크
+        {
+            GameController.playerSpeed -= 15;
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -158,6 +171,11 @@ public class EquipEffector : MonoBehaviour
         else if (i == 23)            // 빨대
         {
             GameController.potionEff -= straw;
+        }
+        else if (i == 24)            // 부적
+        {
+            GameController.playerDP -= 1;
+            GameController.playerAP += 2;
         }
         else if (i == 26)            // 골든 티켓
         {
@@ -208,6 +226,14 @@ public class EquipEffector : MonoBehaviour
                 GameController.SpeedStackOut();
 
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        }
+        else if (i == 25)           // 천둥 번개
+        {
+            GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder();
+        }
+        else if (i == 34)           // 고대 도서
+        {
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().EquipBook();
         }
         else
             return;

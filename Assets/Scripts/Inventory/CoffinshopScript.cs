@@ -133,6 +133,7 @@ public class CoffinshopScript : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             int iGrade = Random.Range(1, 101);
+            print(iGrade);
 
             if (iGrade <= GameController.ShopGrade[0] && i <= INVEN.equipsRare.Count)
             {

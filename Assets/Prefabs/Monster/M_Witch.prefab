@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 9043970307731784600}
   - component: {fileID: 9043970307731784603}
   - component: {fileID: 4326226810104219469}
-  - component: {fileID: 2022560734996843079}
   m_Layer: 6
   m_Name: M_Witch
   m_TagString: Monster
@@ -165,23 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b2c3f3be5f5fe41b7ac266b1400e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 20
-  AP: 5
+  HP: 10
+  AP: 2
   speed: 20
   dashPercent: 50
---- !u!114 &2022560734996843079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043970307731784613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecc97ba22fb7dfc46a488d9f60fadc19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 20
-  AP: 5
-  speed: 0
-  transparentPercent: 30
