@@ -161,7 +161,7 @@ public class PlayerScript : MovingObject
     {
         isAlive = false;
         ani.SetTrigger("PlayerDie");
-        yield return GameController.delay_3s;
+        yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
         BM.US.panelDie.SetActive(true);
         yield return GameController.delay_3s;
