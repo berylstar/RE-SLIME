@@ -2,6 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class GameData
+{
+    // STATUS
+    public int savedFloor = 0;
+
+    // PLAYER
+    public int playerLife = 3;
+    public int playerMaxHP = 100;
+    public int playerAP = 10;
+    public int playerDP = 0;
+    public float playerSpeed = 50f;
+    public float playerTimeDamage = 1f;
+    public EquipScript skillC = null;
+    public EquipScript skillV = null;
+    public List<int> ShopGrade = new List<int>() { 20, 5 };
+
+    // ITEM
+    public int coin = 0;
+    public int probCoin = 10;
+    public bool RedCoin = false;
+    public int potionEff = 5;
+    public int probPotion = 10;
+
+    // EQUIP
+    public bool effBattery = false;
+    public bool effcrescent = false;
+    public bool effSkate = false;
+    public EquipScript effLastleaf = null;
+}
+
 public class GameController : MonoBehaviour
 {
     public static readonly WaitForSeconds delay_3s = new WaitForSeconds(3f);
@@ -23,7 +53,7 @@ public class GameController : MonoBehaviour
     public static int savedFloor = 0;
 
     // PLAYER
-    public static int playerLife = 1;
+    public static int playerLife = 3;
     public static int playerMaxHP = 100;
     public static int playerHP = playerMaxHP;
     public static int playerAP = 10;
@@ -112,5 +142,10 @@ public class GameController : MonoBehaviour
 
         //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void buttonSave()
+    {
+        DataManager.inst.SaveData();
     }
 }

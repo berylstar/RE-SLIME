@@ -25,6 +25,7 @@ public class IntroScript : MonoBehaviour
     {
         if (index == 0)
         {
+            // DataManager.inst.LoadData();
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
         else if (index == 1)
@@ -37,6 +38,7 @@ public class IntroScript : MonoBehaviour
         }
     }
 
+    // PointerEnter 감지용 함수
     public void SetIndex(int i)
     {
         index = i;
