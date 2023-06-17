@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour
     // GAME SYSYTEM
     public static bool esc = false;
     public static bool inDiaglogue = false;
+    public static DialogueScript nowDialogue = null;
     public static bool inInven = false;
     public static bool inShop = false;
     public static bool inBox = false;

@@ -4124,7 +4124,7 @@ GameObject:
   - component: {fileID: 478267259}
   - component: {fileID: 478267258}
   - component: {fileID: 478267257}
-  - component: {fileID: 5820685334838469918}
+  - component: {fileID: 478267256}
   m_Layer: 6
   m_Name: N_KingSlime
   m_TagString: NPC
@@ -4132,6 +4132,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &478267256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478267255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3661dc370d4c22340a74d9665b2b292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  start: 0
+  end: 4
+  img:
+  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+  talker:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  talk:
+  - "\u3131"
+  - "\u3134"
+  - "\u3137"
+  - "\u3139"
+  - "\u3141"
+  - "\u3142"
 --- !u!50 &478267257
 Rigidbody2D:
   serializedVersion: 4
@@ -4261,7 +4297,7 @@ Transform:
   m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1}
   m_Children: []
   m_Father: {fileID: 1150892071}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480707728
 GameObject:
@@ -8004,6 +8040,7 @@ GameObject:
   - component: {fileID: 825139918}
   - component: {fileID: 825139917}
   - component: {fileID: 825139916}
+  - component: {fileID: 825139915}
   m_Layer: 6
   m_Name: N_Sign
   m_TagString: NPC
@@ -8025,6 +8062,27 @@ Transform:
   m_Father: {fileID: 1150892071}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825139915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825139913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3661dc370d4c22340a74d9665b2b292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  start: 0
+  end: 1
+  img:
+  - {fileID: 21300000, guid: c842c8b5620702f4988d4b8c30f56aed, type: 3}
+  talker:
+  - 
+  talk:
+  - "[\"\uC774 \uC55E\uC740 \uB358\uC804\uC785\uB2C8\uB2E4.\"]"
 --- !u!50 &825139916
 Rigidbody2D:
   serializedVersion: 4
@@ -10930,9 +10988,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 478267261}
   - {fileID: 6910098259509927337}
   - {fileID: 1210164386}
+  - {fileID: 478267261}
   - {fileID: 825139914}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -11534,7 +11592,7 @@ Transform:
   m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1}
   m_Children: []
   m_Father: {fileID: 1150892071}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211925628
 GameObject:
@@ -20119,33 +20177,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &5820685334838469918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478267255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3661dc370d4c22340a74d9665b2b292f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  img:
-  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
-  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
-  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-  talker:
-  - '["KING SLIME"]'
-  - '["SLIME"]'
-  - '["KING SLIME"]'
-  - '["SLIME"]'
-  talk:
-  - 1
-  - 2
-  - 3
-  - 4
 --- !u!61 &6910098259509927318
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20235,7 +20266,7 @@ Transform:
   m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1}
   m_Children: []
   m_Father: {fileID: 1150892071}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6910098259509927338
 GameObject:
