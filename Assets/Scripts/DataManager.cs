@@ -10,7 +10,6 @@ public class DataManager : MonoBehaviour
     GameData dd = new GameData();
 
     string path;
-    string filename;
 
     private void Awake()
     {
@@ -19,7 +18,11 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         path = Application.persistentDataPath + "/";
-        filename = "SLOT";
+    }
+
+    public void NewData(int slot)
+    {
+        dd.slot = slot;
     }
 
     public void SaveData()
@@ -48,13 +51,13 @@ public class DataManager : MonoBehaviour
         dd.effSkate = GameController.effSkate;
         dd.effLastleaf = GameController.effLastleaf;
 
-        File.WriteAllText(path + filename, JsonUtility.ToJson(dd));
+        File.WriteAllText(path + "SLOT_" + dd.slot, JsonUtility.ToJson(dd));
     }
 
-    public void LoadData()
+    public void LoadData(int slot)
     {
         print("LOAD!");
-        dd = JsonUtility.FromJson<GameData>(File.ReadAllText(path + filename));
+        dd = JsonUtility.FromJson<GameData>(File.ReadAllText(path + "SLOT_" + slot.ToString()));
 
         GameController.savedFloor = dd.savedFloor;
 

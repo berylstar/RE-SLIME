@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameData
 {
+    public int slot;
+
     // STATUS
     public int savedFloor = 0;
 
