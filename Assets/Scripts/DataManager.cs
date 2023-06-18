@@ -17,15 +17,15 @@ public class DataManager : MonoBehaviour
         else if (inst != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
-        path = Application.persistentDataPath + "/";
+        path = Application.persistentDataPath + "/SLOT_";
     }
 
-    public void NewData(int slot)
+    public string ReturnPath(string slot)
     {
-        dd.slot = slot;
+        return path + slot;
     }
 
-    public void SaveData()
+    public void SaveData(string slot)
     {
         print("SAVED!");
         dd.savedFloor = GameController.savedFloor;
@@ -51,13 +51,15 @@ public class DataManager : MonoBehaviour
         dd.effSkate = GameController.effSkate;
         dd.effLastleaf = GameController.effLastleaf;
 
-        File.WriteAllText(path + "SLOT_" + dd.slot, JsonUtility.ToJson(dd));
+        dd.endTutorial = GameController.endTutorial;
+
+        File.WriteAllText(path + slot, JsonUtility.ToJson(dd));
     }
 
-    public void LoadData(int slot)
+    public void LoadData(string slot)
     {
         print("LOAD!");
-        dd = JsonUtility.FromJson<GameData>(File.ReadAllText(path + "SLOT_" + slot.ToString()));
+        dd = JsonUtility.FromJson<GameData>(File.ReadAllText(path + slot));
 
         GameController.savedFloor = dd.savedFloor;
 
@@ -81,5 +83,7 @@ public class DataManager : MonoBehaviour
         GameController.effcrescent = dd.effcrescent;
         GameController.effSkate = dd.effSkate;
         GameController.effLastleaf = dd.effLastleaf;
+
+        GameController.endTutorial = dd.endTutorial;
     }
 }

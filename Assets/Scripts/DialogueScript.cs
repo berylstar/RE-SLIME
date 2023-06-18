@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 
 public enum DialogueType
 {
@@ -14,13 +12,12 @@ public class DialogueScript : MonoBehaviour
 {
     public DialogueType type;
 
-    public int start, end;
-
     public List<Sprite> img = new List<Sprite>();
     public List<string> talker = new List<string>();
     public List<string> talk = new List<string>();
 
     private UIScript US;
+    private int start, end;
     private int index = 0;
 
     private void Start()
@@ -44,13 +41,11 @@ public class DialogueScript : MonoBehaviour
             {
                 StartCoroutine(CloseTutorial());
 
-                if (type == DialogueType.KINGSLIME && index == 4)
+                if (type == DialogueType.KINGSLIME && index == end)
                 {
-                    GameController.coin += 5;       // 테스트용
-                    start = 4;
-                    end = 6;
+                    GameController.endTutorial = true;
+                    GameController.coin += 5;
                 }
-                    
             }
             else
                 US.Dialogue(img[index], talker[index], talk[index]);
@@ -61,9 +56,21 @@ public class DialogueScript : MonoBehaviour
     {
         if (collision.CompareTag("Punch"))
         {
+            SetDialogue();
             index = start;
             GameController.nowDialogue = this;
             US.Dialogue(img[start], talker[start], talk[start]);
+        }
+    }
+
+    private void SetDialogue()
+    {
+        if (type == DialogueType.SIGN) { start = 0; end = 1; }
+
+        else if (type == DialogueType.KINGSLIME)
+        {
+            if (!GameController.endTutorial) { start = 0; end = 4; }
+            else { start = 4; end = 6; }
         }
     }
 

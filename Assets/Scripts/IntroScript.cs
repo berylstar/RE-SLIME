@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.IO;
 
 public class IntroScript : MonoBehaviour
 {
     public GameObject[] panel;
-
     public GameObject pick;
+    public Button[] slots;
 
     private int menuIndex = 0;
     private List<int> mmi = new List<int>() { 2, 3 };
@@ -31,10 +33,12 @@ public class IntroScript : MonoBehaviour
         {
             if (pickIndex == 0)
             {
-                // DataManager.inst.LoadData();
-                //UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-
                 ActivePanel(1);
+
+                if (File.Exists(DataManager.inst.ReturnPath("1")))
+                    slots[1].GetComponent<Button>().interactable = true;
+                if (File.Exists(DataManager.inst.ReturnPath("2")))
+                    slots[2].GetComponent<Button>().interactable = true;
             }
             else if (pickIndex == 1)
             {
@@ -47,22 +51,15 @@ public class IntroScript : MonoBehaviour
         }
         else if (menuIndex == 1)
         {
-            //if (pickIndex == 0)
-            //{
-
-            //}
-            //else if (pickIndex == 1)
-            //{
-
-            //}
-            //else if (pickIndex == 2)
-            //{
-
-            //}
-            if (pickIndex <= 3)
+            if (pickIndex <= 2)
             {
-                DataManager.inst.NewData(pickIndex);
-                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                if (!slots[pickIndex].interactable)
+                    return;
+
+                if (pickIndex == 1 || pickIndex == 2)
+                    DataManager.inst.LoadData(pickIndex.ToString());
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
             }
             else
             {

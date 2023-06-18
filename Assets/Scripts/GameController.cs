@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameData
 {
-    public int slot;
-
     // STATUS
     public int savedFloor = 0;
 
@@ -32,6 +30,9 @@ public class GameData
     public bool effcrescent = false;
     public bool effSkate = false;
     public EquipScript effLastleaf = null;
+
+    // GAME SYSTEM
+    public bool endTutorial = false;
 }
 
 public class GameController : MonoBehaviour
@@ -87,6 +88,7 @@ public class GameController : MonoBehaviour
     public static bool inInven = false;
     public static bool inShop = false;
     public static bool inBox = false;
+    public static bool endTutorial = false;
 
     public static bool Pause(int i)
     {
@@ -140,14 +142,13 @@ public class GameController : MonoBehaviour
     public static void Restart()
     {
         // static 변수들 리셋 시켜줘야 함
-        Destroy(GameObject.Find("INVENTORY"));
+        Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");
     }
 
-    public void buttonSave()
+    public static void SAVE(int idx)
     {
-        DataManager.inst.SaveData();
+        DataManager.inst.SaveData(idx.ToString());
     }
 }

@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 298564048}
   - component: {fileID: 298564047}
   m_Layer: 5
-  m_Name: ButtonSlot_3
+  m_Name: ButtonSlot_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -714,7 +714,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 298564049}
   m_OnClick:
     m_PersistentCalls:
@@ -764,7 +764,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEW
+  m_Text: LOAD 2
 --- !u!222 &298564050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 561424962}
   - component: {fileID: 561424961}
   m_Layer: 5
-  m_Name: ButtonSlot_1
+  m_Name: ButtonNewGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1103,7 +1103,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEW
+  m_Text: NEW GAME
 --- !u!222 &561424964
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1415,7 +1415,7 @@ GameObject:
   - component: {fileID: 1314710463}
   - component: {fileID: 1314710462}
   m_Layer: 5
-  m_Name: ButtonSlot_2
+  m_Name: ButtonSlot_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,7 +1508,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1314710464}
   m_OnClick:
     m_PersistentCalls:
@@ -1558,7 +1558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NEW
+  m_Text: LOAD 1
 --- !u!222 &1314710465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1920,6 +1920,10 @@ MonoBehaviour:
   - {fileID: 353927311}
   - {fileID: 1203371012}
   pick: {fileID: 90384358}
+  slots:
+  - {fileID: 561424962}
+  - {fileID: 1314710463}
+  - {fileID: 298564048}
 --- !u!1 &1598579513
 GameObject:
   m_ObjectHideFlags: 0

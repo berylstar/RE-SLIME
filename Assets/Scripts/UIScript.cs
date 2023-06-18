@@ -51,16 +51,13 @@ public class UIScript : MonoBehaviour
 
     private void InESCKeyInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex -= 1;
-        if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex += 1;
-
-        if (escIndex < 0) escIndex = 2;
-        else if (escIndex > 2) escIndex = 0;
+        if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex = Mathf.Max(escIndex - 1, 0);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex = Mathf.Min(escIndex + 1, 2);
 
         if (Input.GetKeyDown(KeyCode.Space))
             ESCSelect();
 
-        escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, -escIndex * 100, 0f);
+        escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, escIndex * -100, 0f);
     }
 
     private void ESC()
