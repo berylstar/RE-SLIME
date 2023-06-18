@@ -141,7 +141,7 @@ public class GameController : MonoBehaviour
 
     public static void Restart()
     {
-        // static 변수들 리셋 시켜줘야 함
+        DataManager.inst.NewData();             // static 변수들 리셋
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");

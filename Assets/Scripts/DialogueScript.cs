@@ -41,7 +41,7 @@ public class DialogueScript : MonoBehaviour
             {
                 StartCoroutine(CloseTutorial());
 
-                if (type == DialogueType.KINGSLIME && index == end)
+                if (type == DialogueType.KINGSLIME && !GameController.endTutorial)
                 {
                     GameController.endTutorial = true;
                     GameController.coin += 5;

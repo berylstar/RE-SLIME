@@ -58,6 +58,8 @@ public class IntroScript : MonoBehaviour
 
                 if (pickIndex == 1 || pickIndex == 2)
                     DataManager.inst.LoadData(pickIndex.ToString());
+                else
+                    DataManager.inst.NewData();
 
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
             }

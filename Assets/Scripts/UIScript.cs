@@ -55,7 +55,7 @@ public class UIScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex = Mathf.Min(escIndex + 1, 2);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            ESCSelect();
+            ESCSelect(escIndex);
 
         escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, escIndex * -100, 0f);
     }
@@ -70,21 +70,26 @@ public class UIScript : MonoBehaviour
         escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
     }
 
-    private void ESCSelect()
+    public void ESCSelect(int idx)
     {
-        if (escIndex == 0)
+        if (idx == 0)
         {
             ESC();
         }
-        else if (escIndex == 1)
+        else if (idx == 1)
         {
             print("OPTION");
         }
-        else if (escIndex == 2)
+        else if (idx == 2)
         {
             ESC();
             GameController.Restart();
         }
+    }
+
+    public void SetESCIndex(int idx)
+    {
+        escIndex = idx;
     }
 
     public void Dialogue(Sprite character, string who, string talk)

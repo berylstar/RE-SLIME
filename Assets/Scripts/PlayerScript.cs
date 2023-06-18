@@ -7,10 +7,12 @@ public class PlayerScript : MovingObject
     public GameObject punchZip;
     public GameObject[] punches;
 
-    public bool canPunch = true;       // ÆÝÄ¡ ÄðÅ¸ÀÓ
-    public bool invincivity = false;   // ¹«Àû
+    [HideInInspector] public bool canPunch = true;       // ÆÝÄ¡ ÄðÅ¸ÀÓ
+    [HideInInspector] public bool invincivity = false;   // ¹«Àû
 
+    [Header ("EXTRA")]
     public GameObject bullet;
+    public GameObject sight;
 
     protected override void Start()
     {

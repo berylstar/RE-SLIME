@@ -86,4 +86,36 @@ public class DataManager : MonoBehaviour
 
         GameController.endTutorial = dd.endTutorial;
     }
+
+    public void NewData()
+    {
+        print("NEW!");
+
+        dd = new GameData();
+
+        GameController.savedFloor = dd.savedFloor;
+
+        GameController.playerLife = dd.playerLife;
+        GameController.playerMaxHP = dd.playerMaxHP;
+        GameController.playerAP = dd.playerAP;
+        GameController.playerDP = dd.playerDP;
+        GameController.playerSpeed = dd.playerSpeed;
+        GameController.playerTimeDamage = dd.playerTimeDamage;
+        GameController.skillC = dd.skillC;
+        GameController.skillV = dd.skillV;
+        GameController.ShopGrade = dd.ShopGrade;
+
+        GameController.coin = dd.coin;
+        GameController.probCoin = dd.probCoin;
+        GameController.RedCoin = dd.RedCoin;
+        GameController.potionEff = dd.potionEff;
+        GameController.probPotion = dd.probPotion;
+
+        GameController.effBattery = dd.effBattery;
+        GameController.effcrescent = dd.effcrescent;
+        GameController.effSkate = dd.effSkate;
+        GameController.effLastleaf = dd.effLastleaf;
+
+        GameController.endTutorial = dd.endTutorial;
+    }
 }
