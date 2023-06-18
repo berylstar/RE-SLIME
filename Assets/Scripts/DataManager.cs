@@ -7,9 +7,8 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager inst;
 
-    GameData dd = new GameData();
-
-    string path;
+    private GameData dd = new GameData();
+    private string path;
 
     private void Awake()
     {
@@ -27,7 +26,6 @@ public class DataManager : MonoBehaviour
 
     public void SaveData(string slot)
     {
-        print("SAVED!");
         dd.savedFloor = GameController.savedFloor;
 
         dd.playerLife = GameController.playerLife;
@@ -46,6 +44,13 @@ public class DataManager : MonoBehaviour
         dd.potionEff = GameController.potionEff;
         dd.probPotion = GameController.probPotion;
 
+        dd.gottenEquips = GameController.gottenEquips;
+
+        for (int i = 0; i < GameController.gottenEquips.Count; i++)
+        {
+            print(GameController.gottenEquips[i].name);
+        }
+
         dd.effBattery = GameController.effBattery;
         dd.effcrescent = GameController.effcrescent;
         dd.effSkate = GameController.effSkate;
@@ -54,11 +59,12 @@ public class DataManager : MonoBehaviour
         dd.endTutorial = GameController.endTutorial;
 
         File.WriteAllText(path + slot, JsonUtility.ToJson(dd));
+
+        print("SAVED!");
     }
 
     public void LoadData(string slot)
     {
-        print("LOAD!");
         dd = JsonUtility.FromJson<GameData>(File.ReadAllText(path + slot));
 
         GameController.savedFloor = dd.savedFloor;
@@ -79,18 +85,25 @@ public class DataManager : MonoBehaviour
         GameController.potionEff = dd.potionEff;
         GameController.probPotion = dd.probPotion;
 
+        GameController.gottenEquips = dd.gottenEquips;
+
+        for (int i = 0; i < GameController.gottenEquips.Count; i++)
+        {
+            print(GameController.gottenEquips[i].name);
+        }
+
         GameController.effBattery = dd.effBattery;
         GameController.effcrescent = dd.effcrescent;
         GameController.effSkate = dd.effSkate;
         GameController.effLastleaf = dd.effLastleaf;
 
         GameController.endTutorial = dd.endTutorial;
+
+        print("LOAD!");
     }
 
     public void NewData()
     {
-        print("NEW!");
-
         dd = new GameData();
 
         GameController.savedFloor = dd.savedFloor;
@@ -117,5 +130,7 @@ public class DataManager : MonoBehaviour
         GameController.effLastleaf = dd.effLastleaf;
 
         GameController.endTutorial = dd.endTutorial;
+
+        print("NEW!");
     }
 }

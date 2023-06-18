@@ -27,8 +27,8 @@ public class EquipScript : MonoBehaviour
     public EquipType type;
     public EquipGrade grade;
     public int coolTime;
-    private bool inCoolTime = false;
-    public bool isEffected = false;
+    [HideInInspector] private bool inCoolTime = false;
+    [HideInInspector] public bool isEffected = false;
 
     [Header("")]
     public List<int> posIndex = new List<int>();
@@ -68,6 +68,7 @@ public class EquipScript : MonoBehaviour
 
         INVEN.GottenEquips.Add(this);
         ReturnGrade().Remove(this);
+        GameController.gottenEquips.Add(this);
 
         gameObject.SetActive(true);
     }

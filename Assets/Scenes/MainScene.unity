@@ -1705,12 +1705,12 @@ GameObject:
   - component: {fileID: 189166882}
   - component: {fileID: 189166881}
   m_Layer: 0
-  m_Name: 20_poisonapple
+  m_Name: 20_quarterstone
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &189166880
 Transform:
   m_ObjectHideFlags: 0
@@ -1740,12 +1740,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 20
-  EName: "\uB3C5\uC0AC\uACFC"
-  adject: "\uB9C8\uB140\uC758 \uC560\uC7A5\uD488"
-  effect: 
+  EName: "\uBC18\uC758 \uBC18 \uB3CC"
+  adject: "\uBC18\uC758 \uBC18\uC758 \uBC18\uC758 \uB3CC\uB3C4 \uC788\uB098"
+  effect: "\uCD5C\uB300 \uCCB4\uB825 +5"
   price: 1
   type: 0
-  grade: 2
+  grade: 1
   coolTime: 0
   isEffected: 0
   posIndex: 00000000
@@ -1797,26 +1797,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.21107006, y: 0.048627965}
-      - {x: 0.18620916, y: 0.10809317}
-      - {x: 0.10676748, y: 0.12755838}
-      - {x: 0.07595377, y: 0.111883774}
-      - {x: 0.03944215, y: 0.046976298}
-      - {x: 0.038627967, y: 0.20295334}
-      - {x: 0.05755838, y: 0.24972108}
-      - {x: 0.012442093, y: 0.22160462}
-      - {x: -0.016250134, y: 0.08450198}
-      - {x: -0.08485365, y: 0.10364127}
-      - {x: -0.17675638, y: 0.108569145}
-      - {x: -0.23458174, y: 0.021581322}
-      - {x: -0.22160462, y: -0.10430233}
-      - {x: -0.14890712, y: -0.20430234}
-      - {x: -0.08155346, y: -0.23046732}
-      - {x: -0.05923271, y: -0.17398977}
-      - {x: 0.058872223, y: -0.16752172}
-      - {x: 0.08048844, y: -0.22809294}
-      - {x: 0.14158133, y: -0.22893041}
-      - {x: 0.23025587, y: -0.096814066}
+    - - {x: 0.25226763, y: -0.2621434}
+      - {x: 0.26708153, y: -0.18534}
+      - {x: 0.17462969, y: -0.06381512}
+      - {x: 0.15745422, y: 0.04621101}
+      - {x: 0.21062207, y: 0.07114819}
+      - {x: 0.19251657, y: 0.09695684}
+      - {x: 0.11708154, y: 0.1772053}
+      - {x: -0.07062208, y: 0.18214342}
+      - {x: -0.14403838, y: 0.11214341}
+      - {x: -0.23087052, y: -0.007857056}
+      - {x: -0.2687271, y: -0.24403837}
+      - {x: -0.21509108, y: -0.26378945}
+      - {x: -0.14738792, y: -0.2060571}
+      - {x: -0.036239266, y: -0.2021439}
+      - {x: 0.089722335, y: -0.13540629}
 --- !u!212 &189166884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1857,7 +1852,7 @@ SpriteRenderer:
   m_SortingLayerID: -1089854835
   m_SortingLayer: 5
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: adb5db040626f514192d22980f82d43c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a9c840e48ac4ed40b488cad1bdc8566, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3629,7 +3624,7 @@ MonoBehaviour:
   effect: "\uC0C1\uC810\uC5D0 \uB354 \uC88B\uC740 \uC7A5\uBE44 \uBC1C\uACAC"
   price: 1
   type: 0
-  grade: 1
+  grade: 2
   coolTime: 0
   isEffected: 0
   posIndex: 000000000100000002000000
@@ -10612,7 +10607,7 @@ MonoBehaviour:
   number: 11
   EName: "\uD558\uC774\uBC14"
   adject: "\uBA38\uB9AC\uB9CC\uD07C\uC740 \uD655\uC2E4\uD788 \uBCF4\uD638\uD569\uB2C8\uB2E4"
-  effect: "\uBC29\uC5B4\uB825 +1"
+  effect: "\uBC29\uC5B4\uB825 +2"
   price: 1
   type: 0
   grade: 1
@@ -13033,14 +13028,14 @@ Transform:
   - {fileID: 1790059101}
   - {fileID: 1302847596}
   - {fileID: 425455001}
-  - {fileID: 1573810382}
+  - {fileID: 1908497350}
   - {fileID: 1297337203}
   - {fileID: 587935428}
   - {fileID: 623545904}
   - {fileID: 809661626}
   - {fileID: 1397039997}
   - {fileID: 354555286}
-  - {fileID: 1908497350}
+  - {fileID: 1573810382}
   - {fileID: 2038880723}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -13119,9 +13114,10 @@ MonoBehaviour:
   - {fileID: 264723434}
   - {fileID: 2027531953}
   - {fileID: 1309667544}
+  - {fileID: 189166881}
   - {fileID: 2018304546}
   - {fileID: 1790059105}
-  - {fileID: 425455005}
+  - {fileID: 1908497351}
   - {fileID: 1397039998}
   equipsRare:
   - {fileID: 568524635}
@@ -13134,6 +13130,7 @@ MonoBehaviour:
   - {fileID: 187678459}
   - {fileID: 1605969016}
   - {fileID: 2010542409}
+  - {fileID: 425455005}
   equipsUnique:
   - {fileID: 1302847597}
   - {fileID: 809661627}
@@ -15741,7 +15738,7 @@ Transform:
   - {fileID: 444403642}
   - {fileID: 1724735011}
   m_Father: {fileID: 1303250847}
-  m_RootOrder: 28
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1573810383
 MonoBehaviour:
@@ -18146,12 +18143,12 @@ GameObject:
   - component: {fileID: 1908497352}
   - component: {fileID: 1908497351}
   m_Layer: 0
-  m_Name: 37_bluerose
+  m_Name: 27_bluerose
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1908497350
 Transform:
   m_ObjectHideFlags: 0
@@ -18166,7 +18163,7 @@ Transform:
   - {fileID: 1311699812}
   - {fileID: 961355908}
   m_Father: {fileID: 1303250847}
-  m_RootOrder: 35
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1908497351
 MonoBehaviour:
@@ -18180,13 +18177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 37
+  number: 27
   EName: "\uD30C\uB780 \uC7A5\uBBF8"
   adject: 
-  effect: 
+  effect: "\uBC29\uC5B4\uB825 +1"
   price: 1
   type: 0
-  grade: 3
+  grade: 1
   coolTime: 0
   isEffected: 0
   posIndex: 0000000003000000

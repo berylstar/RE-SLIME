@@ -6,17 +6,21 @@ public class EquipEffector : MonoBehaviour
 {
     private int banana = 15;
     private int binocular = 3;
+    private int energydrink = 15;
     private int gloves = 6;
     private int halfstone = 10;
     private int heartstone = 25;
-    private int helmet = 1;
+    private int helmet = 2;
     private float ice = 10f;
     private int machine = 3;
     private int mandoo = 5;
     private int metaldetector = 3;
     private int pepper = 2;
+    private int quarterstone = 5;
     private int straw = 3;
+    private List<int> talisman = new List<int>() { 1, -2 };
     private int goldenticket = 2;
+    private int bluerose = 1;
     private int plask = 2;
 
     public void EquipEffect(int i, EquipScript equip)
@@ -36,7 +40,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 6)             // 에너지 드링크
         {
-            GameController.playerSpeed += 15;
+            GameController.playerSpeed += energydrink;
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -77,6 +81,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.RedCoin = true;
         }
+        else if (i == 20)            // 반의 반 돌
+        {
+            GameController.playerMaxHP += quarterstone;
+        }
         else if (i == 21)            // 인라인 스케이트
         {
             GameController.effSkate = true;
@@ -87,13 +95,17 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 24)            // 부적
         {
-            GameController.playerDP += 1;
-            GameController.playerAP -= 2;
+            GameController.playerDP += talisman[0];
+            GameController.playerAP += talisman[1];
         }
         else if (i == 26)            // 골든 티켓
         {
             GameController.ShopGrade[0] += goldenticket;
             GameController.ShopGrade[1] += goldenticket;
+        }
+        else if (i == 27)            // 파란 장미
+        {
+            GameController.playerDP += bluerose;
         }
         else if (i == 31)            // 마지막 잎새
         {
@@ -125,7 +137,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 6)             // 에너지 드링크
         {
-            GameController.playerSpeed -= 15;
+            GameController.playerSpeed -= energydrink;
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -164,6 +176,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.RedCoin = false;
         }
+        else if (i == 20)            // 반의 반 돌
+        {
+            GameController.playerMaxHP -= quarterstone;
+        }
         else if (i == 21)            // 인라인 스케이트
         {
             GameController.effSkate = false;
@@ -174,13 +190,17 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 24)            // 부적
         {
-            GameController.playerDP -= 1;
-            GameController.playerAP += 2;
+            GameController.playerDP -= talisman[0];
+            GameController.playerAP -= talisman[1];
         }
         else if (i == 26)            // 골든 티켓
         {
             GameController.ShopGrade[0] -= goldenticket;
             GameController.ShopGrade[1] -= goldenticket;
+        }
+        else if (i == 27)            // 파란 장미
+        {
+            GameController.playerDP -= bluerose;
         }
         else if (i == 31)            // 마지막 잎새
         {

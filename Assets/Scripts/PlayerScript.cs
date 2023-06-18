@@ -234,6 +234,7 @@ public class PlayerScript : MovingObject
         {
             GameController.playerLife += 1;
             GameController.effLastleaf.RemoveThis();
+            GameController.effLastleaf = null;
             return true;
         }
         return false;
