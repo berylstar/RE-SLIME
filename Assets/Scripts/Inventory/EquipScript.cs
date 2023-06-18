@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipData
-{
-    public int num;
-    public List<int> pos = new List<int>();
-}
-
 public enum EquipType
 {
     PASSIVE = 0,
@@ -185,7 +179,7 @@ public class EquipScript : MonoBehaviour
 
     public void LoadThis(List<int> poses)
     {
-        posIndex = poses;
+        TEST(poses);
         tf.position = INVEN.ReturnGrid(posIndex[0]);
         FillIC(1);
 
@@ -193,5 +187,13 @@ public class EquipScript : MonoBehaviour
         ReturnGrade().Remove(this);
 
         gameObject.SetActive(true);
+    }
+
+    private void TEST(List<int> poses)
+    {
+        for (int i = 0; i < poses.Count; i++)
+        {
+            posIndex[i] = poses[i];
+        }
     }
 }

@@ -26,8 +26,7 @@ public class GameData
     public int probPotion = 10;
 
     // EQUIP
-    public List<EquipData> properties = new List<EquipData>();
-    public List<(int, List<int>)> n = new List<(int, List<int>)>();
+    public List<string> EP = new List<string>();
     public bool effBattery = false;
     public bool effcrescent = false;
     public bool effSkate = false;
@@ -78,7 +77,7 @@ public class GameController : MonoBehaviour
     public static int probPotion = 10;
 
     // EQUIPS
-    public static List<EquipData> properties = new List<EquipData>();
+    public static List<string> EP = new List<string>();
     public static bool effBattery = false;
     public static bool effcrescent = false;
     public static bool effSkate = false;

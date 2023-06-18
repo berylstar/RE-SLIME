@@ -28,7 +28,10 @@ public class InventoryScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         InitialGrid();
+    }
 
+    private void Start()
+    {
         LOAD();
     }
 
@@ -36,20 +39,44 @@ public class InventoryScript : MonoBehaviour
     {
         for (int i = 0; i < GottenEquips.Count; i++)
         {
-            EquipData neww = new EquipData();
-            neww.num = GottenEquips[i].number;
-            neww.pos = GottenEquips[i].posIndex;
+            string strr = GottenEquips[i].number.ToString();
 
-            GameController.properties.Add(neww);
+            for (int j = 0; j < GottenEquips[i].posIndex.Count; j++)
+            {
+                strr += "," + GottenEquips[i].posIndex[j].ToString();
+            }
+
+            print(strr);
+            GameController.EP.Add(strr);
         }
     }
 
     private void LOAD()
     {
-        for (int i = 0; i < GameController.properties.Count; i++)
+        //for (int i = 0; i < GameController.EP.Count; i++)
+        //{
+        //    List<int> poses = new List<int>();
+
+        //    for (int j = 2; j < GameController.EP[i].Length; j++)
+        //    {
+        //        poses.Add(int.Parse(GameController.EP[i].Substring(j, j + 2)));
+        //        j++;
+        //    }
+        //    all[int.Parse(GameController.EP[i].Substring(0, 2))].LoadThis(poses);
+        //}
+
+        for (int i = 0; i < GameController.EP.Count; i++)
         {
-            print((GameController.properties[i].num));
-            all[GameController.properties[i].num].LoadThis(GameController.properties[i].pos);
+            string[] ints = GameController.EP[i].Split(',');
+
+            List<int> poses = new List<int>();
+
+            for (int j = 1; j < ints.Length; j++)
+            {
+                poses.Add(int.Parse(ints[j]));
+            }
+
+            all[int.Parse(ints[0])].LoadThis(poses);
         }
     }
 
