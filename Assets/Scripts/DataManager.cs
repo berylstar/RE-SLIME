@@ -44,12 +44,9 @@ public class DataManager : MonoBehaviour
         dd.potionEff = GameController.potionEff;
         dd.probPotion = GameController.probPotion;
 
-        dd.properties = GameController.properties;
 
-        for (int i = 0; i < dd.properties.Count; i++)
-        {
-            print(dd.properties[i]);
-        }
+        GameObject.Find("INVENTORY").GetComponent<InventoryScript>().SAVE();
+        dd.properties = GameController.properties;
 
         dd.effBattery = GameController.effBattery;
         dd.effcrescent = GameController.effcrescent;
@@ -86,10 +83,7 @@ public class DataManager : MonoBehaviour
         GameController.probPotion = dd.probPotion;
 
         GameController.properties = dd.properties;
-        for (int i = 0; i < GameController.properties.Count; i++)
-        {
-            print(GameController.properties[i]);
-        }
+
         GameController.effBattery = dd.effBattery;
         GameController.effcrescent = dd.effcrescent;
         GameController.effSkate = dd.effSkate;
@@ -121,6 +115,8 @@ public class DataManager : MonoBehaviour
         GameController.RedCoin = dd.RedCoin;
         GameController.potionEff = dd.potionEff;
         GameController.probPotion = dd.probPotion;
+
+        GameController.properties = dd.properties;
 
         GameController.effBattery = dd.effBattery;
         GameController.effcrescent = dd.effcrescent;

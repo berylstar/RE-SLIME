@@ -32,11 +32,24 @@ public class InventoryScript : MonoBehaviour
         LOAD();
     }
 
+    public void SAVE()
+    {
+        for (int i = 0; i < GottenEquips.Count; i++)
+        {
+            EquipData neww = new EquipData();
+            neww.num = GottenEquips[i].number;
+            neww.pos = GottenEquips[i].posIndex;
+
+            GameController.properties.Add(neww);
+        }
+    }
+
     private void LOAD()
     {
         for (int i = 0; i < GameController.properties.Count; i++)
         {
-            all[GameController.properties[i]].LoadThis();
+            print((GameController.properties[i].num));
+            all[GameController.properties[i].num].LoadThis(GameController.properties[i].pos);
         }
     }
 
