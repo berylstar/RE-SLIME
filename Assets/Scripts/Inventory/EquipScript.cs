@@ -68,7 +68,8 @@ public class EquipScript : MonoBehaviour
 
         INVEN.GottenEquips.Add(this);
         ReturnGrade().Remove(this);
-        GameController.gottenEquips.Add(this);
+
+        GameController.properties.Add(number);
 
         gameObject.SetActive(true);
     }
@@ -93,7 +94,6 @@ public class EquipScript : MonoBehaviour
             iconV.SetActive(false);
         }
             
-
         gameObject.SetActive(false);
     }
 
@@ -177,5 +177,16 @@ public class EquipScript : MonoBehaviour
         EFFECTOR.EquipUnEffect(number, this);
 
         isEffected = false;
+    }
+
+    public void LoadThis()
+    {
+        tf.position = INVEN.ReturnGrid(posIndex[0]);
+        FillIC(1);
+
+        INVEN.GottenEquips.Add(this);
+        ReturnGrade().Remove(this);
+
+        gameObject.SetActive(true);
     }
 }

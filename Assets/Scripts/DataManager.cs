@@ -44,11 +44,11 @@ public class DataManager : MonoBehaviour
         dd.potionEff = GameController.potionEff;
         dd.probPotion = GameController.probPotion;
 
-        dd.gottenEquips = GameController.gottenEquips;
+        dd.properties = GameController.properties;
 
-        for (int i = 0; i < GameController.gottenEquips.Count; i++)
+        for (int i = 0; i < dd.properties.Count; i++)
         {
-            print(GameController.gottenEquips[i].name);
+            print(dd.properties[i]);
         }
 
         dd.effBattery = GameController.effBattery;
@@ -85,13 +85,11 @@ public class DataManager : MonoBehaviour
         GameController.potionEff = dd.potionEff;
         GameController.probPotion = dd.probPotion;
 
-        GameController.gottenEquips = dd.gottenEquips;
-
-        for (int i = 0; i < GameController.gottenEquips.Count; i++)
+        GameController.properties = dd.properties;
+        for (int i = 0; i < GameController.properties.Count; i++)
         {
-            print(GameController.gottenEquips[i].name);
+            print(GameController.properties[i]);
         }
-
         GameController.effBattery = dd.effBattery;
         GameController.effcrescent = dd.effcrescent;
         GameController.effSkate = dd.effSkate;

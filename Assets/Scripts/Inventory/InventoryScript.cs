@@ -7,6 +7,7 @@ public class InventoryScript : MonoBehaviour
     public static InventoryScript inst = null;
 
     [Header("EQUIPS")]
+    public List<EquipScript> all = new List<EquipScript>();
     public List<EquipScript> equipsNormal = new List<EquipScript>();
     public List<EquipScript> equipsRare = new List<EquipScript>();
     public List<EquipScript> equipsUnique = new List<EquipScript>();
@@ -27,6 +28,16 @@ public class InventoryScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         InitialGrid();
+
+        LOAD();
+    }
+
+    private void LOAD()
+    {
+        for (int i = 0; i < GameController.properties.Count; i++)
+        {
+            all[GameController.properties[i]].LoadThis();
+        }
     }
 
     private void Update()
