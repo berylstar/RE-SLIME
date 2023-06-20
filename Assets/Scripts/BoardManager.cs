@@ -245,11 +245,11 @@ public class BoardManager : MonoBehaviour
     }
 
     ////////////////////////////////////
-    public void EquipThunder()
+    public void EquipThunder(int dam)
     {
         for (int i = 0; i < livingMonsters.Count; i++)
         {
-            livingMonsters[i].MonsterDamage(5);
+            livingMonsters[i].MonsterDamage(dam);
         }
     }
 }

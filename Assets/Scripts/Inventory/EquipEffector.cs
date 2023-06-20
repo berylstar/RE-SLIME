@@ -16,11 +16,14 @@ public class EquipEffector : MonoBehaviour
     private int mandoo = 5;
     private int metaldetector = 3;
     private int pepper = 2;
+    private int pizza = 10;
     private int quarterstone = 5;
     private int straw = 3;
     private List<int> talisman = new List<int>() { 1, -2 };
+    private int thunder = 5;
     private int goldenticket = 2;
     private int bluerose = 1;
+    private int syringe = 1;
     private int plask = 2;
 
     public void EquipEffect(int i, EquipScript equip)
@@ -107,13 +110,19 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerDP += bluerose;
         }
-        else if (i == 31)            // 마지막 잎새
+        else if (i == 28)            // 거대한 주사기
+        {
+            GameController.playerAP += syringe;
+            GameController.playerDP += syringe;
+            GameController.playerSpeed += 10 * syringe;
+        }
+        else if (i == 29)            // 마지막 잎새
         {
             GameController.effLastleaf = equip;
         }
-        else if (i == 32)            // 플라스크
+        else if (i == 30)            // 플라스크
         {
-            GameController.playerAP += plask;
+            GameController.playerAP += plask * 2;
             GameController.playerDP -= plask;
         }
         else
@@ -202,13 +211,19 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerDP -= bluerose;
         }
-        else if (i == 31)            // 마지막 잎새
+        else if (i == 28)            // 거대한 주사기
+        {
+            GameController.playerAP -= syringe;
+            GameController.playerDP -= syringe;
+            GameController.playerSpeed -= 10 * syringe;
+        }
+        else if (i == 29)            // 마지막 잎새
         {
             GameController.effLastleaf = null;
         }
-        else if (i == 32)            // 플라스크
+        else if (i == 30)            // 플라스크
         {
-            GameController.playerAP -= plask;
+            GameController.playerAP -= plask * 2;
             GameController.playerDP += plask;
         }
         else
@@ -237,6 +252,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.ChangeHP(mandoo);
         }
+        else if (i == 19)           // 치즈 피자
+        {
+            GameController.ChangeHP(pizza);
+        }
         else if (i == 22)           // 미래 기술 6호
         {
             GameController.savedFloor = GameController.floor - 1;
@@ -249,9 +268,9 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 25)           // 천둥 번개
         {
-            GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder();
+            GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder(thunder);
         }
-        else if (i == 34)           // 고대 도서
+        else if (i == 31)           // 고대 도서
         {
             GameObject.Find("PLAYER").GetComponent<PlayerScript>().EquipBook();
         }

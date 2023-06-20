@@ -53,18 +53,6 @@ public class InventoryScript : MonoBehaviour
 
     private void LOAD()
     {
-        //for (int i = 0; i < GameController.EP.Count; i++)
-        //{
-        //    List<int> poses = new List<int>();
-
-        //    for (int j = 2; j < GameController.EP[i].Length; j++)
-        //    {
-        //        poses.Add(int.Parse(GameController.EP[i].Substring(j, j + 2)));
-        //        j++;
-        //    }
-        //    all[int.Parse(GameController.EP[i].Substring(0, 2))].LoadThis(poses);
-        //}
-
         for (int i = 0; i < GameController.EP.Count; i++)
         {
             string[] ints = GameController.EP[i].Split(',');
@@ -76,8 +64,11 @@ public class InventoryScript : MonoBehaviour
                 poses.Add(int.Parse(ints[j]));
             }
 
-            all[int.Parse(ints[0])].LoadThis(poses);
+            all[int.Parse(ints[0])-1].LoadThis(poses);
         }
+
+        if (CheckOverlap())
+            OpenInventory();
     }
 
     private void Update()

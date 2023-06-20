@@ -165,6 +165,9 @@ public class EquipScript : MonoBehaviour
 
     public void ApplyEffect()
     {
+        if (isEffected)
+            return;
+
         EFFECTOR.EquipEffect(number, this);
 
         isEffected = true;
@@ -172,6 +175,9 @@ public class EquipScript : MonoBehaviour
 
     public void UnEffect()
     {
+        if (!isEffected)
+            return;
+
         EFFECTOR.EquipUnEffect(number, this);
 
         isEffected = false;
@@ -179,9 +185,11 @@ public class EquipScript : MonoBehaviour
 
     public void LoadThis(List<int> poses)
     {
-        TEST(poses);
+        SetPos(poses);
         tf.position = INVEN.ReturnGrid(posIndex[0]);
         FillIC(1);
+
+        isEffected = true;
 
         INVEN.GottenEquips.Add(this);
         ReturnGrade().Remove(this);
@@ -189,7 +197,7 @@ public class EquipScript : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void TEST(List<int> poses)
+    private void SetPos(List<int> poses)
     {
         for (int i = 0; i < poses.Count; i++)
         {
