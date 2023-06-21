@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour
     public static bool effcrescent = false;
     public static bool effSkate = false;
     public static EquipScript effLastleaf = null;
+    public static bool effGlasses = false;
 
     // GAME SYSYTEM
     public static bool esc = false;

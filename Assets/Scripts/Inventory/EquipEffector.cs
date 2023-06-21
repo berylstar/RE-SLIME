@@ -22,7 +22,7 @@ public class EquipEffector : MonoBehaviour
     private List<int> talisman = new List<int>() { 1, -2 };
     private int thunder = 5;
     private int goldenticket = 2;
-    private int bluerose = 1;
+    private int yellowtail = 1;
     private int syringe = 1;
     private int plask = 2;
 
@@ -106,9 +106,9 @@ public class EquipEffector : MonoBehaviour
             GameController.ShopGrade[0] += goldenticket;
             GameController.ShopGrade[1] += goldenticket;
         }
-        else if (i == 27)            // 파란 장미
+        else if (i == 27)            // 대방어
         {
-            GameController.playerDP += bluerose;
+            GameController.playerDP += yellowtail;
         }
         else if (i == 28)            // 거대한 주사기
         {
@@ -124,6 +124,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerAP += plask * 2;
             GameController.playerDP -= plask;
+        }
+        else if (i == 32)            // 3D 안경
+        {
+            GameController.effGlasses = true;
         }
         else
             return;
@@ -207,9 +211,9 @@ public class EquipEffector : MonoBehaviour
             GameController.ShopGrade[0] -= goldenticket;
             GameController.ShopGrade[1] -= goldenticket;
         }
-        else if (i == 27)            // 파란 장미
+        else if (i == 27)            // 대방어
         {
-            GameController.playerDP -= bluerose;
+            GameController.playerDP -= yellowtail;
         }
         else if (i == 28)            // 거대한 주사기
         {
@@ -225,6 +229,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerAP -= plask * 2;
             GameController.playerDP += plask;
+        }
+        else if (i == 32)            // 3D 안경
+        {
+            GameController.effGlasses = false;
         }
         else
             return;

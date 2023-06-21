@@ -19,7 +19,9 @@ public class MonsterAlpha : MonsterScript
         type = MonsterType.ALPHA;
 
         StartCoroutine(MonsterMove());
-        StartCoroutine(Transparent());
+
+        if (!GameController.effGlasses)
+            StartCoroutine(Transparent());
     }
 
     private void RandomMove()

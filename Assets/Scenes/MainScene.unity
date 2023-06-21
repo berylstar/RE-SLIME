@@ -5930,7 +5930,7 @@ Transform:
   - {fileID: 148279313}
   - {fileID: 1305448670}
   m_Father: {fileID: 1303250847}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &587935429
 MonoBehaviour:
@@ -6157,12 +6157,12 @@ GameObject:
   - component: {fileID: 623545906}
   - component: {fileID: 623545905}
   m_Layer: 0
-  m_Name: 3dglasses
+  m_Name: 32_3dglasses
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &623545904
 Transform:
   m_ObjectHideFlags: 0
@@ -6177,7 +6177,7 @@ Transform:
   - {fileID: 2049482873}
   - {fileID: 1328720963}
   m_Father: {fileID: 1303250847}
-  m_RootOrder: 35
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &623545905
 MonoBehaviour:
@@ -6191,13 +6191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 30
+  number: 32
   EName: "3D\uC548\uACBD"
   adject: "\uB098\uB294 3D\uB85C \uBCF8\uB2E4"
-  effect: 
+  effect: "\uC801 \uD22C\uBA85\uD654 \uAC10\uC9C0"
   price: 1
   type: 0
-  grade: 3
+  grade: 1
   coolTime: 0
   isEffected: 0
   posIndex: 0000000001000000
@@ -6316,7 +6316,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1089854835
   m_SortingLayer: 5
-  m_SortingOrder: 6
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 2190a4143f82e6d4eafcda80194aabe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12687,7 +12687,7 @@ Transform:
   - {fileID: 587783515}
   - {fileID: 1394557081}
   m_Father: {fileID: 1303250847}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1297337204
 MonoBehaviour:
@@ -13197,9 +13197,9 @@ Transform:
   - {fileID: 809661626}
   - {fileID: 1397039997}
   - {fileID: 354555286}
+  - {fileID: 623545904}
   - {fileID: 1297337203}
   - {fileID: 587935428}
-  - {fileID: 623545904}
   - {fileID: 1573810382}
   - {fileID: 2038880723}
   m_Father: {fileID: 0}
@@ -13316,6 +13316,7 @@ MonoBehaviour:
   - {fileID: 1790059105}
   - {fileID: 1908497351}
   - {fileID: 1397039998}
+  - {fileID: 623545905}
   equipsRare:
   - {fileID: 568524635}
   - {fileID: 927209449}
@@ -18520,7 +18521,7 @@ GameObject:
   - component: {fileID: 1908497352}
   - component: {fileID: 1908497351}
   m_Layer: 0
-  m_Name: 27_bluerose
+  m_Name: 27_yellowtail
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18555,8 +18556,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 27
-  EName: "\uD30C\uB780 \uC7A5\uBBF8"
-  adject: 
+  EName: "\uB300\uBC29\uC5B4"
+  adject: "\uADF8 \uBC29\uC5B4\uAC00 \uC544\uB2CC\uB370"
   effect: "\uBC29\uC5B4\uB825 +1"
   price: 1
   type: 0
@@ -18693,7 +18694,7 @@ SpriteRenderer:
   m_SortingLayerID: -1089854835
   m_SortingLayer: 5
   m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: 68606344427a679408b1732dfe74975f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d71f94774c22bb34b91c6a24492d85aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
