@@ -19,12 +19,13 @@ public class EquipEffector : MonoBehaviour
     private int pizza = 10;
     private int quarterstone = 5;
     private int straw = 3;
-    private List<int> talisman = new List<int>() { 1, -2 };
+    private int talisman = 2;
     private int thunder = 5;
     private int goldenticket = 2;
     private int yellowtail = 1;
-    private int syringe = 1;
-    private int plask = 2;
+    // syringe - 2, 2, 10
+    // plask - 5, -2
+    // guitar - 2, 10
 
     public void EquipEffect(int i, EquipScript equip)
     {
@@ -98,8 +99,8 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 24)            // 부적
         {
-            GameController.playerDP += talisman[0];
-            GameController.playerAP += talisman[1];
+            GameController.playerDP += talisman;
+            GameController.playerAP -= talisman;
         }
         else if (i == 26)            // 골든 티켓
         {
@@ -112,9 +113,9 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 28)            // 거대한 주사기
         {
-            GameController.playerAP += syringe;
-            GameController.playerDP += syringe;
-            GameController.playerSpeed += 10 * syringe;
+            GameController.playerAP += 2;
+            GameController.playerDP += 2;
+            GameController.playerSpeed += 10;
         }
         else if (i == 29)            // 마지막 잎새
         {
@@ -122,12 +123,17 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 30)            // 플라스크
         {
-            GameController.playerAP += plask * 2;
-            GameController.playerDP -= plask;
+            GameController.playerAP += 5;
+            GameController.playerDP -= 2;
         }
         else if (i == 32)            // 3D 안경
         {
             GameController.effGlasses = true;
+        }
+        else if (i == 33)            // 일렉 기타
+        {
+            GameController.playerAP += 2;
+            GameController.playerSpeed += 10;
         }
         else
             return;
@@ -203,8 +209,8 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 24)            // 부적
         {
-            GameController.playerDP -= talisman[0];
-            GameController.playerAP -= talisman[1];
+            GameController.playerDP -= talisman;
+            GameController.playerAP += talisman;
         }
         else if (i == 26)            // 골든 티켓
         {
@@ -217,9 +223,9 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 28)            // 거대한 주사기
         {
-            GameController.playerAP -= syringe;
-            GameController.playerDP -= syringe;
-            GameController.playerSpeed -= 10 * syringe;
+            GameController.playerAP -= 2;
+            GameController.playerDP -= 2;
+            GameController.playerSpeed -= 10;
         }
         else if (i == 29)            // 마지막 잎새
         {
@@ -227,12 +233,17 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 30)            // 플라스크
         {
-            GameController.playerAP -= plask * 2;
-            GameController.playerDP += plask;
+            GameController.playerAP -= 5;
+            GameController.playerDP += 2;
         }
         else if (i == 32)            // 3D 안경
         {
             GameController.effGlasses = false;
+        }
+        else if (i == 33)            // 일렉 기타
+        {
+            GameController.playerAP -= 2;
+            GameController.playerSpeed -= 10;
         }
         else
             return;
