@@ -23,9 +23,8 @@ public class EquipEffector : MonoBehaviour
     private int thunder = 5;
     private int goldenticket = 2;
     private int yellowtail = 1;
-    // syringe - 2, 2, 10
+    // guitar - 3, 2, 10
     // plask - 5, -2
-    // guitar - 2, 10
 
     public void EquipEffect(int i, EquipScript equip)
     {
@@ -111,9 +110,9 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerDP += yellowtail;
         }
-        else if (i == 28)            // 거대한 주사기
+        else if (i == 33)            // 거대한 주사기
         {
-            GameController.playerAP += 2;
+            GameController.playerAP += 3;
             GameController.playerDP += 2;
             GameController.playerSpeed += 10;
         }
@@ -129,11 +128,6 @@ public class EquipEffector : MonoBehaviour
         else if (i == 32)            // 3D 안경
         {
             GameController.effGlasses = true;
-        }
-        else if (i == 33)            // 일렉 기타
-        {
-            GameController.playerAP += 2;
-            GameController.playerSpeed += 10;
         }
         else
             return;
@@ -221,9 +215,9 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerDP -= yellowtail;
         }
-        else if (i == 28)            // 거대한 주사기
+        else if (i == 28)            // 일렉 기타
         {
-            GameController.playerAP -= 2;
+            GameController.playerAP -= 3;
             GameController.playerDP -= 2;
             GameController.playerSpeed -= 10;
         }
@@ -239,11 +233,6 @@ public class EquipEffector : MonoBehaviour
         else if (i == 32)            // 3D 안경
         {
             GameController.effGlasses = false;
-        }
-        else if (i == 33)            // 일렉 기타
-        {
-            GameController.playerAP -= 2;
-            GameController.playerSpeed -= 10;
         }
         else
             return;
