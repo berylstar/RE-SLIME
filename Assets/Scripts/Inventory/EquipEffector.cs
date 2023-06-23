@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class EquipEffector : MonoBehaviour
 {
-    private int banana = 15;
-    private int binocular = 3;
-    private int energydrink = 15;
-    private int gloves = 6;
-    private int halfstone = 10;
-    private int heartstone = 25;
-    private int helmet = 2;
-    private int ice = 10;
-    private int machine = 3;
-    private int mandoo = 5;
-    private int metaldetector = 3;
-    private int pepper = 2;
-    private int pizza = 10;
-    private int quarterstone = 5;
-    private int straw = 3;
-    private int talisman = 2;
-    private int thunder = 5;
-    private int goldenticket = 2;
-    private int yellowtail = 1;
+    private readonly int banana = 15;
+    private readonly int binocular = 3;
+    private readonly int energydrink = 15;
+    private readonly int gloves = 6;
+    private readonly int halfstone = 10;
+    private readonly int heartstone = 25;
+    private readonly int helmet = 2;
+    private readonly int ice = 10;
+    private readonly int machine = 3;
+    private readonly int mandoo = 5;
+    private readonly int metaldetector = 3;
+    private readonly int pepper = 2;
+    private readonly int pizza = 10;
+    private readonly int quarterstone = 5;
+    private readonly int straw = 3;
+    private readonly int talisman = 2;
+    private readonly int thunder = 5;
+    private readonly int goldenticket = 2;
+    private readonly int yellowtail = 1;
     // guitar - 3, 2, 10
     // plask - 5, -2
 
@@ -297,8 +297,6 @@ public class EquipEffector : MonoBehaviour
 
     private void Key()
     {
-        StairScript stair = GameObject.Find("STAIR").GetComponent<StairScript>();
-
-        stair.StairOpen();
+        GameObject.Find("STAIR").GetComponent<StairScript>().StairOpen();
     }
 }

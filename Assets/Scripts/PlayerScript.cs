@@ -27,8 +27,6 @@ public class PlayerScript : MovingObject
         base.Start();
 
         moveSpeed = GameController.playerSpeed;
-
-        StartCoroutine(TimeDamage());
     }
 
     private void Update()
@@ -103,6 +101,11 @@ public class PlayerScript : MovingObject
         }
     }
 
+    public void StartTimeDamage()
+    {
+        StartCoroutine(TimeDamage());
+    }
+
     // 시간 데미지
     private IEnumerator TimeDamage()
     {
@@ -174,7 +177,7 @@ public class PlayerScript : MovingObject
     // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
     IEnumerator Damaged(int dam)
     {
-        if (dam >= 0)
+        if (dam >= 0 || !isAlive)
             yield return null;
 
         GameController.ChangeHP(dam);
