@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MovingObject
 {
+    public static PlayerScript I = null;
+
     public GameObject punchZip;
     public GameObject[] punches;
 
@@ -15,13 +17,18 @@ public class PlayerScript : MovingObject
     public GameObject bullet;
     public GameObject sight;
 
+    private void Awake()
+    {
+        I = this;
+    }
+
     protected override void Start()
     {
         base.Start();
 
         moveSpeed = GameController.playerSpeed;
 
-        StartCoroutine(GameController.TimeDamage(this));
+        StartCoroutine(TimeDamage());
     }
 
     private void Update()
@@ -93,6 +100,28 @@ public class PlayerScript : MovingObject
 
             StartCoroutine(Damaged(-bullet.damage + GameController.playerDP));
             Destroy(collision.gameObject);
+        }
+    }
+
+    // 시간 데미지
+    private IEnumerator TimeDamage()
+    {
+        float time = 0f;
+
+        while (isAlive)
+        {
+            if (GameController.floor > 0 && !GameController.Pause(5))
+            {
+                time += GameController.playerTimeDamage;
+
+                if (time >= 1)
+                {
+                    GameController.ChangeHP(-1);
+                    time = 0f;
+                }
+            }
+
+            yield return GameController.delay_1s;
         }
     }
 
@@ -184,6 +213,7 @@ public class PlayerScript : MovingObject
         }
         else
         {
+            GameController.floor = 0;
             GameController.playerHP = GameController.playerMaxHP;
             SceneManager.LoadScene("IntroScene");
         }

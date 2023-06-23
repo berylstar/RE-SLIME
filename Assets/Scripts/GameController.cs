@@ -107,26 +107,10 @@ public class GameController : MonoBehaviour
         playerHP = Mathf.Min(playerMaxHP, Mathf.Max(0, playerHP + ch));
     }
 
-    // 시간 데미지
-    public static IEnumerator TimeDamage(PlayerScript player)
+    public static void ChangeSpeed(int ch)
     {
-        float time = 0f;
-
-        while (true)
-        {
-            if (player.CheckAlive() && floor > 0 && !Pause(5))
-            {
-                time += playerTimeDamage;
-
-                if (time >= 1)
-                {
-                    ChangeHP(-1);
-                    time = 0f;
-                }
-            }
-
-            yield return delay_1s;
-        }
+        playerSpeed += ch;
+        PlayerScript.I.ApplyMoveSpeed();
     }
 
     // 속도 변경 관련 함수

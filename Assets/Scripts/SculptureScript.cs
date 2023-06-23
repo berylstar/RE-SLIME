@@ -21,7 +21,7 @@ public class SculptureScript : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        player = PlayerScript.I;
     }
 
     // 충돌 감지로 조형물 효과 발동
@@ -32,7 +32,18 @@ public class SculptureScript : MonoBehaviour
 
         if (collision.CompareTag("Player") && !isEffected)
         {
-            SculptureEffect(collision.GetComponent<PlayerScript>());
+            isOn = true;
+
+            if (type == SculptureType.WEB)
+                StartCoroutine(WebEffect(player));
+
+            else if (type == SculptureType.LAVA)
+                StartCoroutine(LavaEffect(player));
+
+            else if (type == SculptureType.GRASS)
+                GrassEffect(player);
+
+            isEffected = true;
         }
     }
 
@@ -64,23 +75,6 @@ public class SculptureScript : MonoBehaviour
                 player.ApplyMoveSpeed();
             }
         }
-    }
-
-    // Sculpture 효과
-    private void SculptureEffect(PlayerScript player)
-    {
-        isOn = true;
-
-        if (type == SculptureType.WEB)
-            StartCoroutine(WebEffect(player));
-
-        else if (type == SculptureType.LAVA)
-            StartCoroutine(LavaEffect(player));
-
-        else if (type == SculptureType.GRASS)
-            GrassEffect(player);
-
-        isEffected = true;
     }
 
     // 거미줄 효과 코루틴

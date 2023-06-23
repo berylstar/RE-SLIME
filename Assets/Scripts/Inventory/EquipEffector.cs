@@ -11,7 +11,7 @@ public class EquipEffector : MonoBehaviour
     private int halfstone = 10;
     private int heartstone = 25;
     private int helmet = 2;
-    private float ice = 10f;
+    private int ice = 10;
     private int machine = 3;
     private int mandoo = 5;
     private int metaldetector = 3;
@@ -43,8 +43,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 6)             // 에너지 드링크
         {
-            GameController.playerSpeed += energydrink;
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.ChangeSpeed(energydrink);
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -66,8 +65,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 12)            // 각얼음
         {
-            GameController.playerSpeed += ice;
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.ChangeSpeed(ice);
         }
         else if (i == 13)            // ESP-8266
         {
@@ -115,8 +113,7 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerAP += 3;
             GameController.playerDP += 2;
-            GameController.playerSpeed += 10;
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.ChangeSpeed(10);
         }
         else if (i == 29)            // 마지막 잎새
         {
@@ -152,8 +149,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 6)             // 에너지 드링크
         {
-            GameController.playerSpeed -= energydrink;
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.ChangeSpeed(-energydrink);
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -173,8 +169,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 12)            // 각얼음
         {
-            GameController.playerSpeed -= ice;
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.ChangeSpeed(-ice);
         }
         else if (i == 13)            // ESP-8266
         {
@@ -222,8 +217,7 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerAP -= 3;
             GameController.playerDP -= 2;
-            GameController.playerSpeed -= 10;
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
+            GameController.ChangeSpeed(-10);
         }
         else if (i == 29)            // 마지막 잎새
         {
@@ -284,7 +278,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 31)           // 고대 도서
         {
-            GameObject.Find("PLAYER").GetComponent<PlayerScript>().EquipBook();
+            PlayerScript.I.EquipBook();
         }
         else
             return;
@@ -294,10 +288,10 @@ public class EquipEffector : MonoBehaviour
     {
         GameObject player = GameObject.Find("PLAYER");
 
-        player.GetComponent<PlayerScript>().invincivity = true;
+        PlayerScript.I.invincivity = true;
         player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 50);
         yield return GameController.delay_3s;
-        player.GetComponent<PlayerScript>().invincivity = false;
+        PlayerScript.I.invincivity = false;
         player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
     }
 
