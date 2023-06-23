@@ -44,6 +44,7 @@ public class EquipEffector : MonoBehaviour
         else if (i == 6)             // 에너지 드링크
         {
             GameController.playerSpeed += energydrink;
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -110,11 +111,12 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerDP += yellowtail;
         }
-        else if (i == 33)            // 거대한 주사기
+        else if (i == 28)            // 일렉 기타
         {
             GameController.playerAP += 3;
             GameController.playerDP += 2;
             GameController.playerSpeed += 10;
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
         }
         else if (i == 29)            // 마지막 잎새
         {
@@ -151,6 +153,7 @@ public class EquipEffector : MonoBehaviour
         else if (i == 6)             // 에너지 드링크
         {
             GameController.playerSpeed -= energydrink;
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
         }
         else if (i == 7)             // 복싱 글러브
         {
@@ -220,6 +223,7 @@ public class EquipEffector : MonoBehaviour
             GameController.playerAP -= 3;
             GameController.playerDP -= 2;
             GameController.playerSpeed -= 10;
+            GameObject.Find("PLAYER").GetComponent<PlayerScript>().ApplyMoveSpeed();
         }
         else if (i == 29)            // 마지막 잎새
         {
