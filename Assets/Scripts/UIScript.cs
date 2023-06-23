@@ -5,29 +5,32 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-    [Header("Panel")]
-    public GameObject panelDie;
-    public GameObject panelNextFloor;
-
-    [Header("UI Text")]
+    [Header("PanelStatus")]
     public Text textFloor;
     public Text textLife, textCoin;
     public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage;
 
-    [Header("ESC")]
+    [Header("PanelDie")]
+    public GameObject panelDie;
+    public Text textDie, textBackTo;
+
+    [Header("PanelNextFloor")]
+    public GameObject panelNextFloor;
+
+    [Header("PanelESC")]
     public GameObject panelESC;
     public GameObject escPick;
     private int escIndex = 0;
 
-    [Header("Dialogue")]
+    [Header("PanelDialogue")]
     public GameObject panelDialogue;
     public Image imageCharacter;
     public Text textTalker, textDialogue;
 
-    [Header("CoffinShop")]
+    [Header("PanelShop")]
     public GameObject panelShop;
 
-    [Header("TreasureBox")]
+    [Header("PanelBox")]
     public GameObject panelBox;
 
     private void Update()
@@ -90,6 +93,22 @@ public class UIScript : MonoBehaviour
     public void SetESCIndex(int idx)
     {
         escIndex = idx;
+    }
+
+    public void ShowDiePanel(int life)
+    {
+        if (life > 0)
+        {
+            textDie.text = "YOU DIE";
+            textBackTo.text = "BACK TO 0 FLOOR...";
+        }
+        else
+        {
+            textDie.text = "YOU FAIL";
+            textBackTo.text = "CONTINUE...?";
+        }
+
+        panelDie.SetActive(true);
     }
 
     public void Dialogue(Sprite character, string who, string talk)

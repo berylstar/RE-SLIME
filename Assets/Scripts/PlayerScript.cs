@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MovingObject
 {
@@ -165,7 +166,7 @@ public class PlayerScript : MovingObject
         ani.SetTrigger("PlayerDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
-        BM.US.panelDie.SetActive(true);
+        BM.US.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
         if (GameController.playerLife > 0 || EquipLastleaf())
@@ -179,11 +180,12 @@ public class PlayerScript : MovingObject
             while (GameController.speedStack.Count > 0)
                 GameController.SpeedStackOut();
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene("MainScene");
         }
         else
         {
-            // GAME OVER
+            GameController.playerHP = GameController.playerMaxHP;
+            SceneManager.LoadScene("IntroScene");
         }
     }
 

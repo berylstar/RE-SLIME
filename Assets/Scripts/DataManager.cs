@@ -101,6 +101,7 @@ public class DataManager : MonoBehaviour
         GameController.savedFloor = dd.savedFloor;
 
         GameController.playerLife = dd.playerLife;
+        GameController.playerHP = dd.playerMaxHP;
         GameController.playerMaxHP = dd.playerMaxHP;
         GameController.playerAP = dd.playerAP;
         GameController.playerDP = dd.playerDP;

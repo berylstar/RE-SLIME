@@ -26,6 +26,7 @@ public class MonsterScript : MovingObject
     {
         base.Start();
 
+        sr.sortingOrder = 10 - (int)transform.position.y;
         moveSpeed = speed;
 
         BM.AddMonster(this);

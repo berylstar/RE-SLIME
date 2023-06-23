@@ -7173,8 +7173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b310ed34a51c294ea106e35953ba978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelDie: {fileID: 1495907167}
-  panelNextFloor: {fileID: 927420884}
   textFloor: {fileID: 415520651}
   textLife: {fileID: 42514523}
   textCoin: {fileID: 456287776}
@@ -7183,6 +7181,10 @@ MonoBehaviour:
   textPlayerDP: {fileID: 387947428}
   textPlayerSpeed: {fileID: 1211925630}
   textPlayerTimeDamage: {fileID: 1843431190}
+  panelDie: {fileID: 1495907167}
+  textDie: {fileID: 638513434}
+  textBackTo: {fileID: 2009614506}
+  panelNextFloor: {fileID: 927420884}
   panelESC: {fileID: 353927311}
   escPick: {fileID: 2124582677}
   panelDialogue: {fileID: 1935987694}
@@ -13470,7 +13472,6 @@ MonoBehaviour:
   - {fileID: 1397039998}
   - {fileID: 354555287}
   - {fileID: 623545905}
-  - {fileID: 0}
   equipsNormal:
   - {fileID: 864242327}
   - {fileID: 551013835}
@@ -13488,7 +13489,6 @@ MonoBehaviour:
   - {fileID: 1908497351}
   - {fileID: 1397039998}
   - {fileID: 623545905}
-  - {fileID: 0}
   equipsRare:
   - {fileID: 568524635}
   - {fileID: 927209449}
