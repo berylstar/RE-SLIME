@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
+    public static UIScript I = null;
+
     [Header("PanelStatus")]
     public Text textFloor;
     public Text textLife, textCoin;
@@ -32,6 +34,11 @@ public class UIScript : MonoBehaviour
 
     [Header("PanelBox")]
     public GameObject panelBox;
+
+    private void Awake()
+    {
+        I = this;
+    }
 
     private void Update()
     {

@@ -56,7 +56,7 @@ public class MonsterSpawner : MonsterScript
 
     private void SpawnAnimator()
     {
-        GameObject product = Instantiate(spawn, BM.SpawnPosition(), Quaternion.identity);
+        GameObject product = Instantiate(spawn, BoardManager.I.SpawnPosition(), Quaternion.identity);
         product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

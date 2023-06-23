@@ -29,7 +29,7 @@ public class MonsterScript : MovingObject
         sr.sortingOrder = 10 - (int)transform.position.y;
         moveSpeed = speed;
 
-        BM.AddMonster(this);
+        BoardManager.I.AddMonster(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,8 +75,8 @@ public class MonsterScript : MovingObject
     // Disappear 애니매이션까지 끝나면 Animator에서 실행
     private void Disappear()
     {
-        BM.RemoveMonster(this);
-        BM.ItemDrop(transform.position);
+        BoardManager.I.RemoveMonster(this);
+        BoardManager.I.ItemDrop(transform.position);
         Destroy(this.gameObject);
     }
 }

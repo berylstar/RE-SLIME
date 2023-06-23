@@ -66,7 +66,7 @@ public class PlayerScript : MovingObject
 
         // Input : ESC = 메뉴 -> UIScript에 구현되어 있음
 
-        punchZip.transform.position = this.transform.position;
+        punchZip.transform.position = transform.position;
 
         if (GameController.playerHP <= 0 && !EquipCresent())
         {
@@ -101,12 +101,13 @@ public class PlayerScript : MovingObject
         }
     }
 
+    // StairScript에서 함수 실행
     public void StartTimeDamage()
     {
         StartCoroutine(TimeDamage());
     }
 
-    // 시간 데미지
+    // 시간 데미지 코루틴
     private IEnumerator TimeDamage()
     {
         float time = 0f;
@@ -141,7 +142,7 @@ public class PlayerScript : MovingObject
         Move(dx, dy);
     }
 
-    // 플레이어 이동속도 변경 함수
+    // 변경된 플레이어 이동속도 적용 함수
     public void ApplyMoveSpeed()
     {
         moveSpeed = GameController.playerSpeed;
@@ -198,7 +199,7 @@ public class PlayerScript : MovingObject
         ani.SetTrigger("PlayerDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
-        BM.US.ShowDiePanel(GameController.playerLife);
+        UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
         if (GameController.playerLife > 0 || EquipLastleaf())
@@ -240,7 +241,6 @@ public class PlayerScript : MovingObject
         }
         return false;
     }
-
     
     IEnumerator BatteryCo()
     {

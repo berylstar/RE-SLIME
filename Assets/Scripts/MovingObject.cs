@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    protected BoardManager BM;
     protected Rigidbody2D rb2d;
     protected SpriteRenderer sr;
     protected Animator ani;
@@ -16,7 +15,6 @@ public class MovingObject : MonoBehaviour
 
     protected virtual void Start()
     {
-        BM = GameObject.FindGameObjectWithTag("GameController").GetComponent<BoardManager>();
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
@@ -35,7 +33,7 @@ public class MovingObject : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
 
-        if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall") || hit.transform.CompareTag("Monster")))       // 이동 불가 케이스
+        if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
 
         int a = (int)(sr.sprite.rect.width / 60) - 1;
