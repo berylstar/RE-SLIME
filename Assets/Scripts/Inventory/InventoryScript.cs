@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
-    public static InventoryScript inst = null;
+    public static InventoryScript I = null;
 
     [Header("EQUIPS")]
     public List<EquipScript> all = new List<EquipScript>();
@@ -23,8 +23,8 @@ public class InventoryScript : MonoBehaviour
     private void Awake()
     {
         // 인벤토리는 씬이 재시작되어도 유지
-        if (inst == null) inst = this;
-        else if (inst != this) Destroy(gameObject);
+        if (I == null) I = this;
+        else if (I != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
         InitialGrid();
@@ -46,7 +46,6 @@ public class InventoryScript : MonoBehaviour
                 strr += "," + GottenEquips[i].posIndex[j].ToString();
             }
 
-            print(strr);
             GameController.EP.Add(strr);
         }
     }
@@ -170,9 +169,6 @@ public class InventoryScript : MonoBehaviour
         GameController.inInven = !GameController.inInven;
 
         cursor.SetActive(GameController.inInven);
-
-        if (!GameController.inInven)
-            cursor.GetComponent<CursorScript>().CursorReset();
     }
 
     // 장비 효과 발동

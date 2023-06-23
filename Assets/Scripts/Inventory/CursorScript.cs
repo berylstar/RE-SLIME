@@ -21,6 +21,11 @@ public class CursorScript : MonoBehaviour
         CursorReset();
     }
 
+    private void OnDisable()
+    {
+        CursorReset();
+    }
+
     private void Update()
     {
         // Input : 스페이스 바 = 장비 선택/해제

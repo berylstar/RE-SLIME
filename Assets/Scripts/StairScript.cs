@@ -53,7 +53,7 @@ public class StairScript : MonoBehaviour
         }
         else
         {
-            bc2d.size = new Vector2(0.5f, 0.5f);
+            bc2d.size = new Vector2 (0.5f, 0.5f);
             sr.sprite = imgStairOpen;
         }
     }

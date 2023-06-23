@@ -45,7 +45,7 @@ public class DataManager : MonoBehaviour
         dd.probPotion = GameController.probPotion;
 
         GameController.EP.Clear();
-        GameObject.Find("INVENTORY").GetComponent<InventoryScript>().SAVE();
+        InventoryScript.I.SAVE();
         dd.EP = GameController.EP;
 
         dd.effBattery = GameController.effBattery;

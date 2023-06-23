@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EquipEffector : MonoBehaviour
 {
@@ -270,7 +271,7 @@ public class EquipEffector : MonoBehaviour
             while (GameController.speedStack.Count > 0)
                 GameController.SpeedStackOut();
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene("MainScene");
         }
         else if (i == 25)           // ÃµµÕ ¹ø°³
         {
