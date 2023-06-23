@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
+    public static BoardManager I = null;
+
     public GameController GC;
     public UIScript US;
 
@@ -24,6 +26,11 @@ public class BoardManager : MonoBehaviour
     private List<MonsterScript> livingMonsters;
 
     private Transform objectHolder;
+
+    private void Awake()
+    {
+        I = this;
+    }
 
     // 오브젝트들이 생성될 그리드 리스트 초기화
     private void InitialGrid()
@@ -163,7 +170,7 @@ public class BoardManager : MonoBehaviour
 
         InitialGrid();
         SetField(floor);
-        RemovePositionAwayFrom(GC.player.GetComponent<Transform>().position);
+        RemovePositionAwayFrom(PlayerScript.I.transform.position);
 
         LayoutStair(floor);
         //RemovePositionAwayFrom(stair.GetComponent<Transform>().position);
@@ -188,7 +195,7 @@ public class BoardManager : MonoBehaviour
 
         if (livingMonsters.Count <= 0)
         {
-            stair.GetComponent<StairScript>().StairOpen();
+            StairScript.I.Open();
         }
     }
 

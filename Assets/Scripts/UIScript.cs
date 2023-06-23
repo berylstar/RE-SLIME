@@ -43,27 +43,26 @@ public class UIScript : MonoBehaviour
         textPlayerAP.text = "AP : " + GameController.playerAP;
         textPlayerDP.text = "DP : " + GameController.playerDP;
         textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed;
-        textPlayerTimeDamage.text = "TimeDamage : " + GameController.playerTimeDamage;
+        //textPlayerTimeDamage.text = "TimeDamage : " + GameController.playerTimeDamage;
 
+
+        // ESC
         if (Input.GetKeyDown(KeyCode.Escape))
-            ESC();
+            ToggleESCPanel();
 
         if (GameController.esc)
-            InESCKeyInput();
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex = Mathf.Max(escIndex - 1, 0);
+            if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex = Mathf.Min(escIndex + 1, 2);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                ESCSelect(escIndex);
+
+            escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, escIndex * -100, 0f);
+        }
     }
 
-    private void InESCKeyInput()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex = Mathf.Max(escIndex - 1, 0);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex = Mathf.Min(escIndex + 1, 2);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            ESCSelect(escIndex);
-
-        escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, escIndex * -100, 0f);
-    }
-
-    private void ESC()
+    private void ToggleESCPanel()
     {
         GameController.esc = !GameController.esc;
         panelESC.SetActive(GameController.esc);
@@ -77,7 +76,7 @@ public class UIScript : MonoBehaviour
     {
         if (idx == 0)
         {
-            ESC();
+            ToggleESCPanel();
         }
         else if (idx == 1)
         {
@@ -85,11 +84,12 @@ public class UIScript : MonoBehaviour
         }
         else if (idx == 2)
         {
-            ESC();
+            ToggleESCPanel();
             GameController.Restart();
         }
     }
 
+    // ESC panel의 버튼에서 pointerEnter용 함수
     public void SetESCIndex(int idx)
     {
         escIndex = idx;

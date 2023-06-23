@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EquipEffector : MonoBehaviour
 {
+    public static EquipEffector I = null;
+
     private readonly int banana = 15;
     private readonly int binocular = 3;
     private readonly int energydrink = 15;
@@ -26,6 +28,11 @@ public class EquipEffector : MonoBehaviour
     private readonly int yellowtail = 1;
     // guitar - 3, 2, 10
     // plask - 5, -2
+
+    private void Awake()
+    {
+        I = this;
+    }
 
     public void EquipEffect(int i, EquipScript equip)
     {
@@ -298,6 +305,6 @@ public class EquipEffector : MonoBehaviour
 
     private void Key()
     {
-        GameObject.Find("STAIR").GetComponent<StairScript>().StairOpen();
+        StairScript.I.Open();
     }
 }

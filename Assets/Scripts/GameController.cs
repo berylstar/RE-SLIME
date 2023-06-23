@@ -44,9 +44,7 @@ public class GameController : MonoBehaviour
     public static readonly WaitForSeconds delay_025s = new WaitForSeconds(0.25f);
     public static readonly WaitForSeconds delay_01s = new WaitForSeconds(0.1f);
 
-    public GameObject player;
     public GameObject field;
-    public GameObject stair;
     public GameObject kingslime;
     public GameObject sign;
     public GameObject coffinshop;
@@ -128,7 +126,6 @@ public class GameController : MonoBehaviour
 
     public static void Restart()
     {
-        // DataManager.inst.NewData();             // static 변수들 리셋
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StairScript : MonoBehaviour
 {
+    public static StairScript I = null;
+
     private SpriteRenderer sr;
     private BoxCollider2D bc2d;
 
@@ -12,7 +14,10 @@ public class StairScript : MonoBehaviour
     public Sprite imgStairCloseLong;
     public Sprite imgStairOpenLong;
 
-    public BoardManager BM;
+    private void Awake()
+    {
+        I = this;
+    }
 
     private void Start()
     {
@@ -27,12 +32,12 @@ public class StairScript : MonoBehaviour
             if (GameController.floor == 0)
                 PlayerScript.I.StartTimeDamage();
 
-            BM.NextFloor();
-            StairClose();
+            BoardManager.I.NextFloor();
+            Close();
         }
     }
 
-    private void StairClose()
+    private void Close()
     {
         bc2d.isTrigger = false;
 
@@ -42,7 +47,7 @@ public class StairScript : MonoBehaviour
             sr.sprite = imgStairClose;
     }
 
-    public void StairOpen()
+    public void Open()
     {
         bc2d.isTrigger = true;
 
