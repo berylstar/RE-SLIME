@@ -1,29 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+using Random = UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
     public static BoardManager I = null;
 
-    public GameController GC;
+    [Serializable]
+    public struct LevelStruct
+    {
+        public Sprite[] fieldImages;
+        public GameObject[] sculptures;
+        public GameObject[] monsters;
+    }
 
-    [Header("FIELDS")]
-    public GameObject field;
-    public Sprite[] imageFields;
-
-    [Header("SCULPTURES")]
-    public GameObject[] sculptures;
-
-    [Header("MONSTERS")]
-    public GameObject[] monsters;
+    [Header("LEVELS")]
+    public List<LevelStruct> levels = new List<LevelStruct>();
 
     [Header("ITEMS")]
     public GameObject[] items;
 
+    [Header("NPC")]
+    public GameObject kingslime;
+    public GameObject sign;
+    public GameObject coffin;
+    public GameObject box;
+
     private readonly List<Vector3> gridPositions = new List<Vector3>();
     private List<MonsterScript> livingMonsters;
-
     private Transform objectHolder;
 
     private void Awake()
@@ -45,18 +52,19 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    private LevelStruct ObjectPerFloor(int floor)
+    {
+        return levels[floor / 20];
+    }
+
     // 레벨 디자인에 맞춰 field 이미지 변환
     private void SetField(int floor)
     {
-        Sprite sp;
+        GameObject field = GameObject.Find("FIELD");
 
-        if (floor <= 20) { sp = imageFields[Random.Range(0, 4)]; }
-        else if (floor <= 40) { sp = imageFields[Random.Range(4, 7)]; }
-        else if (floor <= 60) { sp = imageFields[Random.Range(7, 10)]; }
-        else if (floor <= 80) { sp = imageFields[Random.Range(10, 12)]; }
-        else { sp = imageFields[Random.Range(0, 12)]; }
+        Sprite[] fieldSprites = ObjectPerFloor(floor).fieldImages;
 
-        field.GetComponent<SpriteRenderer>().sprite = sp;
+        field.GetComponent<SpriteRenderer>().sprite = fieldSprites[Random.Range(0, fieldSprites.Length)];
         field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
     }
 
@@ -152,7 +160,7 @@ public class BoardManager : MonoBehaviour
 
         for (int i = 0; i < objectCount; i++)
         {
-            GameObject go = monsters[Random.Range(0, monsters.Length)];
+            GameObject go = levels[0].monsters[Random.Range(0, levels[0].monsters.Length)];
             GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
             instance.transform.SetParent(objectHolder);
         }
@@ -176,7 +184,7 @@ public class BoardManager : MonoBehaviour
         RemovePositionAwayFrom(StairScript.I.transform.position);
 
                                                     // 추후에 조형물과 몬스터는 레벨에 따라 배치해야함
-        LayoutObjectAtRandom(sculptures, 2, 10);
+        LayoutObjectAtRandom(levels[0].sculptures, 2, 10);
 
         SetMonsters(2, 8);
     }
@@ -222,10 +230,10 @@ public class BoardManager : MonoBehaviour
 
     private void HideNPC()
     {
-        GC.kingslime.SetActive(false);
-        GC.sign.SetActive(false);
-        GC.coffinshop.SetActive(false);
-        GC.treasurebox.SetActive(false);
+        kingslime.SetActive(false);
+        sign.SetActive(false);
+        coffin.SetActive(false);
+        box.SetActive(false);
     }
 
     // 소환한 포지션을 그리드 포지션에서 제거하지 않음 => 엄청 많이 생겼을 때 자리 없는 것을 방지하기 위해

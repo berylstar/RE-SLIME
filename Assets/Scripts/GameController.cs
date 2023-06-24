@@ -29,11 +29,6 @@ public class GameController : MonoBehaviour
     public static readonly WaitForSeconds delay_025s = new WaitForSeconds(0.25f);
     public static readonly WaitForSeconds delay_01s = new WaitForSeconds(0.1f);
 
-    public GameObject kingslime;
-    public GameObject sign;
-    public GameObject coffinshop;
-    public GameObject treasurebox;
-
     // STATUS
     public static int floor = 0;
     public static int savedFloor = 0;

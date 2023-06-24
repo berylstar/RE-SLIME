@@ -2688,6 +2688,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275534239}
   m_CullTransparentMesh: 1
+--- !u!1 &323532724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323532726}
+  - component: {fileID: 323532725}
+  m_Layer: 0
+  m_Name: kn (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &323532725
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323532724}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 460637147
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: dcb0fede1fcdd9048abec56a79a07f52, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.6, y: 0.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &323532726
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323532724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7, y: 4, z: 0}
+  m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346230628
 GameObject:
   m_ObjectHideFlags: 0
@@ -7086,60 +7168,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1df30465ed6b7f4d88e4183b8f49c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GC: {fileID: 715514220}
-  field: {fileID: 1505105375}
-  imageFields:
-  - {fileID: 21300000, guid: 037c5b13813adb34c82901bf008843ce, type: 3}
-  - {fileID: 21300000, guid: b39ba6ac25c4ed94691cc2eb7077e3f0, type: 3}
-  - {fileID: 21300000, guid: a21ca735f1e7c2d4080ad3be36d6837e, type: 3}
-  - {fileID: 21300000, guid: 2d411ee9c548e88478aeaeb15e62be43, type: 3}
-  - {fileID: 21300000, guid: 3ccb51a7f2b669a41a13ab2c9db7d598, type: 3}
-  - {fileID: 21300000, guid: c9c6a4abb3e7e424d8683b9f37653a41, type: 3}
-  - {fileID: 21300000, guid: dd366157675cfde4c89877fde8323a20, type: 3}
-  - {fileID: 21300000, guid: 280d01f189eec92429d14b9253c9b1f8, type: 3}
-  - {fileID: 21300000, guid: edda2ab641ca73841a368acd531b9a4c, type: 3}
-  - {fileID: 21300000, guid: 432486a3c08ab5f4c83f8d81090ffee7, type: 3}
-  - {fileID: 21300000, guid: 02beaae281befb5469af3ef968a506b3, type: 3}
-  - {fileID: 21300000, guid: 23abc85ee4b97f2478afce54424e1fed, type: 3}
-  sculptures:
-  - {fileID: 2750942049246783501, guid: 0df4999793f61d94f907476addb40370, type: 3}
-  - {fileID: 6563915197808906748, guid: c94c4780739ac9b4f9108a32d02c0281, type: 3}
-  - {fileID: 8916530962527516612, guid: 2d6034228730a6743832a3d61bc62da0, type: 3}
-  - {fileID: 8554478738043012695, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
-  - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
-  - {fileID: 5360196784861406231, guid: 9f97374e4f1a4e54f9807e9f41e9ee0f, type: 3}
-  - {fileID: 5360196784861406231, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
-  - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
-  - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
-  - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
-  - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
-  - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
-  - {fileID: 7627762053222131929, guid: fdea810ffd2ec354aad1fcf05c1d1a22, type: 3}
-  monsters:
-  - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
-  - {fileID: 6373906192440463125, guid: 011c49c377785694eb340295634c78ac, type: 3}
-  - {fileID: 4123743951846585415, guid: fa0fc48a87279b04da2a626d53edca97, type: 3}
-  - {fileID: 254159276128100321, guid: 750bd06613a8190448afb178bfb4c499, type: 3}
-  - {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
-  - {fileID: 1640113148994668561, guid: b408d51283c50ef4b810124e42549572, type: 3}
-  - {fileID: 218805512634659363, guid: 19b33437de53a4b4fb6bd1a01dfe9621, type: 3}
-  - {fileID: 6484742795607083952, guid: 0f2dc02a2ebed6c4c9747b5cf1b67a2f, type: 3}
-  - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
-  - {fileID: 4913986751722077784, guid: 014674e448f787544a111512e06c6a28, type: 3}
-  - {fileID: 3637107936079776189, guid: e54e8eaa1aab019468bc429b69b72180, type: 3}
-  - {fileID: 3038600472547292134, guid: 5b19c5584bd19b9429ae9e4569f9e083, type: 3}
-  - {fileID: 9044111439541207938, guid: 49cea1fa8a6fe344888bf5baec9c0438, type: 3}
-  - {fileID: 1821157012979008744, guid: 6f674aed0c988bd4191905b095108cf3, type: 3}
-  - {fileID: 3314698917802450420, guid: 7548c890777ce4845aab6c4bc8bdfd2a, type: 3}
-  - {fileID: 2885614016224662446, guid: 043430c85de175f42b0aa87b0f3c580c, type: 3}
-  - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
-  - {fileID: 6652352449710847486, guid: 0f9bb46416eca4e4787aae9caaf857e5, type: 3}
-  - {fileID: 4989708188569375269, guid: 0ffab8a140aa4f245a8c4ba67b8f7ac2, type: 3}
-  - {fileID: 8346040232776648719, guid: d0831f8f6eb8ce444bdd04759f0d80bc, type: 3}
+  levels:
+  - fieldImages:
+    - {fileID: 21300000, guid: 037c5b13813adb34c82901bf008843ce, type: 3}
+    - {fileID: 21300000, guid: b39ba6ac25c4ed94691cc2eb7077e3f0, type: 3}
+    - {fileID: 21300000, guid: a21ca735f1e7c2d4080ad3be36d6837e, type: 3}
+    - {fileID: 21300000, guid: 2d411ee9c548e88478aeaeb15e62be43, type: 3}
+    sculptures: []
+    monsters:
+    - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
+    - {fileID: 6484742795607083952, guid: 0f2dc02a2ebed6c4c9747b5cf1b67a2f, type: 3}
+    - {fileID: 9044111439541207938, guid: 49cea1fa8a6fe344888bf5baec9c0438, type: 3}
+    - {fileID: 1821157012979008744, guid: 6f674aed0c988bd4191905b095108cf3, type: 3}
+  - fieldImages:
+    - {fileID: 21300000, guid: 3ccb51a7f2b669a41a13ab2c9db7d598, type: 3}
+    - {fileID: 21300000, guid: c9c6a4abb3e7e424d8683b9f37653a41, type: 3}
+    - {fileID: 21300000, guid: dd366157675cfde4c89877fde8323a20, type: 3}
+    sculptures: []
+    monsters:
+    - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
+    - {fileID: 3038600472547292134, guid: 5b19c5584bd19b9429ae9e4569f9e083, type: 3}
+    - {fileID: 2885614016224662446, guid: 043430c85de175f42b0aa87b0f3c580c, type: 3}
+    - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
+    - {fileID: 8346040232776648719, guid: d0831f8f6eb8ce444bdd04759f0d80bc, type: 3}
+  - fieldImages:
+    - {fileID: 21300000, guid: 280d01f189eec92429d14b9253c9b1f8, type: 3}
+    - {fileID: 21300000, guid: edda2ab641ca73841a368acd531b9a4c, type: 3}
+    - {fileID: 21300000, guid: 432486a3c08ab5f4c83f8d81090ffee7, type: 3}
+    sculptures: []
+    monsters:
+    - {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
+    - {fileID: 1640113148994668561, guid: b408d51283c50ef4b810124e42549572, type: 3}
+    - {fileID: 218805512634659363, guid: 19b33437de53a4b4fb6bd1a01dfe9621, type: 3}
+    - {fileID: 4913986751722077784, guid: 014674e448f787544a111512e06c6a28, type: 3}
+  - fieldImages:
+    - {fileID: 21300000, guid: 02beaae281befb5469af3ef968a506b3, type: 3}
+    - {fileID: 21300000, guid: 23abc85ee4b97f2478afce54424e1fed, type: 3}
+    sculptures: []
+    monsters:
+    - {fileID: 6373906192440463125, guid: 011c49c377785694eb340295634c78ac, type: 3}
+    - {fileID: 254159276128100321, guid: 750bd06613a8190448afb178bfb4c499, type: 3}
+    - {fileID: 3637107936079776189, guid: e54e8eaa1aab019468bc429b69b72180, type: 3}
+    - {fileID: 6652352449710847486, guid: 0f9bb46416eca4e4787aae9caaf857e5, type: 3}
   items:
   - {fileID: 2992278746923005060, guid: f4993742bd635f049930132c5f4aad16, type: 3}
   - {fileID: 1549850051594685311, guid: 8ace544024ca82948ba1ae0be49aa107, type: 3}
   - {fileID: 5972408602383314059, guid: f7198bd5d9a6f634ba645a7ee7a55aca, type: 3}
+  kingslime: {fileID: 478267255}
+  sign: {fileID: 825139913}
+  coffin: {fileID: 1210164381}
+  box: {fileID: 6910098259509927338}
 --- !u!114 &715514220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7152,10 +7230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0949e41a7ed707479509c5834b37f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kingslime: {fileID: 478267255}
-  sign: {fileID: 825139913}
-  coffinshop: {fileID: 1210164381}
-  treasurebox: {fileID: 6910098259509927338}
 --- !u!114 &715514221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7549,7 +7623,7 @@ MonoBehaviour:
   adject: "\uB358\uC804\uC5D0\uB294 \uB3C4\uC5B4\uB77D\uC774 \uC5C6\uC5B4\uC694"
   effect: "\uC0AC\uC6A9 : \uACC4\uB2E8 \uC5F4\uAE30"
   price: 1
-  type: 1
+  type: 2
   grade: 2
   coolTime: 0
   isEffected: 0

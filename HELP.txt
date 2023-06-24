@@ -21,7 +21,6 @@ Spider		10	3	10	SPAWN - WEB (40%)
 Frog		12	3	15	
 Bat		7	2	20	QUICK
 Skel		15	2	10
-Yeti		10	3	10	FOLLOW
 
 # 21 ~ 40 : Graveyard
 Zombie		21	2	5	FOLLOW
@@ -35,16 +34,19 @@ Firebat		18	2	20	QUICK, DASH (60%)
 Ember		20	2	10	SHOOTER - FIRE (50%)
 Golem		43	3	5
 Flamesnake	25	3	0	SPAWNER - LAVA (60%)
-volcano
+
 	
 # 61 ~ 80 : Magical Library	
 Wizard					SHOOTER - MAGIC
 Candle					SPAWN - MINI EMBER
 Book					
-Knight						
-Box						
-
-box tree
+Knight
+						
+Box		
+Wolf
+Tree
+Yeti	
+Volcano		
 
 # 81 ~ 100
 
