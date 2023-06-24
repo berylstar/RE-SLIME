@@ -4234,27 +4234,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  img:
-  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
-  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
-  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-  - {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
-  - {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-  talker:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  talk:
-  - "\u3131"
-  - "\u3134"
-  - "\u3137"
-  - "\u3139"
-  - "\u3141"
-  - "\u3142"
+  dialogues:
+  - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+    talker: "\uD0B9 \uC2AC\uB77C\uC784"
+    talk: 1
+  - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+    talker: 
+    talk: '2
+
+      2'
+  - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+    talker: "\uD0B9 \uC2AC\uB77C\uC784"
+    talk: 3
+  - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+    talker: 
+    talk: 4
+  - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+    talker: "\uD0B9 \uC2AC\uB77C\uC784"
+    talk: 5
+  - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+    talker: 
+    talk: 6
 --- !u!50 &478267257
 Rigidbody2D:
   serializedVersion: 4
@@ -8323,12 +8323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  img:
-  - {fileID: 21300000, guid: c842c8b5620702f4988d4b8c30f56aed, type: 3}
-  talker:
-  - 
-  talk:
-  - "[\"\uC774 \uC55E\uC740 \uB358\uC804\uC785\uB2C8\uB2E4.\"]"
+  dialogues:
+  - img: {fileID: 21300000, guid: c842c8b5620702f4988d4b8c30f56aed, type: 3}
+    talker: "\uD45C\uC9C0\uD310"
+    talk: "\uC774 \uC55E\uC740 \uB358\uC804\uC785\uB2C8\uB2E4."
 --- !u!50 &825139916
 Rigidbody2D:
   serializedVersion: 4
@@ -19292,10 +19290,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 384e57fa8f5dc684fa25e777c794ecaa, type: 3}
-    m_FontSize: 40
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 80
     m_Alignment: 0
     m_AlignByGeometry: 0

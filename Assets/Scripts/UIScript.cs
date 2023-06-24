@@ -118,7 +118,7 @@ public class UIScript : MonoBehaviour
         panelDie.SetActive(true);
     }
 
-    public void Dialogue(Sprite character, string who, string talk)
+    public void ShowDialogue(Sprite character, string who, string talk)
     {
         GameController.inDiaglogue = true;
         panelDialogue.SetActive(true);

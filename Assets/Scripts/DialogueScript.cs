@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum DialogueType
 {
@@ -12,9 +13,16 @@ public class DialogueScript : MonoBehaviour
 {
     public DialogueType type;
 
-    public List<Sprite> img = new List<Sprite>();
-    public List<string> talker = new List<string>();
-    public List<string> talk = new List<string>();
+    [Serializable]
+    public struct DialogueStruct
+    {
+        public Sprite img;
+        public string talker;
+        [Multiline (2)]
+        public string talk;
+    }
+    
+    public List<DialogueStruct> dialogues = new List<DialogueStruct>();
 
     private int start, end;
     private int index = 0;
@@ -44,7 +52,7 @@ public class DialogueScript : MonoBehaviour
                 }
             }
             else
-                UIScript.I.Dialogue(img[index], talker[index], talk[index]);
+                UIScript.I.ShowDialogue(dialogues[index].img, dialogues[index].talker, dialogues[index].talk);
         }
     }
 
@@ -55,7 +63,7 @@ public class DialogueScript : MonoBehaviour
             SetDialogue();
             index = start;
             GameController.nowDialogue = this;
-            UIScript.I.Dialogue(img[start], talker[start], talk[start]);
+            UIScript.I.ShowDialogue(dialogues[start].img, dialogues[start].talker, dialogues[start].talk);
         }
     }
 
