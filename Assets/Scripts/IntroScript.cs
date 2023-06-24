@@ -35,9 +35,10 @@ public class IntroScript : MonoBehaviour
             {
                 ActivePanel(1);
 
-                if (File.Exists(DataManager.inst.ReturnPath("1")))
+                if (File.Exists(DataManager.I.ReturnPath("1")))
                     slots[1].GetComponent<Button>().interactable = true;
-                if (File.Exists(DataManager.inst.ReturnPath("2")))
+
+                if (File.Exists(DataManager.I.ReturnPath("2")))
                     slots[2].GetComponent<Button>().interactable = true;
             }
             else if (pickIndex == 1)
@@ -57,9 +58,9 @@ public class IntroScript : MonoBehaviour
                     return;
 
                 if (pickIndex == 1 || pickIndex == 2)
-                    DataManager.inst.LoadData(pickIndex.ToString());
+                    DataManager.I.LoadData(pickIndex.ToString());
                 else
-                    DataManager.inst.NewData();
+                    DataManager.I.NewData();
 
                 UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
             }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData
 {
@@ -9,28 +10,12 @@ public class GameData
 
     // PLAYER
     public int playerLife = 3;
-    public int playerMaxHP = 100;
-    public int playerAP = 10;
-    public int playerDP = 0;
-    public float playerSpeed = 50f;
-    public float playerTimeDamage = 1f;
-    public EquipScript skillC = null;
-    public EquipScript skillV = null;
-    public List<int> ShopGrade = new List<int>() { 20, 5 };
 
     // ITEM
     public int coin = 0;
-    public int probCoin = 10;
-    public bool RedCoin = false;
-    public int potionEff = 5;
-    public int probPotion = 10;
 
     // EQUIP
     public List<string> EP = new List<string>();
-    public bool effBattery = false;
-    public bool effcrescent = false;
-    public bool effSkate = false;
-    public EquipScript effLastleaf = null;
 
     // GAME SYSTEM
     public bool endTutorial = false;
@@ -44,7 +29,6 @@ public class GameController : MonoBehaviour
     public static readonly WaitForSeconds delay_025s = new WaitForSeconds(0.25f);
     public static readonly WaitForSeconds delay_01s = new WaitForSeconds(0.1f);
 
-    public GameObject field;
     public GameObject kingslime;
     public GameObject sign;
     public GameObject coffinshop;
@@ -75,7 +59,7 @@ public class GameController : MonoBehaviour
     public static int probPotion = 10;
 
     // EQUIPS
-    public static List<string> EP = new List<string>();
+    public static List<string> myEquips = new List<string>();
     public static bool effBattery = false;
     public static bool effcrescent = false;
     public static bool effSkate = false;
@@ -105,13 +89,13 @@ public class GameController : MonoBehaviour
         playerHP = Mathf.Min(playerMaxHP, Mathf.Max(0, playerHP + ch));
     }
 
+    // 속도 변경 관련 함수
     public static void ChangeSpeed(int ch)
     {
         playerSpeed += ch;
         PlayerScript.I.ApplyMoveSpeed();
     }
 
-    // 속도 변경 관련 함수
     public static void SpeedStackIn(float speed)
     {
         speedStack.Add(speed);
@@ -124,15 +108,17 @@ public class GameController : MonoBehaviour
         speedStack.RemoveAt(idx);
     }
 
+    // 게임 재시작
     public static void Restart()
     {
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("IntroScene");
     }
 
+    // 세이브 버튼
     public static void SAVE(int idx)
     {
-        DataManager.inst.SaveData(idx.ToString());
+        DataManager.I.SaveData(idx.ToString());
     }
 }

@@ -19,29 +19,24 @@ public class ItemScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ItemEffect();
-        }
-    }
+            if (itemType == ItemType.COIN)
+            {
+                GameController.coin += 1;
+            }
+            else if (itemType == ItemType.REDCOIN)
+            {
+                GameController.coin += 3;
+            }
+            else if (itemType == ItemType.POTION)
+            {
+                GameController.ChangeHP(GameController.potionEff);
+            }
+            else if (itemType == ItemType.POISON)
+            {
+                GameController.ChangeHP(-5);
+            }
 
-    public void ItemEffect()
-    {
-        if (itemType == ItemType.COIN)
-        {
-            GameController.coin += 1;
+            Destroy(this.gameObject);
         }
-        else if (itemType == ItemType.REDCOIN)
-        {
-            GameController.coin += 3;
-        }
-        else if (itemType == ItemType.POTION)
-        {
-            GameController.ChangeHP(GameController.potionEff);
-        }
-        else if (itemType == ItemType.POISON)
-        {
-            GameController.ChangeHP(-5);
-        }
-
-        Destroy(this.gameObject);
     }
 }

@@ -16,20 +16,15 @@ public class DialogueScript : MonoBehaviour
     public List<string> talker = new List<string>();
     public List<string> talk = new List<string>();
 
-    private UIScript US;
     private int start, end;
     private int index = 0;
-
-    private void Start()
-    {
-        US = GameObject.Find("CONTROLLER").GetComponent<UIScript>();
-    }
 
     private void Update()
     {
         if (!GameController.inDiaglogue || GameController.Pause(0))
             return;
 
+        // 지금 대화하는게 내가 아니라면 리턴
         if (GameController.nowDialogue != this)
             return;
 
@@ -41,6 +36,7 @@ public class DialogueScript : MonoBehaviour
             {
                 StartCoroutine(CloseTutorial());
 
+                // 최초 튜토리얼 진행 후
                 if (type == DialogueType.KINGSLIME && !GameController.endTutorial)
                 {
                     GameController.endTutorial = true;
@@ -48,7 +44,7 @@ public class DialogueScript : MonoBehaviour
                 }
             }
             else
-                US.Dialogue(img[index], talker[index], talk[index]);
+                UIScript.I.Dialogue(img[index], talker[index], talk[index]);
         }
     }
 
@@ -59,10 +55,11 @@ public class DialogueScript : MonoBehaviour
             SetDialogue();
             index = start;
             GameController.nowDialogue = this;
-            US.Dialogue(img[start], talker[start], talk[start]);
+            UIScript.I.Dialogue(img[start], talker[start], talk[start]);
         }
     }
 
+    // 대화 상대에 맞춰 미리 세팅해야 함
     private void SetDialogue()
     {
         if (type == DialogueType.SIGN) { start = 0; end = 1; }
@@ -74,13 +71,13 @@ public class DialogueScript : MonoBehaviour
         }
     }
 
-    // 바로 다시 NPC와 대화를 막기위한 잠깐의 딜레이
+    // 스페이스바 때문에 바로 NPC와 대화를 막기위한 잠깐의 딜레이
     IEnumerator CloseTutorial()
     {
         GameController.nowDialogue = null;
 
         yield return GameController.delay_01s;
 
-        US.EndDialogue();
+        UIScript.I.EndDialogue();
     }
 }

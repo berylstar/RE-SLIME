@@ -134,6 +134,8 @@ public class EquipScript : MonoBehaviour
         if (inCoolTime)
             return;
 
+        print(transform.name);
+
         StartCoroutine(OnCoolTime());
         EFFECTOR.EquipSkill(number);
 
@@ -188,8 +190,6 @@ public class EquipScript : MonoBehaviour
         SetPos(poses);
         tf.position = INVEN.ReturnGrid(posIndex[0]);
         FillIC(1);
-
-        isEffected = true;
 
         INVEN.GottenEquips.Add(this);
         ReturnGrade().Remove(this);

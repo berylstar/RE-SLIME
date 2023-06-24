@@ -5,15 +5,16 @@ using System.IO;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager inst;
+    public static DataManager I;
 
-    private GameData dd = new GameData();
+    private GameData newDATA = new GameData();
     private string path;
 
     private void Awake()
     {
-        if (inst == null) inst = this;
-        else if (inst != this) Destroy(gameObject);
+        // ΩÃ±€≈Ê
+        if (I == null) I = this;
+        else if (I != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
 
         path = Application.persistentDataPath + "/SLOT_";
@@ -26,105 +27,53 @@ public class DataManager : MonoBehaviour
 
     public void SaveData(string slot)
     {
-        dd.savedFloor = GameController.savedFloor;
+        newDATA.savedFloor = GameController.savedFloor;
 
-        dd.playerLife = GameController.playerLife;
-        dd.playerMaxHP = GameController.playerMaxHP;
-        dd.playerAP = GameController.playerAP;
-        dd.playerDP = GameController.playerDP;
-        dd.playerSpeed = GameController.playerSpeed;
-        dd.playerTimeDamage = GameController.playerTimeDamage;
-        dd.skillC = GameController.skillC;
-        dd.skillV = GameController.skillV;
-        dd.ShopGrade = GameController.ShopGrade;
+        newDATA.playerLife = GameController.playerLife;
 
-        dd.coin = GameController.coin;
-        dd.probCoin = GameController.probCoin;
-        dd.RedCoin = GameController.RedCoin;
-        dd.potionEff = GameController.potionEff;
-        dd.probPotion = GameController.probPotion;
+        newDATA.coin = GameController.coin;
 
-        GameController.EP.Clear();
+        GameController.myEquips.Clear();
         InventoryScript.I.SAVE();
-        dd.EP = GameController.EP;
+        newDATA.EP = GameController.myEquips;
 
-        dd.effBattery = GameController.effBattery;
-        dd.effcrescent = GameController.effcrescent;
-        dd.effSkate = GameController.effSkate;
-        dd.effLastleaf = GameController.effLastleaf;
+        newDATA.endTutorial = GameController.endTutorial;
 
-        dd.endTutorial = GameController.endTutorial;
-
-        File.WriteAllText(path + slot, JsonUtility.ToJson(dd));
+        File.WriteAllText(path + slot, JsonUtility.ToJson(newDATA));
 
         print("SAVED!");
     }
 
     public void LoadData(string slot)
     {
-        dd = JsonUtility.FromJson<GameData>(File.ReadAllText(path + slot));
+        newDATA = JsonUtility.FromJson<GameData>(File.ReadAllText(path + slot));
 
-        GameController.savedFloor = dd.savedFloor;
+        GameController.savedFloor = newDATA.savedFloor;
 
-        GameController.playerLife = dd.playerLife;
-        GameController.playerMaxHP = dd.playerMaxHP;
-        GameController.playerAP = dd.playerAP;
-        GameController.playerDP = dd.playerDP;
-        GameController.playerSpeed = dd.playerSpeed;
-        GameController.playerTimeDamage = dd.playerTimeDamage;
-        GameController.skillC = dd.skillC;
-        GameController.skillV = dd.skillV;
-        GameController.ShopGrade = dd.ShopGrade;
+        GameController.playerLife = newDATA.playerLife;
 
-        GameController.coin = dd.coin;
-        GameController.probCoin = dd.probCoin;
-        GameController.RedCoin = dd.RedCoin;
-        GameController.potionEff = dd.potionEff;
-        GameController.probPotion = dd.probPotion;
+        GameController.coin = newDATA.coin;
 
-        GameController.EP = dd.EP;
+        GameController.myEquips = newDATA.EP;
 
-        GameController.effBattery = dd.effBattery;
-        GameController.effcrescent = dd.effcrescent;
-        GameController.effSkate = dd.effSkate;
-        GameController.effLastleaf = dd.effLastleaf;
-
-        GameController.endTutorial = dd.endTutorial;
+        GameController.endTutorial = newDATA.endTutorial;
 
         print("LOAD!");
     }
 
     public void NewData()
     {
-        dd = new GameData();
+        newDATA = new GameData();
 
-        GameController.savedFloor = dd.savedFloor;
+        GameController.savedFloor = newDATA.savedFloor;
 
-        GameController.playerLife = dd.playerLife;
-        GameController.playerHP = dd.playerMaxHP;
-        GameController.playerMaxHP = dd.playerMaxHP;
-        GameController.playerAP = dd.playerAP;
-        GameController.playerDP = dd.playerDP;
-        GameController.playerSpeed = dd.playerSpeed;
-        GameController.playerTimeDamage = dd.playerTimeDamage;
-        GameController.skillC = dd.skillC;
-        GameController.skillV = dd.skillV;
-        GameController.ShopGrade = dd.ShopGrade;
+        GameController.playerLife = newDATA.playerLife;
 
-        GameController.coin = dd.coin;
-        GameController.probCoin = dd.probCoin;
-        GameController.RedCoin = dd.RedCoin;
-        GameController.potionEff = dd.potionEff;
-        GameController.probPotion = dd.probPotion;
+        GameController.coin = newDATA.coin;
 
-        GameController.EP = dd.EP;
+        GameController.myEquips = newDATA.EP;
 
-        GameController.effBattery = dd.effBattery;
-        GameController.effcrescent = dd.effcrescent;
-        GameController.effSkate = dd.effSkate;
-        GameController.effLastleaf = dd.effLastleaf;
-
-        GameController.endTutorial = dd.endTutorial;
+        GameController.endTutorial = newDATA.endTutorial;
 
         print("NEW!");
     }

@@ -7087,7 +7087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GC: {fileID: 715514220}
-  US: {fileID: 715514221}
+  field: {fileID: 1505105375}
   imageFields:
   - {fileID: 21300000, guid: 037c5b13813adb34c82901bf008843ce, type: 3}
   - {fileID: 21300000, guid: b39ba6ac25c4ed94691cc2eb7077e3f0, type: 3}
@@ -7115,7 +7115,6 @@ MonoBehaviour:
   - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
   - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
   - {fileID: 7627762053222131929, guid: fdea810ffd2ec354aad1fcf05c1d1a22, type: 3}
-  stair: {fileID: 192884805}
   monsters:
   - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
   - {fileID: 6373906192440463125, guid: 011c49c377785694eb340295634c78ac, type: 3}
@@ -7153,7 +7152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0949e41a7ed707479509c5834b37f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: {fileID: 1505105375}
   kingslime: {fileID: 478267255}
   sign: {fileID: 825139913}
   coffinshop: {fileID: 1210164381}

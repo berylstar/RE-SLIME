@@ -10,15 +10,8 @@ public class BoxScript : MonoBehaviour
     public List<Image> stands = new List<Image>();
     public List<GameObject> picks = new List<GameObject>();
 
-    private UIScript US;
-
     private bool isPicked = false;
     private int bi = 0;
-
-    private void Start()
-    {
-        US = GameObject.Find("CONTROLLER").GetComponent<UIScript>();
-    }
 
     private void Update()
     {
@@ -30,7 +23,7 @@ public class BoxScript : MonoBehaviour
             if (isPicked)
                 StartCoroutine(CloseBox());
             else if (bi != 0)
-                GetEquip(bi);
+                GetReward(bi);
         }
 
         // 박스 커서 이동
@@ -47,14 +40,14 @@ public class BoxScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            US.panelBox.SetActive(true);
+            UIScript.I.panelBox.SetActive(true);
             GameController.inBox = true;
         }
     }
 
     IEnumerator CloseBox()
     {
-        US.panelBox.SetActive(false);
+        UIScript.I.panelBox.SetActive(false);
         
         yield return GameController.delay_01s;
 
@@ -105,22 +98,18 @@ public class BoxScript : MonoBehaviour
         }
     }
 
-    private void GetEquip(int idx)
+    private void GetReward(int idx)
     {
         if (idx == 1)
-        {
             GameController.coin += 5;
-        }
+
         else if (idx == 2)
-        {
             GameController.ChangeHP(50);
-        }
 
         stands[0].sprite = nope;
         stands[1].sprite = nope;
 
         SetPick(0);
         isPicked = true;
-        
     }
 }

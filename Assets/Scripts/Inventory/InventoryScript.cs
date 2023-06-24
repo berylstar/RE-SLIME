@@ -46,15 +46,15 @@ public class InventoryScript : MonoBehaviour
                 strr += "," + GottenEquips[i].posIndex[j].ToString();
             }
 
-            GameController.EP.Add(strr);
+            GameController.myEquips.Add(strr);
         }
     }
 
     private void LOAD()
     {
-        for (int i = 0; i < GameController.EP.Count; i++)
+        for (int i = 0; i < GameController.myEquips.Count; i++)
         {
-            string[] ints = GameController.EP[i].Split(',');
+            string[] ints = GameController.myEquips[i].Split(',');
 
             List<int> poses = new List<int>();
 

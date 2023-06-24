@@ -7,14 +7,13 @@ public class BoardManager : MonoBehaviour
     public static BoardManager I = null;
 
     public GameController GC;
-    public UIScript US;
 
     [Header("FIELDS")]
+    public GameObject field;
     public Sprite[] imageFields;
 
     [Header("SCULPTURES")]
     public GameObject[] sculptures;
-    public GameObject stair;
 
     [Header("MONSTERS")]
     public GameObject[] monsters;
@@ -57,8 +56,8 @@ public class BoardManager : MonoBehaviour
         else if (floor <= 80) { sp = imageFields[Random.Range(10, 12)]; }
         else { sp = imageFields[Random.Range(0, 12)]; }
 
-        GC.field.GetComponent<SpriteRenderer>().sprite = sp;
-        GC.field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
+        field.GetComponent<SpriteRenderer>().sprite = sp;
+        field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
     }
 
     // 그리드 리스트 내 랜덤 위치 반환
@@ -108,7 +107,7 @@ public class BoardManager : MonoBehaviour
     private void LayoutStair(int floor)
     {
         if (floor % 20 != 19)
-            stair.transform.position = RandomPosition();
+            StairScript.I.transform.position = RandomPosition();
         else
         {
             for (int i = 4; i < 8; i++)
@@ -116,7 +115,7 @@ public class BoardManager : MonoBehaviour
                 ReturnPosition(i, 9);
             }
 
-            stair.transform.position = new Vector3 (4.5f, 9f, 0f);
+            StairScript.I.transform.position = new Vector3 (4.5f, 9f, 0f);
         }
     }
 
@@ -137,9 +136,9 @@ public class BoardManager : MonoBehaviour
     // 층 넘어갈 때 효과
     IEnumerator NextFloorEffect()
     {
-        US.panelNextFloor.SetActive(true);
+        UIScript.I.panelNextFloor.SetActive(true);
         yield return GameController.delay_01s;
-        US.panelNextFloor.SetActive(false);
+        UIScript.I.panelNextFloor.SetActive(false);
     }
 
     private void SetSculptures()
@@ -174,7 +173,7 @@ public class BoardManager : MonoBehaviour
 
         LayoutStair(floor);
         //RemovePositionAwayFrom(stair.GetComponent<Transform>().position);
-        RemovePositionAwayFrom(stair.transform.position);
+        RemovePositionAwayFrom(StairScript.I.transform.position);
 
                                                     // 추후에 조형물과 몬스터는 레벨에 따라 배치해야함
         LayoutObjectAtRandom(sculptures, 2, 10);
