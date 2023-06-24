@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CursorScript : MonoBehaviour
 {
-    public InventoryScript IS;
-
-    private Transform tf;
     private SpriteRenderer sr;
 
     private int posIndex = 0;
@@ -15,7 +12,6 @@ public class CursorScript : MonoBehaviour
 
     private void Start()
     {
-        tf = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
 
         CursorReset();
@@ -38,14 +34,14 @@ public class CursorScript : MonoBehaviour
         // Input : C = 장비 C 스킬 등록
         if (Input.GetKeyDown(KeyCode.C) && pick)
         {
-            IS.SetSkill("C", pick.GetComponent<EquipScript>());
+            InventoryScript.I.SetSkill("C", pick.GetComponent<EquipScript>());
             pick = null;
         }
 
         // Input : V = 장비 V 스킬 등록
         if (Input.GetKeyDown(KeyCode.V) && pick)
         {
-            IS.SetSkill("V", pick.GetComponent<EquipScript>());
+            InventoryScript.I.SetSkill("V", pick.GetComponent<EquipScript>());
             pick = null;
         }
 
@@ -89,14 +85,14 @@ public class CursorScript : MonoBehaviour
 
         posIndex += change;
 
-        tf.position = IS.ReturnGrid(posIndex);
+        transform.position = InventoryScript.I.ReturnGrid(posIndex);
     }
 
     // 인벤토리 열었을 때 커서 초기화
     public void CursorReset()
     {
         posIndex = 0;
-        tf.position = IS.ReturnGrid(0);
+        transform.position = InventoryScript.I.ReturnGrid(0);
         pick = null;
     }
 }

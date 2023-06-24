@@ -34,17 +34,11 @@ public class EquipScript : MonoBehaviour
     public List<int> posIndex = new List<int>();
     public GameObject iconC, iconV;
 
-    private InventoryScript INVEN;
-    private EquipEffector EFFECTOR;
-    private Transform tf;
     private SpriteRenderer sr;
 
     private void Awake()
     {
-        tf = GetComponent<Transform>();
         sr = GetComponent<SpriteRenderer>();
-        INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
-        EFFECTOR = GameObject.Find("INVENTORY").GetComponent<EquipEffector>();
         
         gameObject.SetActive(false);
     }
@@ -52,21 +46,21 @@ public class EquipScript : MonoBehaviour
     private List<EquipScript> ReturnGrade()
     {
         if (grade == EquipGrade.NORMAL)
-            return INVEN.equipsNormal;
+            return InventoryScript.I.equipsNormal;
         else if (grade == EquipGrade.RARE)
-            return INVEN.equipsRare;
+            return InventoryScript.I.equipsRare;
         else if (grade == EquipGrade.UNIQUE)
-            return INVEN.equipsUnique;
+            return InventoryScript.I.equipsUnique;
         else
             return null;
     }
 
     public void GetThis()
     {
-        tf.position = INVEN.ReturnGrid(posIndex[0]);
-        FillIC(1);
+        transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
+        UpdateIC(1);
 
-        INVEN.GottenEquips.Add(this);
+        InventoryScript.I.GottenEquips.Add(this);
         ReturnGrade().Remove(this);
 
         gameObject.SetActive(true);
@@ -74,9 +68,9 @@ public class EquipScript : MonoBehaviour
 
     public void RemoveThis()
     {
-        FillIC(-1);
+        UpdateIC(-1);
 
-        INVEN.GottenEquips.Remove(this);
+        InventoryScript.I.GottenEquips.Remove(this);
         ReturnGrade().Add(this);
 
         UnEffect();
@@ -96,11 +90,11 @@ public class EquipScript : MonoBehaviour
     }
 
     // invenchecker의 값 변경함으로써 겹침 확인
-    private void FillIC(int v)
+    private void UpdateIC(int v)
     {
         for (int i = 0; i < posIndex.Count; i++)
         {
-            INVEN.invenChecker[posIndex[i]] += v;
+            InventoryScript.I.UpdateInvenChecker(posIndex[i], v);
         }
     }
 
@@ -115,7 +109,7 @@ public class EquipScript : MonoBehaviour
         }
 
         // 이동하기 전 인덱스의 invenchecker 값 감소
-        FillIC(-1);
+        UpdateIC(-1);
 
         for (int i = 0; i < posIndex.Count; i++)
         {
@@ -123,9 +117,9 @@ public class EquipScript : MonoBehaviour
         }
 
         // 이동 후 인덱스의 invenchecker 값 증가
-        FillIC(1);
+        UpdateIC(1);
 
-        tf.position = INVEN.ReturnGrid(posIndex[0]);
+        transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
         return true;
     }
 
@@ -134,10 +128,8 @@ public class EquipScript : MonoBehaviour
         if (inCoolTime)
             return;
 
-        print(transform.name);
-
         StartCoroutine(OnCoolTime());
-        EFFECTOR.EquipSkill(number);
+        EquipEffector.I.EquipSkill(number);
 
         if (type == EquipType.ACTIVE)
             RemoveThis();
@@ -170,7 +162,7 @@ public class EquipScript : MonoBehaviour
         if (isEffected)
             return;
 
-        EFFECTOR.EquipEffect(number, this);
+        EquipEffector.I.EquipEffect(number, this);
 
         isEffected = true;
     }
@@ -180,7 +172,7 @@ public class EquipScript : MonoBehaviour
         if (!isEffected)
             return;
 
-        EFFECTOR.EquipUnEffect(number, this);
+        EquipEffector.I.EquipUnEffect(number, this);
 
         isEffected = false;
     }
@@ -188,10 +180,10 @@ public class EquipScript : MonoBehaviour
     public void LoadThis(List<int> poses)
     {
         SetPos(poses);
-        tf.position = INVEN.ReturnGrid(posIndex[0]);
-        FillIC(1);
+        transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
+        UpdateIC(1);
 
-        INVEN.GottenEquips.Add(this);
+        InventoryScript.I.GottenEquips.Add(this);
         ReturnGrade().Remove(this);
 
         gameObject.SetActive(true);

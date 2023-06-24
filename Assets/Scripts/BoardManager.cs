@@ -30,7 +30,7 @@ public class BoardManager : MonoBehaviour
     public GameObject box;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
-    private List<MonsterScript> livingMonsters;
+    private List<MonsterScript> livingMonsters = new List<MonsterScript>();
     private Transform objectHolder;
 
     private void Awake()
@@ -57,17 +57,6 @@ public class BoardManager : MonoBehaviour
         return levels[floor / 20];
     }
 
-    // 레벨 디자인에 맞춰 field 이미지 변환
-    private void SetField(int floor)
-    {
-        GameObject field = GameObject.Find("FIELD");
-
-        Sprite[] fieldSprites = ObjectPerFloor(floor).fieldImages;
-
-        field.GetComponent<SpriteRenderer>().sprite = fieldSprites[Random.Range(0, fieldSprites.Length)];
-        field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
-    }
-
     // 그리드 리스트 내 랜덤 위치 반환
     private Vector3 RandomPosition()
     {
@@ -78,7 +67,7 @@ public class BoardManager : MonoBehaviour
     }
 
     // 그리드 리스트 내 원하는 좌표 반환
-    private Vector3 ReturnPosition(int x, int y)
+    private Vector3 DesiredPosition(int x, int y)
     {
         Vector3 pos = new Vector3(x, y, 0);
         gridPositions.Remove(pos);
@@ -98,6 +87,26 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    // 소환할때 포지션을 그리드 포지션에서 제거하지 않음 => 엄청 많이 생겼을 때 자리 없는 것을 방지하기 위해
+    public Vector3 SpawnPosition()
+    {
+        return gridPositions[Random.Range(0, gridPositions.Count)];
+    }
+
+    // 그리드 리스트 내 랜덤 위치 반환
+    private Vector3 RandomMonsterPosition(GameObject go)
+    {
+        int idx = Random.Range(0, gridPositions.Count);
+        Vector3 pos = gridPositions[idx];
+
+        int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 60) - 1;
+
+        pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
+
+        gridPositions.RemoveAt(idx);
+        return pos;
+    }
+
     // 오브젝트 그룹에서 무작위로 선택해 무작위 위치에 배치
     private void LayoutObjectAtRandom(GameObject[] tileArray, int min, int max)
     {
@@ -109,22 +118,20 @@ public class BoardManager : MonoBehaviour
             instance.transform.SetParent(objectHolder);
         }
     }
-
-    // 계단 배치
-    // 현재 상태 : 계단 주변 좌표 제외하지 않음 => 벽 같은 거로 막힐 가능성 있음. 추후에 벽 그룹 만들고 계단 주변 좌표 제거 후 계단보다 늦게 배치 예상
+    
     private void LayoutStair(int floor)
     {
         if (floor % 20 != 19)
             StairScript.I.transform.position = RandomPosition();
         else
         {
-            for (int i = 4; i < 8; i++)
-            {
-                ReturnPosition(i, 9);
-            }
+            for (int i = 3; i < 7; i++)
+                DesiredPosition(i, 9);
 
             StairScript.I.transform.position = new Vector3 (4.5f, 9f, 0f);
         }
+
+        RemovePositionAwayFrom(StairScript.I.transform.position);
     }
 
     // 계단과 OnTrigger 작동 함수
@@ -149,18 +156,22 @@ public class BoardManager : MonoBehaviour
         UIScript.I.panelNextFloor.SetActive(false);
     }
 
-    private void SetSculptures()
+    // 레벨 디자인에 맞춰 field 이미지 변환
+    private void SetField(int floor)
     {
+        GameObject field = GameObject.Find("FIELD");
 
+        Sprite[] fieldSprites = ObjectPerFloor(floor).fieldImages;
+
+        field.GetComponent<SpriteRenderer>().sprite = fieldSprites[Random.Range(0, fieldSprites.Length)];
+        field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
     }
 
     private void SetMonsters(int min, int max)
     {
-        int objectCount = Random.Range(min, max + 1);
-
-        for (int i = 0; i < objectCount; i++)
+        for (int i = 0; i < Random.Range(min, max + 1); i++)
         {
-            GameObject go = levels[0].monsters[Random.Range(0, levels[0].monsters.Length)];
+            GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, ObjectPerFloor(GameController.floor).monsters.Length)];
             GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
             instance.transform.SetParent(objectHolder);
         }
@@ -173,18 +184,15 @@ public class BoardManager : MonoBehaviour
             Destroy(GameObject.Find("ObjectHolder"));
 
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
-        livingMonsters = new List<MonsterScript>();
+        livingMonsters.Clear();
 
         InitialGrid();
         SetField(floor);
         RemovePositionAwayFrom(PlayerScript.I.transform.position);
 
         LayoutStair(floor);
-        //RemovePositionAwayFrom(stair.GetComponent<Transform>().position);
-        RemovePositionAwayFrom(StairScript.I.transform.position);
 
-                                                    // 추후에 조형물과 몬스터는 레벨에 따라 배치해야함
-        LayoutObjectAtRandom(levels[0].sculptures, 2, 10);
+        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);
 
         SetMonsters(2, 8);
     }
@@ -212,11 +220,11 @@ public class BoardManager : MonoBehaviour
         int iRand = Random.Range(0, 101);
         GameObject item;
 
-        if (iRand <= GameController.probCoin)
+        if (iRand <= GameController.probPotion)
             item = items[0];
-        else if (100 - GameController.probPotion <= iRand)
+        else if (100 - GameController.probCoin <= iRand)
         {
-            if (GameController.RedCoin && 95 <= iRand)
+            if (GameController.RedCoin && 97 <= iRand)
                 item = items[2];
             else
                 item = items[1];
@@ -228,34 +236,18 @@ public class BoardManager : MonoBehaviour
         instance.transform.SetParent(objectHolder);
     }
 
+    public void BoxDrop(Vector3 pos)
+    {
+        box.SetActive(true);
+        box.transform.position = pos;
+    }
+
     private void HideNPC()
     {
         kingslime.SetActive(false);
         sign.SetActive(false);
         coffin.SetActive(false);
         box.SetActive(false);
-    }
-
-    // 소환한 포지션을 그리드 포지션에서 제거하지 않음 => 엄청 많이 생겼을 때 자리 없는 것을 방지하기 위해
-    public Vector3 SpawnPosition()
-    {
-        int idx = Random.Range(0, gridPositions.Count);
-        Vector3 pos = gridPositions[idx];
-        return pos;
-    }
-
-    // 그리드 리스트 내 랜덤 위치 반환
-    private Vector3 RandomMonsterPosition(GameObject go)
-    {
-        int idx = Random.Range(0, gridPositions.Count);
-        Vector3 pos = gridPositions[idx];
-
-        int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 60) - 1;
-
-        pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
-
-        gridPositions.RemoveAt(idx);
-        return pos;
     }
 
     ////////////////////////////////////

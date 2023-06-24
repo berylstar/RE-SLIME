@@ -42,11 +42,11 @@ Candle					SPAWN - MINI EMBER
 Book					
 Knight
 						
-Box		
+Box
 Wolf
 Tree
-Yeti	
-Volcano		
+Yeti
+Volcano
 
 # 81 ~ 100
 

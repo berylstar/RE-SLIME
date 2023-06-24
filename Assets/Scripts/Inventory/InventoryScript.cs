@@ -14,15 +14,15 @@ public class InventoryScript : MonoBehaviour
     public List<EquipScript> GottenEquips = new List<EquipScript>();
 
     [Header("INVENTORY")]
-    public List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     public GameObject objectOverlapped;
     public GameObject cursor;
 
+    private List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     private List<Vector3> equipGrid = new List<Vector3>();
 
     private void Awake()
     {
-        // 인벤토리는 씬이 재시작되어도 유지
+        // 싱글톤
         if (I == null) I = this;
         else if (I != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
@@ -82,6 +82,14 @@ public class InventoryScript : MonoBehaviour
 
             OpenInventory();
         }
+    }
+
+    // 인벤토리 열고 닫는 함수
+    public void OpenInventory()
+    {
+        GameController.inInven = !GameController.inInven;
+
+        cursor.SetActive(GameController.inInven);
     }
 
     // 인벤토리 좌표 설정
@@ -146,6 +154,12 @@ public class InventoryScript : MonoBehaviour
             return;
     }
 
+    // 장비 겹침을 확인하는 InvenChecker 업데이트 함수 => EquipScript에서 실행
+    public void UpdateInvenChecker(int idx, int val)
+    {
+        invenChecker[idx] += val;
+    }
+
     // 인벤토리에 장비가 겹쳐있는지 확인. 오버랩=True
     public bool CheckOverlap()
     {
@@ -163,15 +177,7 @@ public class InventoryScript : MonoBehaviour
         return false;
     }
 
-    // 인벤토리 열고 닫는 함수
-    public void OpenInventory()
-    {
-        GameController.inInven = !GameController.inInven;
-
-        cursor.SetActive(GameController.inInven);
-    }
-
-    // 장비 효과 발동
+    // 장비 획득 후 겹쳐있지 않다면 장비 효과 발동
     private void EquipEffect()
     {
         for (int i = 0; i < GottenEquips.Count; i++)
@@ -181,6 +187,7 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+    // 상점 판매를 위해 장비 리스트 셔플 => CoffinShopScript에서 사용
     public void ShuffleEquipList()
     {
         ShuffleList<EquipScript>(equipsNormal);

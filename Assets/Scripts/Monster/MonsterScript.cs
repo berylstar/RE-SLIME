@@ -41,6 +41,11 @@ public class MonsterScript : MovingObject
         }
     }
 
+    public void MonsterDamage(int d)
+    {
+        StartCoroutine(Damaged(d));
+    }
+
     // 몬스터 피해입을 때 실행할 코루틴
     IEnumerator Damaged(int damage)
     {
@@ -58,21 +63,15 @@ public class MonsterScript : MovingObject
         }
     }
 
-    public void MonsterDamage(int d)
-    {
-        StartCoroutine(Damaged(d));
-    }
-
     IEnumerator Die()
     {
         isAlive = false;
         ani.SetTrigger("MonsterDie");
-        this.gameObject.tag = "Untagged";
 
         yield return null;
     }
 
-    // Disappear 애니매이션까지 끝나면 Animator에서 실행
+    // Disappear 애니매이션까지 끝나면 Animator에서 실행하는 함수
     private void Disappear()
     {
         BoardManager.I.RemoveMonster(this);

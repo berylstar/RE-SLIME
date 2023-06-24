@@ -16,6 +16,7 @@ public class MonsterSpawner : MonsterScript
 
         if (speed > 0)
             StartCoroutine(MonsterMove());
+
         StartCoroutine(Spawn());
     }
 
@@ -56,7 +57,7 @@ public class MonsterSpawner : MonsterScript
 
     private void SpawnAnimator()
     {
-        GameObject product = Instantiate(spawn, BoardManager.I.SpawnPosition(), Quaternion.identity);
+        GameObject product = Instantiate(spawn, BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
         product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

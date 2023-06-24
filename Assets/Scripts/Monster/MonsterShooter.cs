@@ -20,6 +20,7 @@ public class MonsterShooter : MonsterScript
 
         if (speed > 0)
             StartCoroutine(MonsterMove());
+
         StartCoroutine(Shoot());
     }
 

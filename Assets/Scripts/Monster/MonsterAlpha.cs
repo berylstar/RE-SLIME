@@ -7,8 +7,6 @@ public class MonsterAlpha : MonsterScript
     [Header("ALPHA")]
     public int transparentPercent;
 
-    private bool isTransparent = false;
-
     private Color32 colorO = new Color32(255, 255, 255, 255);
     private Color32 colorT = new Color32(255, 255, 255, 50);
 
@@ -53,8 +51,7 @@ public class MonsterAlpha : MonsterScript
         while (isAlive)
         {
             int iRand = Random.Range(0, 100);
-            isTransparent = (iRand <= transparentPercent) ? true : false;
-            sr.color = isTransparent ? colorT : colorO;
+            sr.color = (iRand <= transparentPercent) ? colorT : colorO;
 
             yield return GameController.delay_1s;
         }
