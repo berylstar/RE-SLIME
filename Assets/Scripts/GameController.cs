@@ -68,15 +68,16 @@ public class GameController : MonoBehaviour
     public static bool inInven = false;
     public static bool inShop = false;
     public static bool inBox = false;
+    public static bool inRecord = false;
     public static bool endTutorial = false;
 
     public static bool Pause(int i)
     {
         // 우선 순위대로
-        // 0      1              2          3         4       5
-        // esc -> inDiaglogue -> inInven -> inShop -> inBox / all
+        // 0      1              2          3         4        5          10
+        // esc -> inDiaglogue -> inInven -> inShop -> inBox -> inRecord / all
 
-        return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3)) || (inBox && (i >= 4));
+        return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3)) || (inBox && (i >= 4)) || (inRecord && (i >= 5));
     }
 
     public static void ChangeHP(int ch)

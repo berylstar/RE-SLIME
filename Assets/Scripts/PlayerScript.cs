@@ -114,7 +114,7 @@ public class PlayerScript : MovingObject
 
         while (isAlive)
         {
-            if (GameController.floor > 0 && !GameController.Pause(5))
+            if (GameController.floor > 0 && !GameController.Pause(10))
             {
                 time += GameController.playerTimeDamage;
 

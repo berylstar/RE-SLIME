@@ -35,6 +35,9 @@ public class UIScript : MonoBehaviour
     [Header("PanelBox")]
     public GameObject panelBox;
 
+    [Header("PanelRecode")]
+    public GameObject PanelRecorder;
+
     private void Awake()
     {
         I = this;

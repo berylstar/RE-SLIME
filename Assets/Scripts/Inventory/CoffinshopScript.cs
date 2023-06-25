@@ -14,16 +14,10 @@ public class CoffinshopScript : MonoBehaviour
     [Header("SHOP")]
     public List<EquipScript> onStands = new List<EquipScript>() { null, null, null };
 
-    private UIScript US;
-    private InventoryScript INVEN;
-
     private int si = 0;
 
     private void Start()
     {
-        US = GameObject.Find("CONTROLLER").GetComponent<UIScript>();
-        INVEN = GameObject.Find("INVENTORY").GetComponent<InventoryScript>();
-
         PutEquipsOnStand();
     }
 
@@ -43,8 +37,8 @@ public class CoffinshopScript : MonoBehaviour
             {
                 StartCoroutine(CloseShop());
 
-                if (INVEN.CheckOverlap())
-                    INVEN.OpenInventory();
+                if (InventoryScript.I.CheckOverlap())
+                    InventoryScript.I.OpenInventory();
             }
             else
                 BuyEquip(si);
@@ -64,14 +58,14 @@ public class CoffinshopScript : MonoBehaviour
     {
         if (collision.CompareTag("Punch") && !GameController.inShop)
         {
-            US.panelShop.SetActive(true);
+            UIScript.I.panelShop.SetActive(true);
             GameController.inShop = true;
         }
     }
 
     IEnumerator CloseShop()
     {
-        US.panelShop.SetActive(false);
+        UIScript.I.panelShop.SetActive(false);
         yield return GameController.delay_01s;
         GameController.inShop = false;
     }
@@ -133,25 +127,25 @@ public class CoffinshopScript : MonoBehaviour
     // 장비 등급에 따른 가판대에 장비 세팅
     private void PutEquipsOnStand()
     {
-        INVEN.ShuffleEquipList();
+        InventoryScript.I.ShuffleEquipList();
 
         for (int i = 0; i < 3; i++)
         {
             int iGrade = Random.Range(1, 101);
 
-            if (iGrade <= GameController.ShopGrade[0] && i <= INVEN.equipsRare.Count)
+            if (iGrade <= GameController.ShopGrade[0] && i <= InventoryScript.I.equipsRare.Count)
             {
-                onStands[i] = INVEN.equipsRare[i];
+                onStands[i] = InventoryScript.I.equipsRare[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
-            else if (iGrade >= 100 - GameController.ShopGrade[1] && i <= INVEN.equipsUnique.Count)
+            else if (iGrade >= 100 - GameController.ShopGrade[1] && i <= InventoryScript.I.equipsUnique.Count)
             {
-                onStands[i] = INVEN.equipsUnique[i];
+                onStands[i] = InventoryScript.I.equipsUnique[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
             else
             {
-                onStands[i] = INVEN.equipsNormal[i];
+                onStands[i] = InventoryScript.I.equipsNormal[i];
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
         }
