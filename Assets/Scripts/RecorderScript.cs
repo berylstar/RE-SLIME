@@ -41,6 +41,7 @@ public class RecorderScript : MonoBehaviour
         if (idx == 1 || idx == 2)
         {
             DataManager.I.SaveData(idx.ToString());
+            SetPick(0);
         }
         else
         {
