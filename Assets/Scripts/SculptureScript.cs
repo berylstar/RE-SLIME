@@ -8,6 +8,7 @@ public enum SculptureType
     LAVA,       // 용암 - 플레이어가 위에 올라와 있으면 데미지
     GRASS,      // 풀 숲 = 들어가 있으면 오브젝트 투명화
     ICY,        // 얼음 = 이동하면 그 방향으로 미끄러지게
+    TREE,       // 나무
 }
 
 public class SculptureScript : MonoBehaviour
@@ -22,6 +23,11 @@ public class SculptureScript : MonoBehaviour
     private void Start()
     {
         player = PlayerScript.I;
+        
+        if (type == SculptureType.TREE)
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+        }
     }
 
     // 충돌 감지로 조형물 효과 발동

@@ -8,7 +8,7 @@ public class EquipEffector : MonoBehaviour
     public static EquipEffector I = null;
 
     private readonly int banana = 15;
-    private readonly int binocular = 3;
+    private readonly int binocular = 2;
     private readonly int energydrink = 15;
     private readonly int gloves = 6;
     private readonly int halfstone = 10;
@@ -28,6 +28,7 @@ public class EquipEffector : MonoBehaviour
     private readonly int yellowtail = 1;
     // guitar - 3, 2, 10
     // plask - 5, -2
+    private readonly int magnet = 3;
 
     private void Awake()
     {
@@ -136,6 +137,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.effGlasses = true;
         }
+        else if (i == 33)            // ¸»±Á ÀÚ¼®
+        {
+            GameController.probCoin += magnet;
+        }
         else
             return;
     }
@@ -239,6 +244,10 @@ public class EquipEffector : MonoBehaviour
         else if (i == 32)            // 3D ¾È°æ
         {
             GameController.effGlasses = false;
+        }
+        else if (i == 33)            // ¸»±Á ÀÚ¼®
+        {
+            GameController.probCoin -= magnet;
         }
         else
             return;

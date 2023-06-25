@@ -28,6 +28,7 @@ public class BoardManager : MonoBehaviour
     public GameObject sign;
     public GameObject coffin;
     public GameObject box;
+    public GameObject recorder;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
     private List<MonsterScript> livingMonsters = new List<MonsterScript>();
@@ -248,6 +249,7 @@ public class BoardManager : MonoBehaviour
         sign.SetActive(false);
         coffin.SetActive(false);
         box.SetActive(false);
+        recorder.SetActive(false);
     }
 
     ////////////////////////////////////

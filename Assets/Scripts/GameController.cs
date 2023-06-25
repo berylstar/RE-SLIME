@@ -111,10 +111,4 @@ public class GameController : MonoBehaviour
 
         SceneManager.LoadScene("IntroScene");
     }
-
-    // 세이브 버튼
-    public static void SAVE(int idx)
-    {
-        DataManager.I.SaveData(idx.ToString());
-    }
 }

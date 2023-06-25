@@ -11,7 +11,7 @@ public class RecorderScript : MonoBehaviour
     private void OnEnable()
     {
         GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
-        SetPick(1);
+        SetPick(0);
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class RecorderScript : MonoBehaviour
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
-            Select(ri);
+            SelectPick(ri);
 
         if (Input.GetKeyDown(KeyCode.LeftArrow)) SetPick(0);
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow)) SetPick(1);
@@ -36,15 +36,11 @@ public class RecorderScript : MonoBehaviour
         }
     }
 
-    private void Select(int idx)
+    private void SelectPick(int idx)
     {
-        if (idx == 1)
+        if (idx == 1 || idx == 2)
         {
-
-        }
-        else if (idx == 2)
-        {
-
+            DataManager.I.SaveData(idx.ToString());
         }
         else
         {

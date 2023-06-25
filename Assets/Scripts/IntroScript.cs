@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class IntroScript : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class IntroScript : MonoBehaviour
                 else
                     DataManager.I.NewData();
 
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+                SceneManager.LoadScene("MainScene");
             }
             else
             {
