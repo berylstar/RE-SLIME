@@ -27,6 +27,11 @@ public class DialogueScript : MonoBehaviour
     private int start, end;
     private int index = 0;
 
+    private void OnEnable()
+    {
+        GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+    }
+
     private void Update()
     {
         if (!GameController.inDiaglogue || GameController.Pause(0))

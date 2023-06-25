@@ -27,6 +27,11 @@ public class CoffinshopScript : MonoBehaviour
         PutEquipsOnStand();
     }
 
+    private void OnEnable()
+    {
+        GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+    }
+
     private void Update()
     {
         if (!GameController.inShop || GameController.Pause(2))

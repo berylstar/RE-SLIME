@@ -13,6 +13,11 @@ public class BoxScript : MonoBehaviour
     private bool isPicked = false;
     private int bi = 0;
 
+    private void OnEnable()
+    {
+        GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+    }
+
     private void Update()
     {
         if (!GameController.inBox || GameController.Pause(3))
