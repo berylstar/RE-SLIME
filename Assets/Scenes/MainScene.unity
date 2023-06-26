@@ -10960,7 +10960,7 @@ MonoBehaviour:
   number: 11
   EName: "\uD558\uC774\uBC14"
   adject: "\uBA38\uB9AC\uB9CC\uD07C\uC740 \uD655\uC2E4\uD788 \uBCF4\uD638\uD569\uB2C8\uB2E4"
-  effect: "\uBC29\uC5B4\uB825 +2"
+  effect: "\uBC29\uC5B4\uB825 +1"
   price: 1
   type: 0
   grade: 1
@@ -11931,7 +11931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b329e936415a142b5243e45240a7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: 35
+  number: 36
   EName: "\uB3C5\uC0AC\uACFC"
   adject: "\uB3C5\uC0AC\uACFC\uB3C4 \uB9DB\uB9CC \uC88B\uC73C\uBA74 \uADF8\uB9CC\uC774\uC57C"
   effect: "\uC0AC\uC6A9 : HP \uC808\uBC18 \uD68C\uBCF5"
@@ -14833,7 +14833,7 @@ MonoBehaviour:
   number: 30
   EName: "\uC2E4\uD5D8\uC6A9 \uD50C\uB77C\uC2A4\uD06C"
   adject: "\uC774 \uC2E4\uD5D8\uC740 \uC131\uACF5\uC778\uAC00\uC694 ?"
-  effect: "\uACF5\uACA9\uB825 +5\n\uBC29\uC5B4\uB825 -2"
+  effect: "\uACF5\uACA9\uB825 +3\n\uBC29\uC5B4\uB825 -1"
   price: 1
   type: 0
   grade: 1
@@ -18120,7 +18120,7 @@ MonoBehaviour:
   number: 24
   EName: "\uBD80\uC801"
   adject: "\uBAAC\uC2A4\uD130 ! \uBA48\uCDB0 -!"
-  effect: "\uBC29\uC5B4\uB825 +2\n\uACF5\uACA9\uB825 -2"
+  effect: "\uBC29\uC5B4\uB825 +1\n\uACF5\uACA9\uB825 -1"
   price: 1
   type: 0
   grade: 1

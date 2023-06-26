@@ -15,7 +15,7 @@ public class GameData
     public int coin = 0;
 
     // EQUIP
-    public List<string> EP = new List<string>();
+    public List<string> myEquips = new List<string>();
 
     // GAME SYSTEM
     public bool endTutorial = false;
@@ -109,6 +109,37 @@ public class GameController : MonoBehaviour
     // 게임 재시작
     public static void Restart()
     {
+        floor = 0;
+        playerMaxHP = 100;
+        playerHP = 100;
+        playerAP = 10;
+        playerDP = 0;
+        playerSpeed = 50f;
+        speedStack.Clear();
+        playerTimeDamage = 1f;
+        skillC = null;
+        skillV = null;
+        ShopGrade = new List<int>() { 20, 5 };
+
+        probCoin = 10;
+        RedCoin = false;
+        probPotion = 10;
+        potionEff = 5;
+
+        effBattery = false;
+        effcrescent = false;
+        effSkate = false;
+        effLastleaf = null;
+        effGlasses = false;
+
+        esc = false;
+        inDiaglogue = false;
+        nowDialogue = null;
+        inInven = false;
+        inShop = false;
+        inBox = false;
+        inRecord = false;
+
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
         SceneManager.LoadScene("IntroScene");

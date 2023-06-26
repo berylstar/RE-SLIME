@@ -170,6 +170,7 @@ public class PlayerScript : MovingObject
         canPunch = true;
     }
 
+    // 용암에서 호출하는 함수
     public void PlayerDamaged(int dam)
     {
         StartCoroutine(Damaged(dam));
@@ -178,18 +179,18 @@ public class PlayerScript : MovingObject
     // 플레이어와 몬스터 충돌감지했을 때 실행되는 코루틴
     IEnumerator Damaged(int dam)
     {
-        if (dam >= 0 || !isAlive)
-            yield return null;
+        if (dam < 0 && isAlive)
+        {
+            GameController.ChangeHP(dam);
 
-        GameController.ChangeHP(dam);
+            sr.color = new Color(255, 0, 0);
+            invincivity = true;
 
-        sr.color = new Color(255, 0, 0);
-        invincivity = true;
+            yield return GameController.delay_05s;
 
-        yield return GameController.delay_05s;
-
-        sr.color = new Color(255, 255, 255);
-        invincivity = false;
+            sr.color = new Color(255, 255, 255);
+            invincivity = false;
+        }
     }
 
     // 플레이어 HP가 0이하가 되면 실행되는 코루틴
@@ -234,7 +235,7 @@ public class PlayerScript : MovingObject
     //////////////////////////////////////////////////////////////////////////////////////////
     private bool EquipBattery()
     {
-        if (GameController.effBattery && Random.Range(0, 10) <= 0)
+        if (GameController.effBattery && Random.Range(0, 20) == 5)
         {
             StartCoroutine(BatteryCo());
             return true;

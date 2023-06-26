@@ -13,7 +13,7 @@ public class EquipEffector : MonoBehaviour
     private readonly int gloves = 6;
     private readonly int halfstone = 10;
     private readonly int heartstone = 25;
-    private readonly int helmet = 2;
+    private readonly int helmet = 1;
     private readonly int ice = 10;
     private readonly int machine = 3;
     private readonly int mandoo = 5;
@@ -22,12 +22,12 @@ public class EquipEffector : MonoBehaviour
     private readonly int pizza = 10;
     private readonly int quarterstone = 5;
     private readonly int straw = 3;
-    private readonly int talisman = 2;
+    private readonly int talisman = 1;
     private readonly int thunder = 5;
     private readonly int goldenticket = 2;
     private readonly int yellowtail = 1;
     // guitar - 3, 2, 10
-    // plask - 5, -2
+    // plask - 3, -1
     private readonly int magnet = 3;
     private readonly int herb = 3;
 
@@ -131,8 +131,8 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 30)            // 플라스크
         {
-            GameController.playerAP += 5;
-            GameController.playerDP -= 2;
+            GameController.playerAP += 3;
+            GameController.playerDP -= 1;
         }
         else if (i == 32)            // 3D 안경
         {
@@ -247,8 +247,8 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 30)            // 플라스크
         {
-            GameController.playerAP -= 5;
-            GameController.playerDP += 2;
+            GameController.playerAP -= 3;
+            GameController.playerDP += 1;
         }
         else if (i == 32)            // 3D 안경
         {

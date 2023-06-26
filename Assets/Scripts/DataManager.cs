@@ -35,7 +35,7 @@ public class DataManager : MonoBehaviour
 
         GameController.myEquips.Clear();
         InventoryScript.I.SAVE();
-        newDATA.EP = GameController.myEquips;
+        newDATA.myEquips = GameController.myEquips;
 
         newDATA.endTutorial = GameController.endTutorial;
 
@@ -54,7 +54,7 @@ public class DataManager : MonoBehaviour
 
         GameController.coin = newDATA.coin;
 
-        GameController.myEquips = newDATA.EP;
+        GameController.myEquips = newDATA.myEquips;
 
         GameController.endTutorial = newDATA.endTutorial;
 
@@ -71,7 +71,7 @@ public class DataManager : MonoBehaviour
 
         GameController.coin = newDATA.coin;
 
-        GameController.myEquips = newDATA.EP;
+        GameController.myEquips = newDATA.myEquips;
 
         GameController.endTutorial = newDATA.endTutorial;
 
