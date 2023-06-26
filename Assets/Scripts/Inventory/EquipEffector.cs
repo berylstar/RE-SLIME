@@ -146,6 +146,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.probPotion += herb;
         }
+        else if (i == 35)            // 다이아몬드
+        {
+
+        }
         else
             return;
     }
@@ -258,6 +262,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.probPotion -= herb;
         }
+        else if (i == 35)            // 다이아몬드
+        {
+
+        }
         else
             return;
     }
@@ -305,6 +313,10 @@ public class EquipEffector : MonoBehaviour
         else if (i == 31)           // 고대 도서
         {
             PlayerScript.I.EquipBook();
+        }
+        if (i == 36)                 // 바나나
+        {
+            GameController.ChangeHP(GameController.playerMaxHP/2);
         }
         else
             return;

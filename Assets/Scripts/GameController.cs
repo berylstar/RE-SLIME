@@ -80,15 +80,17 @@ public class GameController : MonoBehaviour
         return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3)) || (inBox && (i >= 4)) || (inRecord && (i >= 5));
     }
 
-    public static void ChangeHP(int ch)
+    public static void ChangeHP(int val)
     {
-        playerHP = Mathf.Min(playerMaxHP, Mathf.Max(0, playerHP + ch));
+        if (playerHP + val > playerMaxHP) playerHP = playerMaxHP;
+        else if (playerHP + val < 0)      playerHP = 0;
+        else                              playerHP += val;
     }
 
     // 속도 변경 관련 함수
-    public static void ChangeSpeed(int ch)
+    public static void ChangeSpeed(int val)
     {
-        playerSpeed += ch;
+        playerSpeed += val;
         PlayerScript.I.ApplyMoveSpeed();
     }
 
