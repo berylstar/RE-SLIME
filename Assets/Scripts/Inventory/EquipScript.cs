@@ -21,7 +21,9 @@ public class EquipScript : MonoBehaviour
     [Header("Information")]
     public int number;
     public string EName;
+    [Multiline (2)]
     public string adject;
+    [Multiline(2)]
     public string effect;
     public int price;
     public EquipType type;

@@ -29,6 +29,7 @@ public class EquipEffector : MonoBehaviour
     // guitar - 3, 2, 10
     // plask - 5, -2
     private readonly int magnet = 3;
+    private readonly int herb = 3;
 
     private void Awake()
     {
@@ -141,6 +142,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.probCoin += magnet;
         }
+        else if (i == 34)            // 약초
+        {
+            GameController.probPotion += herb;
+        }
         else
             return;
     }
@@ -248,6 +253,10 @@ public class EquipEffector : MonoBehaviour
         else if (i == 33)            // 말굽 자석
         {
             GameController.probCoin -= magnet;
+        }
+        else if (i == 34)            // 약초
+        {
+            GameController.probPotion -= herb;
         }
         else
             return;
