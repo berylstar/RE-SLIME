@@ -15,6 +15,7 @@ public class BoardManager : MonoBehaviour
         public Sprite[] fieldImages;
         public GameObject[] sculptures;
         public GameObject[] monsters;
+        public GameObject[] bosses;
     }
 
     [Header("LEVELS")]
@@ -122,14 +123,16 @@ public class BoardManager : MonoBehaviour
     
     private void LayoutStair(int floor)
     {
-        if (floor % 20 != 19)
-            StairScript.I.transform.position = RandomPosition();
-        else
+        if (floor % 20 == 18)
         {
             for (int i = 3; i < 7; i++)
                 DesiredPosition(i, 9);
 
-            StairScript.I.transform.position = new Vector3 (4.5f, 9f, 0f);
+            StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
+        }
+        else
+        {
+            StairScript.I.transform.position = RandomPosition();
         }
 
         RemovePositionAwayFrom(StairScript.I.transform.position);
@@ -146,15 +149,25 @@ public class BoardManager : MonoBehaviour
             
         GameController.floor += 1;
         FloorSetup(GameController.floor);
-        StartCoroutine(NextFloorEffect());
+        StartCoroutine(NextFloorEffect(GameController.floor));
     }
 
     // 층 넘어갈 때 효과
-    IEnumerator NextFloorEffect()
+    IEnumerator NextFloorEffect(int floor)
     {
-        UIScript.I.panelNextFloor.SetActive(true);
-        yield return GameController.delay_01s;
-        UIScript.I.panelNextFloor.SetActive(false);
+        if (floor % 20 == 19)
+        {
+            UIScript.I.panelBoss.SetActive(true);
+            yield return GameController.delay_3s;
+            UIScript.I.panelBoss.SetActive(false);
+            SpawnBoss();
+        }
+        else
+        {
+            UIScript.I.panelNextFloor.SetActive(true);
+            yield return GameController.delay_01s;
+            UIScript.I.panelNextFloor.SetActive(false);
+        }
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
@@ -168,14 +181,30 @@ public class BoardManager : MonoBehaviour
         field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
     }
 
-    private void SetMonsters(int min, int max)
+    private void SetMonsters(int floor, int min, int max)
     {
-        for (int i = 0; i < Random.Range(min, max + 1); i++)
+        if (floor % 20 == 19)
         {
-            GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, ObjectPerFloor(GameController.floor).monsters.Length)];
-            GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
-            instance.transform.SetParent(objectHolder);
+
         }
+        else
+        {
+            for (int i = 0; i < Random.Range(min, max + 1); i++)
+            {
+                GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, ObjectPerFloor(GameController.floor).monsters.Length)];
+                GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
+                instance.transform.SetParent(objectHolder);
+            }
+        }
+    }
+
+    private void SpawnBoss()
+    {
+        GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, 5)];
+        GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
+        instance.transform.SetParent(objectHolder);
+
+        print("BOSS");
     }
 
     // 해당 층수에 맞게 레벨 세팅
@@ -195,7 +224,7 @@ public class BoardManager : MonoBehaviour
 
         LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);
 
-        SetMonsters(2, 8);
+        SetMonsters(floor, 2, 8);
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가

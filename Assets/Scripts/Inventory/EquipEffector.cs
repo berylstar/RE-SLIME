@@ -276,7 +276,7 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.ChangeHP(banana);
         }
-        else if (i == 5)            // 사기 주사위
+        else if (i == 5)            // 슬롯 머신
         {
             GameController.ChangeHP(Random.Range(-5, 5));
         }

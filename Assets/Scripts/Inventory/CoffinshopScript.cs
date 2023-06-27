@@ -44,12 +44,14 @@ public class CoffinshopScript : MonoBehaviour
                 BuyEquip(si);
         }
         
-        // 상점 커서 이동
+        // 상점 키보드 입력
         if (Input.GetKeyDown(KeyCode.LeftArrow)) MovePick(-1);
         if (Input.GetKeyDown(KeyCode.RightArrow)) MovePick(1);
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetPick(0);
         if (Input.GetKeyDown(KeyCode.UpArrow) && si == 0) SetPick(1);
+
+        if (Input.GetKeyDown(KeyCode.R)) PutEquipsOnStand();
 
         ShowEquipInfo(si);
     }
@@ -162,10 +164,5 @@ public class CoffinshopScript : MonoBehaviour
         onStands[i-1] = null;
 
         DisplayEquip(i-1, imgSoldout);
-    }
-
-    public void TEST()
-    {
-        PutEquipsOnStand();
     }
 }

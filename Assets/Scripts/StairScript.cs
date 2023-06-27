@@ -41,7 +41,7 @@ public class StairScript : MonoBehaviour
     {
         bc2d.isTrigger = false;
 
-        if (GameController.floor % 20 == 19)
+        if (GameController.floor % 20 == 18)
             sr.sprite = imgStairCloseLong;
         else
             sr.sprite = imgStairClose;
@@ -51,7 +51,7 @@ public class StairScript : MonoBehaviour
     {
         bc2d.isTrigger = true;
 
-        if (GameController.floor % 20 == 19)
+        if (GameController.floor % 20 == 18)
         {
             bc2d.size = new Vector2 (2.4f, 0.5f);
             sr.sprite = imgStairOpenLong;

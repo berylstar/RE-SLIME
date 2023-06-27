@@ -19,6 +19,9 @@ public class UIScript : MonoBehaviour
     [Header("PanelNextFloor")]
     public GameObject panelNextFloor;
 
+    [Header("PanelBoss")]
+    public GameObject panelBoss;
+
     [Header("PanelESC")]
     public GameObject panelESC;
     public GameObject escPick;
