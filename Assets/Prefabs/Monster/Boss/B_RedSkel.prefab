@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1994539611961772520}
   - component: {fileID: 1994539611961772521}
   - component: {fileID: 1994539611961772522}
-  - component: {fileID: 6416721387542223693}
+  - component: {fileID: -6268303956623068972}
   m_Layer: 6
   m_Name: B_RedSkel
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6416721387542223693
+--- !u!114 &-6268303956623068972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,11 +161,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994539611961772500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb59dd6b2148124c946ecf889d3e1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xx: 1
-  yy: 1
-  HP: 30
-  AP: 2
-  speed: 10

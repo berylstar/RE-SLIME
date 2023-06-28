@@ -116,5 +116,7 @@ public class BoxScript : MonoBehaviour
 
         SetPick(0);
         isPicked = true;
+
+        GameController.bossCut = false;
     }
 }

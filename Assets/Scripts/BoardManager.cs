@@ -205,7 +205,7 @@ public class BoardManager : MonoBehaviour
 
     private void SpawnBoss()
     {
-        GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, 5)];
+        GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, ObjectPerFloor(GameController.floor).bosses.Length)];
         GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
         instance.transform.SetParent(objectHolder);
 
@@ -297,6 +297,14 @@ public class BoardManager : MonoBehaviour
         for (int i = 0; i < livingMonsters.Count; i++)
         {
             livingMonsters[i].MonsterDamage(dam);
+        }
+    }
+
+    public void EquipTrafficlight()
+    {
+        for (int i = 0; i < livingMonsters.Count; i++)
+        {
+            livingMonsters[i].MoveStop();
         }
     }
 }

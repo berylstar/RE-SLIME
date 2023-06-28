@@ -161,9 +161,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4989708188569375269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fe86fb836dff974cad2f4adbfec2950, type: 3}
+  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xx: 0
+  yy: 0
   HP: 10
   AP: 3
+  movetype: 1
   speed: 10

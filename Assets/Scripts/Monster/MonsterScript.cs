@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterType
+public enum MoveType
 {
-    NORMAL,     // 일반 몬스터
-    FOLLOW,     // 플레이어쪽으로 이동
-    QUICK,      // 빠르게 이동
-    SHOOTER,    // 투사체 발사
-    DASH,       // 돌진
-    ALPHA,      // 투명화
-    SPAWNER,    // 오브젝트 소환
-    BOSS,       // 보스 몬스터 - 보상 드롭
+    NORMAL,
+    FOLLOWER,
 }
 
 public class MonsterScript : MovingObject
@@ -19,8 +13,8 @@ public class MonsterScript : MovingObject
     [Header("STATUS")]
     public int HP;
     public int AP;
+    public MoveType movetype;
     public float speed;
-    protected MonsterType type;
 
     protected override void Start()
     {
@@ -41,9 +35,59 @@ public class MonsterScript : MovingObject
         }
     }
 
-    public void MonsterDamage(int d)
+    // 무작위 방향으로 이동
+    protected void MoveRandom()
     {
-        StartCoroutine(Damaged(d));
+        int xDir = 0;
+        int yDir = 0;
+
+        int iRand = Random.Range(0, 9);
+
+        if      (iRand <= 1) { xDir = 1; }
+        else if (iRand <= 3) { xDir = -1; }
+        else if (iRand <= 5) { yDir = 1; }
+        else if (iRand <= 7) { yDir = -1; }
+
+        Move(xDir, yDir);
+    }
+
+    // 플레이어를 향해 이동
+    protected void MoveToPlayer()
+    {
+        int xDir = 0;
+        int yDir = 0;
+
+        Transform target = PlayerScript.I.transform;
+
+        if (Random.Range(0, 2) == 0)
+        {
+            if (Mathf.Abs(target.position.x - transform.position.x) < float.Epsilon)
+                yDir = target.position.y > transform.position.y ? 1 : -1;
+            else
+                xDir = target.position.x > transform.position.x ? 1 : -1;
+        }
+        else
+        {
+            if (Mathf.Abs(target.position.y - transform.position.y) < float.Epsilon)
+                xDir = target.position.x > transform.position.x ? 1 : -1;
+            else
+                yDir = target.position.y > transform.position.y ? 1 : -1;
+        }
+
+        Move(xDir, yDir);
+    }
+
+    protected IEnumerator MonsterMove()
+    {
+        while (isAlive)
+        {
+            yield return GameController.delay_1s;
+
+            if (movetype == MoveType.NORMAL || GameController.effPerfume)
+                MoveRandom();
+            else if (movetype == MoveType.FOLLOWER)
+                MoveToPlayer();
+        }
     }
 
     // 몬스터 피해입을 때 실행할 코루틴
@@ -78,5 +122,27 @@ public class MonsterScript : MovingObject
         BoardManager.I.RemoveMonster(this);
         BoardManager.I.ItemDrop(transform.position);
         Destroy(this.gameObject);
+    }
+
+    ////////////////////////////////////
+    
+
+    // BoardManager에서 EquipThunder용 함수
+    public void MonsterDamage(int d)
+    {
+        StartCoroutine(Damaged(d));
+    }
+
+    // BoardManager에서 EquipTrafficlight용 함수
+    public void MoveStop()
+    {
+        StartCoroutine(MoveStopCo());
+    }
+
+    IEnumerator MoveStopCo()
+    {
+        moveSpeed = 0f;
+        yield return GameController.delay_3s;
+        moveSpeed = speed;
     }
 }

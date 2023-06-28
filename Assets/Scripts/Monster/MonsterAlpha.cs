@@ -14,36 +14,9 @@ public class MonsterAlpha : MonsterScript
     {
         base.Start();
 
-        type = MonsterType.ALPHA;
-
-        StartCoroutine(MonsterMove());
-
         if (!GameController.effGlasses)
             StartCoroutine(Transparent());
-    }
-
-    private void RandomMove()
-    {
-        int xDir = 0;
-        int yDir = 0;
-
-        int iRand = Random.Range(0, 9);
-
-        if (iRand <= 1) { xDir = 1; }
-        else if (iRand <= 3) { xDir = -1; }
-        else if (iRand <= 5) { yDir = 1; }
-        else if (iRand <= 7) { yDir = -1; }
-
-        Move(xDir, yDir);
-    }
-
-    IEnumerator MonsterMove()
-    {
-        while (isAlive)
-        {
-            yield return GameController.delay_1s;
-            RandomMove();
-        }
+        StartCoroutine(MonsterMove());
     }
 
     IEnumerator Transparent()

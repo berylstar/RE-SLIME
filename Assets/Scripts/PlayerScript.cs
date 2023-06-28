@@ -31,7 +31,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (!isAlive || GameController.Pause(10))
+        if (!isAlive || GameController.Pause(5))
             return;
 
         // Input : 방향키 = 플레이어 이동

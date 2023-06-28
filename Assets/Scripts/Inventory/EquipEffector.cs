@@ -150,6 +150,10 @@ public class EquipEffector : MonoBehaviour
         {
 
         }
+        else if (i == 37)           // 향수
+        {
+            GameController.effPerfume = true;
+        }
         else
             return;
     }
@@ -266,6 +270,10 @@ public class EquipEffector : MonoBehaviour
         {
 
         }
+        else if (i == 37)           // 향수
+        {
+            GameController.effPerfume = false;
+        }
         else
             return;
     }
@@ -317,6 +325,11 @@ public class EquipEffector : MonoBehaviour
         if (i == 36)                 // 바나나
         {
             GameController.ChangeHP(GameController.playerMaxHP/2);
+        }
+        if (i == 38)                 // 신호등
+        {
+            print("신호등");
+            BoardManager.I.EquipTrafficlight();
         }
         else
             return;
