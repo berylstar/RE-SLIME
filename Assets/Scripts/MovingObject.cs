@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
+    [Header("Sprite")]
+    public int xx = 0;
+    public int yy = 0;
+
     protected Rigidbody2D rb2d;
     protected SpriteRenderer sr;
     protected Animator ani;
@@ -36,9 +40,7 @@ public class MovingObject : MonoBehaviour
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
 
-        int a = (int)(sr.sprite.rect.width / 60) - 1;
-
-        if (end.x - a < 0 || end.x + a > 9 || end.y < 0 || end.y > 9)
+        if (end.x - xx < 0 || end.x + xx > 9 || end.y < 0 || end.y - yy > 9)
             return false;
 
         if (!isMoving)

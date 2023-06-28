@@ -51,9 +51,10 @@ public class MonsterScript : MovingObject
     {
         HP -= damage;
 
+        Color temp = sr.color;
         sr.color = new Color(255, 0, 0);
         yield return GameController.delay_01s;
-        sr.color = new Color(255, 255, 255);
+        sr.color = temp;
 
         if (HP <= 0)
         {

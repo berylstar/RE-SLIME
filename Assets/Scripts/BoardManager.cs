@@ -96,14 +96,19 @@ public class BoardManager : MonoBehaviour
     }
 
     // 그리드 리스트 내 랜덤 위치 반환
-    private Vector3 RandomMonsterPosition(GameObject go)
+    private Vector3 RandomMonsterPosition(MovingObject go)
     {
         int idx = Random.Range(0, gridPositions.Count);
         Vector3 pos = gridPositions[idx];
 
-        int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 60) - 1;
+        //int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 60) - 1;
 
-        pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
+        //pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
+
+        float new_x = pos.x <= 8 ? pos.x + 0.5f * go.xx : 9 - 0.5f * go.xx;
+        float new_y = pos.y <= 8 ? pos.y + 0.5f * go.yy : 9 - 0.5f * go.yy;
+
+        pos = new Vector3(new_x, new_y, pos.z);
 
         gridPositions.RemoveAt(idx);
         return pos;
@@ -192,7 +197,7 @@ public class BoardManager : MonoBehaviour
             for (int i = 0; i < Random.Range(min, max + 1); i++)
             {
                 GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, ObjectPerFloor(GameController.floor).monsters.Length)];
-                GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
+                GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(objectHolder);
             }
         }
@@ -201,10 +206,15 @@ public class BoardManager : MonoBehaviour
     private void SpawnBoss()
     {
         GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, 5)];
-        GameObject instance = Instantiate(go, RandomMonsterPosition(go), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
         instance.transform.SetParent(objectHolder);
 
         print("BOSS");
+    }
+
+    public void TEST()
+    {
+        SpawnBoss();
     }
 
     // 해당 층수에 맞게 레벨 세팅
