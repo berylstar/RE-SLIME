@@ -5,10 +5,10 @@ using UnityEngine;
 public class BossScarecrow : MonsterScript
 {
     [Header("SPAWNER")]
-    public GameObject[] spawn;
+    public GameObject bat;
 
     [Header("SHOOTER")]
-    public GameObject bullet;
+    public GameObject crow;
 
     protected override void Start()
     {
@@ -35,10 +35,13 @@ public class BossScarecrow : MonsterScript
 
     private void Action()
     {
-        GameObject product = Instantiate(spawn[Random.Range(0, spawn.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
-
-        GameObject blet = Instantiate(bullet, transform.position, Quaternion.identity);
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject product = Instantiate(bat, BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
+            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+        }
+        
+        GameObject blet = Instantiate(crow, transform.position, Quaternion.identity);
         blet.transform.localScale = new Vector3(10 / 3f, 10 / 3f, 1);
         blet.GetComponent<BulletScript>().direction = direction;
         blet.transform.SetParent(GameObject.Find("ObjectHolder").transform);

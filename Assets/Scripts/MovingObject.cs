@@ -40,7 +40,7 @@ public class MovingObject : MonoBehaviour
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
 
-        if (end.x - xx < 0 || end.x + xx > 9 || end.y + yy < 0 || end.y - yy > 9)
+        if (end.x - xx < 0 || end.x + xx > 9 || end.y - yy < 0 || end.y + yy > 9)
             return false;
 
         if (!isMoving)

@@ -282,7 +282,6 @@ public class BoardManager : MonoBehaviour
         GameController.bossCut = true;
         box.transform.position = new Vector3((int)pos.x, (int)pos.y, 0);
         box.SetActive(true);
-        box.transform.position = pos;
     }
 
     private void HideNPC()

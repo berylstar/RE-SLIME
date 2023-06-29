@@ -6,14 +6,14 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TreeAnimator
+  m_Name: FireyetiAnimator
   m_Controller: {fileID: 9100000, guid: c4fca5e5d3ca11849af535aaa3f84825, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 6d385e826da289d45a7ae050e778da21, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 6d385e826da289d45a7ae050e778da21, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 195e4f2e23ebd804bad4082b4ddde056, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 27ac56b512a0ff1479b899790187879a, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 76e9157efde8df443acf70fda0d40a75, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 098e5ba33754fda41bcfe5f0e75e260e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 11fb6c72484a7ce44a008d13f9f0af87, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 195e4f2e23ebd804bad4082b4ddde056, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 234a44296a6618d42a01ff9f15e679e8, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: bdbe707b00acbd74c9d4010f60ef041f, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 27ac56b512a0ff1479b899790187879a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 234a44296a6618d42a01ff9f15e679e8, type: 2}

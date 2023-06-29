@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tree_Idle
+  m_Name: Fireyeti_Die
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e367bd643588e804aaeb414579e58a32, type: 3}
+      value: {fileID: 21300000, guid: ff70fef187c18fa4bbe4d497af5b27de, type: 3}
     - time: 0.016666668
-      value: {fileID: 21300000, guid: b2e1b07a23da51247bd61b2e52522248, type: 3}
+      value: {fileID: 21300000, guid: ff70fef187c18fa4bbe4d497af5b27de, type: 3}
     - time: 0.033333335
-      value: {fileID: 21300000, guid: 96d5e980526add040ab938bfb1412427, type: 3}
+      value: {fileID: 21300000, guid: ff70fef187c18fa4bbe4d497af5b27de, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: e367bd643588e804aaeb414579e58a32, type: 3}
-    - {fileID: 21300000, guid: b2e1b07a23da51247bd61b2e52522248, type: 3}
-    - {fileID: 21300000, guid: 96d5e980526add040ab938bfb1412427, type: 3}
+    - {fileID: 21300000, guid: ff70fef187c18fa4bbe4d497af5b27de, type: 3}
+    - {fileID: 21300000, guid: ff70fef187c18fa4bbe4d497af5b27de, type: 3}
+    - {fileID: 21300000, guid: ff70fef187c18fa4bbe4d497af5b27de, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
