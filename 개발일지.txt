@@ -145,7 +145,7 @@
 - 전체적인 코드 싱글톤화 및 최적화
 - 싱글톤 목록 : Player, Stair, Inventory, Effector, GameController, UI, BoardManager, DataManager
 
-2023.06.27		RE-SLIME 개발 28일차 = 3시간
+2023.06.27		RE-SLIME 개발 28일차 = 5시간
 - 보스 초기 구현 단계
 - 보스 초기 구현 단계 = 보스는 19, 39, 59, 79, (99), 100 이렇게 등장할 예정
 - 몬스터 프리팹마다 가로 세로 길이 int 변수로 넣어주는게 편할듯

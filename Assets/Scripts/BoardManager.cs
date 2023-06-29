@@ -276,8 +276,11 @@ public class BoardManager : MonoBehaviour
         instance.transform.SetParent(objectHolder);
     }
 
-    public void BoxDrop(Vector3 pos)
+    // 보스 잡으면 보상으로 박스 드롭
+    public void DropBox(Vector3 pos)
     {
+        GameController.bossCut = true;
+        box.transform.position = new Vector3((int)pos.x, (int)pos.y, 0);
         box.SetActive(true);
         box.transform.position = pos;
     }
