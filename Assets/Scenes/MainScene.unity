@@ -7670,11 +7670,7 @@ MonoBehaviour:
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
     - {fileID: 4474911900205950305, guid: cde4ad352a0ac5f4fa0a539af38baa5f, type: 3}
     monsters:
-    - {fileID: 254159276128100321, guid: 750bd06613a8190448afb178bfb4c499, type: 3}
-    - {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
     - {fileID: 1640113148994668561, guid: b408d51283c50ef4b810124e42549572, type: 3}
-    - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
-    - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
     bosses:
     - {fileID: 3884454909580609866, guid: 955d122ec16ef574fba01f0aabb66edd, type: 3}
   - fieldImages:

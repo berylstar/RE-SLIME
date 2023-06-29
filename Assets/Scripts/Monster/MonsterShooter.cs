@@ -6,34 +6,31 @@ public class MonsterShooter : MonsterScript
 {
     [Header("SHOOTER")]
     public GameObject bullet;
-    public int shootPercent;    
-
-    private Transform tf;
+    public int shootPercent;
 
     protected override void Start()
     {
         base.Start();
 
-        tf = GetComponent<Transform>();
-
-        StartCoroutine(Shoot());
         StartCoroutine(MonsterMove());
+        StartCoroutine(ActionCo());
     }
 
-    IEnumerator Shoot()
+    IEnumerator ActionCo()
     {
         while(isAlive)
         {
             yield return GameController.delay_1s;
 
             if (Random.Range(0, 100) <= shootPercent)
-                ani.SetTrigger("Shoot");
+                ani.SetTrigger("MonsterAction");
         }
     }
 
-    private void ShootAnimator()
+    // Shooting
+    private void Action()
     {
-        GameObject product = Instantiate(bullet, tf.position, Quaternion.identity);
+        GameObject product = Instantiate(bullet, transform.position, Quaternion.identity);
         product.GetComponent<BulletScript>().direction = direction;
         product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }

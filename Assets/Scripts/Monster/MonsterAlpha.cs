@@ -14,17 +14,17 @@ public class MonsterAlpha : MonsterScript
     {
         base.Start();
 
+        StartCoroutine(MonsterMove());
+
         if (!GameController.effGlasses)
             StartCoroutine(Transparent());
-        StartCoroutine(MonsterMove());
     }
 
     IEnumerator Transparent()
     {
         while (isAlive)
         {
-            int iRand = Random.Range(0, 100);
-            sr.color = (iRand <= transparentPercent) ? colorT : colorO;
+            sr.color = (Random.Range(0, 100) <= transparentPercent) ? colorT : colorO;
 
             yield return GameController.delay_1s;
         }

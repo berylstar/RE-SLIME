@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 254159276128100321}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 7ac56458e19178946a21ef58fe7adaec, type: 2}
+  m_Controller: {fileID: 22100000, guid: 6f2b2e34baf782c428deb4182f38bf6f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -164,8 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb1edcb1ab8a847b44bcefdbc3f761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xx: 0
+  yy: 0
   HP: 10
   AP: 10
+  movetype: 0
   speed: 10
   spawn: {fileID: 8713141961878357630, guid: ee79b8ca479363a4580fd51586ccc5d2, type: 3}
   spawnPercent: 75

@@ -11,22 +11,22 @@ public class MonsterDasher : MonsterScript
     {
         base.Start();
 
-        StartCoroutine(Dash());
         StartCoroutine(MonsterMove());
+        StartCoroutine(ActionCo());
     }
 
-    IEnumerator Dash()
+    IEnumerator ActionCo()
     {
         while (isAlive)
         {
             yield return GameController.delay_1s;
 
             if (Random.Range(0, 100) <= dashPercent)
-                ani.SetTrigger("Dash");
+                ani.SetTrigger("MonsterAction");
         }
     }
 
-    private void DashAnimator()
+    private void Action()
     {
         StartCoroutine(DashCo(Random.Range(0, 3)));
     }

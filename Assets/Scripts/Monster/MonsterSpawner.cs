@@ -12,22 +12,22 @@ public class MonsterSpawner : MonsterScript
     {
         base.Start();
 
-        StartCoroutine(Spawn());
         StartCoroutine(MonsterMove());
+        StartCoroutine(ActionCo());
     }
 
-    IEnumerator Spawn()
+    IEnumerator ActionCo()
     {
         while(isAlive)
         {
             yield return GameController.delay_3s;
 
             if (Random.Range(0, 100) <= spawnPercent)
-                ani.SetTrigger("Spawn");
+                ani.SetTrigger("MonsterAction");
         }
     }
 
-    private void SpawnAnimator()
+    private void Action()
     {
         GameObject product = Instantiate(spawn, BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
         product.transform.SetParent(GameObject.Find("ObjectHolder").transform);

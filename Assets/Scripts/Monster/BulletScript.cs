@@ -11,7 +11,6 @@ public class BulletScript : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
-    private Transform tf;
     
     private bool isMoving = false;
 
@@ -19,7 +18,6 @@ public class BulletScript : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        tf = GetComponent<Transform>();
 
         Move(direction);
     }
@@ -32,8 +30,8 @@ public class BulletScript : MonoBehaviour
 
         if      (direction == 0) { xDir = -1; yDir = 0; sr.flipX = false; }
         else if (direction == 1) { xDir = 1; yDir = 0; sr.flipX = true; }
-        else if (direction == 2) { xDir = 0; yDir = 1; tf.rotation = Quaternion.Euler(0, 0, -90); }
-        else if (direction == 3) { xDir = 0; yDir = -1; tf.rotation = Quaternion.Euler(0, 0, 90); }
+        else if (direction == 2) { xDir = 0; yDir = 1; transform.rotation = Quaternion.Euler(0, 0, -90); }
+        else if (direction == 3) { xDir = 0; yDir = -1; transform.rotation = Quaternion.Euler(0, 0, 90); }
         else { return; }
 
         Vector2 start = transform.position;

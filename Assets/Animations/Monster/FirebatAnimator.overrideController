@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FirebatAnimator
+  m_Controller: {fileID: 9100000, guid: c4fca5e5d3ca11849af535aaa3f84825, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: bdbe707b00acbd74c9d4010f60ef041f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4939bcb917489a04c82e999aeae7215a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 76e9157efde8df443acf70fda0d40a75, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 27ba8b1da5e033f499b4d07c55f29a5e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 195e4f2e23ebd804bad4082b4ddde056, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 27c480e47ae241d48a7e0622f4725fdd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d385e826da289d45a7ae050e778da21, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6d385e826da289d45a7ae050e778da21, type: 2}

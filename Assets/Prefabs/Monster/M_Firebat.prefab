@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 1640113148994668561}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 6369ab9f195c39c439524db8b3723848, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3d42ceb74e29fc344945c8e178bcaa16, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -164,7 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b2c3f3be5f5fe41b7ac266b1400e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xx: 0
+  yy: 0
   HP: 18
   AP: 2
+  movetype: 0
   speed: 20
   dashPercent: 60

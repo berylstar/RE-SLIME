@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 9043970307731784613}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 86d1e21d2c177a64798882dad54155c0, type: 2}
+  m_Controller: {fileID: 22100000, guid: 1e671ea1a89e7e34ba06089336533ce2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,5 +168,6 @@ MonoBehaviour:
   yy: 0
   HP: 10
   AP: 2
+  movetype: 0
   speed: 20
   dashPercent: 50
