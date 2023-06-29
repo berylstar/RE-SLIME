@@ -18,10 +18,7 @@ public class BossDarkBat : MonsterScript
     {
         PlayerScript.I.sight.SetActive(false);
 
-        Vector3 pos = transform.position;
-        BoardManager.I.box.transform.position = new Vector3((int)pos.x, (int)pos.y, pos.z);
-        BoardManager.I.box.SetActive(true);
-        GameController.bossCut = true;
+        BoardManager.I.DropBox(transform.position);
     }
 
     IEnumerator Dash()
@@ -45,12 +42,10 @@ public class BossDarkBat : MonsterScript
         Vector2 start = transform.position;
         Vector2 end;
 
-        int a = (int)(sr.sprite.rect.width / 60) - 1;
-
-        if (dir == 0) { sr.flipX = false; end = new Vector2(0 + 0.5f * a, start.y); direction = 0; }
-        else if (dir == 1) { sr.flipX = true; end = new Vector2(9 - 0.5f * a, start.y); direction = 1; }
-        else if (dir == 2) { end = new Vector2(start.x, 9); direction = 2; }
-        else { end = new Vector2(start.x, 0); direction = 3; }
+        if      (dir == 0) { sr.flipX = false; end = new Vector3(0 + 0.5f * xx, start.y, 0); direction = 0; }
+        else if (dir == 1) { sr.flipX = true;  end = new Vector3(9 - 0.5f * xx, start.y, 0); direction = 1; }
+        else if (dir == 2) {                   end = new Vector3(start.x, 9 - 0.5f * yy, 0); direction = 2; }
+        else               {                   end = new Vector3(start.x, 0 + 0.5f * yy, 0); direction = 3; }
 
         if (!isMoving)
         {
