@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSpawner : MonsterScript
+public class BossScarecrow : MonsterScript
 {
     [Header("SPAWNER")]
     public GameObject[] spawn;
-    public int spawnPercent;
+
+    [Header("SHOOTER")]
+    public GameObject bullet;
 
     protected override void Start()
     {
@@ -16,14 +18,18 @@ public class MonsterSpawner : MonsterScript
         StartCoroutine(ActionCo());
     }
 
+    private void OnDestroy()
+    {
+        BoardManager.I.DropBox(transform.position);
+    }
+
     IEnumerator ActionCo()
     {
-        while(isAlive)
+        while (isAlive)
         {
             yield return GameController.delay_3s;
 
-            if (Random.Range(0, 100) <= spawnPercent)
-                ani.SetTrigger("MonsterAction");
+            ani.SetTrigger("MonsterAction");
         }
     }
 
@@ -31,5 +37,10 @@ public class MonsterSpawner : MonsterScript
     {
         GameObject product = Instantiate(spawn[Random.Range(0, spawn.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
         product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+
+        GameObject blet = Instantiate(bullet, transform.position, Quaternion.identity);
+        blet.transform.localScale = new Vector3(10 / 3f, 10 / 3f, 1);
+        blet.GetComponent<BulletScript>().direction = direction;
+        blet.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

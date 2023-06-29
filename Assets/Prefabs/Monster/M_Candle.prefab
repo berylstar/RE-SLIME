@@ -170,5 +170,6 @@ MonoBehaviour:
   AP: 10
   movetype: 0
   speed: 10
-  spawn: {fileID: 8713141961878357630, guid: ee79b8ca479363a4580fd51586ccc5d2, type: 3}
+  spawn:
+  - {fileID: 8713141961878357630, guid: ee79b8ca479363a4580fd51586ccc5d2, type: 3}
   spawnPercent: 75

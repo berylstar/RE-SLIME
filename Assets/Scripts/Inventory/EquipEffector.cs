@@ -150,7 +150,7 @@ public class EquipEffector : MonoBehaviour
         {
 
         }
-        else if (i == 37)           // 향수
+        else if (i == 37)           // 파란 장미
         {
             GameController.effPerfume = true;
         }
@@ -270,7 +270,7 @@ public class EquipEffector : MonoBehaviour
         {
 
         }
-        else if (i == 37)           // 향수
+        else if (i == 37)           // 파란 장미
         {
             GameController.effPerfume = false;
         }
@@ -304,7 +304,7 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.ChangeHP(pizza);
         }
-        else if (i == 22)           // 미래 기술 6호
+        else if (i == 22)           // 마법서
         {
             GameController.savedFloor = GameController.floor - 1;
             GameController.floor = 0;
@@ -318,9 +318,9 @@ public class EquipEffector : MonoBehaviour
         {
             GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder(thunder);
         }
-        else if (i == 31)           // 고대 도서
+        else if (i == 31)           // 레이저 건
         {
-            PlayerScript.I.EquipBook();
+            PlayerScript.I.EquipLasergun();
         }
         if (i == 36)                 // 바나나
         {

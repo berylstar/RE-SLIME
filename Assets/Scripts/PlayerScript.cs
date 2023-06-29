@@ -276,7 +276,7 @@ public class PlayerScript : MovingObject
         return false;
     }
 
-    public void EquipBook()
+    public void EquipLasergun()
     {
         GameObject product = Instantiate(bullet, transform.position, Quaternion.identity);
         product.GetComponent<BulletScript>().direction = direction;

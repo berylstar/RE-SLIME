@@ -170,5 +170,5 @@ MonoBehaviour:
   AP: 2
   movetype: 0
   speed: 5
-  bullet: {fileID: 318261643184950488, guid: 334791ecf0f6ad44a87730144588eca4, type: 3}
+  bullet: {fileID: 5634777195878863423, guid: 334791ecf0f6ad44a87730144588eca4, type: 3}
   shootPercent: 40
