@@ -7769,7 +7769,7 @@ MonoBehaviour:
     monsters:
     - {fileID: 3038600472547292134, guid: 5b19c5584bd19b9429ae9e4569f9e083, type: 3}
     bosses:
-    - {fileID: 2443715872605566842, guid: aa9d832307494104ab5af6b139de9020, type: 3}
+    - {fileID: 4085384602476574677, guid: a1fd81ba5a583d74cb8c3d1ee323a203, type: 3}
   - fieldImages:
     - {fileID: 21300000, guid: 3ccb51a7f2b669a41a13ab2c9db7d598, type: 3}
     - {fileID: 21300000, guid: c9c6a4abb3e7e424d8683b9f37653a41, type: 3}
@@ -7802,7 +7802,9 @@ MonoBehaviour:
     - {fileID: 1640113148994668561, guid: b408d51283c50ef4b810124e42549572, type: 3}
     - {fileID: 218805512634659363, guid: 19b33437de53a4b4fb6bd1a01dfe9621, type: 3}
     - {fileID: 4913986751722077784, guid: 014674e448f787544a111512e06c6a28, type: 3}
-    bosses: []
+    bosses:
+    - {fileID: 2443715872605566842, guid: aa9d832307494104ab5af6b139de9020, type: 3}
+    - {fileID: 6668555889103643265, guid: e07d39f6346fe4f48aa17478628793c1, type: 3}
   - fieldImages:
     - {fileID: 21300000, guid: 02beaae281befb5469af3ef968a506b3, type: 3}
     - {fileID: 21300000, guid: 23abc85ee4b97f2478afce54424e1fed, type: 3}
