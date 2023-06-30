@@ -96,7 +96,7 @@ public class BoardManager : MonoBehaviour
     }
 
     // 그리드 리스트 내 랜덤 위치 반환
-    private Vector3 RandomMonsterPosition(MovingObject go)
+    public Vector3 RandomMonsterPosition(MovingObject go)
     {
         int idx = Random.Range(0, gridPositions.Count);
         Vector3 pos = gridPositions[idx];
@@ -291,6 +291,14 @@ public class BoardManager : MonoBehaviour
         coffin.SetActive(false);
         box.SetActive(false);
         recorder.SetActive(false);
+    }
+
+    public bool NoMonster()
+    {
+        if (livingMonsters.Count == 0)
+            return true;
+        else
+            return false;
     }
 
     ////////////////////////////////////

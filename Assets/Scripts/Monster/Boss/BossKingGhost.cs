@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class BossKingGhost : MonsterScript
 {
-    [Header("ALPHA")]
-    public int transparentPercent;
-
-    private Color32 colorO = new Color32(255, 255, 255, 255);
-    private Color32 colorT = new Color32(255, 255, 255, 50);
+    private Color32 colorO = new Color32(255, 122, 122, 255);
+    private Color32 colorZ = new Color32(255, 122, 122, 0);
 
     protected override void Start()
     {
@@ -16,17 +13,30 @@ public class BossKingGhost : MonsterScript
 
         StartCoroutine(MonsterMove());
 
-        if (!GameController.effGlasses)
-            StartCoroutine(Transparent());
+        StartCoroutine(TeleportCo());
     }
 
-    IEnumerator Transparent()
+    private void OnDestroy()
+    {
+        BoardManager.I.DropBox(transform.position);
+    }
+
+    IEnumerator TeleportCo()
     {
         while (isAlive)
         {
-            sr.color = (Random.Range(0, 100) <= transparentPercent) ? colorT : colorO;
+            yield return GameController.delay_3s;
+            sr.color = colorZ;
+            Teleport();
 
-            yield return GameController.delay_1s;
+            yield return GameController.delay_3s;
+            sr.color = colorO;
         }
+            
+    }
+
+    private void Teleport()
+    {
+        transform.position = BoardManager.I.RandomMonsterPosition(GetComponent<MovingObject>());
     }
 }
