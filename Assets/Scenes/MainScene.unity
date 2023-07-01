@@ -7765,9 +7765,12 @@ MonoBehaviour:
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
-    - {fileID: 4474911900205950305, guid: cde4ad352a0ac5f4fa0a539af38baa5f, type: 3}
     monsters:
-    - {fileID: 3038600472547292134, guid: 5b19c5584bd19b9429ae9e4569f9e083, type: 3}
+    - {fileID: 1821157012979008744, guid: 6f674aed0c988bd4191905b095108cf3, type: 3}
+    - {fileID: 6484742795607083952, guid: 0f2dc02a2ebed6c4c9747b5cf1b67a2f, type: 3}
+    - {fileID: 9044111439541207938, guid: 49cea1fa8a6fe344888bf5baec9c0438, type: 3}
+    - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
+    - {fileID: 1252373894875807375, guid: fa0fc48a87279b04da2a626d53edca97, type: 3}
     bosses:
     - {fileID: 4085384602476574677, guid: a1fd81ba5a583d74cb8c3d1ee323a203, type: 3}
   - fieldImages:
@@ -7777,6 +7780,7 @@ MonoBehaviour:
     sculptures:
     - {fileID: 8554478738043012695, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
+    - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
@@ -7793,8 +7797,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: edda2ab641ca73841a368acd531b9a4c, type: 3}
     - {fileID: 21300000, guid: 432486a3c08ab5f4c83f8d81090ffee7, type: 3}
     sculptures:
-    - {fileID: 5360196784861406231, guid: 9f97374e4f1a4e54f9807e9f41e9ee0f, type: 3}
-    - {fileID: 5360196784861406231, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
+    - {fileID: 8657204143166584080, guid: fe47de4e32a093b47a2875a957bd57b9, type: 3}
+    - {fileID: 8657204143166584080, guid: fe47de4e32a093b47a2875a957bd57b9, type: 3}
+    - {fileID: 8944636350297974269, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
+    - {fileID: 8944636350297974269, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     monsters:

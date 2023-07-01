@@ -19,7 +19,7 @@ public class BoardManager : MonoBehaviour
     }
 
     [Header("LEVELS")]
-    public List<LevelStruct> levels = new List<LevelStruct>();
+    public LevelStruct[] levels;
 
     [Header("ITEMS")]
     public GameObject[] items;
@@ -101,10 +101,6 @@ public class BoardManager : MonoBehaviour
         int idx = Random.Range(0, gridPositions.Count);
         Vector3 pos = gridPositions[idx];
 
-        //int a = (int)(go.GetComponent<SpriteRenderer>().sprite.rect.width / 60) - 1;
-
-        //pos = new Vector3(pos.x <= 8 ? pos.x + 0.5f * a : 9 - 0.5f * a, pos.y, pos.z);
-
         float new_x = pos.x <= 8 ? pos.x + 0.5f * go.xx : 9 - 0.5f * go.xx;
         float new_y = pos.y <= 8 ? pos.y + 0.5f * go.yy : 9 - 0.5f * go.yy;
 
@@ -131,16 +127,15 @@ public class BoardManager : MonoBehaviour
         if (floor % 20 == 18)
         {
             for (int i = 3; i < 7; i++)
-                DesiredPosition(i, 9);
+                RemovePositionAwayFrom(DesiredPosition(i, 9));
 
             StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
         }
         else
         {
             StairScript.I.transform.position = RandomPosition();
+            RemovePositionAwayFrom(StairScript.I.transform.position);
         }
-
-        RemovePositionAwayFrom(StairScript.I.transform.position);
     }
 
     // 계단과 OnTrigger 작동 함수
@@ -188,10 +183,7 @@ public class BoardManager : MonoBehaviour
 
     private void SetMonsters(int floor, int min, int max)
     {
-        if (floor % 20 == 19)
-        {
-
-        }
+        if (floor % 20 == 19) { }
         else
         {
             for (int i = 0; i < Random.Range(min, max + 1); i++)
@@ -226,15 +218,15 @@ public class BoardManager : MonoBehaviour
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
         livingMonsters.Clear();
 
-        InitialGrid();
-        SetField(floor);
-        RemovePositionAwayFrom(PlayerScript.I.transform.position);
+        InitialGrid();                                                  // 1. 좌표 생성
+        SetField(floor);                                                // 2. 배경 설정
+        RemovePositionAwayFrom(PlayerScript.I.transform.position);      // 3. 플레이어 좌표 근처 위치 제외
 
-        LayoutStair(floor);
+        LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
-        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);
+        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);  // 5. 바닥 생성
 
-        SetMonsters(floor, 2, 8);
+        SetMonsters(floor, 2, 8);                                       // 6. 몬스터 생성
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가
@@ -279,7 +271,7 @@ public class BoardManager : MonoBehaviour
     // 보스 잡으면 보상으로 박스 드롭
     public void DropBox(Vector3 pos)
     {
-        GameController.bossCut = true;
+        GameController.bossCut = true;      // 시간 데미지 잠시 정지
         box.transform.position = new Vector3((int)pos.x, (int)pos.y, 0);
         box.SetActive(true);
     }

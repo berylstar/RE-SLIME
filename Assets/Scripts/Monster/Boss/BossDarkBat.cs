@@ -11,7 +11,7 @@ public class BossDarkBat : MonsterScript
         PlayerScript.I.sight.SetActive(true);
 
         StartCoroutine(MonsterMove());
-        StartCoroutine(ActionCo());
+        StartCoroutine(DashCo());
 
     }
 
@@ -22,18 +22,18 @@ public class BossDarkBat : MonsterScript
         BoardManager.I.DropBox(transform.position);
     }
 
-    IEnumerator ActionCo()
+    IEnumerator DashCo()
     {
         while (isAlive)
         {
             yield return GameController.delay_1s;
 
             if (Random.Range(0, 4) <= 0)
-                ani.SetTrigger("MonsterAction");
+                Dash();
         }
     }
 
-    private void Action()
+    private void Dash()
     {
         StartCoroutine(DashCo(Random.Range(0, 3)));
     }

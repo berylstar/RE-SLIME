@@ -102,8 +102,7 @@ public class MonsterScript : MovingObject
 
         if (HP <= 0)
         {
-            // 이동하는 도중에 죽을 때 바로 죽게 하기 위해
-            StopAllCoroutines();
+            StopAllCoroutines();            // 이동하는 도중에 죽을 때 바로 죽게 하기 위해
             StartCoroutine(Die());
         }
     }
