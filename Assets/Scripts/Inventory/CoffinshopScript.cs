@@ -110,11 +110,11 @@ public class CoffinshopScript : MonoBehaviour
     {
         if (idx == 0 || onStands[idx - 1] == null)
         {
-            textName.text = "어서오세요 해골상점에";
-            textAdject.text = "welcome";
-            textEffect.text = "";
+            textName.text = "해골상점에 어서오게";
+            textAdject.text = "마음에 드는 장비를 골라보게";
+            textEffect.text = "←↑↓→ : 커서 이동\n스페이스 : 구매";
             textGrade.text = "";
-            textPrice.text = "ONLY";
+            textPrice.text = "취급";
         }
         else
         {

@@ -4576,24 +4576,26 @@ MonoBehaviour:
   dialogues:
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
-    talk: 1
+    talk: "\uC544\uB2C8.. \uC790\uB124\uAC00 \uC5B4\uB5BB\uAC8C\n\uC5EC\uAE30\uB97C
+      \uC62C\uB77C\uC654\uC9C0 ?"
   - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-    talker: 
-    talk: '2
-
-      2'
+    talker: "\uC2AC\uB77C\uC784"
+    talk: "\uADF8\uB0E5 \uAD81\uAE08\uD574\uC11C \uC62C\uB77C\uC640\uBD24\uC5B4\uC694.\n\uC5EC\uAE30\uB294
+      \uC5B4\uB514\uC8E0 ?"
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
-    talk: 3
+    talk: "\uC5EC\uAE30\uB294 \uB358\uC804\uC774 \uC2DC\uC791\uB418\uB294 0\uCE35..\n\uC774
+      \uC544\uB2C8\uB77C \uC6A9\uC0AC\uB9CC \uC62C\uB77C\uAC08 \uC218 \uC788\uB2E4\uB124"
   - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-    talker: 
-    talk: 4
+    talker: "\uC2AC\uB77C\uC784"
+    talk: "\uADF8\uB7FC \uC81C\uAC00 \uADF8\uB0E5 \uC6A9\uC0AC\uD560\uAC8C\uC694.\n\uBB58
+      \uD558\uBA74 \uB418\uC8E0 ?"
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
-    talk: 5
+    talk: "\uADF8\uAC8C \uADF8\uB807\uAC8C \uB418\uB294\uAC74\uAC00..."
   - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
-    talker: 
-    talk: 6
+    talker: "\uC2AC\uB77C\uC784"
+    talk: "\uBE68\uB9AC "
 --- !u!50 &478267257
 Rigidbody2D:
   serializedVersion: 4
@@ -4832,8 +4834,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480707728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -280, z: 0}
-  m_LocalScale: {x: 120, y: 90, z: 60}
+  m_LocalPosition: {x: 0, y: -270, z: 0}
+  m_LocalScale: {x: 120, y: 100, z: 60}
   m_Children: []
   m_Father: {fileID: 1935987695}
   m_RootOrder: 0
@@ -7759,7 +7761,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a21ca735f1e7c2d4080ad3be36d6837e, type: 3}
     - {fileID: 21300000, guid: 2d411ee9c548e88478aeaeb15e62be43, type: 3}
     sculptures:
-    - {fileID: 8554478738043012695, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
+    - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
@@ -7780,7 +7782,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: c9c6a4abb3e7e424d8683b9f37653a41, type: 3}
     - {fileID: 21300000, guid: dd366157675cfde4c89877fde8323a20, type: 3}
     sculptures:
-    - {fileID: 8554478738043012695, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
+    - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
     - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
@@ -11101,7 +11103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250, y: -280}
+  m_AnchoredPosition: {x: -250, y: -270}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &996013197
@@ -12146,7 +12148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SAVE YOUR ADVENTURE !
+  m_Text: "\uBAA8\uD5D8\uC744 \uC800\uC7A5\uD558\uC138\uC694 !"
 --- !u!222 &1116073980
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17814,8 +17816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -310}
-  m_SizeDelta: {x: 450, y: 100}
+  m_AnchoredPosition: {x: 83, y: -300}
+  m_SizeDelta: {x: 470, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617543608
 MonoBehaviour:
@@ -17849,7 +17851,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: DIALOGUE
 --- !u!222 &1617543609
 CanvasRenderer:
@@ -20735,8 +20737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: -260}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: 50, y: -215}
+  m_SizeDelta: {x: 400, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998384492
 MonoBehaviour:

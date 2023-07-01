@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
+    private readonly WaitForSeconds textDelay = new WaitForSeconds(0.01f);
     public static UIScript I = null;
 
     [Header("PanelStatus")]
@@ -130,7 +131,20 @@ public class UIScript : MonoBehaviour
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
         textTalker.text = who;
-        textDialogue.text = talk;
+        //textDialogue.text = talk;
+        StartCoroutine(TextAnimation(textDialogue, talk));
+    }
+
+    IEnumerator TextAnimation(Text text, string talk)
+    {
+        string write = "";
+
+        for (int i = 0; i < talk.Length; i++)
+        {
+            write += talk[i];
+            text.text = write;
+            yield return textDelay;
+        }
     }
 
     public void EndDialogue()

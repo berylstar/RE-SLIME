@@ -95,9 +95,15 @@ public class BoxScript : MonoBehaviour
             textAdject.text = "갈증 완벽 해결";
             textEffect.text = "HP + 30";
         }
+        else if (!isPicked)
+        {
+            textName.text = "하나를 고르세요.";
+            textAdject.text = "";
+            textEffect.text = "왼쪽 or 오른쪽";
+        }
         else
         {
-            textName.text = "CHOOSE 1";
+            textName.text = "";
             textAdject.text = "";
             textEffect.text = "";
         }
