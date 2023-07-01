@@ -37,7 +37,7 @@ public class StairScript : MonoBehaviour
         }
     }
 
-    private void Close()
+    public void Close()
     {
         bc2d.isTrigger = false;
 

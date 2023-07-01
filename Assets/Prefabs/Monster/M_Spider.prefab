@@ -167,9 +167,9 @@ MonoBehaviour:
   xx: 0
   yy: 0
   HP: 10
-  AP: 3
+  AP: 2
   movetype: 0
-  speed: 10
+  speed: 5
   spawn:
   - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
-  spawnPercent: 40
+  spawnPercent: 50

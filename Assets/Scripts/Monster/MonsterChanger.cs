@@ -7,15 +7,11 @@ public class MonsterChanger : MonoBehaviour
     public enum changerType
     {
         book,
-        box
+        box,
+        rock
     }
 
     public changerType type;
-
-    private void Start()
-    {
-        BoardManager.I.AddMonster(null);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,6 +24,7 @@ public class MonsterChanger : MonoBehaviour
     IEnumerator Change()
     {
         GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 0.5f);
+        StairScript.I.Close();
 
         yield return GameController.delay_01s;
 
@@ -36,7 +33,6 @@ public class MonsterChanger : MonoBehaviour
 
         if (type == changerType.book) GetComponent<MonsterQuick>().enabled = true;
         else if (type == changerType.box) GetComponent<MonsterSpawner>().enabled = true;
-
-        BoardManager.I.RemoveMonster(null);
+        else if (type == changerType.rock) GetComponent<MonsterNormal>().enabled = true;
     }
 }
