@@ -40,6 +40,7 @@ public class StairScript : MonoBehaviour
     public void Close()
     {
         bc2d.isTrigger = false;
+        tag = "Wall";
 
         if (GameController.floor % 20 == 18)
             sr.sprite = imgStairCloseLong;
@@ -50,8 +51,9 @@ public class StairScript : MonoBehaviour
     public void Open()
     {
         bc2d.isTrigger = true;
+        tag = "Stair";
 
-        if (GameController.floor % 20 == 18)
+        if (GameController.floor == 0 || GameController.floor % 20 == 18)
         {
             bc2d.size = new Vector2 (2.4f, 0.5f);
             sr.sprite = imgStairOpenLong;

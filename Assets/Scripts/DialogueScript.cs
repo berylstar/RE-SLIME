@@ -18,7 +18,7 @@ public class DialogueScript : MonoBehaviour
     {
         public Sprite img;
         public string talker;
-        [Multiline (2)]
+        [Multiline (3)]
         public string talk;
     }
     
@@ -54,6 +54,7 @@ public class DialogueScript : MonoBehaviour
                 {
                     GameController.endTutorial = true;
                     GameController.coin += 5;
+                    //StairScript.I.Open();     I 튜토리얼 만들고 했을 때 열리게 
                 }
             }
             else
@@ -65,22 +66,31 @@ public class DialogueScript : MonoBehaviour
     {
         if (collision.CompareTag("Punch"))
         {
-            SetDialogue();
-            index = start;
-            GameController.nowDialogue = this;
-            UIScript.I.ShowDialogue(dialogues[start].img, dialogues[start].talker, dialogues[start].talk);
+            StartDialogue();
         }
+    }
+
+    // 처음 인벤토리 열었을 때도 실행 되게 하기 위해
+    public void StartDialogue()
+    {
+        SetDialogue();
+        index = start;
+        GameController.nowDialogue = this;
+        UIScript.I.ShowDialogue(dialogues[start].img, dialogues[start].talker, dialogues[start].talk);
     }
 
     // 대화 상대에 맞춰 미리 세팅해야 함
     private void SetDialogue()
     {
+        // start : 대화 시작 element
+        // end : 대화 마지막 element + 1
+
         if (type == DialogueType.SIGN) { start = 0; end = 1; }
 
         else if (type == DialogueType.KINGSLIME)
         {
-            if (!GameController.endTutorial) { start = 0; end = 4; }
-            else { start = 0; end = 6; }
+            if (!GameController.endTutorial) { start = 0; end = 22; }
+            else { start = 22; end = 24; }
         }
     }
 
