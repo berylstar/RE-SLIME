@@ -9,6 +9,7 @@ public enum SculptureType
     GRASS,      // 풀 숲 = 들어가 있으면 오브젝트 투명화
     ICY,        // 얼음 = 이동하면 그 방향으로 미끄러지게
     TREE,       // 나무
+    PUDDLE,     // 물웅덩이 = 체력 회복
 }
 
 public class SculptureScript : MonoBehaviour
@@ -48,6 +49,9 @@ public class SculptureScript : MonoBehaviour
 
             else if (type == SculptureType.GRASS)
                 GrassEffect(player);
+
+            else if (type == SculptureType.PUDDLE)
+                PuddleEffect();
 
             isEffected = true;
         }
@@ -122,5 +126,11 @@ public class SculptureScript : MonoBehaviour
         player.DirectionMove();
 
         isEffected = false;
+    }
+
+    private void PuddleEffect()
+    {
+        GameController.ChangeHP(3);
+        Destroy(this.gameObject);
     }
 }

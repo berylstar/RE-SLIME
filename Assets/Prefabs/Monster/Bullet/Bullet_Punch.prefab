@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  moveSpeed: 50
+  moveSpeed: 20
   direction: 0
