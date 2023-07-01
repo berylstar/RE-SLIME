@@ -11,9 +11,6 @@ public class MonsterBox : MonsterScript
     protected override void Start()
     {
         base.Start();
-
-        //StartCoroutine(MonsterMove());
-        //StartCoroutine(ActionCo());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,10 +31,11 @@ public class MonsterBox : MonsterScript
 
     IEnumerator Change()
     {
+        GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 0.5f);
+
         yield return GameController.delay_01s;
 
         this.tag = "Monster";
-        GetComponent<BoxCollider2D>().size = new Vector2(0.5f, 0.5f);
         ani.enabled = true;
     }
 
