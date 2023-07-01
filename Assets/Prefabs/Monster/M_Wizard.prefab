@@ -166,9 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xx: 0
   yy: 0
-  HP: 10
-  AP: 10
-  movetype: 0
-  speed: 10
+  HP: 29
+  AP: 3
+  movetype: 1
+  speed: 15
   bullet: {fileID: 2151527592746679646, guid: ce840f92ccebe7f47b9ab1bfb7ff1bf9, type: 3}
-  shootPercent: 50
+  shootPercent: 70

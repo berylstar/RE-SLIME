@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 218805512634659358}
   - component: {fileID: 218805512634659357}
   - component: {fileID: 218805512634659364}
-  - component: {fileID: 3714402853681165233}
   m_Layer: 6
   m_Name: M_Flamesnake
   m_TagString: Monster
@@ -167,31 +166,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xx: 1
   yy: 0
-  HP: 25
+  HP: 50
   AP: 3
   movetype: 0
   speed: 0
   spawn:
   - {fileID: 8657204143166584080, guid: fe47de4e32a093b47a2875a957bd57b9, type: 3}
   - {fileID: 8944636350297974269, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
-  spawnPercent: 60
---- !u!114 &3714402853681165233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218805512634659363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6b689d304b27f4ca8bf779d9b4f14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xx: 1
-  yy: 0
-  HP: 25
-  AP: 3
-  movetype: 0
-  speed: 0
-  bullet: {fileID: 9161836580905074611, guid: c7c3855087bea0147a61a6cc451ed805, type: 3}
-  shootPercent: 70
+  spawnPercent: 100

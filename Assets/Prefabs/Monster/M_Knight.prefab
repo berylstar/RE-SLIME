@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3637107936079776129}
   - component: {fileID: 3637107936079776128}
   - component: {fileID: 3637107936079776131}
-  - component: {fileID: 3637107936079776188}
+  - component: {fileID: 6099885759587885426}
   m_Layer: 6
   m_Name: M_Knight
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3637107936079776188
+--- !u!114 &6099885759587885426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,12 +161,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3637107936079776189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
+  m_Script: {fileID: 11500000, guid: 91b2c3f3be5f5fe41b7ac266b1400e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xx: 0
   yy: 0
-  HP: 10
-  AP: 2
-  movetype: 1
+  HP: 31
+  AP: 4
+  movetype: 0
   speed: 10
+  dashPercent: 0

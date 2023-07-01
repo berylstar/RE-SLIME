@@ -171,4 +171,4 @@ MonoBehaviour:
   movetype: 0
   speed: 5
   bullet: {fileID: 5634777195878863423, guid: 334791ecf0f6ad44a87730144588eca4, type: 3}
-  shootPercent: 40
+  shootPercent: 50

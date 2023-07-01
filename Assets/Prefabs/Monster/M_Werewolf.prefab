@@ -167,6 +167,6 @@ MonoBehaviour:
   xx: 0
   yy: 0
   HP: 25
-  AP: 3
+  AP: 4
   movetype: 0
-  speed: 10
+  speed: 3

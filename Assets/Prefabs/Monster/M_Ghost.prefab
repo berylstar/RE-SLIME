@@ -166,8 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xx: 0
   yy: 0
-  HP: 12
+  HP: 14
   AP: 2
   movetype: 0
-  speed: 20
-  transparentPercent: 50
+  speed: 15
+  transparentPercent: 70

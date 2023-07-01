@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8713141961878357570}
   - component: {fileID: 8713141961878357571}
   - component: {fileID: 8713141961878357568}
-  - component: {fileID: 5187499248517123929}
+  - component: {fileID: -3793261181765466046}
   m_Layer: 6
   m_Name: M_EmberMini
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5187499248517123929
+--- !u!114 &-3793261181765466046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +161,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8713141961878357630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e6b689d304b27f4ca8bf779d9b4f14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 5
+  xx: 0
+  yy: 0
+  HP: 10
   AP: 1
+  movetype: 0
   speed: 10
+  bullet: {fileID: 9161836580905074611, guid: c7c3855087bea0147a61a6cc451ed805, type: 3}
+  shootPercent: 70

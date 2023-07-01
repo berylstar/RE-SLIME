@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5513439797811842282}
   - component: {fileID: 5513439797811842283}
   - component: {fileID: 5513439797811842280}
-  - component: {fileID: 5513439797811842263}
+  - component: {fileID: 2389463074275062442}
   m_Layer: 6
   m_Name: M_Fireyeti
   m_TagString: Monster
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5513439797811842263
+--- !u!114 &2389463074275062442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,12 +161,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5513439797811842262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6693658a3659d3a4bbcc5d091da9143e, type: 3}
+  m_Script: {fileID: 11500000, guid: cc8f6b1fb92e165499bf9893cd4f2642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xx: 0
   yy: 0
-  HP: 10
+  HP: 23
   AP: 3
   movetype: 1
-  speed: 10
+  speed: 15
