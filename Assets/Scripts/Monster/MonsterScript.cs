@@ -29,7 +29,7 @@ public class MonsterScript : MovingObject
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 펀치와 충돌 감지로 몬스터 데미지
-        if (collision.CompareTag("Punch") && isAlive)
+        if (collision.CompareTag("Punch") && isAlive && enabled)
         {
             StartCoroutine(Damaged(GameController.playerAP));
         }
