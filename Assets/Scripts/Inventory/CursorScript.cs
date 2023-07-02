@@ -24,6 +24,9 @@ public class CursorScript : MonoBehaviour
 
     private void Update()
     {
+        if (GameController.Pause(1))
+            return;
+
         // Input : 스페이스 바 = 장비 선택/해제
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -4656,6 +4656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  delay: 0
   dialogues:
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
@@ -8072,6 +8073,7 @@ MonoBehaviour:
   imageCharacter: {fileID: 996013197}
   textTalker: {fileID: 1998384492}
   textDialogue: {fileID: 1617543608}
+  onTexting: 0
   panelShop: {fileID: 1200077765}
   panelBox: {fileID: 1208244637}
   PanelRecorder: {fileID: 490967236}
@@ -9212,10 +9214,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  delay: 0
   dialogues:
   - img: {fileID: 21300000, guid: c842c8b5620702f4988d4b8c30f56aed, type: 3}
     talker: "\uD45C\uC9C0\uD310"
-    talk: "\uC774 \uC55E\uC740 \uB358\uC804\uC785\uB2C8\uB2E4."
+    talk: "\uC774 \uC55E\uC740 \uB358\uC804\uC785\uB2C8\uB2E4.\n\u203B \uC6A9\uC0AC
+      \uC678 \uCD9C\uC785\uAE08\uC9C0"
 --- !u!50 &825139916
 Rigidbody2D:
   serializedVersion: 4

@@ -78,19 +78,13 @@ public class InventoryScript : MonoBehaviour
             if (!GameController.tutorial[0] || GameController.Pause(1))
                 return;
 
-            if (!GameController.tutorial[1])
+            
+            if (GameController.inInven && CheckOverlap())
             {
-                BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
+                return;
             }
-            else
-            {
-                if (GameController.inInven && CheckOverlap())
-                {
-                    return;
-                }
 
-                OpenInventory();
-            }
+            OpenInventory();
         }
     }
 
@@ -100,6 +94,11 @@ public class InventoryScript : MonoBehaviour
         GameController.inInven = !GameController.inInven;
 
         cursor.SetActive(GameController.inInven);
+
+        if (!GameController.tutorial[1])
+        {
+            BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
+        }
     }
 
     // 인벤토리 좌표 설정

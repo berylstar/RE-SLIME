@@ -13,7 +13,6 @@ public enum DialogueType
 public class DialogueScript : MonoBehaviour
 {
     public DialogueType type;
-    public bool delay;
 
     [Serializable]
     public struct DialogueStruct

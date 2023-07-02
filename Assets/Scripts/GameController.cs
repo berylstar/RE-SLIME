@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
     public static bool inShop = false;
     public static bool inBox = false;
     public static bool inRecord = false;
-    public static List<bool> tutorial = new List<bool>() { false, false};
+    public static List<bool> tutorial = new List<bool>() { true, true}; // false , false
     public static bool bossCut = false;
 
     public static bool Pause(int i)
