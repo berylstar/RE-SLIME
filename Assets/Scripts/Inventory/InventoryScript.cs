@@ -78,7 +78,6 @@ public class InventoryScript : MonoBehaviour
             if (!GameController.tutorial[0] || GameController.Pause(1))
                 return;
 
-            
             if (GameController.inInven && CheckOverlap())
             {
                 return;

@@ -100,7 +100,7 @@ public class DialogueScript : MonoBehaviour
             else { start = 23; end = 25; }
         }
 
-        else if (tp == DialogueType.InvenTutorial) { start = 25; end = 30; }
+        else if (tp == DialogueType.InvenTutorial) { start = 25; end = 32; }
     }
 
     // 스페이스바 때문에 바로 NPC와 대화를 막기위한 잠깐의 딜레이

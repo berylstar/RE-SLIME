@@ -26,11 +26,12 @@ public class EquipEffector : MonoBehaviour
     private readonly int thunder = 5;
     private readonly int goldenticket = 2; 
     private readonly int yellowtail = 1;
-    // guitar - 3, 2, 10
+    // guitar - 4, 1, 10
     // plask - 3, -1
     private readonly int magnet = 3;
     private readonly int herb = 3;
     private readonly int wax = 1;
+    private readonly int scissor = 2;
 
     private void Awake()
     {
@@ -122,8 +123,8 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 28)            // 일렉 기타
         {
-            GameController.playerAP += 3;
-            GameController.playerDP += 2;
+            GameController.playerAP += 4;
+            GameController.playerDP += 1;
             GameController.ChangeSpeed(10);
         }
         else if (i == 29)            // 마지막 잎새
@@ -158,6 +159,15 @@ public class EquipEffector : MonoBehaviour
         else if (i == 39)           // 헤어 왁스
         {
             GameController.playerAP += wax;
+        }
+        else if (i == 41)           // 거북이 등딱지
+        {
+            GameController.playerMaxHP += 15;
+            GameController.ChangeSpeed(-10);
+        }
+        else if (i == 42)           // 가위
+        {
+            GameController.playerAP += scissor;
         }
         else
             return;
@@ -246,8 +256,8 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 28)            // 일렉 기타
         {
-            GameController.playerAP -= 3;
-            GameController.playerDP -= 2;
+            GameController.playerAP -= 4;
+            GameController.playerDP -= 1;
             GameController.ChangeSpeed(-10);
         }
         else if (i == 29)            // 마지막 잎새
@@ -283,6 +293,15 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.playerAP -= wax;
         }
+        else if (i == 41)           // 거북이 등딱지
+        {
+            GameController.playerMaxHP -= 15;
+            GameController.ChangeSpeed(10);
+        }
+        else if (i == 42)           // 가위
+        {
+            GameController.playerAP -= scissor;
+        }
         else
             return;
     }
@@ -299,7 +318,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 8)            // 녹슨 열쇠
         {
-            Key();
+            StairScript.I.Open();
         }
         else if (i == 14)           // 투명 망토
         {
@@ -313,7 +332,7 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.ChangeHP(pizza);
         }
-        else if (i == 22)           // 마법서
+        else if (i == 22 || i == 40)           // 마법서 or 종이배
         {
             GameController.savedFloor = GameController.floor - 1;
             GameController.floor = 0;
@@ -331,7 +350,7 @@ public class EquipEffector : MonoBehaviour
         {
             PlayerScript.I.EquipLasergun();
         }
-        if (i == 36)                 // 바나나
+        if (i == 36)                 // 독사과
         {
             GameController.ChangeHP(GameController.playerMaxHP/2);
         }
@@ -352,10 +371,5 @@ public class EquipEffector : MonoBehaviour
         yield return GameController.delay_3s;
         PlayerScript.I.invincivity = false;
         player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
-    }
-
-    private void Key()
-    {
-        StairScript.I.Open();
     }
 }

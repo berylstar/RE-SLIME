@@ -93,7 +93,7 @@ public class BoxScript : MonoBehaviour
         {
             textName.text = "대용량 포션";
             textAdject.text = "갈증 완벽 해결";
-            textEffect.text = "HP + 30";
+            textEffect.text = "HP + 50";
         }
         else if (!isPicked)
         {

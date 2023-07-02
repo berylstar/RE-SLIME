@@ -51,7 +51,15 @@ public class CoffinshopScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetPick(0);
         if (Input.GetKeyDown(KeyCode.UpArrow) && si == 0) SetPick(1);
 
-        if (Input.GetKeyDown(KeyCode.R)) PutEquipsOnStand();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (GameController.coin >= 2)
+            {
+                GameController.coin -= 2;
+                PutEquipsOnStand();
+            }
+        }
+            
 
         ShowEquipInfo(si);
     }
@@ -112,7 +120,7 @@ public class CoffinshopScript : MonoBehaviour
         {
             textName.text = "해골상점에 어서오세요";
             textAdject.text = "마음에 드는 장비를 골라보세요";
-            textEffect.text = "←↑↓→ : 커서 이동\n스페이스 : 구매";
+            textEffect.text = "스페이스 : 구매\n'R' : 새로고침 (2 골드)";   // ←↑↓→ : 커서 이동
             textGrade.text = "";
             textPrice.text = "취급";
         }

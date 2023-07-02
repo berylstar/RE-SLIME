@@ -168,7 +168,7 @@ MonoBehaviour:
   xx: 1
   yy: 0
   HP: 29
-  AP: 2
+  AP: 3
   movetype: 0
   speed: 20
   dashPercent: 50

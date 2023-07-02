@@ -167,7 +167,7 @@ MonoBehaviour:
   xx: 0
   yy: 0
   HP: 29
-  AP: 3
+  AP: 4
   movetype: 0
   speed: 15
   spawn:

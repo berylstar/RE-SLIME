@@ -65,13 +65,13 @@ public class StairScript : MonoBehaviour
 
         if (GameController.floor == 0 || GameController.floor % 20 == 18)
         {
-            
             sr.sprite = imgStairOpenLong;
+            bc2d.size = new Vector2(2.4f, 0.5f);
         }
         else
         {
-           
             sr.sprite = imgStairOpen;
+            bc2d.size = new Vector2(0.5f, 0.5f);
         }
     }
 }
