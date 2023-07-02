@@ -7,11 +7,13 @@ public enum DialogueType
 {
     KINGSLIME,
     SIGN,
+    InvenTutorial,
 }
 
 public class DialogueScript : MonoBehaviour
 {
     public DialogueType type;
+    public bool delay;
 
     [Serializable]
     public struct DialogueStruct
@@ -41,7 +43,7 @@ public class DialogueScript : MonoBehaviour
         if (GameController.nowDialogue != this)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !UIScript.I.onTexting)
         {
             index += 1;
 
@@ -50,11 +52,17 @@ public class DialogueScript : MonoBehaviour
                 StartCoroutine(CloseTutorial());
 
                 // 최초 튜토리얼 진행 후
-                if (type == DialogueType.KINGSLIME && !GameController.endTutorial)
+                if (start == 0 && !GameController.tutorial[0])
                 {
-                    GameController.endTutorial = true;
+                    GameController.tutorial[0] = true;
                     GameController.coin += 5;
-                    //StairScript.I.Open();     I 튜토리얼 만들고 했을 때 열리게 
+                }
+
+                // 인벤토리 튜토리얼 진행 후
+                if (start == 25 && !GameController.tutorial[1])
+                {
+                    GameController.tutorial[1] = true;
+                    StairScript.I.Open();
                 }
             }
             else
@@ -66,32 +74,34 @@ public class DialogueScript : MonoBehaviour
     {
         if (collision.CompareTag("Punch"))
         {
-            StartDialogue();
+            StartDialogue(type);
         }
     }
 
     // 처음 인벤토리 열었을 때도 실행 되게 하기 위해
-    public void StartDialogue()
+    public void StartDialogue(DialogueType tp)
     {
-        SetDialogue();
+        SetDialogue(tp);
         index = start;
         GameController.nowDialogue = this;
         UIScript.I.ShowDialogue(dialogues[start].img, dialogues[start].talker, dialogues[start].talk);
     }
 
     // 대화 상대에 맞춰 미리 세팅해야 함
-    private void SetDialogue()
+    private void SetDialogue(DialogueType tp)
     {
         // start : 대화 시작 element
         // end : 대화 마지막 element + 1
 
-        if (type == DialogueType.SIGN) { start = 0; end = 1; }
+        if (tp == DialogueType.SIGN) { start = 0; end = 1; }
 
-        else if (type == DialogueType.KINGSLIME)
+        else if (tp == DialogueType.KINGSLIME)
         {
-            if (!GameController.endTutorial) { start = 0; end = 22; }
-            else { start = 22; end = 24; }
+            if (!GameController.tutorial[0]) { start = 0; end = 23; }
+            else { start = 23; end = 25; }
         }
+
+        else if (tp == DialogueType.InvenTutorial) { start = 25; end = 30; }
     }
 
     // 스페이스바 때문에 바로 NPC와 대화를 막기위한 잠깐의 딜레이

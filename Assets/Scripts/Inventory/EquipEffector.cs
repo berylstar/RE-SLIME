@@ -24,12 +24,13 @@ public class EquipEffector : MonoBehaviour
     private readonly int straw = 3;
     private readonly int talisman = 1;
     private readonly int thunder = 5;
-    private readonly int goldenticket = 2;
+    private readonly int goldenticket = 2; 
     private readonly int yellowtail = 1;
     // guitar - 3, 2, 10
     // plask - 3, -1
     private readonly int magnet = 3;
     private readonly int herb = 3;
+    private readonly int wax = 1;
 
     private void Awake()
     {
@@ -154,6 +155,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.effPerfume = true;
         }
+        else if (i == 39)           // 헤어 왁스
+        {
+            GameController.playerAP += wax;
+        }
         else
             return;
     }
@@ -274,6 +279,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.effPerfume = false;
         }
+        else if (i == 39)           // 헤어 왁스
+        {
+            GameController.playerAP -= wax;
+        }
         else
             return;
     }
@@ -328,7 +337,6 @@ public class EquipEffector : MonoBehaviour
         }
         if (i == 38)                 // 신호등
         {
-            print("신호등");
             BoardManager.I.EquipTrafficlight();
         }
         else

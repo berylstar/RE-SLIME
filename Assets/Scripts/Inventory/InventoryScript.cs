@@ -75,12 +75,22 @@ public class InventoryScript : MonoBehaviour
         // 장비가 겹쳐있으면 인벤토리가 닫히지 않음
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (GameController.inInven && CheckOverlap())
-            {
+            if (!GameController.tutorial[0] || GameController.Pause(1))
                 return;
-            }
 
-            OpenInventory();
+            if (!GameController.tutorial[1])
+            {
+                BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
+            }
+            else
+            {
+                if (GameController.inInven && CheckOverlap())
+                {
+                    return;
+                }
+
+                OpenInventory();
+            }
         }
     }
 

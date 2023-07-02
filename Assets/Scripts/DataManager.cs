@@ -37,7 +37,7 @@ public class DataManager : MonoBehaviour
         InventoryScript.I.SAVE();
         newDATA.myEquips = GameController.myEquips;
 
-        newDATA.endTutorial = GameController.endTutorial;
+        newDATA.tutorial = GameController.tutorial;
 
         File.WriteAllText(path + slot, JsonUtility.ToJson(newDATA));
 
@@ -56,7 +56,7 @@ public class DataManager : MonoBehaviour
 
         GameController.myEquips = newDATA.myEquips;
 
-        GameController.endTutorial = newDATA.endTutorial;
+        GameController.tutorial = newDATA.tutorial;
 
         print("LOAD!");
     }
@@ -73,7 +73,7 @@ public class DataManager : MonoBehaviour
 
         GameController.myEquips = newDATA.myEquips;
 
-        GameController.endTutorial = newDATA.endTutorial;
+        GameController.tutorial = newDATA.tutorial;
 
         print("NEW!");
     }

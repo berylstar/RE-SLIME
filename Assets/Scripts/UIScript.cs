@@ -32,6 +32,7 @@ public class UIScript : MonoBehaviour
     public GameObject panelDialogue;
     public Image imageCharacter;
     public Text textTalker, textDialogue;
+    public bool onTexting = false;
 
     [Header("PanelShop")]
     public GameObject panelShop;
@@ -131,13 +132,14 @@ public class UIScript : MonoBehaviour
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
         textTalker.text = who;
-        //textDialogue.text = talk;
         StartCoroutine(TextAnimation(textDialogue, talk));
     }
 
+    // 한글자씩 보이는 텍스트 효과
     IEnumerator TextAnimation(Text text, string talk)
     {
         string write = "";
+        onTexting = true;
 
         for (int i = 0; i < talk.Length; i++)
         {
@@ -145,6 +147,7 @@ public class UIScript : MonoBehaviour
             text.text = write;
             yield return textDelay;
         }
+        onTexting = false;
     }
 
     public void EndDialogue()

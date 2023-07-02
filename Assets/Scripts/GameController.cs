@@ -18,7 +18,7 @@ public class GameData
     public List<string> myEquips = new List<string>();
 
     // GAME SYSTEM
-    public bool endTutorial = false;
+    public List<bool> tutorial = new List<bool>() { false, false };
 }
 
 public class GameController : MonoBehaviour
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
     public static bool inShop = false;
     public static bool inBox = false;
     public static bool inRecord = false;
-    public static bool endTutorial = false;
+    public static List<bool> tutorial = new List<bool>() { false, false};
     public static bool bossCut = false;
 
     public static bool Pause(int i)

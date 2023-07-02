@@ -23,6 +23,9 @@ public class StairScript : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         bc2d = GetComponent<BoxCollider2D>();
+
+        if (GameController.tutorial[1])
+            Open();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,9 +46,16 @@ public class StairScript : MonoBehaviour
         tag = "Wall";
 
         if (GameController.floor % 20 == 18)
+        {
             sr.sprite = imgStairCloseLong;
+            bc2d.size = new Vector2(2.4f, 0.5f);
+        }
         else
+        {
             sr.sprite = imgStairClose;
+            bc2d.size = new Vector2(0.5f, 0.5f);
+        }
+            
     }
 
     public void Open()
@@ -55,12 +65,12 @@ public class StairScript : MonoBehaviour
 
         if (GameController.floor == 0 || GameController.floor % 20 == 18)
         {
-            bc2d.size = new Vector2 (2.4f, 0.5f);
+            
             sr.sprite = imgStairOpenLong;
         }
         else
         {
-            bc2d.size = new Vector2 (0.5f, 0.5f);
+           
             sr.sprite = imgStairOpen;
         }
     }
