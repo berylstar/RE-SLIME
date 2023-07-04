@@ -166,13 +166,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xx: 1
   yy: 2
-  HP: 10
-  AP: 2
+  HP: 58
+  AP: 4
   movetype: 0
-  speed: 10
+  speed: 15
   spawn:
   - {fileID: 1821157012979008744, guid: 6f674aed0c988bd4191905b095108cf3, type: 3}
   - {fileID: 8346040232776648719, guid: d0831f8f6eb8ce444bdd04759f0d80bc, type: 3}
   - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
   - {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
-  spawnPercent: 0
+  spawnPercent: 60

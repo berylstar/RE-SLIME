@@ -167,8 +167,8 @@ MonoBehaviour:
   xx: 1
   yy: 1
   HP: 30
-  AP: 2
+  AP: 3
   movetype: 0
-  speed: 15
+  speed: 10
   bat: {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
   crow: {fileID: 5634777195878863423, guid: 334791ecf0f6ad44a87730144588eca4, type: 3}

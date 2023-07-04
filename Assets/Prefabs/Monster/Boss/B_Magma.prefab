@@ -166,8 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xx: 1
   yy: 1
-  HP: 10
-  AP: 2
+  HP: 46
+  AP: 4
   movetype: 0
   speed: 10
   fire: {fileID: 9161836580905074611, guid: c7c3855087bea0147a61a6cc451ed805, type: 3}
