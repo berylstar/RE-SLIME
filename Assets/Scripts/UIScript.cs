@@ -11,7 +11,7 @@ public class UIScript : MonoBehaviour
     [Header("PanelStatus")]
     public Text textFloor;
     public Text textLife, textCoin;
-    public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage;
+    public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage, textKey;
 
     [Header("PanelDie")]
     public GameObject panelDie;
@@ -128,6 +128,9 @@ public class UIScript : MonoBehaviour
 
     public void ShowDialogue(Sprite character, string who, string talk)
     {
+        textKey.text = "'C':¥Î»≠ Ω∫≈µ";
+        textKey.gameObject.SetActive(true);
+
         GameController.inDiaglogue = true;
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
@@ -152,6 +155,7 @@ public class UIScript : MonoBehaviour
 
     public void EndDialogue()
     {
+        textKey.gameObject.SetActive(false);
         GameController.inDiaglogue = false;
         panelDialogue.SetActive(false);
     }

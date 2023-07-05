@@ -9,11 +9,19 @@ public class IntroScript : MonoBehaviour
 {
     public GameObject[] panel;
     public GameObject pick;
-    public Button[] slots;
+    public Text textSlot;
+    public Button buttonLoad;
 
     private int menuIndex = 0;
-    private List<int> mmi = new List<int>() { 2, 3 };
+    private List<int> mmi = new List<int>() { 2, 3, 2 };
     private int pickIndex = 0;
+    private int slot = 0;
+
+    private void Start()
+    {
+        ActivePanel(0);
+        menuIndex = 0;
+    }
 
     private void Update()
     {
@@ -35,12 +43,6 @@ public class IntroScript : MonoBehaviour
             if (pickIndex == 0)
             {
                 ActivePanel(1);
-
-                if (File.Exists(DataManager.I.ReturnPath("1")))
-                    slots[1].GetComponent<Button>().interactable = true;
-
-                if (File.Exists(DataManager.I.ReturnPath("2")))
-                    slots[2].GetComponent<Button>().interactable = true;
             }
             else if (pickIndex == 1)
             {
@@ -55,19 +57,35 @@ public class IntroScript : MonoBehaviour
         {
             if (pickIndex <= 2)
             {
-                if (!slots[pickIndex].interactable)
-                    return;
+                buttonLoad.interactable = File.Exists(DataManager.I.ReturnPath(pickIndex));
+                slot = pickIndex;
+                textSlot.text = "< SLOT " + (pickIndex + 1).ToString() + " >";
 
-                if (pickIndex == 1 || pickIndex == 2)
-                    DataManager.I.LoadData(pickIndex.ToString());
-                else
-                    DataManager.I.NewData();
-
-                SceneManager.LoadScene("MainScene");
+                ActivePanel(2);
             }
             else
             {
                 ActivePanel(0);
+            }
+        }
+        else if (menuIndex == 2)
+        {
+            if (pickIndex == 0)
+            {
+                DataManager.I.NewData(slot);
+                SceneManager.LoadScene("MainScene");
+            }
+            else if (pickIndex == 1)
+            {
+                if (!buttonLoad.interactable)
+                    return;
+
+                DataManager.I.LoadData(slot);
+                SceneManager.LoadScene("MainScene");
+            }
+            else
+            {
+                ActivePanel(1);
             }
         }
     }

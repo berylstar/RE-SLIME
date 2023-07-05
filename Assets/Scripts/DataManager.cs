@@ -9,6 +9,7 @@ public class DataManager : MonoBehaviour
 
     private GameData newDATA = new GameData();
     private string path;
+    private int slotNumber = 0;
 
     private void Awake()
     {
@@ -20,12 +21,12 @@ public class DataManager : MonoBehaviour
         path = Application.persistentDataPath + "/SLOT_";
     }
 
-    public string ReturnPath(string slot)
+    public string ReturnPath(int slot)
     {
-        return path + slot;
+        return path + slot.ToString();
     }
 
-    public void SaveData(string slot)
+    public void SaveData()
     {
         newDATA.savedFloor = GameController.savedFloor;
 
@@ -39,15 +40,16 @@ public class DataManager : MonoBehaviour
 
         newDATA.tutorial = GameController.tutorial;
 
-        File.WriteAllText(path + slot, JsonUtility.ToJson(newDATA));
+        File.WriteAllText(path + slotNumber.ToString(), JsonUtility.ToJson(newDATA));
 
-        print("SAVED!");
+        print((slotNumber, "SAVED!"));
     }
 
-    public void LoadData(string slot)
+    public void LoadData(int slot)
     {
-        newDATA = JsonUtility.FromJson<GameData>(File.ReadAllText(path + slot));
+        newDATA = JsonUtility.FromJson<GameData>(File.ReadAllText(path + slot.ToString()));
 
+        slotNumber = newDATA.slotNumber;
         GameController.savedFloor = newDATA.savedFloor;
 
         GameController.playerLife = newDATA.playerLife;
@@ -61,10 +63,11 @@ public class DataManager : MonoBehaviour
         print("LOAD!");
     }
 
-    public void NewData()
+    public void NewData(int slotnum)
     {
         newDATA = new GameData();
 
+        slotNumber = slotnum;
         GameController.savedFloor = newDATA.savedFloor;
 
         GameController.playerLife = newDATA.playerLife;

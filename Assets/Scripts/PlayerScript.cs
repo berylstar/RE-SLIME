@@ -215,6 +215,7 @@ public class PlayerScript : MovingObject
                 GameController.SpeedStackOut();
 
             SceneManager.LoadScene("MainScene");
+            DataManager.I.SaveData();
         }
         else
         {

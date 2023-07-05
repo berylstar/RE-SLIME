@@ -40,7 +40,7 @@ public class RecorderScript : MonoBehaviour
     {
         if (idx == 1 || idx == 2)
         {
-            DataManager.I.SaveData(idx.ToString());
+            DataManager.I.SaveData();
         }
 
         StartCoroutine(CloseRecorder());

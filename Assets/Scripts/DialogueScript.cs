@@ -43,30 +43,31 @@ public class DialogueScript : MonoBehaviour
             return;
 
         if (Input.GetKeyDown(KeyCode.Space) && !UIScript.I.onTexting)
-        {
             index += 1;
 
-            if (index >= end)
+        if (Input.GetKeyDown(KeyCode.C))
+            index = end + 1;
+
+        if (index >= end)
+        {
+            StartCoroutine(CloseTutorial());
+
+            // 최초 튜토리얼 진행 후
+            if (start == 0 && !GameController.tutorial[0])
             {
-                StartCoroutine(CloseTutorial());
-
-                // 최초 튜토리얼 진행 후
-                if (start == 0 && !GameController.tutorial[0])
-                {
-                    GameController.tutorial[0] = true;
-                    GameController.coin += 5;
-                }
-
-                // 인벤토리 튜토리얼 진행 후
-                if (start == 25 && !GameController.tutorial[1])
-                {
-                    GameController.tutorial[1] = true;
-                    StairScript.I.Open();
-                }
+                GameController.tutorial[0] = true;
+                GameController.coin += 5;
             }
-            else
-                UIScript.I.ShowDialogue(dialogues[index].img, dialogues[index].talker, dialogues[index].talk);
+
+            // 인벤토리 튜토리얼 진행 후
+            if (start == 25 && !GameController.tutorial[1])
+            {
+                GameController.tutorial[1] = true;
+                StairScript.I.Open();
+            }
         }
+        else
+            UIScript.I.ShowDialogue(dialogues[index].img, dialogues[index].talker, dialogues[index].talk);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

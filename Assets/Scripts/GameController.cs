@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameData
 {
     // STATUS
+    public int slotNumber = 0;
     public int savedFloor = 0;
 
     // PLAYER
