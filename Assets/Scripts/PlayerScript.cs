@@ -110,19 +110,11 @@ public class PlayerScript : MovingObject
     // 시간 데미지 코루틴
     private IEnumerator TimeDamage()
     {
-        float time = 0f;
-
         while (isAlive)
         {
-            if (GameController.floor > 0 && !GameController.Pause(10))
+            if (!GameController.Pause(10))
             {
-                time += GameController.playerTimeDamage;
-
-                if (time >= 1)
-                {
-                    GameController.ChangeHP(-1);
-                    time = 0f;
-                }
+                GameController.ChangeHP(-1);
             }
 
             yield return GameController.delay_1s;
@@ -221,6 +213,7 @@ public class PlayerScript : MovingObject
         {
             GameController.floor = 0;
             GameController.playerHP = GameController.playerMaxHP;
+            DataManager.I.RemoveData();
             SceneManager.LoadScene("IntroScene");
         }
     }

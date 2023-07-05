@@ -80,4 +80,9 @@ public class DataManager : MonoBehaviour
 
         print("NEW!");
     }
+
+    public void RemoveData()
+    {
+        File.Delete(path + slotNumber.ToString());
+    }
 }

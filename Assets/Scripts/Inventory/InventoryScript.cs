@@ -35,6 +35,11 @@ public class InventoryScript : MonoBehaviour
         LOAD();
     }
 
+    private void OnEnable()
+    {
+        LOAD();
+    }
+
     public void SAVE()
     {
         for (int i = 0; i < GottenEquips.Count; i++)

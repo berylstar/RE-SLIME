@@ -43,6 +43,10 @@ public class UIScript : MonoBehaviour
     [Header("PanelRecode")]
     public GameObject PanelRecorder;
 
+    [Header("PanelInvenInfo")]
+    public GameObject panelInvenInfo;
+    public Text textName, textGrade, textPrice, textEffect;
+
     private void Awake()
     {
         I = this;

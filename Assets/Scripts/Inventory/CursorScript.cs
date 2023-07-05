@@ -30,8 +30,17 @@ public class CursorScript : MonoBehaviour
         // Input : 스페이스 바 = 장비 선택/해제
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!pick) pick = on;
-            else pick = null;
+            if (!pick)
+            {
+                pick = on;
+                ShowInfo();
+            }
+            else
+            {
+                pick = null;
+                UIScript.I.panelInvenInfo.SetActive(false);
+                UIScript.I.textKey.gameObject.SetActive(false);
+            }
         }
 
         // Input : C = 장비 C 스킬 등록
@@ -97,5 +106,22 @@ public class CursorScript : MonoBehaviour
         posIndex = 0;
         transform.position = InventoryScript.I.ReturnGrid(0);
         pick = null;
+    }
+
+    private void ShowInfo()
+    {
+        if (pick == null)
+            return;
+
+        UIScript.I.panelInvenInfo.SetActive(true);
+
+        EquipScript pickEquip = pick.GetComponent<EquipScript>();
+        UIScript.I.textName.text = pickEquip.EName;
+        UIScript.I.textGrade.text = pickEquip.grade.ToString();
+        UIScript.I.textPrice.text = "x " + pickEquip.price;
+        UIScript.I.textEffect.text = pickEquip.effect;
+
+        UIScript.I.textKey.text = "'C'/'V' : 스킬 등록, 'R' : 장비 제거";
+        UIScript.I.textKey.gameObject.SetActive(true);
     }
 }
