@@ -54,11 +54,6 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    private LevelStruct ObjectPerFloor(int floor)
-    {
-        return levels[floor / 20];
-    }
-
     // 그리드 리스트 내 랜덤 위치 반환
     private Vector3 RandomPosition()
     {
@@ -90,6 +85,7 @@ public class BoardManager : MonoBehaviour
     }
 
     // 소환할때 포지션을 그리드 포지션에서 제거하지 않음 => 엄청 많이 생겼을 때 자리 없는 것을 방지하기 위해
+    // MonsterSpawner 에서 사용
     public Vector3 SpawnPosition()
     {
         return gridPositions[Random.Range(0, gridPositions.Count)];
@@ -168,6 +164,11 @@ public class BoardManager : MonoBehaviour
             yield return GameController.delay_01s;
             UIScript.I.panelNextFloor.SetActive(false);
         }
+    }
+
+    private LevelStruct ObjectPerFloor(int floor)
+    {
+        return levels[floor / 20];
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
