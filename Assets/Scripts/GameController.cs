@@ -20,6 +20,9 @@ public class GameData
 
     // GAME SYSTEM
     public List<bool> tutorial = new List<bool>() { false, false };
+
+    public GameData() { }
+    public GameData(int slot) { slotNumber = slot; }
 }
 
 public class GameController : MonoBehaviour

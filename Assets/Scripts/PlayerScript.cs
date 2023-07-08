@@ -26,7 +26,7 @@ public class PlayerScript : MovingObject
     {
         base.Start();
 
-        moveSpeed = GameController.playerSpeed;
+        ApplyMoveSpeed();
     }
 
     private void Update()

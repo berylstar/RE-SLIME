@@ -14,9 +14,12 @@ public class BoardManager : MonoBehaviour
     {
         public Sprite[] fieldImages;
         public GameObject[] sculptures;
+        public GameObject[] walls;
         public GameObject[] monsters;
         public GameObject[] bosses;
     }
+
+    public GameObject field;
 
     [Header("LEVELS")]
     public LevelStruct[] levels;
@@ -32,6 +35,7 @@ public class BoardManager : MonoBehaviour
     public GameObject recorder;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
+    private readonly List<Vector3> wallPositions = new List<Vector3>();
     private List<MonsterScript> livingMonsters = new List<MonsterScript>();
     private Transform objectHolder;
 
@@ -172,19 +176,31 @@ public class BoardManager : MonoBehaviour
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
-    private void SetField(int floor)
+    private void SetField()
     {
-        GameObject field = GameObject.Find("FIELD");
-
-        Sprite[] fieldSprites = ObjectPerFloor(floor).fieldImages;
+        Sprite[] fieldSprites = ObjectPerFloor(GameController.floor).fieldImages;
 
         field.GetComponent<SpriteRenderer>().sprite = fieldSprites[Random.Range(0, fieldSprites.Length)];
         field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
     }
 
-    private void SetMonsters(int floor, int min, int max)
+    private void SetWalls(int min, int max)
     {
-        if (floor % 20 == 19) { }
+        for (int i = 0; i < Random.Range(min, max+1); i++)
+        {
+            Vector3 wallPos = RandomPosition();
+            GameObject wall = ObjectPerFloor(GameController.floor).walls[Random.Range(0, ObjectPerFloor(GameController.floor).walls.Length)];
+
+            GameObject inst = Instantiate(wall, wallPos, Quaternion.identity) as GameObject;
+            inst.transform.SetParent(objectHolder);
+
+            wallPositions.Add(wallPos);
+        }
+    }
+
+    private void SetMonsters(int min, int max)
+    {
+        if (GameController.floor % 20 == 19) { }
         else
         {
             for (int i = 0; i < Random.Range(min, max + 1); i++)
@@ -205,11 +221,6 @@ public class BoardManager : MonoBehaviour
         print("BOSS");
     }
 
-    public void TEST()
-    {
-        SpawnBoss();
-    }
-
     // 해당 층수에 맞게 레벨 세팅
     private void FloorSetup(int floor)
     {
@@ -218,16 +229,19 @@ public class BoardManager : MonoBehaviour
 
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
         livingMonsters.Clear();
+        wallPositions.Clear();
 
         InitialGrid();                                                  // 1. 좌표 생성
-        SetField(floor);                                                // 2. 배경 설정
+        SetField();                                                     // 2. 배경 설정
         RemovePositionAwayFrom(PlayerScript.I.transform.position);      // 3. 플레이어 좌표 근처 위치 제외
 
         LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
         LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);  // 5. 바닥 생성
 
-        SetMonsters(floor, 2, 8);                                       // 6. 몬스터 생성
+        SetMonsters(2, 8);                                              // 6. 몬스터 생성
+
+        SetWalls(1, 5);                                                 // 7. 벽 생성
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가
@@ -286,13 +300,18 @@ public class BoardManager : MonoBehaviour
         recorder.SetActive(false);
     }
 
-    public bool NoMonster()
+    public void WallCheck(Vector3 pos)
     {
-        if (livingMonsters.Count == 0)
-            return true;
-        else
-            return false;
+
     }
+
+    //public bool NoMonster()
+    //{
+    //    if (livingMonsters.Count == 0)
+    //        return true;
+    //    else
+    //        return false;
+    //}
 
     ////////////////////////////////////
     public void EquipThunder(int dam)

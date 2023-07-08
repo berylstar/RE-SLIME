@@ -43,6 +43,7 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(path + slotNumber.ToString(), JsonUtility.ToJson(newDATA));
 
         print((slotNumber, "SAVED!"));
+        // UIScript.I.TextBlink("ΩΩ∑‘ " + slotNumber + " ¿˙¿Â !");
     }
 
     public void LoadData(int slot)
@@ -65,9 +66,9 @@ public class DataManager : MonoBehaviour
 
     public void NewData(int slotnum)
     {
-        newDATA = new GameData();
+        newDATA = new GameData(slotnum);
 
-        slotNumber = slotnum;
+        slotNumber = newDATA.slotNumber;
         GameController.savedFloor = newDATA.savedFloor;
 
         GameController.playerLife = newDATA.playerLife;
@@ -84,5 +85,7 @@ public class DataManager : MonoBehaviour
     public void RemoveData()
     {
         File.Delete(path + slotNumber.ToString());
+
+        Destroy(GameObject.Find("INVENTORY"));
     }
 }

@@ -43,7 +43,7 @@ public class BoxScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && BoardManager.I.NoMonster())
+        if (collision.CompareTag("Player"))
         {
             UIScript.I.panelBox.SetActive(true);
             GameController.inBox = true;

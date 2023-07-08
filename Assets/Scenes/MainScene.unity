@@ -7874,12 +7874,12 @@ GameObject:
   - component: {fileID: 668498727}
   - component: {fileID: 668498726}
   m_Layer: 5
-  m_Name: TextKey
+  m_Name: TextText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &668498725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7932,7 +7932,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: --
+  m_Text: 
 --- !u!222 &668498727
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8430,6 +8430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1df30465ed6b7f4d88e4183b8f49c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  field: {fileID: 1505105375}
   levels:
   - fieldImages:
     - {fileID: 21300000, guid: 037c5b13813adb34c82901bf008843ce, type: 3}
@@ -8443,6 +8444,10 @@ MonoBehaviour:
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
+    walls:
+    - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
+    - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
+    - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     monsters:
     - {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}
     - {fileID: 5111988481813923319, guid: 3004ef5e14d3f1540b32db0470b38b7a, type: 3}
@@ -8465,6 +8470,11 @@ MonoBehaviour:
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
+    walls:
+    - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
+    - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
+    - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
+    - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     monsters:
     - {fileID: 4214500824657219383, guid: f66b0df2dd1825b46bd3fd664319416c, type: 3}
     - {fileID: 3038600472547292134, guid: 5b19c5584bd19b9429ae9e4569f9e083, type: 3}
@@ -8487,6 +8497,9 @@ MonoBehaviour:
     - {fileID: 8944636350297974269, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
+    walls:
+    - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
+    - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     monsters:
     - {fileID: 8713141961878357630, guid: 59745472479b7be46b3b0e0bed17a026, type: 3}
     - {fileID: 1640113148994668561, guid: b408d51283c50ef4b810124e42549572, type: 3}
@@ -8506,6 +8519,12 @@ MonoBehaviour:
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
+    walls:
+    - {fileID: 2750942049246783501, guid: 0df4999793f61d94f907476addb40370, type: 3}
+    - {fileID: 6563915197808906748, guid: c94c4780739ac9b4f9108a32d02c0281, type: 3}
+    - {fileID: 8916530962527516612, guid: 2d6034228730a6743832a3d61bc62da0, type: 3}
+    - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
+    - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     monsters:
     - {fileID: 6373906192440463125, guid: 011c49c377785694eb340295634c78ac, type: 3}
     - {fileID: 1392428405706736331, guid: e808c7ca7f0b78a4eaa8d9eda452d2b9, type: 3}
@@ -8558,7 +8577,7 @@ MonoBehaviour:
   textPlayerDP: {fileID: 387947428}
   textPlayerSpeed: {fileID: 1211925630}
   textPlayerTimeDamage: {fileID: 1843431190}
-  textKey: {fileID: 668498726}
+  texttext: {fileID: 668498726}
   panelDie: {fileID: 1495907167}
   textDie: {fileID: 638513434}
   textBackTo: {fileID: 2009614506}
@@ -15368,6 +15387,8 @@ MonoBehaviour:
   GottenEquips: []
   objectOverlapped: {fileID: 1108502671}
   cursor: {fileID: 826197181}
+  invenChecker: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  isLoaded: 0
 --- !u!114 &1303250850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16096,7 +16117,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1353861864}
   m_OnClick:
     m_PersistentCalls:

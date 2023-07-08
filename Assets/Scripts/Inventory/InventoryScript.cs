@@ -17,8 +17,9 @@ public class InventoryScript : MonoBehaviour
     public GameObject objectOverlapped;
     public GameObject cursor;
 
-    private List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    [SerializeField] private List<int> invenChecker = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     private List<Vector3> equipGrid = new List<Vector3>();
+    [HideInInspector] public bool isLoaded = false;
 
     private void Awake()
     {
@@ -31,11 +32,6 @@ public class InventoryScript : MonoBehaviour
     }
 
     private void Start()
-    {
-        LOAD();
-    }
-
-    private void OnEnable()
     {
         LOAD();
     }
@@ -73,6 +69,8 @@ public class InventoryScript : MonoBehaviour
 
         if (CheckOverlap())
             OpenInventory();
+
+        isLoaded = true;
     }
 
     private void Update()

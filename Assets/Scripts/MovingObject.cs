@@ -8,6 +8,7 @@ public class MovingObject : MonoBehaviour
     public int xx = 0;
     public int yy = 0;      // 보스만 해당
 
+    protected BoxCollider2D bc2D;
     protected Rigidbody2D rb2d;
     protected SpriteRenderer sr;
     protected Animator ani;
@@ -19,6 +20,7 @@ public class MovingObject : MonoBehaviour
 
     protected virtual void Start()
     {
+        bc2D = GetComponent<BoxCollider2D>();
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
@@ -32,10 +34,13 @@ public class MovingObject : MonoBehaviour
         else if (yDir > 0) { direction = 2; }
         else if (yDir < 0) { direction = 3; }
 
-        Vector2 start = transform.position;
-        Vector2 end = start + new Vector2(xDir, yDir);
+        //Vector2 start = transform.position;
+        //Vector2 end = start + new Vector2(xDir, yDir);
+        //RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
 
-        RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
+        Vector3 end = transform.position + new Vector3(xDir, yDir, 0);
+        Vector3 cast = bc2D.bounds.center + new Vector3(xDir * (xx + 1), yDir * (yy + 1), 0);
+        RaycastHit2D hit = Physics2D.BoxCast(cast, bc2D.size, 0, new Vector2(xDir, yDir), 0.1f, LayerMask.GetMask("BlockingLayer"));
 
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
             return false;
