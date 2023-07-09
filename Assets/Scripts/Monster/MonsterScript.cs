@@ -113,6 +113,8 @@ public class MonsterScript : MovingObject
         ani.SetTrigger("MonsterDie");
 
         yield return null;
+
+        GameController.kills += 1;
     }
 
     // Disappear 애니매이션까지 끝나면 Animator에서 실행하는 함수

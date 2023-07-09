@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StairScript : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class StairScript : MonoBehaviour
 
             BoardManager.I.NextFloor();
             Close();
+
+            if (GameController.floor >= 80)
+                SceneManager.LoadScene("ResultScene");
         }
     }
 

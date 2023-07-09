@@ -8,6 +8,9 @@ public class GameData
     // STATUS
     public int slotNumber = 0;
     public int savedFloor = 0;
+    public int inTime = 0;
+    public int getCoin = 5;
+    public int kills = 0;
 
     // PLAYER
     public int playerLife = 3;
@@ -36,6 +39,9 @@ public class GameController : MonoBehaviour
     // STATUS
     public static int floor = 0;
     public static int savedFloor = 0;
+    public static int inTime = 0;
+    public static int getCoin = 5;
+    public static int kills = 0;
 
     // PLAYER
     public static int playerLife = 3;

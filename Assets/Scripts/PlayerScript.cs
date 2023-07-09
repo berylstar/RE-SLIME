@@ -117,6 +117,7 @@ public class PlayerScript : MovingObject
                 GameController.ChangeHP(-1);
             }
 
+            GameController.inTime += 1;
             yield return GameController.delay_1s;
         }
     }
@@ -192,6 +193,7 @@ public class PlayerScript : MovingObject
         ani.SetTrigger("PlayerDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
+        UIScript.I.TextBlink("SAVE...");
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
@@ -211,10 +213,11 @@ public class PlayerScript : MovingObject
         }
         else
         {
-            GameController.floor = 0;
-            GameController.playerHP = GameController.playerMaxHP;
-            DataManager.I.RemoveData();
-            SceneManager.LoadScene("IntroScene");
+            //GameController.floor = 0;
+            //GameController.playerHP = GameController.playerMaxHP;
+            //DataManager.I.RemoveData();
+            //SceneManager.LoadScene("IntroScene");
+            SceneManager.LoadScene("ResultScene");
         }
     }
 

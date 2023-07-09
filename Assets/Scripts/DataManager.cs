@@ -29,6 +29,9 @@ public class DataManager : MonoBehaviour
     public void SaveData()
     {
         newDATA.savedFloor = GameController.savedFloor;
+        newDATA.inTime = GameController.inTime;
+        newDATA.getCoin = GameController.getCoin;
+        newDATA.kills = GameController.kills;
 
         newDATA.playerLife = GameController.playerLife;
 
@@ -52,6 +55,9 @@ public class DataManager : MonoBehaviour
 
         slotNumber = newDATA.slotNumber;
         GameController.savedFloor = newDATA.savedFloor;
+        GameController.inTime = newDATA.inTime;
+        GameController.getCoin = newDATA.getCoin;
+        GameController.kills = newDATA.kills;
 
         GameController.playerLife = newDATA.playerLife;
 
@@ -70,6 +76,9 @@ public class DataManager : MonoBehaviour
 
         slotNumber = newDATA.slotNumber;
         GameController.savedFloor = newDATA.savedFloor;
+        GameController.inTime = newDATA.inTime;
+        GameController.getCoin = newDATA.getCoin;
+        GameController.kills = newDATA.kills;
 
         GameController.playerLife = newDATA.playerLife;
 
@@ -87,5 +96,7 @@ public class DataManager : MonoBehaviour
         File.Delete(path + slotNumber.ToString());
 
         Destroy(GameObject.Find("INVENTORY"));
+
+        print("REMOVED");
     }
 }

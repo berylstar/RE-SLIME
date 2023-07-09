@@ -22,6 +22,7 @@ public class ItemScript : MonoBehaviour
             if (itemType == ItemType.COIN)
             {
                 GameController.coin += 1;
+                GameController.getCoin += 1;
             }
             else if (itemType == ItemType.REDCOIN)
             {

@@ -20,6 +20,8 @@ public class CursorScript : MonoBehaviour
     private void OnDisable()
     {
         CursorReset();
+        UIScript.I.panelInvenInfo.SetActive(false);
+        UIScript.I.texttext.gameObject.SetActive(false);
     }
 
     private void Update()

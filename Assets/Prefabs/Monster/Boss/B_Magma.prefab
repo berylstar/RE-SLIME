@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xx: 1
   yy: 1
-  HP: 46
+  HP: 82
   AP: 4
   movetype: 0
   speed: 10
