@@ -97,6 +97,11 @@ public class InventoryScript : MonoBehaviour
 
         cursor.SetActive(GameController.inInven);
 
+        if (GameController.inInven)
+            UIScript.I.texttext.text = "'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택";
+        else
+            UIScript.I.texttext.text = "";
+
         if (!GameController.tutorial[1])
         {
             BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);

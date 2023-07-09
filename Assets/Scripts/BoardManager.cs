@@ -221,6 +221,18 @@ public class BoardManager : MonoBehaviour
         print("BOSS");
     }
 
+    private void SetBGM(int floor)
+    {
+        if (floor % 20 == 19)
+        {
+            SoundManager.I.PlayBGM(7);
+        }
+        else if (floor == 1 || floor % 20 == 0)
+        {
+            SoundManager.I.PlayBGM(floor / 20 + 3);     // 3, 4, 5, 6
+        }
+    }
+
     // 해당 층수에 맞게 레벨 세팅
     private void FloorSetup(int floor)
     {
@@ -230,6 +242,8 @@ public class BoardManager : MonoBehaviour
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
         livingMonsters.Clear();
         wallPositions.Clear();
+
+        SetBGM(floor);                                                  // 0. BGM 설정
 
         InitialGrid();                                                  // 1. 좌표 생성
         SetField();                                                     // 2. 배경 설정

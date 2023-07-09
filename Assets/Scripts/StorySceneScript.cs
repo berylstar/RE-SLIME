@@ -20,6 +20,6 @@ public class StorySceneScript : MonoBehaviour
 
     public void EndStory()
     {
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("TitleScene");
     }
 }

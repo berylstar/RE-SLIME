@@ -133,7 +133,6 @@ public class UIScript : MonoBehaviour
     public void ShowDialogue(Sprite character, string who, string talk)
     {
         texttext.text = "'C':¥Î»≠ Ω∫≈µ";
-        texttext.gameObject.SetActive(true);
 
         GameController.inDiaglogue = true;
         panelDialogue.SetActive(true);
@@ -159,7 +158,7 @@ public class UIScript : MonoBehaviour
 
     public void EndDialogue()
     {
-        texttext.gameObject.SetActive(false);
+        texttext.text = "";
         GameController.inDiaglogue = false;
         panelDialogue.SetActive(false);
     }
@@ -168,14 +167,13 @@ public class UIScript : MonoBehaviour
     {
         StartCoroutine(TextBlinkCo(message));
     }
+
     IEnumerator TextBlinkCo(string message)
     {
         texttext.text = message;
-        texttext.gameObject.SetActive(true);
 
         yield return GameController.delay_3s;
 
         texttext.text = "";
-        texttext.gameObject.SetActive(false);
     }
 }

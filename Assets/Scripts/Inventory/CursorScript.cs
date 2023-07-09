@@ -21,7 +21,7 @@ public class CursorScript : MonoBehaviour
     {
         CursorReset();
         UIScript.I.panelInvenInfo.SetActive(false);
-        UIScript.I.texttext.gameObject.SetActive(false);
+        UIScript.I.texttext.text = "";
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class CursorScript : MonoBehaviour
             {
                 pick = null;
                 UIScript.I.panelInvenInfo.SetActive(false);
-                UIScript.I.texttext.gameObject.SetActive(false);
+                UIScript.I.texttext.text = "";
             }
         }
 
@@ -124,6 +124,5 @@ public class CursorScript : MonoBehaviour
         UIScript.I.textEffect.text = pickEquip.effect;
 
         UIScript.I.texttext.text = "'C'/'V' : 스킬 등록, 'R' : 장비 제거";
-        UIScript.I.texttext.gameObject.SetActive(true);
     }
 }

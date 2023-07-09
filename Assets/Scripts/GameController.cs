@@ -122,6 +122,10 @@ public class GameController : MonoBehaviour
     public static void Restart()
     {
         floor = 0;
+        inTime = 0;
+        getCoin = 5;
+        kills = 0;
+
         playerMaxHP = 100;
         playerHP = 100;
         playerAP = 10;
@@ -154,6 +158,6 @@ public class GameController : MonoBehaviour
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("TitleScene");
     }
 }

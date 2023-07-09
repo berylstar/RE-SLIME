@@ -27,6 +27,8 @@ public class PlayerScript : MovingObject
         base.Start();
 
         ApplyMoveSpeed();
+
+        SoundManager.I.PlayBGM(2);
     }
 
     private void Update()
@@ -216,7 +218,7 @@ public class PlayerScript : MovingObject
             //GameController.floor = 0;
             //GameController.playerHP = GameController.playerMaxHP;
             //DataManager.I.RemoveData();
-            //SceneManager.LoadScene("IntroScene");
+            //SceneManager.LoadScene("TitleScene");
             SceneManager.LoadScene("ResultScene");
         }
     }

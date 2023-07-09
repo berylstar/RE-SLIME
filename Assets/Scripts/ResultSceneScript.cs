@@ -10,6 +10,7 @@ public class ResultSceneScript : MonoBehaviour
     public Text textEnd;
     public Text textResult;
     public Text textRestart;
+    public Image[] imageEquips;
 
     private void OnEnable()
     {
@@ -17,8 +18,20 @@ public class ResultSceneScript : MonoBehaviour
         textResult.text = "YOU REACHED AT " + GameController.savedFloor + " FLOOR\n" +
                           "IN-DUNGEON TIME : " + Time(GameController.inTime) + "\n" +
                           "COINS : " + GameController.getCoin + "\n" +
-                          "KILLS : " + GameController.kills + "\n" + 
-                          "SLIME WILL BE RETURN";
+                          "KILLS : " + GameController.kills + "\n"; 
+                          //+ "SLIME WILL BE RETURN";
+
+        for (int i = 0; i < imageEquips.Length; i++)
+        {
+            imageEquips[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < InventoryScript.I.GottenEquips.Count; i++)
+        {
+            imageEquips[i].gameObject.SetActive(true);
+            imageEquips[i].sprite = InventoryScript.I.GottenEquips[i].ReturnSprite();
+            imageEquips[i].SetNativeSize();
+        }
     }
 
     private void Update()
@@ -32,7 +45,7 @@ public class ResultSceneScript : MonoBehaviour
         GameController.floor = 0;
         GameController.playerHP = GameController.playerMaxHP;
         DataManager.I.RemoveData();
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("TitleScene");
     }
 
     private string Time(int time)
