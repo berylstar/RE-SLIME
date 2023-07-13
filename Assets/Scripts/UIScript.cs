@@ -89,6 +89,8 @@ public class UIScript : MonoBehaviour
 
         escIndex = 0;
         escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
+
+        SoundManager.I.PauseBGM();
     }
 
     public void ESCSelect(int idx)
@@ -104,7 +106,7 @@ public class UIScript : MonoBehaviour
         else if (idx == 2)
         {
             ToggleESCPanel();
-            SoundManager.I.PlayBGM(0);
+            SoundManager.I.PlayBGM("BGM/Title");
             GameController.Restart();
         }
     }

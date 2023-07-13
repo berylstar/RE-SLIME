@@ -172,7 +172,10 @@ public class BoardManager : MonoBehaviour
 
     private LevelStruct ObjectPerFloor(int floor)
     {
-        return levels[floor / 20];
+        if (floor < 80)
+            return levels[floor / 20];
+        else
+            return levels[Random.Range(0, levels.Length)];
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
@@ -217,19 +220,17 @@ public class BoardManager : MonoBehaviour
         GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, ObjectPerFloor(GameController.floor).bosses.Length)];
         GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
         instance.transform.SetParent(objectHolder);
-
-        print("BOSS");
     }
 
     private void SetBGM(int floor)
     {
         if (floor % 20 == 19)
         {
-            SoundManager.I.PlayBGM(7);
+            SoundManager.I.PlayBGM("BGM/Boss");
         }
-        else if (floor == 1 || floor % 20 == 0)
+        else
         {
-            SoundManager.I.PlayBGM(floor / 20 + 3);     // 3, 4, 5, 6
+            SoundManager.I.PlayBGM("BGM/Stage" + (int)(floor / 20 + 1));
         }
     }
 

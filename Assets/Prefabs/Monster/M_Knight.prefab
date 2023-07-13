@@ -168,6 +168,6 @@ MonoBehaviour:
   yy: 0
   HP: 31
   AP: 4
-  movetype: 0
+  movetype: 1
   speed: 10
   dashPercent: 0

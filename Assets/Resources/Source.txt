@@ -1,8 +1,11 @@
 이름		제작자		에셋 이름			이름
 bgm_Title	GWriterStudio	8Bit Music - 062022	track1
 bgm_Zerofloor	GWriterStudio	8Bit Music - 062022	track7
-bgm_Level1	GWriterStudio	8Bit Music - 051321	track2
+bgm_Level1	GWriterStudio	8Bit Music - 062022	track10
 bgm_Level2	GWriterStudio	8Bit Music - 051321	track8
 bgm_Level3	GWriterStudio	8Bit Music - 062022	track8
 bgm_Level4	GWriterStudio	8Bit Music - 062022	track9
-bgm_Boss	GWriterStudio	8Bit Music - 062022	track10
+bgm_Level5	GWriterStudio	8Bit Music - 051321	track7
+bgm_Boss	GWriterStudio	8Bit Music - 062022	track2
+bgm_FinalBoss	GWriterStudio	8Bit Music - 051321	track4
+bgm_Floor100	GWriterStudio	8Bit Music - 062022	track4

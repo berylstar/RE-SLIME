@@ -12,6 +12,8 @@ public class ResultSceneScript : MonoBehaviour
     public Text textRestart;
     public Image[] imageEquips;
 
+    private bool ready = false;
+
     private void OnEnable()
     {
         textEnd.text = "GAME OVER...";
@@ -32,12 +34,24 @@ public class ResultSceneScript : MonoBehaviour
             imageEquips[i].sprite = InventoryScript.I.GottenEquips[i].ReturnSprite();
             imageEquips[i].SetNativeSize();
         }
+
+        StartCoroutine(Delay());
     }
 
     private void Update()
     {
+        if (!ready)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space))
             BackToIntro();
+    }
+
+    IEnumerator Delay()
+    {
+        yield return GameController.delay_3s;
+        ready = true;
+        textRestart.gameObject.SetActive(true);
     }
 
     private void BackToIntro()

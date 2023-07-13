@@ -28,7 +28,7 @@ public class PlayerScript : MovingObject
 
         ApplyMoveSpeed();
 
-        SoundManager.I.PlayBGM(2);
+        SoundManager.I.PlayBGM("BGM/ZeroFloor");
     }
 
     private void Update()
