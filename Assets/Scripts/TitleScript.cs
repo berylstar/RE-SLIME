@@ -5,15 +5,15 @@ using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
 
-public class IntroScript : MonoBehaviour
+public class TitleScript : MonoBehaviour
 {
     public GameObject[] panel;
     public GameObject pick;
-    public Text textSlot;
+    public Text textBGM, textEFFECT, textSlot;
     public Button buttonLoad;
 
     private int menuIndex = 0;
-    private List<int> mmi = new List<int>() { 2, 3, 2 };
+    private List<int> mmi = new List<int>() { 2, 3, 2, 3 };
     private int pickIndex = 0;
     private int slot = 0;
 
@@ -25,8 +25,11 @@ public class IntroScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) pickIndex = Mathf.Min(pickIndex + 1, mmi[menuIndex]);
-        if (Input.GetKeyDown(KeyCode.UpArrow)) pickIndex = Mathf.Max(pickIndex - 1, 0);
+        //if (Input.GetKeyDown(KeyCode.DownArrow)) pickIndex = Mathf.Min(pickIndex + 1, mmi[menuIndex]);
+        //if (Input.GetKeyDown(KeyCode.UpArrow)) pickIndex = Mathf.Max(pickIndex - 1, 0);
+
+        if (Input.GetKeyDown(KeyCode.DownArrow)) SetIndex(Mathf.Min(pickIndex + 1, mmi[menuIndex]));
+        if (Input.GetKeyDown(KeyCode.UpArrow)) SetIndex(Mathf.Max(pickIndex - 1, 0));
 
         pick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, pickIndex * -100, 0f);
 
@@ -46,7 +49,7 @@ public class IntroScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
-                print("OPTION");
+                ActivePanel(3);
             }
             else
             {
@@ -88,6 +91,27 @@ public class IntroScript : MonoBehaviour
                 ActivePanel(1);
             }
         }
+        else if (menuIndex == 3)
+        {
+            if (pickIndex == 0)
+            {
+                SoundManager.I.ChangeVolume("BGM");
+            }
+            else if (pickIndex == 1)
+            {
+                SoundManager.I.ChangeVolume("EFFECT");
+            }
+            else if (pickIndex == 2)
+            {
+                SoundManager.I.Mute();
+            }
+            else
+            {
+                ActivePanel(0);
+            }
+        }
+
+        SoundManager.I.PlayEffect("e_UIPick");
     }
 
     private void ActivePanel(int idx)
@@ -106,5 +130,6 @@ public class IntroScript : MonoBehaviour
     public void SetIndex(int i)
     {
         pickIndex = i;
+        SoundManager.I.PlayEffect("e_UIMove");
     }
 }
