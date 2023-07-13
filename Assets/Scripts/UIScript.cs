@@ -104,6 +104,7 @@ public class UIScript : MonoBehaviour
         else if (idx == 2)
         {
             ToggleESCPanel();
+            SoundManager.I.PlayBGM(0);
             GameController.Restart();
         }
     }

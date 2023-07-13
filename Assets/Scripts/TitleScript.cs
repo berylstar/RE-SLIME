@@ -25,9 +25,6 @@ public class TitleScript : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.DownArrow)) pickIndex = Mathf.Min(pickIndex + 1, mmi[menuIndex]);
-        //if (Input.GetKeyDown(KeyCode.UpArrow)) pickIndex = Mathf.Max(pickIndex - 1, 0);
-
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetIndex(Mathf.Min(pickIndex + 1, mmi[menuIndex]));
         if (Input.GetKeyDown(KeyCode.UpArrow)) SetIndex(Mathf.Max(pickIndex - 1, 0));
 
@@ -96,14 +93,18 @@ public class TitleScript : MonoBehaviour
             if (pickIndex == 0)
             {
                 SoundManager.I.ChangeVolume("BGM");
+                textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
             }
             else if (pickIndex == 1)
             {
                 SoundManager.I.ChangeVolume("EFFECT");
+                textEFFECT.text = "EFF:" + (int)(SoundManager.I.effectVolume * 200) + "%";
             }
             else if (pickIndex == 2)
             {
                 SoundManager.I.Mute();
+                textBGM.text = "BGM:0%";
+                textEFFECT.text = "EFF:0%";
             }
             else
             {
@@ -111,7 +112,7 @@ public class TitleScript : MonoBehaviour
             }
         }
 
-        SoundManager.I.PlayEffect("e_UIPick");
+        SoundManager.I.PlayEffect("EFFECT/UIPick");
     }
 
     private void ActivePanel(int idx)
@@ -130,6 +131,6 @@ public class TitleScript : MonoBehaviour
     public void SetIndex(int i)
     {
         pickIndex = i;
-        SoundManager.I.PlayEffect("e_UIMove");
+        SoundManager.I.PlayEffect("EFFECT/UIMove");
     }
 }
