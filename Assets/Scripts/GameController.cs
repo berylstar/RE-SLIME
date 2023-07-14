@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
     public static int coin = 0;
     public static int probCoin = 10;
     public static bool RedCoin = false;
-    public static int potionEff = 5;
+    public static int potionEff = 10;
     public static int probPotion = 10;
 
     // EQUIPS
@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour
         playerHP = 100;
         playerAP = 10;
         playerDP = 0;
-        playerSpeed = 50f;
+        playerSpeed = 40f;
         speedStack.Clear();
         playerTimeDamage = 1f;
         skillC = null;
@@ -140,7 +140,7 @@ public class GameController : MonoBehaviour
         probCoin = 10;
         RedCoin = false;
         probPotion = 10;
-        potionEff = 5;
+        potionEff = 10;
 
         effBattery = false;
         effcrescent = false;

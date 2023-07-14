@@ -78,7 +78,7 @@ public class UIScript : MonoBehaviour
 
     public void ShowDiePanel(int life)
     {
-        if (life > 0)
+        if (life > 1)
         {
             textDie.text = "YOU DIE";
             textBackTo.text = "BACK TO 0 FLOOR...";

@@ -111,6 +111,7 @@ public class MonsterScript : MovingObject
     IEnumerator Die()
     {
         isAlive = false;
+        sr.color = new Color32(255, 255, 255, 255);
         ani.SetTrigger("MonsterDie");
 
         yield return null;

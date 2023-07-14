@@ -203,7 +203,7 @@ public class PlayerScript : MovingObject
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
-        if (GameController.playerLife > 0 || EquipLastleaf())
+        if (GameController.playerLife > 1 || EquipLastleaf())
         {
             // REBORN
             GameController.playerLife -= 1;

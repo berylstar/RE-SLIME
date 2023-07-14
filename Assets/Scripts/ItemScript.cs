@@ -28,6 +28,7 @@ public class ItemScript : MonoBehaviour
             else if (itemType == ItemType.REDCOIN)
             {
                 GameController.coin += 3;
+                GameController.getCoin += 3;
                 SoundManager.I.PlayEffect("EFFECT/ItemCoin");
             }
             else if (itemType == ItemType.POTION)

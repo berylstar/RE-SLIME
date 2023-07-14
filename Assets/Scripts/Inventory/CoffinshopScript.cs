@@ -36,14 +36,14 @@ public class CoffinshopScript : MonoBehaviour
             if (si == 0)
             {
                 StartCoroutine(CloseShop());
-
-                if (InventoryScript.I.CheckOverlap())
-                    InventoryScript.I.OpenInventory();
             }
             else
                 BuyEquip(si);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            StartCoroutine(CloseShop());
+
         // 상점 키보드 입력
         if (Input.GetKeyDown(KeyCode.LeftArrow)) MovePick(-1);
         if (Input.GetKeyDown(KeyCode.RightArrow)) MovePick(1);
@@ -69,6 +69,7 @@ public class CoffinshopScript : MonoBehaviour
         if (collision.CompareTag("Punch") && !GameController.inShop)
         {
             UIScript.I.panelShop.SetActive(true);
+            UIScript.I.texttext.text = "'ESC' : 상점 닫기";
             GameController.inShop = true;
 
             SoundManager.I.PlayEffect("EFFECT/ShopOpen");
@@ -77,7 +78,11 @@ public class CoffinshopScript : MonoBehaviour
 
     IEnumerator CloseShop()
     {
+        if (InventoryScript.I.CheckOverlap())
+            InventoryScript.I.OpenInventory();
+
         UIScript.I.panelShop.SetActive(false);
+        UIScript.I.texttext.text = "";
         SoundManager.I.PlayEffect("EFFECT/ShopClose");
         yield return GameController.delay_01s;
         GameController.inShop = false;

@@ -56,8 +56,7 @@ public class ResultSceneScript : MonoBehaviour
 
     private void BackToIntro()
     {
-        GameController.floor = 0;
-        GameController.playerHP = GameController.playerMaxHP;
+        GameController.Restart();
         DataManager.I.RemoveData();
         SceneManager.LoadScene("TitleScene");
     }
