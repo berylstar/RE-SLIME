@@ -11,7 +11,7 @@ public class UIScript : MonoBehaviour
     [Header("PanelStatus")]
     public Text textFloor;
     public Text textLife, textCoin;
-    public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textPlayerTimeDamage, texttext;
+    public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, texttext;
 
     [Header("PanelDie")]
     public GameObject panelDie;
@@ -62,8 +62,6 @@ public class UIScript : MonoBehaviour
         textPlayerAP.text = "AP : " + GameController.playerAP;
         textPlayerDP.text = "DP : " + GameController.playerDP;
         textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed;
-        //textPlayerTimeDamage.text = "TimeDamage : " + GameController.playerTimeDamage;
-
 
         // ESC
         if (Input.GetKeyDown(KeyCode.Escape))

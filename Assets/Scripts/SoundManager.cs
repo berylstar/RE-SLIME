@@ -8,12 +8,12 @@ public class SoundManager : MonoBehaviour
 
     [Header("BGM")]
     public AudioSource bgm;
-    public float bgmVolume = 0.5f;
+    public float bgmVolume = 0.125f;
     private bool bgmPlaying = true;
 
     [Header("EFFECT")]
     public AudioSource effector;
-    public float effectVolume = 0.5f;
+    public float effectVolume = 0.25f;
 
     private void Awake()
     {
@@ -33,6 +33,9 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
+        bgm.volume = bgmVolume;
+        effector.volume = effectVolume;
+
         bgm.Play();
     }
 

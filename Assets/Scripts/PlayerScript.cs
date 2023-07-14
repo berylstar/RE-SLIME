@@ -134,6 +134,8 @@ public class PlayerScript : MovingObject
         else if (dy == -1)
             ani.SetTrigger("MoveDown");
 
+        SoundManager.I.PlayEffect("EFFECT/slime");
+
         Move(dx, dy);
     }
 

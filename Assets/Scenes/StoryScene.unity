@@ -2291,20 +2291,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 1998063631}
-  bgm_Title: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
-  bgm_ZeroFloor: {fileID: 8300000, guid: 4d3d419d87d8791479f02aaee735092b, type: 3}
-  bgm_InLevel:
-  - {fileID: 8300000, guid: 2296f40fd67c26d41b0f188c266f82d8, type: 3}
-  - {fileID: 8300000, guid: fccc46b9e976ad642800d663b0919020, type: 3}
-  - {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
-  - {fileID: 8300000, guid: 35967e8a4dfb1664e9b066939272c0a4, type: 3}
-  bgm_Boss: {fileID: 8300000, guid: 52cfd2e7120e2c54aac3aef5ea3b5d21, type: 3}
-  bgm_FinalBoss: {fileID: 0}
-  bgmVolume: 0.5
+  bgmVolume: 0.125
   effector: {fileID: 1405342260}
-  e_UIPick: {fileID: 8300000, guid: 13f6b9f50e4df1247b366215a1bd03e5, type: 3}
-  e_UIMove: {fileID: 8300000, guid: f244f5c9540b1b540bb6ba44c99a832b, type: 3}
-  effectVolume: 0.5
+  effectVolume: 0.25
 --- !u!1 &1855527196
 GameObject:
   m_ObjectHideFlags: 0
