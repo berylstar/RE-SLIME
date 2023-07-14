@@ -17,9 +17,12 @@ public class BossDarkBat : MonsterScript
 
     private void OnDestroy()
     {
-        PlayerScript.I.sight.SetActive(false);
+        if (!isAlive)
+        {
+            PlayerScript.I.sight.SetActive(false);
 
-        BoardManager.I.DropBox(transform.position);
+            BoardManager.I.DropBox(transform.position);
+        }
     }
 
     IEnumerator DashCo()

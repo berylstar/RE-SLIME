@@ -83,6 +83,7 @@ public class DialogueScript : MonoBehaviour
         else if (tp == DialogueType.KINGSLIME)
         {
             if (!GameController.tutorial[0]) { start = 0; end = 23; }
+            else if (!GameController.tutorial[1]) { start = 32; end = 33; }
             else { start = 23; end = 25; }
         }
 

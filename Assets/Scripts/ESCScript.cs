@@ -23,15 +23,19 @@ public class ESCScript : MonoBehaviour
 
     private void Update()
     {
+        if (!GameController.esc)
+            return;
+
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetIndex(Mathf.Min(pickIndex + 1, mmi[menuIndex]));
         if (Input.GetKeyDown(KeyCode.UpArrow)) SetIndex(Mathf.Max(pickIndex - 1, 0));
 
         pick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, pickIndex * -100, 0f);
 
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             ButtonClick();
-        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            UIScript.I.ToggleESCPanel();
     }
 
     public void ButtonClick()
@@ -40,16 +44,14 @@ public class ESCScript : MonoBehaviour
         {
             if (pickIndex == 0)
             {
-                // esc ÆÇ³Ú ´Ý±â
+                UIScript.I.ToggleESCPanel();
             }
             else if (pickIndex == 1)
             {
-                // »ç¿îµå ¼¼ÆÃ ÆÇ³Ú ¿­±â
                 ActivePanel(1);
             }
             else
             {
-                // ³ª°¡±â ÆÇ³Ú ¿­±â
                 ActivePanel(2);
             }
         }
@@ -84,6 +86,7 @@ public class ESCScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
+                UIScript.I.ToggleESCPanel();
                 SoundManager.I.PlayBGM("BGM/Title");
                 GameController.Restart();
             }

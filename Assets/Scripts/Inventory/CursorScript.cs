@@ -43,6 +43,7 @@ public class CursorScript : MonoBehaviour
                 UIScript.I.panelInvenInfo.SetActive(false);
                 UIScript.I.texttext.text = "";
             }
+            SoundManager.I.PlayEffect("EFFECT/InvenClick");
         }
 
         // Input : C = 장비 C 스킬 등록
@@ -100,6 +101,7 @@ public class CursorScript : MonoBehaviour
         posIndex += change;
 
         transform.position = InventoryScript.I.ReturnGrid(posIndex);
+        SoundManager.I.PlayEffect("EFFECT/UIMove");
     }
 
     // 인벤토리 열었을 때 커서 초기화

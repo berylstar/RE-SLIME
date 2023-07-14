@@ -94,6 +94,7 @@ public class MonsterScript : MovingObject
     IEnumerator Damaged(int damage)
     {
         HP -= damage;
+        SoundManager.I.PlayEffect("EFFECT/MonsterDamaged");
 
         Color temp = sr.color;
         sr.color = new Color(255, 0, 0);

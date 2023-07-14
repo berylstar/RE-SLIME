@@ -360,6 +360,8 @@ public class EquipEffector : MonoBehaviour
         }
         else
             return;
+
+        SoundManager.I.PlayEffect("EFFECT/EquipSkill");
     }
 
     IEnumerator Cloak()

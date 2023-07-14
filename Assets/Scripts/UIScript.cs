@@ -25,8 +25,6 @@ public class UIScript : MonoBehaviour
 
     [Header("PanelESC")]
     public GameObject panelESC;
-    public GameObject escPick;
-    private int escIndex = 0;
 
     [Header("PanelDialogue")]
     public GameObject panelDialogue;
@@ -52,6 +50,11 @@ public class UIScript : MonoBehaviour
         I = this;
     }
 
+    private void Start()
+    {
+        SoundManager.I.PlayBGM("BGM/ZeroFloor");
+    }
+
     private void Update()
     {
         textLife.text = "SLIME\nx " + GameController.playerLife;
@@ -62,57 +65,15 @@ public class UIScript : MonoBehaviour
         textPlayerAP.text = "AP : " + GameController.playerAP;
         textPlayerDP.text = "DP : " + GameController.playerDP;
         textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed;
-
-        // ESC
-        if (Input.GetKeyDown(KeyCode.Escape))
-            ToggleESCPanel();
-
-        if (GameController.esc)
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow)) escIndex = Mathf.Max(escIndex - 1, 0);
-            if (Input.GetKeyDown(KeyCode.DownArrow)) escIndex = Mathf.Min(escIndex + 1, 2);
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                ESCSelect(escIndex);
-
-            escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, escIndex * -100, 0f);
-        }
     }
 
-    private void ToggleESCPanel()
+    public void ToggleESCPanel()
     {
         GameController.esc = !GameController.esc;
         panelESC.SetActive(GameController.esc);
         Time.timeScale = (GameController.esc) ? 0 : 1;
 
-        escIndex = 0;
-        escPick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
-
         SoundManager.I.PauseBGM();
-    }
-
-    public void ESCSelect(int idx)
-    {
-        if (idx == 0)
-        {
-            ToggleESCPanel();
-        }
-        else if (idx == 1)
-        {
-            print("OPTION");
-        }
-        else if (idx == 2)
-        {
-            ToggleESCPanel();
-            SoundManager.I.PlayBGM("BGM/Title");
-            GameController.Restart();
-        }
-    }
-
-    // ESC panel의 버튼에서 pointerEnter용 함수
-    public void SetESCIndex(int idx)
-    {
-        escIndex = idx;
     }
 
     public void ShowDiePanel(int life)

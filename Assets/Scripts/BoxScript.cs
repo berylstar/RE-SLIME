@@ -47,13 +47,15 @@ public class BoxScript : MonoBehaviour
         {
             UIScript.I.panelBox.SetActive(true);
             GameController.inBox = true;
+            SoundManager.I.PlayEffect("EFFECT/BoxOpen");
         }
     }
 
     IEnumerator CloseBox()
     {
         UIScript.I.panelBox.SetActive(false);
-        
+        SoundManager.I.PlayEffect("EFFECT/BoxClose");
+
         yield return GameController.delay_01s;
 
         GameController.inBox = false;

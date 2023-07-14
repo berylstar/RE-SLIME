@@ -56,10 +56,10 @@ public class CoffinshopScript : MonoBehaviour
             if (GameController.coin >= 2)
             {
                 GameController.coin -= 2;
+                SoundManager.I.PlayEffect("EFFECT/ShopReroll");
                 PutEquipsOnStand();
             }
         }
-            
 
         ShowEquipInfo(si);
     }
@@ -70,12 +70,15 @@ public class CoffinshopScript : MonoBehaviour
         {
             UIScript.I.panelShop.SetActive(true);
             GameController.inShop = true;
+
+            SoundManager.I.PlayEffect("EFFECT/ShopOpen");
         }
     }
 
     IEnumerator CloseShop()
     {
         UIScript.I.panelShop.SetActive(false);
+        SoundManager.I.PlayEffect("EFFECT/ShopClose");
         yield return GameController.delay_01s;
         GameController.inShop = false;
     }
@@ -92,6 +95,7 @@ public class CoffinshopScript : MonoBehaviour
         }
 
         picks[si].SetActive(true);
+        SoundManager.I.PlayEffect("EFFECT/UIMove");
     }
 
     private void SetPick(int v)
@@ -104,6 +108,7 @@ public class CoffinshopScript : MonoBehaviour
         }
 
         picks[si].SetActive(true);
+        SoundManager.I.PlayEffect("EFFECT/UIMove");
     }
 
     // 가판대 이미지 업데이트
@@ -172,5 +177,7 @@ public class CoffinshopScript : MonoBehaviour
         onStands[i-1] = null;
 
         DisplayEquip(i-1, imgSoldout);
+
+        SoundManager.I.PlayEffect("EFFECT/ShopBuy");
     }
 }

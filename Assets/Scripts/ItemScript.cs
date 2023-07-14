@@ -23,18 +23,22 @@ public class ItemScript : MonoBehaviour
             {
                 GameController.coin += 1;
                 GameController.getCoin += 1;
+                SoundManager.I.PlayEffect("EFFECT/ItemCoin");
             }
             else if (itemType == ItemType.REDCOIN)
             {
                 GameController.coin += 3;
+                SoundManager.I.PlayEffect("EFFECT/ItemCoin");
             }
             else if (itemType == ItemType.POTION)
             {
                 GameController.ChangeHP(GameController.potionEff);
+                SoundManager.I.PlayEffect("EFFECT/ItemPotion");
             }
             else if (itemType == ItemType.POISON)
             {
                 GameController.ChangeHP(-5);
+                SoundManager.I.PlayEffect("EFFECT/SlimeDamaged");
             }
 
             Destroy(this.gameObject);

@@ -27,8 +27,6 @@ public class PlayerScript : MovingObject
         base.Start();
 
         ApplyMoveSpeed();
-
-        SoundManager.I.PlayBGM("BGM/ZeroFloor");
     }
 
     private void Update()
@@ -66,7 +64,8 @@ public class PlayerScript : MovingObject
 
         // Input : I = 인벤토리 -> EquipScript에 구현되어 있음
 
-        // Input : ESC = 메뉴 -> UIScript에 구현되어 있음
+        if (Input.GetKeyDown(KeyCode.Escape))
+            UIScript.I.ToggleESCPanel();
 
         punchZip.transform.position = transform.position;
 
@@ -134,7 +133,7 @@ public class PlayerScript : MovingObject
         else if (dy == -1)
             ani.SetTrigger("MoveDown");
 
-        SoundManager.I.PlayEffect("EFFECT/slime");
+        SoundManager.I.PlayEffect("EFFECT/SlimeMove");
 
         Move(dx, dy);
     }
@@ -155,6 +154,7 @@ public class PlayerScript : MovingObject
 
         punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
         punches[dir].SetActive(true);
+        SoundManager.I.PlayEffect("EFFECT/SlimePunch");
         yield return GameController.delay_01s;
         punches[dir].SetActive(false);
     }
@@ -179,6 +179,7 @@ public class PlayerScript : MovingObject
         if (dam < 0 && isAlive)
         {
             GameController.ChangeHP(dam);
+            SoundManager.I.PlayEffect("EFFECT/SlimeDamaged");
 
             sr.color = new Color(255, 0, 0);
             invincivity = true;
@@ -195,6 +196,7 @@ public class PlayerScript : MovingObject
     {
         isAlive = false;
         ani.SetTrigger("PlayerDie");
+        SoundManager.I.PlayEffect("EFFECT/SlimeDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
         UIScript.I.TextBlink("SAVE...");
@@ -217,10 +219,6 @@ public class PlayerScript : MovingObject
         }
         else
         {
-            //GameController.floor = 0;
-            //GameController.playerHP = GameController.playerMaxHP;
-            //DataManager.I.RemoveData();
-            //SceneManager.LoadScene("TitleScene");
             SceneManager.LoadScene("ResultScene");
         }
     }

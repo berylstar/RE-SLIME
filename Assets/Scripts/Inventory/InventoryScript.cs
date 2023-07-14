@@ -106,6 +106,8 @@ public class InventoryScript : MonoBehaviour
         {
             BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
         }
+
+        SoundManager.I.PlayEffect("EFFECT/InvenOpen");
     }
 
     // 인벤토리 좌표 설정
@@ -168,6 +170,8 @@ public class InventoryScript : MonoBehaviour
         }
         else
             return;
+
+        SoundManager.I.PlayEffect("EFFECT/EquipRegist");
     }
 
     // 장비 겹침을 확인하는 InvenChecker 업데이트 함수 => EquipScript에서 실행

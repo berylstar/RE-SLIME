@@ -17,7 +17,8 @@ public class BossKingFrog : MonsterScript
 
     private void OnDestroy()
     {
-        BoardManager.I.DropBox(transform.position);
+        if (!isAlive)
+            BoardManager.I.DropBox(transform.position);
     }
 
     IEnumerator SpawnCo()

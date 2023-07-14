@@ -8,12 +8,12 @@ public class SoundManager : MonoBehaviour
 
     [Header("BGM")]
     public AudioSource bgm;
-    public float bgmVolume = 0.125f;
+    public float bgmVolume = 0.5f;
     private bool bgmPlaying = true;
 
     [Header("EFFECT")]
     public AudioSource effector;
-    public float effectVolume = 0.25f;
+    public float effectVolume = 0.5f;
 
     private void Awake()
     {
@@ -21,14 +21,6 @@ public class SoundManager : MonoBehaviour
         if (I == null) I = this;
         else if (I != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-
-        //bgm_Title = Resources.Load<AudioClip>("BGM/Title");
-        //bgm_ZeroFloor = Resources.Load<AudioClip>("BGM/ZeroFloor");
-        //bgm_Stage1 = Resources.Load<AudioClip>("BGM/Stage1");
-        //bgm_Stage2 = Resources.Load<AudioClip>("BGM/Stage2");
-        //bgm_Stage3 = Resources.Load<AudioClip>("BGM/Stage3");
-        //bgm_Stage4 = Resources.Load<AudioClip>("BGM/Stage4");
-        //bgm_Boss = Resources.Load<AudioClip>("BGM/Boss");
     }
 
     private void Start()

@@ -195,9 +195,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -251,10 +251,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1285,10 +1285,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1356,9 +1356,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3193,7 +3193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &291317686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3380,9 +3380,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3436,10 +3436,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3592,7 +3592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &353927312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5057,9 +5057,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5113,10 +5113,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5576,6 +5576,9 @@ MonoBehaviour:
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
     talk: "\uADF8\uB7FC \uC62C\uB77C\uAC00\uB294 \uACC4\uB2E8\uC744\n\uC5F4\uC5B4\uC8FC\uACA0\uB124.\n\uD589\uC6B4\uC744
       \uBE4C\uC9C0."
+  - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+    talker: "\uD0B9 \uC2AC\uB77C\uC784"
+    talk: "'I'\uB97C \uB20C\uB7EC\uBCF4\uAC8C\uB098."
 --- !u!50 &478267257
 Rigidbody2D:
   serializedVersion: 4
@@ -7285,9 +7288,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7341,10 +7344,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9333,7 +9336,6 @@ MonoBehaviour:
   panelNextFloor: {fileID: 927420884}
   panelBoss: {fileID: 835305469}
   panelESC: {fileID: 353927311}
-  escPick: {fileID: 2124582677}
   panelDialogue: {fileID: 1935987694}
   imageCharacter: {fileID: 996013197}
   textTalker: {fileID: 1998384492}
@@ -9954,9 +9956,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10010,10 +10012,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13993,9 +13995,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14049,10 +14051,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14383,10 +14385,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14454,9 +14456,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -17193,10 +17195,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514221}
-        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-        m_MethodName: ESCSelect
-        m_Mode: 3
+      - m_Target: {fileID: 353927315}
+        m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+        m_MethodName: ButtonClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17264,9 +17266,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 715514221}
-          m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
-          m_MethodName: SetESCIndex
+        - m_Target: {fileID: 353927315}
+          m_TargetAssemblyTypeName: ESCScript, Assembly-CSharp
+          m_MethodName: SetIndex
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

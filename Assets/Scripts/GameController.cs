@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
     public static int playerHP = playerMaxHP;
     public static int playerAP = 10;
     public static int playerDP = 0;
-    public static float playerSpeed = 50f;
+    public static float playerSpeed = 40f;
     public static List<float> speedStack = new List<float>() { };
     public static float playerTimeDamage = 1f;
     public static EquipScript skillC = null;

@@ -89,6 +89,7 @@ public class EquipScript : MonoBehaviour
         }
             
         gameObject.SetActive(false);
+        SoundManager.I.PlayEffect("EFFECT/EquipRemove");
     }
 
     // invenchecker의 값 변경함으로써 겹침 확인

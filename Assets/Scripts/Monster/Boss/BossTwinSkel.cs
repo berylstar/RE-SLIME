@@ -24,7 +24,7 @@ public class BossTwinSkel : MonsterScript
     private void OnDestroy()
     {
         //if (BoardManager.I.NoMonster())
-        if (count == 0)
+        if (count == 0 && !isAlive)
         {
             BoardManager.I.DropBox(transform.position);
         }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BossKingGhost : MonsterScript
 {
-    private Color32 colorO = new Color32(255, 122, 122, 255);
-    private Color32 colorZ = new Color32(255, 122, 122, 0);
+    private Color32 colorO = new Color32(255, 255, 255, 255);
+    private Color32 colorZ = new Color32(255, 255, 255, 0);
 
     protected override void Start()
     {
@@ -18,7 +18,8 @@ public class BossKingGhost : MonsterScript
 
     private void OnDestroy()
     {
-        BoardManager.I.DropBox(transform.position);
+        if (!isAlive)
+            BoardManager.I.DropBox(transform.position);
     }
 
     IEnumerator TeleportCo()
@@ -27,10 +28,12 @@ public class BossKingGhost : MonsterScript
         {
             yield return GameController.delay_3s;
             sr.color = colorZ;
+            tag = "Untagged";
             Teleport();
 
             yield return GameController.delay_3s;
             sr.color = colorO;
+            tag = "Monster";
         }
             
     }

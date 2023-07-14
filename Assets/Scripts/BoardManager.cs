@@ -150,6 +150,8 @@ public class BoardManager : MonoBehaviour
         GameController.floor += 1;
         FloorSetup(GameController.floor);
         StartCoroutine(NextFloorEffect(GameController.floor));
+
+        SoundManager.I.PlayEffect("EFFECT/NextFloor");
     }
 
     // 층 넘어갈 때 효과
