@@ -6,7 +6,6 @@ public enum SculptureType
 {
     WEB,        // 거미줄 = 잠시동안 플레이어 이동속도 감소
     LAVA,       // 용암 - 플레이어가 위에 올라와 있으면 데미지
-    GRASS,      // 풀 숲 = 들어가 있으면 오브젝트 투명화
     ICY,        // 얼음 = 이동하면 그 방향으로 미끄러지게
     TREE,       // 나무
     PUDDLE,     // 물웅덩이 = 체력 회복
@@ -28,6 +27,7 @@ public class SculptureScript : MonoBehaviour
         if (type == SculptureType.TREE)
         {
             GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+            transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         }
     }
 
@@ -46,9 +46,6 @@ public class SculptureScript : MonoBehaviour
 
             else if (type == SculptureType.LAVA)
                 StartCoroutine(LavaEffect(player));
-
-            else if (type == SculptureType.GRASS)
-                GrassEffect(player);
 
             else if (type == SculptureType.PUDDLE)
                 PuddleEffect();
@@ -100,12 +97,6 @@ public class SculptureScript : MonoBehaviour
         player.ApplyMoveSpeed();
 
         isEffected = false;
-    }
-
-    // 풀숲 효과 코루틴
-    private void GrassEffect(PlayerScript player)
-    {
-
     }
 
     // 용암 효과 코루틴

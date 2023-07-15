@@ -39,13 +39,18 @@ public class MovingObject : MonoBehaviour
         //RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
 
         Vector3 end = transform.position + new Vector3(xDir, yDir, 0);
-        Vector3 cast = bc2D.bounds.center + new Vector3(xDir * (xx + 1), yDir * (yy + 1), 0);
+        Vector3 cast = bc2D.bounds.center + new Vector3(xDir, yDir, 0);
+
+        bc2D.enabled = false;
         RaycastHit2D hit = Physics2D.BoxCast(cast, bc2D.size, 0, new Vector2(xDir, yDir), 0.1f, LayerMask.GetMask("BlockingLayer"));
+        bc2D.enabled = true;
 
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
+        {
             return false;
+        }
 
-        if (end.x - xx < 0 || end.x + xx > 9 || end.y - yy < 0 || end.y + yy > 9)
+        if (end.x < 0 || end.x > 9 || end.y < 0 || end.y > 9)
             return false;
 
         if (!isMoving)
