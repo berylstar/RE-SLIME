@@ -33,8 +33,8 @@ public class StairScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (GameController.floor == 0)
-                PlayerScript.I.StartTimeDamage();
+            //if (GameController.floor == 0)
+            //    PlayerScript.I.StartTimeDamage();
 
             BoardManager.I.NextFloor();
             Close();
