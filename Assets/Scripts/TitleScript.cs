@@ -46,6 +46,8 @@ public class TitleScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
+                textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
+                textEFFECT.text = "EFF:" + (int)(SoundManager.I.effectVolume * 200) + "%";
                 ActivePanel(3);
             }
             else

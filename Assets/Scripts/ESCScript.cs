@@ -48,6 +48,8 @@ public class ESCScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
+                textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
+                textEFFECT.text = "EFF:" + (int)(SoundManager.I.effectVolume * 200) + "%";
                 ActivePanel(1);
             }
             else

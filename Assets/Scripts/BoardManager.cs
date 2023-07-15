@@ -150,13 +150,13 @@ public class BoardManager : MonoBehaviour
         GameController.floor += 1;
         FloorSetup(GameController.floor);
         StartCoroutine(NextFloorEffect(GameController.floor));
-
-        SoundManager.I.PlayEffect("EFFECT/NextFloor");
     }
 
     // 층 넘어갈 때 효과
     IEnumerator NextFloorEffect(int floor)
     {
+        SoundManager.I.PlayEffect("EFFECT/NextFloor");
+
         if (floor % 20 == 19)
         {
             UIScript.I.panelBoss.SetActive(true);
