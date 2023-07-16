@@ -11,10 +11,10 @@ public class BossWerewolf : MonsterScript
     {
         base.Start();
 
-        //PlayerScript.I.sight.SetActive(true);
+        PlayerScript.I.sight.SetActive(true);
 
         StartCoroutine(MonsterMove());
-        //StartCoroutine(SpawnCo());
+        StartCoroutine(SpawnCo());
     }
 
     private void OnDestroy()

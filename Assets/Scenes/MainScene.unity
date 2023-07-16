@@ -5618,7 +5618,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.25}
     oldSize: {x: 1.2, y: 1.2}
-    newSize: {x: 1.2, y: 1.2}
+    newSize: {x: 0.6, y: 0.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -13682,8 +13682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a95627609db8041928c54f57fb9a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xx: 0
-  yy: 0
+  width: 0
+  height: 0
   punchZip: {fileID: 558707799}
   punches:
   - {fileID: 623986081}

@@ -165,13 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b2c3f3be5f5fe41b7ac266b1400e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xx: 1
-  yy: 0
+  width: 0.5
+  height: 0
   HP: 29
   AP: 3
   movetype: 0
   speed: 20
-  dashPercent: 50
+  dashPercent: 40
 --- !u!114 &4743860575574882021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc97ba22fb7dfc46a488d9f60fadc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xx: 0
-  yy: 0
+  width: 0.5
+  height: 0
   HP: 29
   AP: 2
   movetype: 0

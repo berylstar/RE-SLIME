@@ -55,10 +55,10 @@ public class BossWitch : MonsterScript
         Vector2 start = transform.position;
         Vector2 end;
 
-        if (dir == 0) { sr.flipX = false; end = new Vector3(0 + 0.5f * xx, start.y, 0); direction = 0; }
-        else if (dir == 1) { sr.flipX = true; end = new Vector3(9 - 0.5f * xx, start.y, 0); direction = 1; }
-        else if (dir == 2) { end = new Vector3(start.x, 9 - 0.5f * yy, 0); direction = 2; }
-        else { end = new Vector3(start.x, 0 + 0.5f * yy, 0); direction = 3; }
+        if (dir == 0) { sr.flipX = false; end = new Vector3(width, start.y, 0); direction = 0; }
+        else if (dir == 1) { sr.flipX = true; end = new Vector3(9 - width, start.y, 0); direction = 1; }
+        else if (dir == 2) { end = new Vector3(start.x, 9 - height, 0); direction = 2; }
+        else { end = new Vector3(start.x, height, 0); direction = 3; }
 
         if (!isMoving)
         {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour
 {
     [Header("Sprite")]
-    public int xx = 0;
-    public int yy = 0;      // 보스만 해당
+    public float width;
+    public float height;
 
     protected BoxCollider2D bc2D;
     protected Rigidbody2D rb2d;

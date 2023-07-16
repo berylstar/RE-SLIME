@@ -47,8 +47,8 @@ public class SculptureScript : MonoBehaviour
             else if (type == SculptureType.LAVA)
                 StartCoroutine(LavaEffect(player));
 
-            else if (type == SculptureType.PUDDLE)
-                PuddleEffect();
+            //else if (type == SculptureType.PUDDLE)
+            //    PuddleEffect();
 
             isEffected = true;
         }
