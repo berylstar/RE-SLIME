@@ -8,6 +8,7 @@ public enum ItemType
     REDCOIN,    // 레드 코인
     POTION,     // 포션
     POISON,     // 독 포션
+    MINIBOX,    // 미니 박스
 }
 
 public class ItemScript : MonoBehaviour
@@ -40,6 +41,12 @@ public class ItemScript : MonoBehaviour
             {
                 GameController.ChangeHP(-5);
                 SoundManager.I.PlayEffect("EFFECT/SlimeDamaged");
+            }
+            else if (itemType == ItemType.MINIBOX)
+            {
+                GameController.coin += 1;
+                GameController.ChangeHP(5);
+                SoundManager.I.PlayEffect("EFFECT/BoxClose");
             }
 
             Destroy(this.gameObject);

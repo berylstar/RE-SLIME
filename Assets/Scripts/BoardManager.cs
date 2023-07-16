@@ -101,11 +101,8 @@ public class BoardManager : MonoBehaviour
         int idx = Random.Range(0, gridPositions.Count);
         Vector3 pos = gridPositions[idx];
 
-        //float new_x = pos.x + go.width;
-        //float new_y = pos.y + go.height;
-
-        float new_x = pos.x + go.width > 9 ? pos.x + go.width : 9 - go.width;
-        float new_y = pos.y + go.height > 9 ? pos.y + go.height : 9 - go.height;
+        float new_x = pos.x + go.width < 9 ? pos.x + go.width : 9 - go.width;
+        float new_y = pos.y + go.height < 9 ? pos.y + go.height : 9 - go.height;
 
         pos = new Vector3(new_x, new_y, pos.z);
 
