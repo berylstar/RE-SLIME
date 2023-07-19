@@ -40,6 +40,6 @@ public class BossKingGhost : MonsterScript
 
     private void Teleport()
     {
-        transform.position = BoardManager.I.RandomMonsterPosition(GetComponent<MovingObject>());
+        transform.position = BoardManager.I.TeleportMonsterPosition(GetComponent<MovingObject>());
     }
 }

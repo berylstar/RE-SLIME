@@ -110,6 +110,20 @@ public class BoardManager : MonoBehaviour
         return pos;
     }
 
+    // 그리드 리스트 내 랜덤 위치 반환
+    public Vector3 TeleportMonsterPosition(MovingObject go)
+    {
+        int idx = Random.Range(0, gridPositions.Count);
+        Vector3 pos = gridPositions[idx];
+
+        float new_x = pos.x + go.width < 9 ? pos.x + go.width : 9 - go.width;
+        float new_y = pos.y + go.height < 9 ? pos.y + go.height : 9 - go.height;
+
+        pos = new Vector3(new_x, new_y, pos.z);
+
+        return pos;
+    }
+
     // 오브젝트 그룹에서 무작위로 선택해 무작위 위치에 배치
     private void LayoutObjectAtRandom(GameObject[] tileArray, int min, int max)
     {

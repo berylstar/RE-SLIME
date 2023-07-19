@@ -26167,13 +26167,36 @@ GameObject:
   - component: {fileID: 9056430699147067118}
   - component: {fileID: 9056430699147067119}
   - component: {fileID: 9056430699147067116}
+  - component: {fileID: 9056430699147067091}
   m_Layer: 6
   m_Name: M_Demon
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &9056430699147067091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056430699147067090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700eecaf144239c4fba78e787e9c06c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 1
+  height: 1
+  HP: 200
+  AP: 3
+  movetype: 0
+  speed: 15
+  lavas:
+  - {fileID: 8657204143166584080, guid: fe47de4e32a093b47a2875a957bd57b9, type: 3}
+  - {fileID: 8944636350297974269, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
+  crown: {fileID: 0}
 --- !u!4 &9056430699147067112
 Transform:
   m_ObjectHideFlags: 0
@@ -26270,7 +26293,7 @@ Animator:
   m_GameObject: {fileID: 9056430699147067090}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 03ee039a246f2374d95daeae7cce1916, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
