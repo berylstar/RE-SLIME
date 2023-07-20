@@ -82,6 +82,7 @@ public class DialogueScript : MonoBehaviour
         if (tp == DialogueType.SIGN)
         {
             if (GameController.floor == 0) { start = 0; end = 1; }
+            else if (GameController.floor == 80) { start = 2; end = 3; }
             else { start = 1; end = 2; }
         }
 
@@ -94,7 +95,11 @@ public class DialogueScript : MonoBehaviour
 
         else if (tp == DialogueType.InvenTutorial) { start = 25; end = 32; }
 
-        else if (tp == DialogueType.DEMON) { start = 0; end = 6; }
+        else if (tp == DialogueType.DEMON)
+        {
+            if (GameController.floor == 80) { start = 0; end = 6; }
+            else if (GameController.floor == 100) { start = 6; end = 10; }
+        }
     }
 
     // 스페이스바 때문에 바로 NPC와 대화를 막기위한 잠깐의 딜레이

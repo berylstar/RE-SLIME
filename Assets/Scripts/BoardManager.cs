@@ -36,7 +36,6 @@ public class BoardManager : MonoBehaviour
     public GameObject bossDemon;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
-    private readonly List<Vector3> wallPositions = new List<Vector3>();
     private List<MonsterScript> livingMonsters = new List<MonsterScript>();
     private Transform objectHolder;
 
@@ -139,7 +138,16 @@ public class BoardManager : MonoBehaviour
     
     private void LayoutStair(int floor)
     {
-        if (floor % 20 == 18)
+        if (floor == 100)
+        {
+            StairScript.I.transform.position = new Vector3(20f, 20f, 0f);
+        }
+        else if (floor == 99)
+        {
+            StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
+            StairScript.I.Open();
+        }
+        else if (floor % 20 == 18)
         {
             for (int i = 3; i < 7; i++)
                 RemovePositionAwayFrom(DesiredPosition(i, 9));
@@ -176,7 +184,7 @@ public class BoardManager : MonoBehaviour
     {
         SoundManager.I.PlayEffect("EFFECT/NextFloor");
 
-        if (floor % 20 == 19)
+        if (floor % 20 == 19 && floor != 99)
         {
             UIScript.I.panelBoss.SetActive(true);
             yield return GameController.delay_3s;
@@ -196,7 +204,7 @@ public class BoardManager : MonoBehaviour
         if (floor < 80)
             return levels[floor / 20];
         else
-            return levels[Random.Range(0, levels.Length)];
+            return levels[floor % 4];
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
@@ -212,20 +220,23 @@ public class BoardManager : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(min, max+1); i++)
         {
-            Vector3 wallPos = RandomPosition();
             GameObject wall = ObjectPerFloor(GameController.floor).walls[Random.Range(0, ObjectPerFloor(GameController.floor).walls.Length)];
-            GameObject inst = Instantiate(wall, wallPos, Quaternion.identity) as GameObject;
+            GameObject inst = Instantiate(wall, RandomPosition(), Quaternion.identity) as GameObject;
             inst.transform.SetParent(objectHolder);
-
-            wallPositions.Add(wallPos);
         }
+    }
+
+    private void SetSculptures(int floor)
+    {
+        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);
     }
 
     private void SetMonsters(int min, int max)
     {
-        if (GameController.floor == 80)
+        if (GameController.floor == 80 || GameController.floor == 100)
         {
-            bossDemon.SetActive(true);
+            GameObject instance = Instantiate(bossDemon, new Vector3(6, 4, 0), Quaternion.identity) as GameObject;
+            instance.transform.SetParent(objectHolder);
         }
         else if (GameController.floor % 20 == 19)
         {
@@ -251,7 +262,11 @@ public class BoardManager : MonoBehaviour
 
     private void SetBGM(int floor)
     {
-        if (floor % 20 == 19)
+        if (floor == 80 || floor == 100)
+        {
+            SoundManager.I.PlayBGM("BGM/FinalBoss");
+        }
+        else if (floor % 20 == 19)
         {
             SoundManager.I.PlayBGM("BGM/Boss");
         }
@@ -269,7 +284,6 @@ public class BoardManager : MonoBehaviour
 
         objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
         livingMonsters.Clear();
-        wallPositions.Clear();
 
         SetBGM(floor);                                                  // 0. BGM 설정
 
@@ -279,7 +293,7 @@ public class BoardManager : MonoBehaviour
 
         LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
-        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);  // 5. 바닥 생성
+        SetSculptures(floor);  // 5. 바닥 생성
 
         SetMonsters(2, 8);                                              // 6. 몬스터 생성
 
@@ -340,16 +354,7 @@ public class BoardManager : MonoBehaviour
         coffin.SetActive(false);
         box.SetActive(false);
         recorder.SetActive(false);
-        bossDemon.SetActive(false);
     }
-
-    //public bool NoMonster()
-    //{
-    //    if (livingMonsters.Count == 0)
-    //        return true;
-    //    else
-    //        return false;
-    //}
 
     ////////////////////////////////////
     public void EquipThunder(int dam)

@@ -75,7 +75,8 @@ public class DataManager : MonoBehaviour
         newDATA = new GameData(slotnum);
 
         slotNumber = newDATA.slotNumber;
-        GameController.savedFloor = newDATA.savedFloor;
+        //GameController.savedFloor = newDATA.savedFloor;
+        GameController.savedFloor = 78;
         GameController.inTime = newDATA.inTime;
         GameController.getCoin = newDATA.getCoin;
         GameController.kills = newDATA.kills;

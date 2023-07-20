@@ -17,6 +17,8 @@ public class BossDemon : MonsterScript
 
         base.Start();
 
+        SoundManager.I.PlayBGM("BGM/Floor100");
+
         StartCoroutine(MonsterMove());
         StartCoroutine(DemonPattern());
     }
@@ -27,7 +29,15 @@ public class BossDemon : MonsterScript
         {
             PlayerScript.I.sight.SetActive(false);
 
-            Instantiate(crown, transform.position, Quaternion.identity, GameObject.Find("ObjectHolder").transform);
+            if (GameController.floor == 80)
+            {
+                BoardManager.I.sign.transform.position = transform.position;
+                BoardManager.I.sign.SetActive(true);
+            }
+            else
+            {
+                Instantiate(crown, transform.position, Quaternion.identity, GameObject.Find("ObjectHolder").transform);
+            }
         }
     }
 
