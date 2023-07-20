@@ -219,7 +219,10 @@ public class BoardManager : MonoBehaviour
 
     private void SetMonsters(int min, int max)
     {
-        if (GameController.floor % 20 == 19) { }
+        if (GameController.floor % 20 == 19)
+        {
+            // NextFloorEffect 에서 보스 구현
+        }
         else
         {
             for (int i = 0; i < Random.Range(min, max + 1); i++)

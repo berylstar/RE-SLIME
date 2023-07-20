@@ -4,10 +4,11 @@ using UnityEngine;
 
 public enum SculptureType
 {
-    WEB,        // °Å¹ÌÁÙ = Àá½Ãµ¿¾È ÇÃ·¹ÀÌ¾î ÀÌµ¿¼Óµµ °¨¼Ò
-    LAVA,       // ¿ë¾Ï - ÇÃ·¹ÀÌ¾î°¡ À§¿¡ ¿Ã¶ó¿Í ÀÖÀ¸¸é µ¥¹ÌÁö
-    GRASS,      // Ç® - À§¿¡ ÀÖ´Â ¿ÀºêÁ§Æ® °¡·ÁÁö°Ô
-    WALL,
+    WEB,        // ê±°ë¯¸ì¤„ = ì ì‹œë™ì•ˆ í”Œë ˆì´ì–´ ì´ë™ì†ë„ ê°ì†Œ
+    LAVA,       // ìš©ì•” - í”Œë ˆì´ì–´ê°€ ìœ„ì— ì˜¬ë¼ì™€ ìˆìœ¼ë©´ ë°ë¯¸ì§€
+    ICY,        // ì–¼ìŒ = ì´ë™í•˜ë©´ ê·¸ ë°©í–¥ìœ¼ë¡œ ë¯¸ë„ëŸ¬ì§€ê²Œ
+    TREE,       // ë‚˜ë¬´
+    PUDDLE,     // ë¬¼ì›…ë©ì´ = ì²´ë ¥ íšŒë³µ
 }
 
 public class SculptureScript : MonoBehaviour
@@ -19,33 +20,20 @@ public class SculptureScript : MonoBehaviour
     private bool isEffected = false;
     private bool isOn = false;
 
-    private int crack = 5;
-
     private void Start()
     {
         player = PlayerScript.I;
         
-        if (type == SculptureType.GRASS)
+        if (type == SculptureType.TREE)
         {
             GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
             transform.position = new Vector3(transform.position.x, transform.position.y, -10);
         }
     }
 
-    // Ãæµ¹ °¨Áö·Î Á¶Çü¹° È¿°ú ¹ßµ¿
+    // ì¶©ëŒ ê°ì§€ë¡œ ì¡°í˜•ë¬¼ íš¨ê³¼ ë°œë™
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch") && type == SculptureType.WALL)
-        {
-            SoundManager.I.PlayEffect("EFFECT/MonsterDamaged");
-            crack -= 1;
-
-            if (crack < 0)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-
         if (GameController.effSkate)
             return;
 
@@ -59,11 +47,22 @@ public class SculptureScript : MonoBehaviour
             else if (type == SculptureType.LAVA)
                 StartCoroutine(LavaEffect(player));
 
+            //else if (type == SculptureType.PUDDLE)
+            //    PuddleEffect();
+
             isEffected = true;
         }
     }
 
-    // Á¶Çü¹°¹ÛÀ¸·Î ³ª°¥ ¶§ °¨Áö
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && type == SculptureType.ICY)
+        {
+            IcyEffect(player);
+        }
+    }
+
+    // ì¡°í˜•ë¬¼ë°–ìœ¼ë¡œ ë‚˜ê°ˆ ë•Œ ê°ì§€
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -72,7 +71,7 @@ public class SculptureScript : MonoBehaviour
         }
     }
 
-    // °Å¹ÌÁÙ ¹â°í µğ¹öÇÁ »ç¶óÁö±â Àü¿¡ °Å¹ÌÁÙÀÌ ÆÄ±«µÉ ¶§
+    // ê±°ë¯¸ì¤„ ë°Ÿê³  ë””ë²„í”„ ì‚¬ë¼ì§€ê¸° ì „ì— ê±°ë¯¸ì¤„ì´ íŒŒê´´ë  ë•Œ
     private void OnDestroy()
     {
         if (isEffected)
@@ -85,7 +84,7 @@ public class SculptureScript : MonoBehaviour
         }
     }
 
-    // °Å¹ÌÁÙ È¿°ú ÄÚ·çÆ¾
+    // ê±°ë¯¸ì¤„ íš¨ê³¼ ì½”ë£¨í‹´
     IEnumerator WebEffect(PlayerScript player)
     {
         GameController.SpeedStackIn(GameController.playerSpeed);
@@ -100,7 +99,7 @@ public class SculptureScript : MonoBehaviour
         isEffected = false;
     }
 
-    // ¿ë¾Ï È¿°ú ÄÚ·çÆ¾
+    // ìš©ì•” íš¨ê³¼ ì½”ë£¨í‹´
     IEnumerator LavaEffect(PlayerScript player)
     {
         while (isOn)
@@ -113,4 +112,16 @@ public class SculptureScript : MonoBehaviour
         isEffected = false;
     }
 
+    private void IcyEffect(PlayerScript player)
+    {
+        player.DirectionMove();
+
+        isEffected = false;
+    }
+
+    private void PuddleEffect()
+    {
+        GameController.ChangeHP(3);
+        Destroy(this.gameObject);
+    }
 }

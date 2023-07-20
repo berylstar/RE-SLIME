@@ -33,7 +33,7 @@ public class BossDemon : MonsterScript
         int iRand = Random.Range(0, 5);
 
         if (iRand == 0) Teleport();
-        else if (iRand == 1) Blind();
+        else if (iRand == 1) StartCoroutine(Blind());
         else if (iRand == 2) StartCoroutine(Transparent());
         else if (iRand == 3) SpawnMonster();
         else if (iRand == 4) SpawnLava();
@@ -53,17 +53,20 @@ public class BossDemon : MonsterScript
         transform.position = BoardManager.I.TeleportMonsterPosition(GetComponent<MovingObject>());
     }
 
-    private void Blind()
+    IEnumerator Blind()
     {
         PlayerScript.I.sight.SetActive(true);
+
+        yield return new WaitForSeconds(5f);
+
+        PlayerScript.I.sight.SetActive(false);
     }
 
     IEnumerator Transparent()
     {
         sr.color = colorT;
 
-        yield return GameController.delay_3s;
-        yield return GameController.delay_3s;
+        yield return new WaitForSeconds(5f);
 
         sr.color = colorO;
     }

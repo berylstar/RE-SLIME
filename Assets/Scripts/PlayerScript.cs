@@ -44,6 +44,8 @@ public class PlayerScript : MovingObject
         else if (Input.GetKeyDown(KeyCode.DownArrow))
             PlayerMove(0, -1);
 
+        punchZip.transform.position = transform.position;
+
         // Input : 스페이스바 = 펀치 공격
         if (Input.GetKeyDown(KeyCode.Space) && canPunch)
         {
@@ -66,8 +68,6 @@ public class PlayerScript : MovingObject
 
         if (Input.GetKeyDown(KeyCode.Escape))
             UIScript.I.ToggleESCPanel();
-
-        punchZip.transform.position = transform.position;
 
         if (GameController.playerHP <= 0 && !EquipCresent())
         {
@@ -152,7 +152,7 @@ public class PlayerScript : MovingObject
         // 펀치 도중에 플레이어 방향 바뀔 때 대비하여 방향변수 저장
         int dir = direction;
 
-        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder - 1;
+        punches[dir].GetComponent<SpriteRenderer>().sortingOrder = sr.sortingOrder;
         punches[dir].SetActive(true);
         SoundManager.I.PlayEffect("EFFECT/SlimePunch");
         yield return GameController.delay_01s;
@@ -199,7 +199,7 @@ public class PlayerScript : MovingObject
         SoundManager.I.PlayEffect("EFFECT/SlimeDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
-        UIScript.I.TextBlink("SAVE...");
+        UIScript.I.TextBlink("저장중...");
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 

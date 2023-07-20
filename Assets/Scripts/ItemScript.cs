@@ -9,6 +9,7 @@ public enum ItemType
     POTION,     // 포션
     POISON,     // 독 포션
     MINIBOX,    // 미니 박스
+    CROWN,      // 마왕의 왕관
 }
 
 public class ItemScript : MonoBehaviour
@@ -47,6 +48,10 @@ public class ItemScript : MonoBehaviour
                 GameController.coin += 1;
                 GameController.ChangeHP(5);
                 SoundManager.I.PlayEffect("EFFECT/BoxClose");
+            }
+            else if (itemType == ItemType.CROWN)
+            {
+
             }
 
             Destroy(this.gameObject);

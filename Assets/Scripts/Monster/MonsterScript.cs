@@ -96,10 +96,9 @@ public class MonsterScript : MovingObject
         HP -= damage;
         SoundManager.I.PlayEffect("EFFECT/MonsterDamaged");
 
-        Color temp = sr.color;
         sr.color = new Color(255, 0, 0);
         yield return GameController.delay_01s;
-        sr.color = temp;
+        sr.color = new Color(255, 255, 255);
 
         if (HP <= 0)
         {
