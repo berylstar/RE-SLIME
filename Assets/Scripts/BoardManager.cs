@@ -33,6 +33,7 @@ public class BoardManager : MonoBehaviour
     public GameObject coffin;
     public GameObject box;
     public GameObject recorder;
+    public GameObject bossDemon;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
     private readonly List<Vector3> wallPositions = new List<Vector3>();
@@ -144,11 +145,15 @@ public class BoardManager : MonoBehaviour
                 RemovePositionAwayFrom(DesiredPosition(i, 9));
 
             StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
+
+            sign.SetActive(true);
         }
         else
         {
             StairScript.I.transform.position = RandomPosition();
             RemovePositionAwayFrom(StairScript.I.transform.position);
+
+            sign.SetActive(false);
         }
     }
 
@@ -209,7 +214,6 @@ public class BoardManager : MonoBehaviour
         {
             Vector3 wallPos = RandomPosition();
             GameObject wall = ObjectPerFloor(GameController.floor).walls[Random.Range(0, ObjectPerFloor(GameController.floor).walls.Length)];
-
             GameObject inst = Instantiate(wall, wallPos, Quaternion.identity) as GameObject;
             inst.transform.SetParent(objectHolder);
 
@@ -219,7 +223,11 @@ public class BoardManager : MonoBehaviour
 
     private void SetMonsters(int min, int max)
     {
-        if (GameController.floor % 20 == 19)
+        if (GameController.floor == 80)
+        {
+            bossDemon.SetActive(true);
+        }
+        else if (GameController.floor % 20 == 19)
         {
             // NextFloorEffect 에서 보스 구현
         }
@@ -332,11 +340,7 @@ public class BoardManager : MonoBehaviour
         coffin.SetActive(false);
         box.SetActive(false);
         recorder.SetActive(false);
-    }
-
-    public void WallCheck(Vector3 pos)
-    {
-
+        bossDemon.SetActive(false);
     }
 
     //public bool NoMonster()

@@ -93,7 +93,7 @@ public class PlayerScript : MovingObject
         }
 
         // 투사체와 충돌 감지
-        else if (collision.CompareTag("Bullet") && !EquipBattery())
+        if (collision.CompareTag("Bullet") && !EquipBattery())
         {
             BulletScript bullet = collision.GetComponent<BulletScript>();
 

@@ -8,6 +8,7 @@ public enum DialogueType
     KINGSLIME,
     SIGN,
     InvenTutorial,
+    DEMON,
 }
 
 public class DialogueScript : MonoBehaviour
@@ -57,7 +58,7 @@ public class DialogueScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch"))
+        if (collision.CompareTag("Punch") && tag == "NPC")
         {
             StartDialogue(type);
         }
@@ -78,7 +79,11 @@ public class DialogueScript : MonoBehaviour
         // start : 대화 시작 element
         // end : 대화 마지막 element + 1
 
-        if (tp == DialogueType.SIGN) { start = 0; end = 1; }
+        if (tp == DialogueType.SIGN)
+        {
+            if (GameController.floor == 0) { start = 0; end = 1; }
+            else { start = 1; end = 2; }
+        }
 
         else if (tp == DialogueType.KINGSLIME)
         {
@@ -88,6 +93,8 @@ public class DialogueScript : MonoBehaviour
         }
 
         else if (tp == DialogueType.InvenTutorial) { start = 25; end = 32; }
+
+        else if (tp == DialogueType.DEMON) { start = 0; end = 6; }
     }
 
     // 스페이스바 때문에 바로 NPC와 대화를 막기위한 잠깐의 딜레이
@@ -106,18 +113,25 @@ public class DialogueScript : MonoBehaviour
         {
             StartCoroutine(CloseTutorial());
 
-            // 최초 튜토리얼 진행 후
-            if (start == 0 && !GameController.tutorial[0])
+            if (type == DialogueType.KINGSLIME)
             {
-                GameController.tutorial[0] = true;
-                GameController.coin += 5;
-            }
+                // 최초 튜토리얼 진행 후
+                if (start == 0 && !GameController.tutorial[0])
+                {
+                    GameController.tutorial[0] = true;
+                    GameController.coin += 5;
+                }
 
-            // 인벤토리 튜토리얼 진행 후
-            if (start == 25 && !GameController.tutorial[1])
+                // 인벤토리 튜토리얼 진행 후
+                else if (start == 25 && !GameController.tutorial[1])
+                {
+                    GameController.tutorial[1] = true;
+                    StairScript.I.Open();
+                }
+            }
+            else if (type == DialogueType.DEMON)
             {
-                GameController.tutorial[1] = true;
-                StairScript.I.Open();
+                GetComponent<BossDemon>().enabled = true;
             }
         }
         else
