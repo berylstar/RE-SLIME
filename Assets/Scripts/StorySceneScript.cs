@@ -9,6 +9,9 @@ public class StorySceneScript : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name == "EndingScene")
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!textSkip.activeInHierarchy)
