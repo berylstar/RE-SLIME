@@ -8930,7 +8930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &708608421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9008,10 +9008,10 @@ MonoBehaviour:
     sculptures:
     - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
+    - {fileID: 5066246438635062600, guid: 3cb9d7a69ccd01a42923077f0f92ac3b, type: 3}
+    - {fileID: 5066246438635062600, guid: 3cb9d7a69ccd01a42923077f0f92ac3b, type: 3}
     - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
-    - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
-    - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
@@ -9045,8 +9045,8 @@ MonoBehaviour:
     sculptures:
     - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
-    - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
-    - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
+    - {fileID: 5066246438635062600, guid: 3cb9d7a69ccd01a42923077f0f92ac3b, type: 3}
+    - {fileID: 5066246438635062600, guid: 3cb9d7a69ccd01a42923077f0f92ac3b, type: 3}
     - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
     - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
@@ -22813,7 +22813,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 384e57fa8f5dc684fa25e777c794ecaa, type: 3}
-    m_FontSize: 50
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -22824,7 +22824,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '>> Unsaved content disappears <<'
+  m_Text: ">> \uC800\uC7A5\uB418\uC9C0 \uC54A\uC740 \uB0B4\uC6A9\uC740 \uC0AC\uB77C\uC9C8
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4 ! <<"
 --- !u!222 &1966585681
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
     public static int playerHP = playerMaxHP;
     public static int playerAP = 10;
     public static int playerDP = 0;
-    public static float playerSpeed = 30f;
+    public static float playerSpeed = 20f;
     public static List<float> speedStack = new List<float>() { };
     public static float playerTimeDamage = 1f;
     public static EquipScript skillC = null;
@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour
         playerHP = 100;
         playerAP = 10;
         playerDP = 0;
-        playerSpeed = 30f;
+        playerSpeed = 20f;
         speedStack.Clear();
         playerTimeDamage = 1f;
         skillC = null;

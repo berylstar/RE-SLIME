@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6b689d304b27f4ca8bf779d9b4f14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xx: 0
-  yy: 0
+  width: 0
+  height: 0
   HP: 29
-  AP: 3
+  AP: 4
   movetype: 1
   speed: 15
   bullet: {fileID: 2151527592746679646, guid: ce840f92ccebe7f47b9ab1bfb7ff1bf9, type: 3}

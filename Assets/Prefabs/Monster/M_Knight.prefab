@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b2c3f3be5f5fe41b7ac266b1400e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xx: 0
-  yy: 0
+  width: 0
+  height: 0
   HP: 31
-  AP: 4
+  AP: 5
   movetype: 1
   speed: 10
   dashPercent: 0

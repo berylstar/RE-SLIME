@@ -167,7 +167,7 @@ MonoBehaviour:
   width: 0.5
   height: 0.5
   HP: 132
-  AP: 3
+  AP: 4
   movetype: 0
   speed: 15
   frog: {fileID: 6484742795607083952, guid: 0f2dc02a2ebed6c4c9747b5cf1b67a2f, type: 3}

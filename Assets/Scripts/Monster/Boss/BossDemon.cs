@@ -19,7 +19,7 @@ public class BossDemon : MonsterScript
 
         SoundManager.I.PlayBGM("BGM/Floor100");
 
-        StartCoroutine(MonsterMove());
+        StartCoroutine(DemonMove());
         StartCoroutine(DemonPattern());
     }
 
@@ -41,9 +41,30 @@ public class BossDemon : MonsterScript
         }
     }
 
+    private IEnumerator DemonMove()
+    {
+        int cnt = 0;
+
+        while (isAlive)
+        {
+            yield return GameController.delay_1s;
+
+            if (cnt < 7)
+            {
+                MoveRandom();
+                cnt += 1;
+            }
+            else
+            {
+                Teleport();
+                cnt = 0;
+            }
+        }
+    }
+
     private void Action()
     {
-        int iRand = Random.Range(0, 5);
+        int iRand = Random.Range(1, 5);
 
         if (iRand == 0) Teleport();
         else if (iRand == 1) StartCoroutine(Blind());
@@ -98,7 +119,7 @@ public class BossDemon : MonsterScript
 
     private void SpawnLava()
     {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
         {
             GameObject product = Instantiate(lavas[Random.Range(0, lavas.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
             product.transform.SetParent(GameObject.Find("ObjectHolder").transform);

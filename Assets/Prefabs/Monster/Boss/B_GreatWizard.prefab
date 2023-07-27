@@ -167,7 +167,7 @@ MonoBehaviour:
   width: 0.5
   height: 1.5
   HP: 174
-  AP: 4
+  AP: 5
   movetype: 0
   speed: 15
   spawn:

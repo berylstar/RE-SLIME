@@ -167,7 +167,7 @@ MonoBehaviour:
   width: 0.5
   height: 1.5
   HP: 196
-  AP: 3
+  AP: 4
   movetype: 0
   speed: 10
   wolf: {fileID: 5082481299306632966, guid: 16bc3cec59f819242be7d4844c3ea6ea, type: 3}

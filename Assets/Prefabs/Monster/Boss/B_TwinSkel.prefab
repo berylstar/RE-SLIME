@@ -167,7 +167,7 @@ MonoBehaviour:
   width: 0.5
   height: 0.5
   HP: 68
-  AP: 3
+  AP: 4
   movetype: 0
   speed: 15
   count: 2

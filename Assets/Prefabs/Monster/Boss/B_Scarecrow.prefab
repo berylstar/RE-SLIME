@@ -167,7 +167,7 @@ MonoBehaviour:
   width: 0.5
   height: 0.5
   HP: 130
-  AP: 3
+  AP: 4
   movetype: 0
   speed: 10
   bat: {fileID: 7985002622023399969, guid: 88cb8ec7e0e67b14abd84713bcc07c13, type: 3}

@@ -167,7 +167,7 @@ MonoBehaviour:
   width: 0.5
   height: 0.5
   HP: 164
-  AP: 4
+  AP: 5
   movetype: 0
   speed: 10
   fire: {fileID: 9161836580905074611, guid: c7c3855087bea0147a61a6cc451ed805, type: 3}
