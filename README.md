@@ -11,3 +11,6 @@
 - 슬라임 왕, 해골 상점이 있는 탑의 0층부터 마왕이 있는 100층까지 올라가면 됩니다. 간단하죠 ?
 - 슬라임이 체력적으로 버틸 수 있을까요? 1초에 1씩 체력이 감소합니다.
 - 그렇지만 슬라임 펀치로 무엇이든 할 수 있죠. 몬스터를 눕히거나 벽을 부셔보세요.
+
+### 다운로드
+https://drive.google.com/file/d/1OsbpKPKyQilYyLrZ2OauRz5_v-xkQynP/view?usp=sharing
