@@ -13457,7 +13457,7 @@ MonoBehaviour:
   EName: "\uD558\uC774\uBC14"
   adject: "\uBA38\uB9AC\uB9CC\uD07C\uC740 \uD655\uC2E4\uD788 \uBCF4\uD638\uD569\uB2C8\uB2E4"
   effect: "\uBC29\uC5B4\uB825 +1"
-  price: 4
+  price: 5
   type: 0
   grade: 1
   coolTime: 0
@@ -18866,7 +18866,7 @@ MonoBehaviour:
   adject: "\uC74C\uC545\uB9CC\uC774...\n\uD5C8\uB77D\uB41C \uC720\uC77C\uD55C \uB9C8\uC57D\uC774\uB2C8\uAE4C..."
   effect: "\uACF5\uACA9\uB825 +4, \uBC29\uC5B4\uB825 +1\n\uC774\uB3D9\uC18D\uB3C4
     + 10"
-  price: 8
+  price: 12
   type: 0
   grade: 2
   coolTime: 0
@@ -22959,7 +22959,7 @@ MonoBehaviour:
   EName: "\uB300\uBC29\uC5B4"
   adject: "\uADF8 \uBC29\uC5B4\uAC00 \uC544\uB2D0\uD150\uB370..."
   effect: "\uBC29\uC5B4\uB825 +1"
-  price: 3
+  price: 6
   type: 0
   grade: 2
   coolTime: 0

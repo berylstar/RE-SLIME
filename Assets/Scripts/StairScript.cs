@@ -33,14 +33,12 @@ public class StairScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            //if (GameController.floor == 0)
-            //    PlayerScript.I.StartTimeDamage();
+            if (GameController.floor == 0)
+                PlayerScript.I.StartTimeDamage();
 
             BoardManager.I.NextFloor();
-            Close();
-
-            if (GameController.floor > 100)
-                SceneManager.LoadScene("ResultScene");
+            if (GameController.floor != 99)
+                Close();
         }
     }
 
@@ -67,7 +65,7 @@ public class StairScript : MonoBehaviour
         bc2d.isTrigger = true;
         tag = "Stair";
 
-        if (GameController.floor == 0 || GameController.floor % 20 == 18)
+        if (GameController.floor == 0 || GameController.floor == 99 || GameController.floor % 20 == 18)
         {
             sr.sprite = imgStairOpenLong;
             bc2d.size = new Vector2(2.4f, 0.5f);

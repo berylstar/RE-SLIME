@@ -141,6 +141,7 @@ public class BoardManager : MonoBehaviour
         if (floor == 100)
         {
             StairScript.I.transform.position = new Vector3(20f, 20f, 0f);
+            sign.SetActive(false);
         }
         else if (floor == 99)
         {
@@ -293,7 +294,7 @@ public class BoardManager : MonoBehaviour
 
         LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
-        SetSculptures(floor);  // 5. 바닥 생성
+        SetSculptures(floor);                                           // 5. 바닥 생성
 
         SetMonsters(2, 8);                                              // 6. 몬스터 생성
 

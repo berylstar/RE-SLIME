@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9043970307731784601}
   - component: {fileID: 9043970307731784600}
   - component: {fileID: 9043970307731784603}
-  - component: {fileID: 4326226810104219469}
   - component: {fileID: 4743860575574882021}
   m_Layer: 6
   m_Name: M_Witch
@@ -153,25 +152,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4326226810104219469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9043970307731784613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b2c3f3be5f5fe41b7ac266b1400e4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 0.5
-  height: 0
-  HP: 29
-  AP: 3
-  movetype: 0
-  speed: 20
-  dashPercent: 40
 --- !u!114 &4743860575574882021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +168,6 @@ MonoBehaviour:
   height: 0
   HP: 29
   AP: 2
-  movetype: 0
-  speed: 0
+  movetype: 1
+  speed: 20
   transparentPercent: 70

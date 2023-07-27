@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ResultSceneScript : MonoBehaviour
 {
     public Image imageEnd;
+    public Sprite[] spritesEnd;
     public Text textEnd;
     public Text textResult;
     public Text textRestart;
@@ -16,7 +17,17 @@ public class ResultSceneScript : MonoBehaviour
 
     private void OnEnable()
     {
-        textEnd.text = "GAME OVER...";
+        if (GameController.floor == 100)
+        {
+            imageEnd.sprite = spritesEnd[0];
+            textEnd.text = "GAME CLEAR !";
+        }
+        else
+        {
+            imageEnd.sprite = spritesEnd[1];
+            textEnd.text = "GAME OVER...";
+        }
+
         textResult.text = "YOU REACHED AT " + GameController.savedFloor + " FLOOR\n" +
                           "IN-DUNGEON TIME : " + Time(GameController.inTime) + "\n" +
                           "COINS : " + GameController.getCoin + "\n" +

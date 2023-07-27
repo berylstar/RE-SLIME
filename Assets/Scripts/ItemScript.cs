@@ -51,7 +51,8 @@ public class ItemScript : MonoBehaviour
             }
             else if (itemType == ItemType.CROWN)
             {
-
+                UnityEngine.SceneManagement.SceneManager.LoadScene("EndingScene");
+                SoundManager.I.PlayBGM("BGM/Title");
             }
 
             Destroy(this.gameObject);

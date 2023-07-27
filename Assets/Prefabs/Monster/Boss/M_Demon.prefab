@@ -205,7 +205,8 @@ MonoBehaviour:
       \uC5C6\uC560\uBC84\uB9AC\uACA0\uB2E4."
   - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
     talker: "\uC2AC\uB77C\uC784"
-    talk: "\uC880 \uB9CC \uB354 \uC788\uC73C\uBA74 \uC548\uB418\uB098\uC694 ?"
+    talk: "\uC880 \uB9CC \uB354 \uC62C\uB77C\uAC00\uBCF4\uBA74\n\uC548\uB418\uB294
+      \uAC74\uAC00\uC694 ?"
   - img: {fileID: 21300000, guid: aaf9be0e4da52b642830a646a0048f8c, type: 3}
     talker: "\uB9C8\uC655"
     talk: "\uB098\uB97C \uD654\uB098\uAC8C \uD558\uB294\uAD70..."
@@ -221,5 +222,5 @@ MonoBehaviour:
     talk: "\uADF8\uB0E5 \uC62C\uB77C\uC640\uC9C0\uB358\uB370\uC694..?"
   - img: {fileID: 21300000, guid: aaf9be0e4da52b642830a646a0048f8c, type: 3}
     talker: "\uB9C8\uC655"
-    talk: "\uB124 \uB188\uC744 \uAC00\uB9CC\uB458 \uC218 \uC5C6\uACA0\uB2E4.\n\uBCF8
-      \uD798\uC744 \uBCF4\uC5EC\uC8FC\uC9C0."
+    talk: "\uB354 \uC774\uC0C1 \uC62C\uB77C\uAC08 \uACF3\uC740 \uC5C6\uB2E4.\n\uB124
+      \uB188\uC5D0\uAC8C \uBCF8 \uB5BC\uB97C \uBCF4\uC5EC\uC8FC\uC9C0."

@@ -7,9 +7,15 @@ public class StorySceneScript : MonoBehaviour
 {
     public GameObject textSkip;
 
+    private void Start()
+    {
+        if (GameController.floor == 100)
+            GameObject.Find("INVENTORY").transform.position = new Vector3(100, 100, 1);
+    }
+
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "EndingScene")
+        if (GameController.floor == 100)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -23,6 +29,13 @@ public class StorySceneScript : MonoBehaviour
 
     public void EndStory()
     {
-        SceneManager.LoadScene("TitleScene");
+        if (GameController.floor == 100)
+        {
+            SceneManager.LoadScene("ResultScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 }
