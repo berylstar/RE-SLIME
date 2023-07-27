@@ -28,7 +28,7 @@ public class ResultSceneScript : MonoBehaviour
             textEnd.text = "GAME OVER...";
         }
 
-        textResult.text = "YOU REACHED AT " + GameController.savedFloor + " FLOOR\n" +
+        textResult.text = "YOU REACHED AT " + GameController.floor + " FLOOR\n" +
                           "IN-DUNGEON TIME : " + Time(GameController.inTime) + "\n" +
                           "COINS : " + GameController.getCoin + "\n" +
                           "KILLS : " + GameController.kills + "\n"; 

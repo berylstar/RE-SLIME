@@ -148,7 +148,7 @@ public class BoardManager : MonoBehaviour
             StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
             StairScript.I.Open();
         }
-        else if (floor % 20 == 18)
+        else if (floor == 18 || floor == 38 || floor == 58 || floor == 78)
         {
             for (int i = 3; i < 7; i++)
                 RemovePositionAwayFrom(DesiredPosition(i, 9));
@@ -229,7 +229,7 @@ public class BoardManager : MonoBehaviour
 
     private void SetSculptures(int floor)
     {
-        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 2, 10);
+        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 3, 10);
     }
 
     private void SetMonsters(int min, int max)

@@ -2445,6 +2445,7 @@ MonoBehaviour:
   imgStairOpen: {fileID: 21300000, guid: 47805eeaa220ce2479f8069d4018a4ad, type: 3}
   imgStairCloseLong: {fileID: 21300000, guid: 2df1b7e37d0a6844db18785f51cedb6a, type: 3}
   imgStairOpenLong: {fileID: 21300000, guid: 113e839111acbd34c8b27c8f7ab238b0, type: 3}
+  imgStairFinalBoss: {fileID: 21300000, guid: 23ed3642162a83a48a693d57490753ea, type: 3}
 --- !u!1 &211406704
 GameObject:
   m_ObjectHideFlags: 0
@@ -9192,10 +9193,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2d411ee9c548e88478aeaeb15e62be43, type: 3}
     sculptures:
     - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
+    - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
+    - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
+    - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
+    - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
     walls:
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
@@ -9217,13 +9222,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: dd366157675cfde4c89877fde8323a20, type: 3}
     sculptures:
     - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
+    - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
+    - {fileID: 5572912310759109306, guid: fe2b473f31ac45c4cb0cc95c2c49137d, type: 3}
     - {fileID: 8306997219190760336, guid: 89497415d24c52241a98253c3f330746, type: 3}
     - {fileID: 8554478738043012695, guid: 30ec19beb15dde747a983db31c33bd9b, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
     - {fileID: 5391049144390264881, guid: 837d1159580e5d2488e845782b7e24ed, type: 3}
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 4242034724283205106, guid: 1c15a87b5d7b89043ad89da72cf73f34, type: 3}
-    - {fileID: 6409515866804005035, guid: 85bce178a9a810c40bbe2d671b4ef60d, type: 3}
     walls:
     - {fileID: 1803559771242110249, guid: d4c2ed2dc4781f84a9a4b18a1b2404ca, type: 3}
     - {fileID: 6804381419446462953, guid: 3eaf6cbb29ef6774bac29cd402618350, type: 3}
@@ -9235,7 +9241,6 @@ MonoBehaviour:
     - {fileID: 2885614016224662446, guid: 043430c85de175f42b0aa87b0f3c580c, type: 3}
     - {fileID: 8346040232776648719, guid: d0831f8f6eb8ce444bdd04759f0d80bc, type: 3}
     - {fileID: 5082481299306632966, guid: 16bc3cec59f819242be7d4844c3ea6ea, type: 3}
-    - {fileID: 7452237797455924839, guid: fa0fc48a87279b04da2a626d53edca97, type: 3}
     bosses:
     - {fileID: 2443715872605566842, guid: aa9d832307494104ab5af6b139de9020, type: 3}
     - {fileID: 995323636370918207, guid: ba897f339253d68418d45e946306f686, type: 3}

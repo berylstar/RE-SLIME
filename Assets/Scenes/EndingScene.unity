@@ -1345,7 +1345,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: 'ORIGIN GAME : With. TEAM PYTHONGURY
 
-    SPECIAL THANKS : GONGSUS'
+    SPECIAL THANKS : GONGSUS CREW'
 --- !u!222 &1082387497
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1921,7 +1921,7 @@ MonoBehaviour:
     m_LineSpacing: 1.5
   m_Text: 'THANKS FOR PLAYING !
 
-    By. KIM MINSANG (2023.07.27)'
+    By. KIM MINSANG'
 --- !u!222 &1777718849
 CanvasRenderer:
   m_ObjectHideFlags: 0

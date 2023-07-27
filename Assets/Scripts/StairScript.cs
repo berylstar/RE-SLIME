@@ -14,6 +14,7 @@ public class StairScript : MonoBehaviour
     public Sprite imgStairOpen;
     public Sprite imgStairCloseLong;
     public Sprite imgStairOpenLong;
+    public Sprite imgStairFinalBoss;
 
     private void Awake()
     {
@@ -65,9 +66,16 @@ public class StairScript : MonoBehaviour
         bc2d.isTrigger = true;
         tag = "Stair";
 
-        if (GameController.floor == 0 || GameController.floor == 99 || GameController.floor % 20 == 18)
+        int floor = GameController.floor;
+
+        if (floor == 0 || floor == 18 || floor == 38 || floor == 58 || floor == 78)
         {
             sr.sprite = imgStairOpenLong;
+            bc2d.size = new Vector2(2.4f, 0.5f);
+        }
+        else if (floor == 99)
+        {
+            sr.sprite = imgStairFinalBoss;
             bc2d.size = new Vector2(2.4f, 0.5f);
         }
         else
