@@ -97,8 +97,14 @@ public class MonsterScript : MovingObject
         SoundManager.I.PlayEffect("EFFECT/MonsterDamaged");
 
         sr.color = new Color(255, 0, 0);
+        transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);
         yield return GameController.delay_01s;
+
+        transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, 0);
+        yield return GameController.delay_01s;
+
         sr.color = new Color(255, 255, 255);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         if (HP <= 0)
         {

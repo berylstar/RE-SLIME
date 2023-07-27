@@ -205,7 +205,7 @@ public class BoardManager : MonoBehaviour
         if (floor < 80)
             return levels[floor / 20];
         else
-            return levels[floor % 4];
+            return levels[Random.Range(0, 4)];
     }
 
     // 레벨 디자인에 맞춰 field 이미지 변환
@@ -213,7 +213,7 @@ public class BoardManager : MonoBehaviour
     {
         Sprite[] fieldSprites = ObjectPerFloor(GameController.floor).fieldImages;
 
-        field.GetComponent<SpriteRenderer>().sprite = fieldSprites[Random.Range(0, fieldSprites.Length)];
+        field.GetComponent<SpriteRenderer>().sprite = fieldSprites[Random.Range(0, 4)];
         field.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(0, 4) * 90));
     }
 
@@ -221,18 +221,21 @@ public class BoardManager : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(min, max+1); i++)
         {
-            GameObject wall = ObjectPerFloor(GameController.floor).walls[Random.Range(0, ObjectPerFloor(GameController.floor).walls.Length)];
-            GameObject inst = Instantiate(wall, RandomPosition(), Quaternion.identity) as GameObject;
+            GameObject inst = Instantiate(ObjectPerFloor(GameController.floor).walls[Random.Range(0, 5)], RandomPosition(), Quaternion.identity) as GameObject;
             inst.transform.SetParent(objectHolder);
         }
     }
 
-    private void SetSculptures(int floor)
+    private void SetSculptures(int min, int max)
     {
-        LayoutObjectAtRandom(ObjectPerFloor(floor).sculptures, 3, 10);
+        for (int i = 0; i < Random.Range(min, max + 1); i++)
+        {
+            GameObject instance = Instantiate(ObjectPerFloor(GameController.floor).sculptures[Random.Range(0, 10)], RandomPosition(), Quaternion.identity) as GameObject;
+            instance.transform.SetParent(objectHolder);
+        }
     }
 
-    private void SetMonsters(int min, int max)
+    private void SetMonsters(int floor)
     {
         if (GameController.floor == 80 || GameController.floor == 100)
         {
@@ -245,9 +248,16 @@ public class BoardManager : MonoBehaviour
         }
         else
         {
+            int min, max;
+            if (floor % 20 <= 5) { min = 2; max = 4; }
+            else if (floor % 20 <= 10) { min = 3; max = 6; }
+            else if (floor % 20 <= 15) { min = 4; max = 7; }
+            else if (floor % 20 <= 20) { min = 5; max = 7; }
+            else { min = 2; max = 8; }
+
             for (int i = 0; i < Random.Range(min, max + 1); i++)
             {
-                GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, ObjectPerFloor(GameController.floor).monsters.Length)];
+                GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, 10)];
                 GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(objectHolder);
             }
@@ -294,11 +304,11 @@ public class BoardManager : MonoBehaviour
 
         LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
-        SetSculptures(floor);                                           // 5. 바닥 생성
+        SetSculptures(3, 8);                                            // 5. 바닥 생성
 
-        SetMonsters(2, 8);                                              // 6. 몬스터 생성
+        SetMonsters(floor);                                             // 6. 몬스터 생성
 
-        SetWalls(1, 5);                                                 // 7. 벽 생성
+        SetWalls(1, 4);                                                 // 7. 벽 생성
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가

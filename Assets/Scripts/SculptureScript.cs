@@ -39,8 +39,9 @@ public class SculptureScript : MonoBehaviour
         {
             SoundManager.I.PlayEffect("EFFECT/MonsterDamaged");
             crack -= 1;
+            StartCoroutine(BreakingWall());
 
-            if (crack < 0)
+            if (crack <= 0)
             {
                 Destroy(this.gameObject);
             }
@@ -113,4 +114,12 @@ public class SculptureScript : MonoBehaviour
         isEffected = false;
     }
 
+    IEnumerator BreakingWall()
+    {
+        transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);
+        yield return GameController.delay_01s;
+        transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, 0);
+        yield return GameController.delay_01s;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+    }
 }
