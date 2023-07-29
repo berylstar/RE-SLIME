@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
     public static bool effSkate = false;
     public static EquipScript effLastleaf = null;
     public static bool effGlasses = false;
-    public static bool effPerfume = false;
+    public static bool efftalisman = false;
 
     // GAME SYSYTEM
     public static bool esc = false;
@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
     public static bool inShop = false;
     public static bool inBox = false;
     public static bool inRecord = false;
-    public static List<bool> tutorial = new List<bool>() { true, true}; // false , false
+    public static List<bool> tutorial = new List<bool>() { false, false};
     public static bool bossCut = false;
 
     public static bool Pause(int i)
@@ -122,9 +122,6 @@ public class GameController : MonoBehaviour
     public static void Restart()
     {
         floor = 0;
-        inTime = 0;
-        getCoin = 5;
-        kills = 0;
 
         playerMaxHP = 100;
         playerHP = 100;
@@ -147,6 +144,7 @@ public class GameController : MonoBehaviour
         effSkate = false;
         effLastleaf = null;
         effGlasses = false;
+        efftalisman = false;
 
         esc = false;
         inDiaglogue = false;
@@ -155,9 +153,15 @@ public class GameController : MonoBehaviour
         inShop = false;
         inBox = false;
         inRecord = false;
+        bossCut = false;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
 
         SceneManager.LoadScene("TitleScene");
+    }
+
+    public void TeSTTEST()
+    {
+        coin += 1;
     }
 }

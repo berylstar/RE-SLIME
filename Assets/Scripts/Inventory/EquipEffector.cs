@@ -22,7 +22,7 @@ public class EquipEffector : MonoBehaviour
     private readonly int pizza = 15;
     private readonly int quarterstone = 5;
     private readonly int straw = 3;
-    private readonly int talisman = 1;
+    // private readonly int bluerose = 1, -2;
     private readonly int thunder = 5;
     private readonly int goldenticket = 2; 
     private readonly int yellowtail = 1;
@@ -107,10 +107,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.potionEff += straw;
         }
-        else if (i == 24)            // 부적
+        else if (i == 24)            // 파란 장미
         {
-            GameController.playerDP += talisman;
-            GameController.playerAP -= talisman;
+            GameController.playerDP += 1;
+            GameController.playerAP -= 2;
         }
         else if (i == 26)            // 골든 티켓
         {
@@ -152,9 +152,9 @@ public class EquipEffector : MonoBehaviour
         {
 
         }
-        else if (i == 37)           // 파란 장미
+        else if (i == 37)           // 부적
         {
-            GameController.effPerfume = true;
+            GameController.efftalisman = true;
         }
         else if (i == 39)           // 헤어 왁스
         {
@@ -240,10 +240,10 @@ public class EquipEffector : MonoBehaviour
         {
             GameController.potionEff -= straw;
         }
-        else if (i == 24)            // 부적
+        else if (i == 24)            // 파란 장미
         {
-            GameController.playerDP -= talisman;
-            GameController.playerAP += talisman;
+            GameController.playerDP -= 1;
+            GameController.playerAP += 2;
         }
         else if (i == 26)            // 골든 티켓
         {
@@ -287,7 +287,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 37)           // 파란 장미
         {
-            GameController.effPerfume = false;
+            GameController.efftalisman = false;
         }
         else if (i == 39)           // 헤어 왁스
         {

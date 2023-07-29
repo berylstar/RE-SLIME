@@ -3023,7 +3023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 15
   EName: "\uB9CC\uB450"
-  adject: "\uB9CC\uCC10\uB450\uBE75"
+  adject: "\uB9CC\uCC10\n\uB450\uBE75"
   effect: "\uC0AC\uC6A9 : HP 10 \uD68C\uBCF5"
   price: 0
   type: 1
@@ -3659,8 +3659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 31
   EName: "\uB808\uC774\uC800 \uAC74"
-  adject: "\uCD1D\uC54C\uC774 \uC5C6\uC5B4\uC11C\n\uB300\uC2E0 \uC8FC\uBA39\uC744
-    \uB123\uC5B4\uBD24\uB354\uB2C8..."
+  adject: "\uC678\uACC4 \uC2AC\uB77C\uC784 \uC885\uC871\uB4E4\uC774\n\uC0AC\uC6A9\uD558\uB358
+    \uBB34\uAE30"
   effect: "\uC2A4\uD0AC : \uC6D0\uAC70\uB9AC \uACF5\uACA9\n(\uACF5\uACA9\uB825 :
     5)"
   price: 7
@@ -4633,7 +4633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 26
   EName: "\uACE8\uB4E0 \uD2F0\uCF13"
-  adject: "VIP \uACE0\uAC1D\uB2D8\uC744 \uD658\uC601\uD569\uB2C8\uB2E4 !"
+  adject: "\uD574\uACE8 \uC0C1\uC810\uC740\nVIP \uACE0\uAC1D\uB2D8\uC744 \uD658\uC601\uD569\uB2C8\uB2E4
+    !"
   effect: "\uC0C1\uC810\uC5D0 \uB354 \uC88B\uC740 \uC7A5\uBE44 \uBC1C\uACAC"
   price: 5
   type: 0
@@ -6979,7 +6980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 1
   EName: "\uBC14\uB098\uB098"
-  adject: "\uB9DB\uC788\uC73C\uBA74 \uBC14\uB098\uB098, \uBC14\uB098\uB098\uB294
+  adject: "\uB9DB\uC788\uC73C\uBA74 \uBC14\uB098\uB098\n\uBC14\uB098\uB098\uB294
     \uAE38\uC5B4"
   effect: "\uC0AC\uC6A9 : HP 25 \uD68C\uBCF5"
   price: 2
@@ -7429,7 +7430,7 @@ GameObject:
   - component: {fileID: 580165010}
   - component: {fileID: 580165009}
   m_Layer: 0
-  m_Name: 37_bluerose
+  m_Name: 37_talisman
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7443,7 +7444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580165007}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.625, y: 5, z: 1}
+  m_LocalPosition: {x: -0.625, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1381351871}
@@ -7464,10 +7465,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 37
-  EName: "\uD30C\uB780 \uC7A5\uBBF8"
-  adject: "\uD30C\uB780\uC7A5\uBBF8\uC758 \uAF43\uB9D0\uC740\n'\uAE30\uC801'\uC785\uB2C8\uB2E4."
+  EName: "\uBD80\uC801"
+  adject: "\uAC15\uC2DC \uC774\uB9C8\uC5D0 \uBD99\uC5EC\uC8FC\uC138\uC694"
   effect: "\uBAAC\uC2A4\uD130\uAC00 \uB530\uB77C\uC624\uC9C0 \uC54A\uB294\uB2E4"
-  price: 4
+  price: 3
   type: 0
   grade: 2
   coolTime: 0
@@ -7521,62 +7522,27 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.25194576, y: -1.201094}
-      - {x: 0.19954541, y: -1.1950144}
-      - {x: 0.028025493, y: -1.2376279}
-      - {x: 0.049999997, y: -1.13}
-      - {x: 0.016505562, y: -0.9486932}
-      - {x: 0.15519832, y: -0.9260797}
-      - {x: 0.24346569, y: -0.8943461}
-      - {x: 0.25477245, y: -0.8069601}
-      - {x: 0.20367888, y: -0.819361}
-      - {x: -0.014375344, y: -0.8363211}
-      - {x: -0.0065342933, y: -0.71848005}
-      - {x: 0.027812324, y: -0.5371733}
-      - {x: 0.18911956, y: -0.48063898}
-      - {x: 0.25759915, y: -0.4562924}
-      - {x: 0.23498562, y: -0.4108809}
-      - {x: 0.19389156, y: -0.40762788}
-      - {x: 0.11632395, y: -0.40242767}
-      - {x: 0.0054119676, y: -0.48698887}
-      - {x: -0.044801198, y: -0.442614}
-      - {x: 0.033678874, y: -0.23258528}
-      - {x: 0.21519879, y: -0.11890592}
-      - {x: 0.22367886, y: -0.0032530203}
-      - {x: 0.19237164, y: 0.12042585}
-      - {x: 0.14303985, y: 0.16237211}
-      - {x: 0.10747194, y: 0.19063902}
-      - {x: -0.12042585, y: 0.1680255}
-      - {x: -0.1862924, y: 0.10367887}
-      - {x: -0.23498562, y: 0.024985634}
-      - {x: -0.23215893, y: -0.035198323}
-      - {x: -0.15650555, y: -0.12650508}
-      - {x: -0.10410473, y: -0.18975809}
-      - {x: -0.10237163, y: -0.2851988}
-      - {x: -0.05063902, y: -0.2978123}
-      - {x: -0.0562924, y: -0.4560797}
-      - {x: -0.051946253, y: -0.5128267}
-      - {x: -0.14, y: -0.56}
-      - {x: -0.1680255, y: -0.6221877}
-      - {x: -0.25477245, y: -0.6382669}
-      - {x: -0.25194576, y: -0.72325253}
-      - {x: -0.20477247, y: -0.73389155}
-      - {x: -0.14, y: -0.81}
-      - {x: -0.05063902, y: -0.9341334}
-      - {x: -0.14, y: -0.97999996}
-      - {x: -0.18498564, y: -1.0478411}
-      - {x: -0.26325253, y: -1.0667474}
-      - {x: -0.27318335, y: -1.1267762}
-      - {x: -0.23498562, y: -1.1404263}
-      - {x: -0.20477295, y: -1.182159}
-      - {x: -0.09759916, y: -1.1565056}
-      - {x: -0.08173309, y: -1.31}
-      - {x: -0.08282669, y: -1.3821584}
-      - {x: -0.048693236, y: -1.4106389}
-      - {x: 0.00759916, y: -1.3993322}
-      - {x: 0.06325254, y: -1.3345598}
-      - {x: 0.18911909, y: -1.2934657}
-      - {x: 0.24346569, y: -1.2945597}
+    - - {x: 0.23243836, y: -0.00945206}
+      - {x: 0.20054793, y: 0.07243883}
+      - {x: 0.14829223, y: 0.13847488}
+      - {x: -0.046584472, y: 0.15432876}
+      - {x: -0.062621, y: 0.118474886}
+      - {x: 0.0068310574, y: 0.06}
+      - {x: 0.046875935, y: 0.022991639}
+      - {x: 0.042545073, y: -0.3210502}
+      - {x: 0.0053801164, y: -0.34343773}
+      - {x: 0.0035948008, y: -0.67194235}
+      - {x: -0.015340805, y: -0.75072813}
+      - {x: -0.1687932, y: -1.0010498}
+      - {x: -0.1902895, y: -1.0465622}
+      - {x: -0.12267749, y: -1.1025203}
+      - {x: -0.046272773, y: -1.2129669}
+      - {x: 0.0037272256, y: -1.2440166}
+      - {x: 0.08923976, y: -1.1502894}
+      - {x: 0.1344628, y: -1.0274544}
+      - {x: 0.19745493, y: -0.8126775}
+      - {x: 0.1914401, y: -0.30262327}
+      - {x: 0.23461989, y: -0.28461987}
 --- !u!212 &580165012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7617,7 +7583,7 @@ SpriteRenderer:
   m_SortingLayerID: -1089854835
   m_SortingLayer: 5
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 0d868dda44f50c24a8073205cbaba3e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa8aacaec9293374a80476978f0163a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7710,6 +7676,139 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &615507973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615507974}
+  - component: {fileID: 615507977}
+  - component: {fileID: 615507976}
+  - component: {fileID: 615507975}
+  m_Layer: 5
+  m_Name: Button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &615507974
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615507973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1008908073}
+  m_Father: {fileID: 1559782880}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -508, y: -213}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &615507975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615507973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 615507976}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 715514220}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: TeSTTEST
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &615507976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615507973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &615507977
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615507973}
+  m_CullTransparentMesh: 1
 --- !u!1 &623545903
 GameObject:
   m_ObjectHideFlags: 0
@@ -9594,7 +9693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 8
   EName: "\uB179\uC2A8 \uC5F4\uC1E0"
-  adject: "\uB3C4\uC5B4\uB77D\uC774 \uC5C6\uB294 \uB358\uC804"
+  adject: "\uB358\uC804\uC5D0\uC11C\uB294 \uB3C4\uC5B4\uB77D \uB300\uC2E0\n\uC544\uC9C1
+    \uC790\uBB3C\uC1E0\uB97C \uC4F4\uB2E4\uB294 \uC0AC\uC2E4"
   effect: "\uC0AC\uC6A9 : \uACC4\uB2E8 \uC5F4\uAE30"
   price: 5
   type: 2
@@ -12719,6 +12819,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1008908072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008908073}
+  - component: {fileID: 1008908075}
+  - component: {fileID: 1008908074}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1008908073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008908072}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 615507974}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1008908074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008908072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: FOR TEST
+--- !u!222 &1008908075
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008908072}
+  m_CullTransparentMesh: 1
 --- !u!1 &1017851873
 GameObject:
   m_ObjectHideFlags: 0
@@ -14263,7 +14442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 13
   EName: ESP-8266
-  adject: "\uD3EC\uC158 \uC790\uAC00\uC81C\uC791 \uD0A4\uD2B8"
+  adject: "\uD3EC\uC158 DIY \uD0A4\uD2B8"
   effect: "\uD3EC\uC158 \uBC1C\uACAC\uD655\uB960 \uC99D\uAC00"
   price: 3
   type: 0
@@ -14434,9 +14613,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 36
   EName: "\uB3C5\uC0AC\uACFC"
-  adject: "\uB3C5\uC0AC\uACFC\uB3C4 \uB9DB\uB9CC \uC88B\uC73C\uBA74 \uADF8\uB9CC\uC774\uC57C"
+  adject: "\uB9DB\uB9CC \uC88B\uC73C\uBA74 \uADF8\uB9CC\uC774\uC57C"
   effect: "\uC0AC\uC6A9 : HP \uC808\uBC18 \uD68C\uBCF5"
-  price: 7
+  price: 6
   type: 1
   grade: 2
   coolTime: 0
@@ -17212,7 +17391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 34
   EName: "100\uB144 \uBB35\uC740 \uC0B0\uC0BC"
-  adject: "\uBD88\uB048\uBD88\uB048"
+  adject: "\uC2EC\uBD24\uB2E4 !"
   effect: "\uD3EC\uC158 \uBC1C\uACAC\uD655\uB960 \uC99D\uAC00"
   price: 3
   type: 0
@@ -18586,7 +18765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 28
   EName: "\uC77C\uB809 \uAE30\uD0C0"
-  adject: "\uC74C\uC545\uB9CC\uC774...\n\uD5C8\uB77D\uB41C \uC720\uC77C\uD55C \uB9C8\uC57D\uC774\uB2C8\uAE4C..."
+  adject: "\uC74C\uC545\uB9CC\uC774 \uB098\uB77C\uC5D0\uC11C\n\uD5C8\uB77D\uD55C
+    \uC720\uC77C\uD55C \uB9C8\uC57D\uC774\uB2C8\uAE4C..."
   effect: "\uACF5\uACA9\uB825 +4, \uBC29\uC5B4\uB825 +1\n\uC774\uB3D9\uC18D\uB3C4
     + 10"
   price: 12
@@ -19646,6 +19826,7 @@ RectTransform:
   - {fileID: 1340359198}
   - {fileID: 353927312}
   - {fileID: 291317686}
+  - {fileID: 615507974}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21401,7 +21582,7 @@ GameObject:
   - component: {fileID: 1790059104}
   - component: {fileID: 1790059105}
   m_Layer: 0
-  m_Name: 24_talisman
+  m_Name: 24_bluerose
   m_TagString: Equip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21415,7 +21596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790059100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.625, y: 5, z: 1}
+  m_LocalPosition: {x: -0.625, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 141833978}
@@ -21463,7 +21644,7 @@ SpriteRenderer:
   m_SortingLayerID: -1089854835
   m_SortingLayer: 5
   m_SortingOrder: 9
-  m_Sprite: {fileID: 21300000, guid: f82418dd16670b142b66a04499acaf0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7337ad55bfa912142a98546c4b41140e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -21484,7 +21665,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -21499,22 +21680,40 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.19955468, y: 0.049342826}
-      - {x: 0.16637322, y: 0.22955492}
-      - {x: -0.052290842, y: 0.23432663}
-      - {x: 0.0120252445, y: 0.16840927}
-      - {x: 0.009989206, y: -0.107465155}
-      - {x: -0.019555166, y: -0.13294801}
-      - {x: -0.016150817, y: -0.41976655}
-      - {x: -0.1947825, y: -0.6061292}
-      - {x: -0.1518352, y: -0.6520468}
-      - {x: -0.10183473, y: -0.72977734}
-      - {x: -0.022057623, y: -0.80478275}
-      - {x: 0.06862137, y: -0.71343625}
-      - {x: 0.117030635, y: -0.60368025}
-      - {x: 0.1452278, y: -0.4959495}
-      - {x: 0.1604669, y: -0.23345762}
-      - {x: 0.16137862, y: -0.05228004}
+    - - {x: 0.22946046, y: -0.44730282}
+      - {x: 0.24941042, y: -0.41892093}
+      - {x: 0.2831371, y: -0.36794192}
+      - {x: 0.25259712, y: -0.35269716}
+      - {x: 0.12264715, y: -0.35269716}
+      - {x: -0.004265271, y: -0.42637384}
+      - {x: -0.010149613, y: -0.21146896}
+      - {x: 0.22200802, y: -0.07416569}
+      - {x: 0.22833183, y: 0.044265747}
+      - {x: 0.19779232, y: 0.15151852}
+      - {x: 0.13470522, y: 0.22676328}
+      - {x: -0.13327566, y: 0.23989251}
+      - {x: -0.18097948, y: 0.18416569}
+      - {x: -0.23043993, y: 0.08573425}
+      - {x: -0.25151852, y: -0.006223753}
+      - {x: -0.16465566, y: -0.11151853}
+      - {x: -0.057692736, y: -0.15882134}
+      - {x: -0.11833185, y: -0.25833184}
+      - {x: -0.051120758, y: -0.2387743}
+      - {x: -0.04254757, y: -0.41416568}
+      - {x: -0.045195192, y: -0.6386311}
+      - {x: -0.124156475, y: -0.62473965}
+      - {x: -0.20995045, y: -0.57269716}
+      - {x: -0.26205805, y: -0.61005}
+      - {x: -0.25784233, y: -0.66308707}
+      - {x: -0.2225976, y: -0.7162242}
+      - {x: -0.14843144, y: -0.70043993}
+      - {x: -0.057302818, y: -0.6602898}
+      - {x: -0.05946047, y: -0.82887137}
+      - {x: -0.038970966, y: -0.8330871}
+      - {x: -0.024265748, y: -0.81205803}
+      - {x: -0.021668151, y: -0.63838184}
+      - {x: -0.0077180862, y: -0.50949335}
+      - {x: 0.089999996, y: -0.41990042}
 --- !u!50 &1790059104
 Rigidbody2D:
   serializedVersion: 4
@@ -21549,9 +21748,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 24
-  EName: "\uBD80\uC801"
-  adject: "\uAC15\uC2DC \uC774\uB9C8\uC5D0\n\uBD99\uC5B4\uC788\uB358 \uAC83\n"
-  effect: "\uBC29\uC5B4\uB825 +1\n\uACF5\uACA9\uB825 -1"
+  EName: "\uD30C\uB780 \uC7A5\uBBF8"
+  adject: "\uD30C\uB780\uC7A5\uBBF8\uC758 \uAF43\uB9D0\uC740\n'\uAE30\uC801'\uC785\uB2C8\uB2E4."
+  effect: "\uBC29\uC5B4\uB825 +1\n\uACF5\uACA9\uB825 -2"
   price: 3
   type: 0
   grade: 1
@@ -23838,7 +24037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 22
-  EName: "\uB9C8\uBC95\uC11C"
+  EName: "\uACE0\uB300 \uB9C8\uBC95\uC11C"
   adject: "\u300E\uB204\uAD6C\uB098 \uC27D\uAC8C \uB530\uB77C\uD558\uB294\n2\uC8FC
     \uC644\uC131 \uB9C8\uBC95\u300F"
   effect: "\uC0AC\uC6A9 : 0\uCE35\uC73C\uB85C \uBCF5\uADC0"
@@ -24925,8 +25124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 7
-  EName: "\uBCF5\uC2F1 \uAE00\uB7EC\uBE0C"
-  adject: "\uC6D0 \uD22C \uD6C5 - !"
+  EName: "\uAD8C\uD22C \uAE00\uB7EC\uBE0C"
+  adject: "\uC6D0 \uD22C \uD6C5 - !\nK.O."
   effect: "\uACF5\uACA9\uB825 +6"
   price: 4
   type: 0

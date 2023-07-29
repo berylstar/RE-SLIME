@@ -83,7 +83,7 @@ public class MonsterScript : MovingObject
         {
             yield return GameController.delay_1s;
 
-            if (movetype == MoveType.NORMAL || GameController.effPerfume)
+            if (movetype == MoveType.NORMAL || GameController.efftalisman)
                 MoveRandom();
             else if (movetype == MoveType.FOLLOWER)
                 MoveToPlayer();
