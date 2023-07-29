@@ -28,10 +28,10 @@ public class ResultSceneScript : MonoBehaviour
             textEnd.text = "GAME OVER...";
         }
 
-        textResult.text = "YOU REACHED AT " + GameController.floor + " FLOOR\n" +
-                          "IN-DUNGEON TIME : " + Time(GameController.inTime) + "\n" +
-                          "COINS : " + GameController.getCoin + "\n" +
-                          "KILLS : " + GameController.kills + "\n"; 
+        textResult.text = "     이번 슬라임은 " + GameController.floor + " 층까지...\n" +
+                          "던전에 머문 시간 : " + Time(GameController.inTime) + "\n" +
+                          "     획득한 코인 : " + GameController.getCoin + "\n" +
+                          "         처치 수 : " + GameController.kills + "\n"; 
                           //+ "SLIME WILL BE RETURN";
 
         for (int i = 0; i < imageEquips.Length; i++)

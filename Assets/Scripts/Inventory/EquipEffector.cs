@@ -7,7 +7,7 @@ public class EquipEffector : MonoBehaviour
 {
     public static EquipEffector I = null;
 
-    private readonly int banana = 15;
+    private readonly int banana = 25;
     private readonly int binocular = 2;
     private readonly int energydrink = 15;
     private readonly int gloves = 6;
@@ -16,10 +16,10 @@ public class EquipEffector : MonoBehaviour
     private readonly int helmet = 1;
     private readonly int ice = 10;
     private readonly int machine = 3;
-    private readonly int mandoo = 5;
+    private readonly int mandoo = 10;
     private readonly int metaldetector = 3;
     private readonly int pepper = 2;
-    private readonly int pizza = 10;
+    private readonly int pizza = 15;
     private readonly int quarterstone = 5;
     private readonly int straw = 3;
     private readonly int talisman = 1;

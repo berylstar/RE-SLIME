@@ -49,7 +49,7 @@ public class ESCScript : MonoBehaviour
             else if (pickIndex == 1)
             {
                 textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
-                textEFFECT.text = "EFF:" + (int)(SoundManager.I.effectVolume * 200) + "%";
+                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 200) + "%";
                 ActivePanel(1);
             }
             else
@@ -67,13 +67,13 @@ public class ESCScript : MonoBehaviour
             else if (pickIndex == 1)
             {
                 SoundManager.I.ChangeVolume("EFFECT");
-                textEFFECT.text = "EFF:" + (int)(SoundManager.I.effectVolume * 200) + "%";
+                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 200) + "%";
             }
             else if (pickIndex == 2)
             {
                 SoundManager.I.Mute();
                 textBGM.text = "BGM:0%";
-                textEFFECT.text = "EFF:0%";
+                textEFFECT.text = "SFX:0%";
             }
             else
             {
