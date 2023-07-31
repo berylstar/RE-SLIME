@@ -1,4 +1,4 @@
-# **RE:SLIME** ![](./Assets/Designs/Unit/player/player_0.png)
+# **RE:SLIME** ![slime](./Assets/Designs/Unit/player/player_0.png)
  >'RE:SLIME'은 탑을 오르고 싶은 슬라임의 우당탕탕 로그라이크 게임입니다.
 
 ## 장비 시스템
