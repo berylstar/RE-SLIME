@@ -1,5 +1,7 @@
-# **RE:SLIME** ![slime](./icon.png)
- >'RE:SLIME'은 탑을 오르고 싶은 슬라임의 우당탕탕 로그라이크 게임입니다.
+# **RE:SLIME** <img src="./slime.gif" width="60" height="60">
+ `"RE:SLIME"은 탑을 오르고 싶은 슬라임의 우당탕탕 로그라이크 게임입니다.`
+
+ <img src="./title.png">
 
 ## 장비 시스템
 - 해골 상점에는 42 종의 다양한 장비가 기다리고 있습니다.
