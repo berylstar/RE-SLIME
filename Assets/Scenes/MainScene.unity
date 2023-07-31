@@ -9232,9 +9232,9 @@ MonoBehaviour:
     - {fileID: 254159276128100321, guid: 750bd06613a8190448afb178bfb4c499, type: 3}
     - {fileID: 3637107936079776189, guid: e54e8eaa1aab019468bc429b69b72180, type: 3}
     - {fileID: 6652352449710847486, guid: 0f9bb46416eca4e4787aae9caaf857e5, type: 3}
-    - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
-    - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
     - {fileID: 6652352449710847486, guid: 0f9bb46416eca4e4787aae9caaf857e5, type: 3}
+    - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
+    - {fileID: 9043970307731784613, guid: f15fb32dbde181346b3ae2cb817ba9ec, type: 3}
     - {fileID: 7452237797455924839, guid: fa0fc48a87279b04da2a626d53edca97, type: 3}
     bosses:
     - {fileID: 5855263292896493339, guid: 993733ca9c03e9847ae7e8437e433f3c, type: 3}
@@ -12321,7 +12321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: 3
-  EName: "\uB9DD\uC6D0\uACBD"
+  EName: "\uC30D\uC548\uACBD"
   adject: "\uC800- \uBA40\uB9AC\uAE4C\uC9C0"
   effect: "\uC544\uC774\uD15C \uBC1C\uACAC \uD655\uB960 \uC99D\uAC00"
   price: 6
