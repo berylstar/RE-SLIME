@@ -169,4 +169,4 @@ MonoBehaviour:
   HP: 8
   AP: 2
   movetype: 0
-  speed: 10
+  speed: 8

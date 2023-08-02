@@ -169,5 +169,5 @@ MonoBehaviour:
   HP: 18
   AP: 4
   movetype: 0
-  speed: 15
+  speed: 12
   dashPercent: 50

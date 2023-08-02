@@ -159,9 +159,4 @@ public class GameController : MonoBehaviour
 
         SceneManager.LoadScene("TitleScene");
     }
-
-    public void TeSTTEST()
-    {
-        coin += 1;
-    }
 }

@@ -221,7 +221,7 @@ public class BoardManager : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(min, max+1); i++)
         {
-            GameObject inst = Instantiate(ObjectPerFloor(GameController.floor).walls[Random.Range(0, 5)], RandomPosition(), Quaternion.identity) as GameObject;
+            GameObject inst = Instantiate(ObjectPerFloor(GameController.floor).walls[Random.Range(0, 10)], RandomPosition(), Quaternion.identity) as GameObject;
             inst.transform.SetParent(objectHolder);
         }
     }
@@ -304,11 +304,11 @@ public class BoardManager : MonoBehaviour
 
         LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
-        SetSculptures(3, 8);                                            // 5. 바닥 생성
+        SetSculptures(3, 9);                                            // 5. 바닥 생성
 
         SetMonsters(floor);                                             // 6. 몬스터 생성
 
-        SetWalls(1, 4);                                                 // 7. 벽 생성
+        SetWalls(2, 5);                                                 // 7. 벽 생성
     }
 
     // 몬스터가 생성될 때 몬스터 그룹에 추가
