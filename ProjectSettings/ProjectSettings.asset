@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: SpicyCheeseSpaghetti
-  productName: RE_SLIME
+  productName: RE-SLIME
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.121568635, g: 0.1137255, b: 0.10588236, a: 1}
@@ -138,7 +138,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.2.0730
+  bundleVersion: 1.2.0803
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
