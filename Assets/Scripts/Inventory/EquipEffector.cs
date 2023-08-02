@@ -27,7 +27,7 @@ public class EquipEffector : MonoBehaviour
     private readonly int goldenticket = 2; 
     private readonly int yellowtail = 1;
     // guitar - 4, 1, 10
-    // plask - 3, -1
+    // plask - 3, 10, -1
     private readonly int magnet = 3;
     private readonly int herb = 3;
     private readonly int wax = 1;
@@ -134,6 +134,7 @@ public class EquipEffector : MonoBehaviour
         else if (i == 30)            // 플라스크
         {
             GameController.playerAP += 3;
+            GameController.ChangeSpeed(10);
             GameController.playerDP -= 1;
         }
         else if (i == 32)            // 3D 안경
@@ -267,6 +268,7 @@ public class EquipEffector : MonoBehaviour
         else if (i == 30)            // 플라스크
         {
             GameController.playerAP -= 3;
+            GameController.ChangeSpeed(-10);
             GameController.playerDP += 1;
         }
         else if (i == 32)            // 3D 안경

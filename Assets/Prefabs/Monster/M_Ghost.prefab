@@ -169,5 +169,5 @@ MonoBehaviour:
   HP: 14
   AP: 3
   movetype: 0
-  speed: 10
+  speed: 8
   transparentPercent: 70

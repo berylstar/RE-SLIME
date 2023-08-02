@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  HP: 25
+  HP: 26
   AP: 5
   movetype: 0
-  speed: 5
+  speed: 3

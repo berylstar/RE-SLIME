@@ -17561,7 +17561,8 @@ MonoBehaviour:
   number: 30
   EName: "\uC2E4\uD5D8\uC6A9 \uD50C\uB77C\uC2A4\uD06C"
   adject: "\uC774 \uC2E4\uD5D8\uC740 \uC131\uACF5\uC778\uAC00\uC694 ?"
-  effect: "\uACF5\uACA9\uB825 +3\n\uBC29\uC5B4\uB825 -1"
+  effect: "\uACF5\uACA9\uB825 +3, \uC774\uB3D9\uC18D\uB3C4 +10\n\uBC29\uC5B4\uB825
+    -1"
   price: 3
   type: 0
   grade: 1

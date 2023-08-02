@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7452237797455924838}
   m_Layer: 6
   m_Name: M_Box
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   HP: 20
   AP: 3
   movetype: 1
-  speed: 10
+  speed: 8
   spawn:
   - {fileID: 168918671173395162, guid: a247c847e3f19eb46917158dcef4e626, type: 3}
   spawnPercent: 90
