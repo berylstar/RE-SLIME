@@ -234,7 +234,7 @@ public class PlayerScript : MovingObject
     //////////////////////////////////////////////////////////////////////////////////////////
     private bool EquipBattery()
     {
-        if (GameController.effBattery && Random.Range(0, 20) == 5)
+        if (GameController.effBattery && Random.Range(0, 20) <= 0)
         {
             StartCoroutine(BatteryCo());
             return true;

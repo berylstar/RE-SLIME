@@ -74,15 +74,15 @@ public class TitleScript : MonoBehaviour
         {
             if (pickIndex == 0)
             {
-                DataManager.I.NewData(slot);
-                SceneManager.LoadScene("MainScene");
-            }
-            else if (pickIndex == 1)
-            {
                 if (!buttonLoad.interactable)
                     return;
 
                 DataManager.I.LoadData(slot);
+                SceneManager.LoadScene("MainScene");
+            }
+            else if (pickIndex == 1)
+            {
+                DataManager.I.NewData(slot);
                 SceneManager.LoadScene("MainScene");
             }
             else

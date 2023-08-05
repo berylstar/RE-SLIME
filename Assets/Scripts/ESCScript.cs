@@ -91,6 +91,7 @@ public class ESCScript : MonoBehaviour
                 UIScript.I.ToggleESCPanel();
                 SoundManager.I.PlayBGM("BGM/Title");
                 GameController.Restart();
+                SceneManager.LoadScene("TitleScene");
             }
         }
 

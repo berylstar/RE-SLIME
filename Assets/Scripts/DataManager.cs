@@ -139,6 +139,8 @@ public class DataManager : MonoBehaviour
 
         GameController.tutorial = newDATA.tutorial;
 
+        GameController.Restart();
+
         print("NEW!");
     }
 

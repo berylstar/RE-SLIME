@@ -61,10 +61,10 @@ public class UIScript : MonoBehaviour
         textFloor.text = "FLOOR\n" + GameController.floor + " F";
         textCoin.text = "COIN\nx " + GameController.coin;
 
-        textPlayerHP.text = "HP : " + GameController.playerHP + " / " + GameController.playerMaxHP;
-        textPlayerAP.text = "AP : " + GameController.playerAP;
-        textPlayerDP.text = "DP : " + GameController.playerDP;
-        textPlayerSpeed.text = "SPEED : " + GameController.playerSpeed;
+        textPlayerHP.text = GameController.playerHP + " / " + GameController.playerMaxHP;
+        textPlayerAP.text = GameController.playerAP.ToString();
+        textPlayerDP.text = GameController.playerDP.ToString();
+        textPlayerSpeed.text = GameController.playerSpeed.ToString();
     }
 
     public void ToggleESCPanel()
@@ -120,7 +120,7 @@ public class UIScript : MonoBehaviour
 
     public void EndDialogue()
     {
-        texttext.text = "";
+        //texttext.text = "";
         GameController.inDiaglogue = false;
         panelDialogue.SetActive(false);
     }

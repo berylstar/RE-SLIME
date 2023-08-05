@@ -117,6 +117,7 @@ public class DialogueScript : MonoBehaviour
         if (index >= end)
         {
             StartCoroutine(CloseTutorial());
+            UIScript.I.texttext.text = "";
 
             if (type == DialogueType.KINGSLIME)
             {
@@ -132,6 +133,7 @@ public class DialogueScript : MonoBehaviour
                 {
                     GameController.tutorial[1] = true;
                     StairScript.I.Open();
+                    UIScript.I.texttext.text = "'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택";
                 }
             }
             else if (type == DialogueType.DEMON)

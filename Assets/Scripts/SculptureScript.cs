@@ -18,7 +18,7 @@ public class SculptureScript : MonoBehaviour
     private bool isEffected = false;
     private bool isOn = false;
 
-    private int wallCrack = 5;
+    private int wallCrack = 3;
 
     private void Start()
     {        

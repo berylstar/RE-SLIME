@@ -70,6 +70,7 @@ public class ResultSceneScript : MonoBehaviour
         GameController.Restart();
         DataManager.I.RemoveData();
         SceneManager.LoadScene("TitleScene");
+        SoundManager.I.PlayBGM("BGM/Title");
     }
 
     private string Time(int time)

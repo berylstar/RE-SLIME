@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameData
 {
@@ -58,10 +57,10 @@ public class GameController : MonoBehaviour
 
     // ITEM
     public static int coin = 0;
-    public static int probCoin = 10;
+    public static int probCoin = 15;
     public static bool RedCoin = false;
     public static int potionEff = 10;
-    public static int probPotion = 10;
+    public static int probPotion = 15;
 
     // EQUIPS
     public static List<string> myEquips = new List<string>();
@@ -134,9 +133,9 @@ public class GameController : MonoBehaviour
         skillV = null;
         ShopGrade = new List<int>() { 20, 5 };
 
-        probCoin = 10;
+        probCoin = 15;
         RedCoin = false;
-        probPotion = 10;
+        probPotion = 15;
         potionEff = 10;
 
         effBattery = false;
@@ -156,7 +155,5 @@ public class GameController : MonoBehaviour
         bossCut = false;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
-
-        SceneManager.LoadScene("TitleScene");
     }
 }
