@@ -4,8 +4,11 @@
  <img src="./title.png" width="400" height="225">
 
 ---
- # 링크 클릭! 👉 [게임 다운로드](https://drive.google.com/drive/folders/1GlMkwE-vH56ZygiUaKQ44f1GGHqLGWK5?usp=sharing)
+ # 👉 [게임 다운로드](https://drive.google.com/drive/folders/1GlMkwE-vH56ZygiUaKQ44f1GGHqLGWK5?usp=sharing)
 - 파일 압축 해제 후 exe 파일로 실행
+
+# 👉 [게임 피드백](https://docs.google.com/forms/d/1rpwRQ28UtLBdLxTIu_FuOAB2LlZWLX3MlIbZxzw4j6w/edit)
+- 게임 플레이와 피드백은 저를 춤추게 합니다.
 
 ## 장비 시스템
 - 해골 상점에는 여러가지 다양한 장비가 기다리고 있습니다.
