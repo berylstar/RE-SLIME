@@ -34,6 +34,9 @@ public class TitleScript : MonoBehaviour
         {
             ButtonClick();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && (menuIndex > 0))
+            ActivePanel(--menuIndex);
     }
 
     public void ButtonClick()

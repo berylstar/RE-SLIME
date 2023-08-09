@@ -133,9 +133,8 @@ public class PlayerScript : MovingObject
         else if (dy == -1)
             ani.SetTrigger("MoveDown");
 
-        SoundManager.I.PlayEffect("EFFECT/SlimeMove");
-
-        Move(dx, dy);
+         if (Move(dx, dy))
+            SoundManager.I.PlayEffect("EFFECT/SlimeMove");
     }
 
     // 변경된 플레이어 이동속도 적용 함수
