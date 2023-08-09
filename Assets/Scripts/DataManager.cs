@@ -96,7 +96,6 @@ public class DataManager : MonoBehaviour
 
         File.WriteAllText(path + slotNumber.ToString() + Application.version, Encrypt(JsonUtility.ToJson(newDATA), privateKey));
 
-        print((slotNumber, "SAVED!"));
         // UIScript.I.TextBlink("ΩΩ∑‘ " + slotNumber + " ¿˙¿Â !");
     }
 
@@ -117,8 +116,6 @@ public class DataManager : MonoBehaviour
         GameController.myEquips = newDATA.myEquips;
 
         GameController.tutorial = newDATA.tutorial;
-
-        print("LOAD!");
     }
 
     public void NewData(int slotnum)
@@ -140,8 +137,6 @@ public class DataManager : MonoBehaviour
         GameController.tutorial = newDATA.tutorial;
 
         GameController.Restart();
-
-        print("NEW!");
     }
 
     public void RemoveData()
@@ -149,7 +144,5 @@ public class DataManager : MonoBehaviour
         File.Delete(path + slotNumber.ToString() + Application.version);
 
         Destroy(GameObject.Find("INVENTORY"));
-
-        print("REMOVED");
     }
 }
