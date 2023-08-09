@@ -78,11 +78,9 @@ public class CoffinshopScript : MonoBehaviour
 
     IEnumerator CloseShop()
     {
-        if (InventoryScript.I.CheckOverlap())
-            InventoryScript.I.OpenInventory();
+        InventoryScript.I.OpenInventory();
 
         UIScript.I.panelShop.SetActive(false);
-        UIScript.I.texttext.text = "";
         SoundManager.I.PlayEffect("EFFECT/ShopClose");
         yield return GameController.delay_01s;
         GameController.inShop = false;

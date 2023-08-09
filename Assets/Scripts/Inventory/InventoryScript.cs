@@ -67,7 +67,9 @@ public class InventoryScript : MonoBehaviour
             all[int.Parse(ints[0])-1].LoadThis(poses);
         }
 
-        if (CheckOverlap())
+        if (!CheckOverlap())
+            EquipEffect();
+        else
             OpenInventory();
 
         isLoaded = true;
@@ -76,16 +78,17 @@ public class InventoryScript : MonoBehaviour
     private void Update()
     {
         // 장비가 겹쳐있으면 인벤토리가 닫히지 않음
+        if (GameController.inInven && CheckOverlap())
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (!GameController.tutorial[0] || GameController.Pause(1))
                 return;
 
-            if (GameController.inInven && CheckOverlap())
-            {
-                return;
-            }
-
+            EquipEffect();
             OpenInventory();
         }
     }
@@ -193,7 +196,6 @@ public class InventoryScript : MonoBehaviour
         }
 
         objectOverlapped.SetActive(false);
-        EquipEffect();
         return false;
     }
 

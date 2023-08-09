@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
     public static int probCoin = 15;
     public static bool RedCoin = false;
     public static int potionEff = 10;
-    public static int probPotion = 15;
+    public static int probPotion = 20;
 
     // EQUIPS
     public static List<string> myEquips = new List<string>();
@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour
         probCoin = 15;
         RedCoin = false;
         probPotion = 15;
-        potionEff = 10;
+        potionEff = 20;
 
         effBattery = false;
         effcrescent = false;
