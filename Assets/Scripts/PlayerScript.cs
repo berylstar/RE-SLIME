@@ -180,12 +180,12 @@ public class PlayerScript : MovingObject
             GameController.ChangeHP(dam);
             SoundManager.I.PlayEffect("EFFECT/SlimeDamaged");
 
-            sr.color = new Color(255, 0, 0);
+            sr.color = Color.red;
             invincivity = true;
 
             yield return GameController.delay_05s;
 
-            sr.color = new Color(255, 255, 255);
+            sr.color = Color.white;
             invincivity = false;
         }
     }
@@ -243,12 +243,12 @@ public class PlayerScript : MovingObject
     
     IEnumerator BatteryCo()
     {
-        sr.color = new Color(255, 255, 0);
+        sr.color = Color.yellow;
         invincivity = true;
 
         yield return GameController.delay_1s;
 
-        sr.color = new Color(255, 255, 255);
+        sr.color = Color.white;
         invincivity = false;
     }
     

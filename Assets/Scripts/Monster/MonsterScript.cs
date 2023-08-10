@@ -96,14 +96,14 @@ public class MonsterScript : MovingObject
         HP -= damage;
         SoundManager.I.PlayEffect("EFFECT/MonsterDamaged");
 
-        sr.color = new Color(255, 0, 0);
+        sr.color = Color.red;
         transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);
         yield return GameController.delay_01s;
 
         transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, 0);
         yield return GameController.delay_01s;
 
-        sr.color = new Color(255, 255, 255);
+        sr.color = Color.white;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
         if (HP <= 0)
@@ -116,7 +116,7 @@ public class MonsterScript : MovingObject
     IEnumerator Die()
     {
         isAlive = false;
-        sr.color = new Color32(255, 255, 255, 255);
+        sr.color = Color.white;
         ani.SetTrigger("MonsterDie");
 
         yield return null;

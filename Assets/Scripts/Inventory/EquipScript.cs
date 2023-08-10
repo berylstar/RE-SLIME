@@ -150,7 +150,7 @@ public class EquipScript : MonoBehaviour
         }
 
         inCoolTime = false;
-        sr.color = new Color32(255, 255, 255, 255);
+        sr.color = Color.white;
     }
 
     public Sprite ReturnSprite()

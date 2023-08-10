@@ -74,7 +74,7 @@ public class CursorScript : MonoBehaviour
             UIScript.I.stackAssists.Pop();
         }
 
-        sr.color = pick ? new Color32(255, 255, 0, 255) : new Color32(255, 255, 255, 255);
+        sr.color = pick ? Color.yellow : Color.white;
 
         // Input : 방향키 = 인벤토리 내 커서 조종
         MoveCursor();

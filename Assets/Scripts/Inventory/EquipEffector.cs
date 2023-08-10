@@ -372,6 +372,6 @@ public class EquipEffector : MonoBehaviour
         PlayerScript.I.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 50);
         yield return GameController.delay_3s;
         PlayerScript.I.invincivity = false;
-        PlayerScript.I.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        PlayerScript.I.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
