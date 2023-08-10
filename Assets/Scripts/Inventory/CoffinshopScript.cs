@@ -78,7 +78,7 @@ public class CoffinshopScript : MonoBehaviour
 
     IEnumerator CloseShop()
     {
-        InventoryScript.I.OpenInventory();
+        InventoryScript.I.CheckAndEffect();
 
         UIScript.I.panelShop.SetActive(false);
         SoundManager.I.PlayEffect("EFFECT/ShopClose");

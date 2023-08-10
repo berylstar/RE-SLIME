@@ -3,7 +3,7 @@
 
  <img src="./title.png" width="400" height="225">
 
----
+
  # 👉 [게임 다운로드](https://drive.google.com/drive/folders/1GlMkwE-vH56ZygiUaKQ44f1GGHqLGWK5?usp=sharing)
 - 파일 압축 해제 후 exe 파일로 실행
 

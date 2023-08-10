@@ -368,12 +368,10 @@ public class EquipEffector : MonoBehaviour
 
     IEnumerator Cloak()
     {
-        GameObject player = GameObject.Find("PLAYER");
-
         PlayerScript.I.invincivity = true;
-        player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 50);
+        PlayerScript.I.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 50);
         yield return GameController.delay_3s;
         PlayerScript.I.invincivity = false;
-        player.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        PlayerScript.I.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
     }
 }
