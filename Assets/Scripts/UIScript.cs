@@ -12,7 +12,7 @@ public class UIScript : MonoBehaviour
     public Text textFloor;
     public Text textLife, textCoin;
     public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textAssist;
-    public List<string> listAssists = new List<string>();
+    public Stack<string> stackAssists = new Stack<string>();
 
     [Header("PanelDie")]
     public GameObject panelDie;
@@ -67,7 +67,10 @@ public class UIScript : MonoBehaviour
         textPlayerDP.text = GameController.playerDP.ToString();
         textPlayerSpeed.text = GameController.playerSpeed.ToString();
 
-        textAssist.text = listAssists[listAssists.Count - 1];
+        if (stackAssists.Count > 0)
+            textAssist.text = stackAssists.Peek();
+        else
+            textAssist.text = "";
     }
 
     public void ToggleESCPanel()
@@ -132,10 +135,10 @@ public class UIScript : MonoBehaviour
 
     IEnumerator TextBlinkCo(string message)
     {
-        listAssists.Add(message);
+        stackAssists.Push(message);
 
         yield return GameController.delay_3s;
 
-        listAssists.RemoveAt(listAssists.Count - 1);
+        stackAssists.Pop();
     }
 }

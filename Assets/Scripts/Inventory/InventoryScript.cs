@@ -93,9 +93,9 @@ public class InventoryScript : MonoBehaviour
         cursor.SetActive(GameController.inInven);
 
         if (GameController.inInven)
-            UIScript.I.listAssists.Add("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
+            UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
         else
-            UIScript.I.listAssists.RemoveAt(UIScript.I.listAssists.Count - 1);
+            UIScript.I.stackAssists.Pop();
 
         if (!GameController.tutorial[1])
         {
