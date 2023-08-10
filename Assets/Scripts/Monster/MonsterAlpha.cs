@@ -23,7 +23,10 @@ public class MonsterAlpha : MonsterScript
     {
         while (isAlive)
         {
-            sr.color = (Random.Range(0, 100) <= transparentPercent) ? colorT : Color.white;
+            if (Random.Range(0, 100) <= transparentPercent)
+                sr.color = colorT;
+            else
+                sr.color = Color.white;
 
             yield return GameController.delay_1s;
         }
