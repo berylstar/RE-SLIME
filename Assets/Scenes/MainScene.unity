@@ -8727,7 +8727,7 @@ GameObject:
   - component: {fileID: 668498727}
   - component: {fileID: 668498726}
   m_Layer: 5
-  m_Name: TextText
+  m_Name: TextAssist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9405,7 +9405,9 @@ MonoBehaviour:
   textPlayerAP: {fileID: 275534241}
   textPlayerDP: {fileID: 387947428}
   textPlayerSpeed: {fileID: 1211925630}
-  texttext: {fileID: 668498726}
+  textAssist: {fileID: 668498726}
+  listAssists:
+  - 
   panelDie: {fileID: 1495907167}
   textDie: {fileID: 638513434}
   textBackTo: {fileID: 2009614506}
@@ -16489,8 +16491,7 @@ MonoBehaviour:
   GottenEquips: []
   objectOverlapped: {fileID: 1108502671}
   cursor: {fileID: 826197181}
-  isOverlapped: 0
-  isLoaded: 0
+  listOverlap: 
 --- !u!114 &1303250850
 MonoBehaviour:
   m_ObjectHideFlags: 0

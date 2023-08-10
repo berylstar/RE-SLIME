@@ -20,8 +20,13 @@ public class CursorScript : MonoBehaviour
     private void OnDisable()
     {
         CursorReset();
-        UIScript.I.panelInvenInfo.SetActive(false);
-        UIScript.I.texttext.text = "";
+
+        if (UIScript.I.panelInvenInfo.activeInHierarchy)
+        {
+            UIScript.I.panelInvenInfo.SetActive(false);
+            UIScript.I.listAssists.RemoveAt(UIScript.I.listAssists.Count - 1);
+        }
+        
     }
 
     private void Update()
@@ -41,7 +46,7 @@ public class CursorScript : MonoBehaviour
             {
                 pick = null;
                 UIScript.I.panelInvenInfo.SetActive(false);
-                UIScript.I.texttext.text = "";
+                UIScript.I.listAssists.RemoveAt(UIScript.I.listAssists.Count - 1);
             }
             SoundManager.I.PlayEffect("EFFECT/InvenClick");
         }
@@ -65,6 +70,7 @@ public class CursorScript : MonoBehaviour
         {
             pick.GetComponent<EquipScript>().RemoveThis();
             pick = null;
+            UIScript.I.panelInvenInfo.SetActive(false);
         }
 
         sr.color = pick ? new Color32(255, 255, 0, 255) : new Color32(255, 255, 255, 255);
@@ -125,6 +131,6 @@ public class CursorScript : MonoBehaviour
         UIScript.I.textPrice.text = "x " + pickEquip.price;
         UIScript.I.textEffect.text = pickEquip.effect;
 
-        UIScript.I.texttext.text = "'C'/'V' : 스킬 등록, 'R' : 장비 제거";
+        UIScript.I.listAssists.Add("'C'/'V' : 스킬 등록, 'R' : 장비 제거");
     }
 }

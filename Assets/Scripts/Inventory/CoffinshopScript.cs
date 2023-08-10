@@ -69,7 +69,7 @@ public class CoffinshopScript : MonoBehaviour
         if (collision.CompareTag("Punch") && !GameController.inShop)
         {
             UIScript.I.panelShop.SetActive(true);
-            UIScript.I.texttext.text = "'ESC' : 상점 닫기";
+            UIScript.I.listAssists.Add("'ESC' : 상점 닫기, 'R' : 목록 새로고침 (2코인)");
             GameController.inShop = true;
 
             SoundManager.I.PlayEffect("EFFECT/ShopOpen");
@@ -78,6 +78,7 @@ public class CoffinshopScript : MonoBehaviour
 
     IEnumerator CloseShop()
     {
+        UIScript.I.listAssists.RemoveAt(UIScript.I.listAssists.Count - 1);
         InventoryScript.I.CheckAndEffect();
 
         UIScript.I.panelShop.SetActive(false);
