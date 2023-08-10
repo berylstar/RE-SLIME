@@ -71,6 +71,7 @@ public class CursorScript : MonoBehaviour
             pick.GetComponent<EquipScript>().RemoveThis();
             pick = null;
             UIScript.I.panelInvenInfo.SetActive(false);
+            UIScript.I.stackAssists.Pop();
         }
 
         sr.color = pick ? new Color32(255, 255, 0, 255) : new Color32(255, 255, 255, 255);

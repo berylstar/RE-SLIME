@@ -18,7 +18,7 @@ public class StorySceneScript : MonoBehaviour
         if (GameController.floor == 100)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (!textSkip.activeInHierarchy)
                 textSkip.SetActive(true);

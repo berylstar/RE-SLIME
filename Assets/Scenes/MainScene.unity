@@ -320,7 +320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9237265
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9129,7 +9129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &708608421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9406,8 +9406,6 @@ MonoBehaviour:
   textPlayerDP: {fileID: 387947428}
   textPlayerSpeed: {fileID: 1211925630}
   textAssist: {fileID: 668498726}
-  listAssists:
-  - 
   panelDie: {fileID: 1495907167}
   textDie: {fileID: 638513434}
   textBackTo: {fileID: 2009614506}
