@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BossKingGhost : MonsterScript
 {
-    private Color32 colorO = new Color32(255, 255, 255, 255);
-    private Color32 colorZ = new Color32(255, 255, 255, 0);
-
     protected override void Start()
     {
         base.Start();
@@ -27,12 +24,12 @@ public class BossKingGhost : MonsterScript
         while (isAlive)
         {
             yield return GameController.delay_3s;
-            sr.color = colorZ;
+            sr.color = Color.clear;
             tag = "Untagged";
             Teleport();
 
             yield return GameController.delay_3s;
-            sr.color = colorO;
+            sr.color = Color.white;
             tag = "Monster";
         }
             

@@ -304,7 +304,7 @@ public class BoardManager : MonoBehaviour
 
         LayoutStair(floor);                                             // 4. 계단 위치 설정 + 계단 근처 위치 제외
 
-        SetSculptures(3, 9);                                            // 5. 바닥 생성
+        SetSculptures(6, 13);                                           // 5. 바닥 생성
 
         SetMonsters(floor);                                             // 6. 몬스터 생성
 

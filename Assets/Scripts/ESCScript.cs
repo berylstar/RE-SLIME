@@ -35,7 +35,12 @@ public class ESCScript : MonoBehaviour
             ButtonClick();
 
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ActivePanel(0);
+            menuIndex = 0;
             UIScript.I.ToggleESCPanel();
+        }
+            
     }
 
     public void ButtonClick()
@@ -44,6 +49,8 @@ public class ESCScript : MonoBehaviour
         {
             if (pickIndex == 0)
             {
+                ActivePanel(0);
+                menuIndex = 0;
                 UIScript.I.ToggleESCPanel();
             }
             else if (pickIndex == 1)

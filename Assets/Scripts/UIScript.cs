@@ -11,7 +11,8 @@ public class UIScript : MonoBehaviour
     [Header("PanelStatus")]
     public Text textFloor;
     public Text textLife, textCoin;
-    public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, texttext;
+    public Text textPlayerHP, textPlayerAP, textPlayerDP, textPlayerSpeed, textAssist;
+    public Stack<string> stackAssists = new Stack<string>();
 
     [Header("PanelDie")]
     public GameObject panelDie;
@@ -65,6 +66,11 @@ public class UIScript : MonoBehaviour
         textPlayerAP.text = GameController.playerAP.ToString();
         textPlayerDP.text = GameController.playerDP.ToString();
         textPlayerSpeed.text = GameController.playerSpeed.ToString();
+
+        if (stackAssists.Count > 0)
+            textAssist.text = stackAssists.Peek();
+        else
+            textAssist.text = "";
     }
 
     public void ToggleESCPanel()
@@ -94,8 +100,6 @@ public class UIScript : MonoBehaviour
 
     public void ShowDialogue(Sprite character, string who, string talk)
     {
-        texttext.text = "'C':¥Î»≠ Ω∫≈µ";
-
         GameController.inDiaglogue = true;
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
@@ -120,7 +124,6 @@ public class UIScript : MonoBehaviour
 
     public void EndDialogue()
     {
-        //texttext.text = "";
         GameController.inDiaglogue = false;
         panelDialogue.SetActive(false);
     }
@@ -132,10 +135,10 @@ public class UIScript : MonoBehaviour
 
     IEnumerator TextBlinkCo(string message)
     {
-        texttext.text = message;
+        stackAssists.Push(message);
 
         yield return GameController.delay_3s;
 
-        texttext.text = "";
+        stackAssists.Pop();
     }
 }

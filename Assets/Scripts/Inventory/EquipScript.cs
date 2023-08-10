@@ -45,6 +45,22 @@ public class EquipScript : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Equip"))
+        {
+            InventoryScript.I.listOverlap.Add(number);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Equip"))
+        {
+            InventoryScript.I.listOverlap.Remove(number);
+        }
+    }
+
     private List<EquipScript> ReturnGrade()
     {
         if (grade == EquipGrade.NORMAL)
@@ -60,7 +76,6 @@ public class EquipScript : MonoBehaviour
     public void GetThis()
     {
         transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
-        UpdateIC(1);
 
         InventoryScript.I.GottenEquips.Add(this);
         ReturnGrade().Remove(this);
@@ -70,8 +85,6 @@ public class EquipScript : MonoBehaviour
 
     public void RemoveThis()
     {
-        UpdateIC(-1);
-
         InventoryScript.I.GottenEquips.Remove(this);
         ReturnGrade().Add(this);
 
@@ -92,15 +105,6 @@ public class EquipScript : MonoBehaviour
         SoundManager.I.PlayEffect("EFFECT/EquipRemove");
     }
 
-    // invenchecker의 값 변경함으로써 겹침 확인
-    private void UpdateIC(int v)
-    {
-        for (int i = 0; i < posIndex.Count; i++)
-        {
-            InventoryScript.I.UpdateInvenChecker(posIndex[i], v);
-        }
-    }
-
     // 인벤토리 인덱스를 벗어나지 않게 설정
     public bool EquipMove(int m)
     {
@@ -111,16 +115,10 @@ public class EquipScript : MonoBehaviour
                 return false;
         }
 
-        // 이동하기 전 인덱스의 invenchecker 값 감소
-        UpdateIC(-1);
-
         for (int i = 0; i < posIndex.Count; i++)
         {
             posIndex[i] += m;
         }
-
-        // 이동 후 인덱스의 invenchecker 값 증가
-        UpdateIC(1);
 
         transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
         return true;
@@ -152,7 +150,7 @@ public class EquipScript : MonoBehaviour
         }
 
         inCoolTime = false;
-        sr.color = new Color32(255, 255, 255, 255);
+        sr.color = Color.white;
     }
 
     public Sprite ReturnSprite()
@@ -184,7 +182,6 @@ public class EquipScript : MonoBehaviour
     {
         SetPos(poses);
         transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
-        UpdateIC(1);
 
         InventoryScript.I.GottenEquips.Add(this);
         ReturnGrade().Remove(this);

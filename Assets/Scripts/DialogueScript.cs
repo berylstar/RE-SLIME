@@ -67,6 +67,7 @@ public class DialogueScript : MonoBehaviour
     // 처음 인벤토리 열었을 때도 실행 되게 하기 위해
     public void StartDialogue(DialogueType tp)
     {
+        UIScript.I.stackAssists.Push("'C':대화 스킵");
         SetDialogue(tp);
         index = start;
         GameController.nowDialogue = this;
@@ -117,7 +118,7 @@ public class DialogueScript : MonoBehaviour
         if (index >= end)
         {
             StartCoroutine(CloseTutorial());
-            UIScript.I.texttext.text = "";
+            UIScript.I.stackAssists.Pop();
 
             if (type == DialogueType.KINGSLIME)
             {
@@ -133,7 +134,7 @@ public class DialogueScript : MonoBehaviour
                 {
                     GameController.tutorial[1] = true;
                     StairScript.I.Open();
-                    UIScript.I.texttext.text = "'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택";
+                    UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
                 }
             }
             else if (type == DialogueType.DEMON)

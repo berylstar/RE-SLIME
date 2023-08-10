@@ -7,7 +7,6 @@ public class BossDemon : MonsterScript
     public GameObject[] lavas;
     public GameObject crown;
 
-    private Color32 colorO = new Color32(255, 255, 255, 255);
     private Color32 colorT = new Color32(255, 255, 255, 50);
 
     protected override void Start()
@@ -102,7 +101,7 @@ public class BossDemon : MonsterScript
 
         yield return new WaitForSeconds(5f);
 
-        sr.color = colorO;
+        sr.color = Color.white;
     }
 
     private void SpawnMonster()
