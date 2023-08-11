@@ -5,10 +5,11 @@
 
 
  # 👉 [게임 다운로드](https://drive.google.com/drive/folders/1GlMkwE-vH56ZygiUaKQ44f1GGHqLGWK5?usp=sharing) (v23.08.10)
-- 파일 압축 해제 후 exe 파일로 실행
+- 파일 압축 해제 후 'RE-SLIME.exe' 파일로 실행하시면 됩니다.
 
 # 👉 [게임 피드백](https://docs.google.com/forms/d/1rpwRQ28UtLBdLxTIu_FuOAB2LlZWLX3MlIbZxzw4j6w/edit)
 - 게임 플레이와 피드백은 저를 춤추게 합니다.
+- 뉴비 개발자라 버그나, 편의사항에서 많이 부족한 점이 있지만 수정하려고 노력중입니다. 마음껏 피드백 해주세요 !
 
 ## 장비 시스템
 - 해골 상점에는 여러가지 다양한 장비가 기다리고 있습니다.
