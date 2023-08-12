@@ -4,7 +4,7 @@
  <img src="./title.png" width="400" height="225">
 
 
- # 👉 [게임 다운로드](https://drive.google.com/drive/folders/1GlMkwE-vH56ZygiUaKQ44f1GGHqLGWK5?usp=sharing) (v23.08.10)
+ # 👉 [게임 다운로드](https://drive.google.com/drive/folders/1GlMkwE-vH56ZygiUaKQ44f1GGHqLGWK5?usp=sharing) (v23.08.12)
 - 파일 압축 해제 후 'RE-SLIME.exe' 파일로 실행하시면 됩니다.
 
 # 👉 [게임 피드백](https://docs.google.com/forms/d/1rpwRQ28UtLBdLxTIu_FuOAB2LlZWLX3MlIbZxzw4j6w/edit)
