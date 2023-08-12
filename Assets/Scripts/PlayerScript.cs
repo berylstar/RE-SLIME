@@ -73,6 +73,8 @@ public class PlayerScript : MovingObject
         {
             StartCoroutine(PlayerDie());
         }
+
+        // transform.position = new Vector3(transform.position.x, transform.position.y, -1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -113,7 +115,7 @@ public class PlayerScript : MovingObject
     {
         while (isAlive)
         {
-            if (!GameController.Pause(10))
+            if (!GameController.Pause(1))
             {
                 GameController.ChangeHP(-1);
             }

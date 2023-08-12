@@ -3354,9 +3354,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 715514219}
-        m_TargetAssemblyTypeName: BoardManager, Assembly-CSharp
-        m_MethodName: NextFloor
+      - m_Target: {fileID: 715514220}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: COINTEST
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
