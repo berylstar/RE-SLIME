@@ -95,8 +95,6 @@ public class DataManager : MonoBehaviour
         newDATA.tutorial = GameController.tutorial;
 
         File.WriteAllText(path + slotNumber.ToString() + Application.version, Encrypt(JsonUtility.ToJson(newDATA), privateKey));
-
-        // UIScript.I.TextBlink("ΩΩ∑‘ " + slotNumber + " ¿˙¿Â !");
     }
 
     public void LoadData(int slot)

@@ -59,8 +59,8 @@ public class GameController : MonoBehaviour
     public static int coin = 0;
     public static int probCoin = 15;
     public static bool RedCoin = false;
-    public static int potionEff = 10;
     public static int probPotion = 20;
+    public static int potionEff = 10;    
 
     // EQUIPS
     public static List<string> myEquips = new List<string>();
@@ -135,8 +135,8 @@ public class GameController : MonoBehaviour
 
         probCoin = 15;
         RedCoin = false;
-        probPotion = 15;
-        potionEff = 20;
+        probPotion = 20;
+        potionEff = 10;
 
         effBattery = false;
         effcrescent = false;
@@ -155,5 +155,10 @@ public class GameController : MonoBehaviour
         bossCut = false;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
+    }
+
+    public void COINTEST()
+    {
+        coin += 1;
     }
 }
