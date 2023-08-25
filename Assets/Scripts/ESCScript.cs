@@ -23,7 +23,7 @@ public class ESCScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.esc)
+        if (GameController.Pause(PauseType.ESC))
             return;
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetIndex(Mathf.Min(pickIndex + 1, mmi[menuIndex]));
@@ -38,7 +38,7 @@ public class ESCScript : MonoBehaviour
         {
             ActivePanel(0);
             menuIndex = 0;
-            UIScript.I.ToggleESCPanel();
+            UIScript.I.ExitESC();
         }
             
     }
@@ -51,7 +51,7 @@ public class ESCScript : MonoBehaviour
             {
                 ActivePanel(0);
                 menuIndex = 0;
-                UIScript.I.ToggleESCPanel();
+                UIScript.I.ExitESC();
             }
             else if (pickIndex == 1)
             {
@@ -95,7 +95,7 @@ public class ESCScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
-                UIScript.I.ToggleESCPanel();
+                UIScript.I.ExitESC();
                 SoundManager.I.PlayBGM("BGM/Title");
                 GameController.Restart();
                 SceneManager.LoadScene("TitleScene");

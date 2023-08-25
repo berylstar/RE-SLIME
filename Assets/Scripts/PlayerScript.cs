@@ -31,7 +31,12 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (!isAlive || GameController.Pause(5))
+        if (GameController.Pause(PauseType.NORMAL))
+        {
+            return;
+        }
+
+        if (!isAlive)
             return;
 
         // Input : 방향키 = 플레이어 이동
@@ -64,10 +69,14 @@ public class PlayerScript : MovingObject
             GameController.skillV.Skill();
         }
 
-        // Input : I = 인벤토리 -> EquipScript에 구현되어 있음
+        // Input : I = 인벤토리
+        if (Input.GetKeyDown(KeyCode.I) && GameController.tutorial[0])
+        {
+            InventoryScript.I.OpenInventory();
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            UIScript.I.ToggleESCPanel();
+            UIScript.I.EnterESC();
 
         if (GameController.playerHP <= 0 && !EquipCresent())
         {
@@ -115,10 +124,8 @@ public class PlayerScript : MovingObject
     {
         while (isAlive)
         {
-            if (!GameController.Pause(1))
-            {
+            if (GameController.Pause(PauseType.ESC))
                 GameController.ChangeHP(-1);
-            }
 
             GameController.inTime += 1;
             yield return GameController.delay_1s;

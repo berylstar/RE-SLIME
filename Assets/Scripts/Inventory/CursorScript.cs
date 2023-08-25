@@ -31,7 +31,7 @@ public class CursorScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(1))
+        if (GameController.Pause(PauseType.INVEN))
             return;
 
         // Input : 스페이스 바 = 장비 선택/해제

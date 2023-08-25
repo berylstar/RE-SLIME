@@ -71,14 +71,23 @@ public class UIScript : MonoBehaviour
             textAssist.text = stackAssists.Peek();
         else
             textAssist.text = "";
+
+        print(GameController.pause.Peek());
     }
 
-    public void ToggleESCPanel()
+    public void EnterESC()
     {
-        GameController.esc = !GameController.esc;
-        panelESC.SetActive(GameController.esc);
-        Time.timeScale = (GameController.esc) ? 0 : 1;
+        GameController.pause.Push(PauseType.ESC);
+        panelESC.SetActive(true);
+        Time.timeScale = 0;
+        SoundManager.I.PauseBGM();
+    }
 
+    public void ExitESC()
+    {
+        GameController.pause.Pop();
+        panelESC.SetActive(false);
+        Time.timeScale = 1;
         SoundManager.I.PauseBGM();
     }
 
@@ -100,7 +109,9 @@ public class UIScript : MonoBehaviour
 
     public void ShowDialogue(Sprite character, string who, string talk)
     {
-        GameController.inDiaglogue = true;
+        if (GameController.Pause(PauseType.DIALOGUE))
+            GameController.pause.Push(PauseType.DIALOGUE);
+
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
         textTalker.text = who;
@@ -124,7 +135,7 @@ public class UIScript : MonoBehaviour
 
     public void EndDialogue()
     {
-        GameController.inDiaglogue = false;
+        GameController.pause.Pop();
         panelDialogue.SetActive(false);
     }
 

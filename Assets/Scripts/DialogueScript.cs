@@ -36,7 +36,7 @@ public class DialogueScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.inDiaglogue || GameController.Pause(0))
+        if (GameController.Pause(PauseType.DIALOGUE))
             return;
 
         // 지금 대화하는게 내가 아니라면 리턴
