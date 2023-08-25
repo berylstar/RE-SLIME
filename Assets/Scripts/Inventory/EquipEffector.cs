@@ -183,7 +183,7 @@ public class EquipEffector : MonoBehaviour
             GameController.floor = 0;
 
             while (GameController.speedStack.Count > 0)
-                GameController.SpeedStackOut();
+                GameController.ChangeSpeed(GameController.speedStack.Pop());
 
             SceneManager.LoadScene("MainScene");
         }

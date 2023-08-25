@@ -34,20 +34,20 @@ public class CoffinshopScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (si == 0)
-                StartCoroutine(CloseShop());
+                StartCoroutine(CloseShopCo());
             else
                 BuyEquip(si);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            StartCoroutine(CloseShop());
+            StartCoroutine(CloseShopCo());
 
         if (Input.GetKeyDown(KeyCode.I))
             InventoryScript.I.OpenInventory();
 
         // 상점 키보드 입력
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) MovePick(-1);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) MovePick(1);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) SetPick(Mathf.Min(3, Mathf.Max(0, si - 1)));
+        if (Input.GetKeyDown(KeyCode.RightArrow)) SetPick(Mathf.Min(3, Mathf.Max(0, si + 1)));
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetPick(0);
         if (Input.GetKeyDown(KeyCode.UpArrow) && si == 0) SetPick(1);
@@ -59,6 +59,10 @@ public class CoffinshopScript : MonoBehaviour
                 GameController.coin -= 2;
                 SoundManager.I.PlayEffect("EFFECT/ShopReroll");
                 PutEquipsOnStand();
+            }
+            else
+            {
+                SoundManager.I.PlayEffect("EFFECT/Error");
             }
         }
     }
@@ -74,7 +78,8 @@ public class CoffinshopScript : MonoBehaviour
         }
     }
 
-    IEnumerator CloseShop()
+    // 상점 닫기 코루틴
+    IEnumerator CloseShopCo()
     {
         if (!InventoryScript.I.CheckOverlap())
         {
@@ -92,30 +97,14 @@ public class CoffinshopScript : MonoBehaviour
         }        
     }
 
-    private void MovePick(int v)
-    {
-        si += v;
-
-        si = Mathf.Min(3, Mathf.Max(0, si));
-
-        for (int i = 0; i < 4; i++)
-        {
-            picks[i].SetActive(false);
-        }
-
-        picks[si].SetActive(true);
-        SoundManager.I.PlayEffect("EFFECT/UIMove");
-
-        ShowEquipInfo(si);
-    }
-
+    // UI 화살표 설정
     private void SetPick(int v)
     {
         si = v;
 
-        for (int i = 0; i < 4; i++)
+        foreach (GameObject pick in picks)
         {
-            picks[i].SetActive(false);
+            pick.SetActive(false);
         }
 
         picks[si].SetActive(true);
@@ -159,23 +148,22 @@ public class CoffinshopScript : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            int iGrade = Random.Range(1, 101);
+            int iGrade = Random.Range(0, 101);
 
             if (iGrade <= GameController.ShopGrade[0] && i <= InventoryScript.I.equipsRare.Count)
             {
                 onStands[i] = InventoryScript.I.equipsRare[i];
-                DisplayEquip(i, onStands[i].ReturnSprite());
             }
             else if (iGrade >= 100 - GameController.ShopGrade[1] && i <= InventoryScript.I.equipsUnique.Count)
             {
                 onStands[i] = InventoryScript.I.equipsUnique[i];
-                DisplayEquip(i, onStands[i].ReturnSprite());
             }
             else
             {
                 onStands[i] = InventoryScript.I.equipsNormal[i];
-                DisplayEquip(i, onStands[i].ReturnSprite());
             }
+
+            DisplayEquip(i, onStands[i].ReturnSprite());
         }
 
         ShowEquipInfo(si);
@@ -185,7 +173,10 @@ public class CoffinshopScript : MonoBehaviour
     private void BuyEquip(int i)
     {
         if (onStands[i-1] == null || onStands[i - 1].price > GameController.coin)
+        {
+            SoundManager.I.PlayEffect("EFFECT/Error");
             return;
+        }
 
         GameController.coin -= onStands[i-1].price;
         onStands[i-1].GetThis();

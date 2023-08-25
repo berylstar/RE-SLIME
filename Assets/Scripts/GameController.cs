@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
     public static int playerAP = 10;
     public static int playerDP = 0;
     public static float playerSpeed = 20f;
-    public static List<float> speedStack = new List<float>() { };
+    public static Stack<float> speedStack = new Stack<float>() { };
     public static float playerTimeDamage = 1f;
     public static EquipScript skillC = null;
     public static EquipScript skillV = null;
@@ -104,22 +104,10 @@ public class GameController : MonoBehaviour
     }
 
     // 속도 변경 관련 함수
-    public static void ChangeSpeed(int val)
+    public static void ChangeSpeed(float val)
     {
         playerSpeed += val;
-        PlayerScript.I.ApplyMoveSpeed();
-    }
-
-    public static void SpeedStackIn(float speed)
-    {
-        speedStack.Add(speed);
-    }
-
-    public static void SpeedStackOut()
-    {
-        int idx = speedStack.Count - 1;
-        playerSpeed = speedStack[idx];
-        speedStack.RemoveAt(idx);
+        PlayerScript.I.ChangeSpeed();
     }
 
     // 게임 재시작

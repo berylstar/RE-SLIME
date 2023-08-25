@@ -26,7 +26,7 @@ public class PlayerScript : MovingObject
     {
         base.Start();
 
-        ApplyMoveSpeed();
+        moveSpeed = GameController.playerSpeed;
     }
 
     private void Update()
@@ -147,7 +147,7 @@ public class PlayerScript : MovingObject
     }
 
     // 변경된 플레이어 이동속도 적용 함수
-    public void ApplyMoveSpeed()
+    public void ChangeSpeed()
     {
         moveSpeed = GameController.playerSpeed;
     }
@@ -220,7 +220,7 @@ public class PlayerScript : MovingObject
             GameController.floor = 0;
 
             while (GameController.speedStack.Count > 0)
-                GameController.SpeedStackOut();
+                GameController.ChangeSpeed(GameController.speedStack.Pop());
 
             SceneManager.LoadScene("MainScene");
             DataManager.I.SaveData();

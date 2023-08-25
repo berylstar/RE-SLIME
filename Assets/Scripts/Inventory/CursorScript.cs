@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CursorScript : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    [HideInInspector] public GameObject pick = null;
+    [HideInInspector] public GameObject on = null;
 
+    private SpriteRenderer sr;
     private int posIndex = 0;
-    public GameObject pick = null;
-    public GameObject on = null;
 
     private void Start()
     {
