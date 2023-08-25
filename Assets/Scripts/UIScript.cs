@@ -71,8 +71,6 @@ public class UIScript : MonoBehaviour
             textAssist.text = stackAssists.Peek();
         else
             textAssist.text = "";
-
-        print(GameController.pause.Peek());
     }
 
     public void EnterESC()

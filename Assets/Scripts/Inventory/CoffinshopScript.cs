@@ -69,9 +69,6 @@ public class CoffinshopScript : MonoBehaviour
     {
         if (collision.CompareTag("Punch"))
         {
-            //if (GameController.Pause(PauseType.SHOP))
-            //    return;
-
             UIScript.I.panelShop.SetActive(true);
             UIScript.I.stackAssists.Push("'ESC' : 상점 닫기, 'R' : 목록 새로고침 (2코인)");
             GameController.pause.Push(PauseType.SHOP);
@@ -82,13 +79,19 @@ public class CoffinshopScript : MonoBehaviour
 
     IEnumerator CloseShop()
     {
-        UIScript.I.stackAssists.Pop();
-        InventoryScript.I.CheckAndEffect();
+        if (!InventoryScript.I.CheckOverlap())
+        {
+            UIScript.I.stackAssists.Pop();
 
-        UIScript.I.panelShop.SetActive(false);
-        SoundManager.I.PlayEffect("EFFECT/ShopClose");
-        yield return GameController.delay_01s;
-        GameController.pause.Pop();
+            UIScript.I.panelShop.SetActive(false);
+            SoundManager.I.PlayEffect("EFFECT/ShopClose");
+            yield return GameController.delay_01s;
+            GameController.pause.Pop();
+        }
+        else
+        {
+            InventoryScript.I.OpenInventory();
+        }        
     }
 
     private void MovePick(int v)

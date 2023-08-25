@@ -39,6 +39,9 @@ public class InventoryScript : MonoBehaviour
 
     public void SAVE()
     {
+        if (listOverlap.Count > 0)
+            return;
+
         for (int i = 0; i < GottenEquips.Count; i++)
         {
             string strr = GottenEquips[i].number.ToString();
@@ -68,16 +71,16 @@ public class InventoryScript : MonoBehaviour
             all[int.Parse(ints[0])-1].LoadThis(poses);
         }
 
-        CheckAndEffect();
+        if (listOverlap.Count > 0)
+            OpenInventory();
+        else
+            EquipEffect();
+        
     }
 
     private void Update()
     {
         if (GameController.Pause(PauseType.INVEN))
-            return;
-
-        // 장비가 겹쳐있으면 인벤토리가 닫히지 않음
-        if (CheckOverlap())
             return;
 
         if (!isOpened)
@@ -88,8 +91,10 @@ public class InventoryScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
         {
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            CloseInventory();
+            if (CheckOverlap())
+                SoundManager.I.PlayEffect("EFFECT/Error");
+            else
+                CloseInventory();
         }
     }
 
@@ -113,22 +118,8 @@ public class InventoryScript : MonoBehaviour
     {
         cursor.SetActive(false);
 
-        UIScript.I.stackAssists.Pop();
-        
-
-        if (!GameController.tutorial[1])
-        {
-            BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
-        }
-
         if (!CheckOverlap())
-        {
-            EquipEffect();
-        }
-        else
-        {
-            SoundManager.I.PlayEffect("EFFECT/Error");
-        }
+            EquipEffect();            
 
         SoundManager.I.PlayEffect("EFFECT/InvenOpen");
 
@@ -139,6 +130,7 @@ public class InventoryScript : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         isOpened = false;
+        UIScript.I.stackAssists.Pop();
         GameController.pause.Pop();
     }
 
@@ -206,7 +198,8 @@ public class InventoryScript : MonoBehaviour
         SoundManager.I.PlayEffect("EFFECT/EquipRegist");
     }
 
-    private bool CheckOverlap()
+    // 인벤토리 겹침 체크
+    public bool CheckOverlap()
     {
         objectOverlapped.SetActive(listOverlap.Count > 0);
 
@@ -221,14 +214,6 @@ public class InventoryScript : MonoBehaviour
             if (!GottenEquips[i].isEffected)
                 GottenEquips[i].ApplyEffect();
         }
-    }
-
-    public void CheckAndEffect()
-    {
-        if (!CheckOverlap())
-            EquipEffect();
-        else
-            OpenInventory();
     }
 
     // 상점 판매를 위해 장비 리스트 셔플 => CoffinShopScript에서 사용
