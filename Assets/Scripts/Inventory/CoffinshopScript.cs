@@ -21,32 +21,33 @@ public class CoffinshopScript : MonoBehaviour
         PutEquipsOnStand();
     }
 
-    private void OnEnable()
-    {
-        GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
-    }
+    //private void OnEnable()
+    //{
+    //    GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+    //}
 
     private void Update()
     {
-        if (!GameController.inShop || GameController.Pause(2))
+        if (GameController.Pause(PauseType.SHOP))
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (si == 0)
-            {
-                StartCoroutine(CloseShop());
-            }
+                StartCoroutine(CloseShopCo());
             else
                 BuyEquip(si);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            StartCoroutine(CloseShop());
+            StartCoroutine(CloseShopCo());
+
+        if (Input.GetKeyDown(KeyCode.I))
+            InventoryScript.I.OpenInventory();
 
         // 상점 키보드 입력
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) MovePick(-1);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) MovePick(1);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) SetPick(Mathf.Min(3, Mathf.Max(0, si - 1)));
+        if (Input.GetKeyDown(KeyCode.RightArrow)) SetPick(Mathf.Min(3, Mathf.Max(0, si + 1)));
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetPick(0);
         if (Input.GetKeyDown(KeyCode.UpArrow) && si == 0) SetPick(1);
@@ -59,60 +60,57 @@ public class CoffinshopScript : MonoBehaviour
                 SoundManager.I.PlayEffect("EFFECT/ShopReroll");
                 PutEquipsOnStand();
             }
+            else
+            {
+                SoundManager.I.PlayEffect("EFFECT/Error");
+            }
         }
-
-        ShowEquipInfo(si);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch") && !GameController.inShop)
+        if (collision.CompareTag("Punch") && GameController.tutorial[0])
         {
             UIScript.I.panelShop.SetActive(true);
             UIScript.I.stackAssists.Push("'ESC' : 상점 닫기, 'R' : 목록 새로고침 (2코인)");
-            GameController.inShop = true;
-
+            GameController.pause.Push(PauseType.SHOP);
             SoundManager.I.PlayEffect("EFFECT/ShopOpen");
         }
     }
 
-    IEnumerator CloseShop()
+    // 상점 닫기 코루틴
+    IEnumerator CloseShopCo()
     {
-        UIScript.I.stackAssists.Pop();
-        InventoryScript.I.CheckAndEffect();
-
-        UIScript.I.panelShop.SetActive(false);
-        SoundManager.I.PlayEffect("EFFECT/ShopClose");
-        yield return GameController.delay_01s;
-        GameController.inShop = false;
-    }
-
-    private void MovePick(int v)
-    {
-        si += v;
-
-        si = Mathf.Min(3, Mathf.Max(0, si));
-
-        for (int i = 0; i < 4; i++)
+        if (!InventoryScript.I.CheckOverlap())
         {
-            picks[i].SetActive(false);
-        }
+            UIScript.I.panelShop.SetActive(false);
+            SoundManager.I.PlayEffect("EFFECT/ShopClose");
 
-        picks[si].SetActive(true);
-        SoundManager.I.PlayEffect("EFFECT/UIMove");
+            yield return GameController.delay_frame;
+
+            UIScript.I.stackAssists.Pop();
+            GameController.pause.Pop();
+        }
+        else
+        {
+            InventoryScript.I.OpenInventory();
+        }        
     }
 
+    // UI 화살표 설정
     private void SetPick(int v)
     {
         si = v;
 
-        for (int i = 0; i < 4; i++)
+        foreach (GameObject pick in picks)
         {
-            picks[i].SetActive(false);
+            pick.SetActive(false);
         }
 
         picks[si].SetActive(true);
         SoundManager.I.PlayEffect("EFFECT/UIMove");
+
+        ShowEquipInfo(si);
     }
 
     // 가판대 이미지 업데이트
@@ -150,31 +148,35 @@ public class CoffinshopScript : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            int iGrade = Random.Range(1, 101);
+            int iGrade = Random.Range(0, 101);
 
             if (iGrade <= GameController.ShopGrade[0] && i <= InventoryScript.I.equipsRare.Count)
             {
                 onStands[i] = InventoryScript.I.equipsRare[i];
-                DisplayEquip(i, onStands[i].ReturnSprite());
             }
             else if (iGrade >= 100 - GameController.ShopGrade[1] && i <= InventoryScript.I.equipsUnique.Count)
             {
                 onStands[i] = InventoryScript.I.equipsUnique[i];
-                DisplayEquip(i, onStands[i].ReturnSprite());
             }
             else
             {
                 onStands[i] = InventoryScript.I.equipsNormal[i];
-                DisplayEquip(i, onStands[i].ReturnSprite());
             }
+
+            DisplayEquip(i, onStands[i].ReturnSprite());
         }
+
+        ShowEquipInfo(si);
     }
 
     // 가판대에서 장비 구매
     private void BuyEquip(int i)
     {
         if (onStands[i-1] == null || onStands[i - 1].price > GameController.coin)
+        {
+            SoundManager.I.PlayEffect("EFFECT/Error");
             return;
+        }
 
         GameController.coin -= onStands[i-1].price;
         onStands[i-1].GetThis();
@@ -183,5 +185,6 @@ public class CoffinshopScript : MonoBehaviour
         DisplayEquip(i-1, imgSoldout);
 
         SoundManager.I.PlayEffect("EFFECT/ShopBuy");
+        ShowEquipInfo(si);
     }
 }

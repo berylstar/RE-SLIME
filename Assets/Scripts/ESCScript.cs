@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using UnityEngine.SceneManagement;
 
 public class ESCScript : MonoBehaviour
@@ -23,7 +22,7 @@ public class ESCScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.esc)
+        if (GameController.Pause(PauseType.ESC))
             return;
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) SetIndex(Mathf.Min(pickIndex + 1, mmi[menuIndex]));
@@ -38,9 +37,19 @@ public class ESCScript : MonoBehaviour
         {
             ActivePanel(0);
             menuIndex = 0;
-            UIScript.I.ToggleESCPanel();
+            StartCoroutine(ExitCo());
         }
-            
+    }
+
+    IEnumerator ExitCo()
+    {
+        Time.timeScale = 1f;
+        SoundManager.I.PauseBGM();
+
+        yield return GameController.delay_frame;
+
+        GameController.pause.Pop();
+        UIScript.I.panelESC.SetActive(false);
     }
 
     public void ButtonClick()
@@ -51,12 +60,12 @@ public class ESCScript : MonoBehaviour
             {
                 ActivePanel(0);
                 menuIndex = 0;
-                UIScript.I.ToggleESCPanel();
+                StartCoroutine(ExitCo());
             }
             else if (pickIndex == 1)
             {
                 textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
-                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 200) + "%";
+                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 100) + "%";
                 ActivePanel(1);
             }
             else
@@ -74,7 +83,7 @@ public class ESCScript : MonoBehaviour
             else if (pickIndex == 1)
             {
                 SoundManager.I.ChangeVolume("EFFECT");
-                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 200) + "%";
+                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 100) + "%";
             }
             else if (pickIndex == 2)
             {
@@ -95,7 +104,8 @@ public class ESCScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
-                UIScript.I.ToggleESCPanel();
+                Time.timeScale = 1f;
+                SoundManager.I.PauseBGM();
                 SoundManager.I.PlayBGM("BGM/Title");
                 GameController.Restart();
                 SceneManager.LoadScene("TitleScene");

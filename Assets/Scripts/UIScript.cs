@@ -73,12 +73,11 @@ public class UIScript : MonoBehaviour
             textAssist.text = "";
     }
 
-    public void ToggleESCPanel()
+    public void EnterESC()
     {
-        GameController.esc = !GameController.esc;
-        panelESC.SetActive(GameController.esc);
-        Time.timeScale = (GameController.esc) ? 0 : 1;
-
+        GameController.pause.Push(PauseType.ESC);
+        panelESC.SetActive(true);
+        Time.timeScale = 0;
         SoundManager.I.PauseBGM();
     }
 
@@ -100,7 +99,6 @@ public class UIScript : MonoBehaviour
 
     public void ShowDialogue(Sprite character, string who, string talk)
     {
-        GameController.inDiaglogue = true;
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
         textTalker.text = who;
@@ -120,12 +118,6 @@ public class UIScript : MonoBehaviour
             yield return textDelay;
         }
         onTexting = false;
-    }
-
-    public void EndDialogue()
-    {
-        GameController.inDiaglogue = false;
-        panelDialogue.SetActive(false);
     }
 
     public void TextBlink(string message)

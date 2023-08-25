@@ -353,7 +353,6 @@ public class BoardManager : MonoBehaviour
     // 보스 잡으면 보상으로 박스 드롭
     public void DropBox(Vector3 pos)
     {
-        GameController.bossCut = true;      // 시간 데미지 잠시 정지
         box.transform.position = new Vector3((int)pos.x, (int)pos.y, 0);
         box.SetActive(true);
     }

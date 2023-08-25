@@ -27,6 +27,16 @@ public class GameData
     public GameData(int slot) { slotNumber = slot; }
 }
 
+public enum PauseType
+{
+    ESC = 0,
+    DIALOGUE = 1,
+    INVEN = 2,
+    SHOP = 3,
+    BOX = 4,
+    NORMAL = 10,
+}
+
 public class GameController : MonoBehaviour
 {
     public static readonly WaitForSeconds delay_3s = new WaitForSeconds(3f);
@@ -34,6 +44,7 @@ public class GameController : MonoBehaviour
     public static readonly WaitForSeconds delay_05s = new WaitForSeconds(0.5f);
     public static readonly WaitForSeconds delay_025s = new WaitForSeconds(0.25f);
     public static readonly WaitForSeconds delay_01s = new WaitForSeconds(0.1f);
+    public static readonly WaitForEndOfFrame delay_frame = new WaitForEndOfFrame();
 
     // STATUS
     public static int floor = 0;
@@ -49,7 +60,7 @@ public class GameController : MonoBehaviour
     public static int playerAP = 10;
     public static int playerDP = 0;
     public static float playerSpeed = 20f;
-    public static List<float> speedStack = new List<float>() { };
+    public static Stack<float> speedStack = new Stack<float>() { };
     public static float playerTimeDamage = 1f;
     public static EquipScript skillC = null;
     public static EquipScript skillV = null;
@@ -72,25 +83,19 @@ public class GameController : MonoBehaviour
     public static bool efftalisman = false;
 
     // GAME SYSYTEM
-    public static bool esc = false;
-    public static bool inDiaglogue = false;
+    public static Stack<PauseType> pause = new Stack<PauseType>() { };
     public static DialogueScript nowDialogue = null;
-    public static bool inInven = false;
-    public static bool inShop = false;
-    public static bool inBox = false;
-    public static bool inRecord = false;
     public static List<bool> tutorial = new List<bool>() { false, false};
-    public static bool bossCut = false;
 
-    public static bool Pause(int i)
+    public static bool Pause(PauseType type)
     {
-        // 우선 순위대로
-        // 0      1              2          3         4        5           6         10
-        // esc -> inDiaglogue -> inInven -> inShop -> inBox -> inRecord -> bossCut / all
-
-        return esc || (inDiaglogue && (i >= 1)) || (inInven && (i >= 2)) || (inShop && (i >= 3)) || (inBox && (i >= 4)) || (inRecord && (i >= 5)) || (bossCut && (i >= 6));
+        if (pause.Count > 0 && pause.Peek() != type)
+            return true;
+        else
+            return false;
     }
 
+    // HP 변동 함수
     public static void ChangeHP(int val)
     {
         if (playerHP + val > playerMaxHP) playerHP = playerMaxHP;
@@ -99,22 +104,10 @@ public class GameController : MonoBehaviour
     }
 
     // 속도 변경 관련 함수
-    public static void ChangeSpeed(int val)
+    public static void ChangeSpeed(float val)
     {
         playerSpeed += val;
-        PlayerScript.I.ApplyMoveSpeed();
-    }
-
-    public static void SpeedStackIn(float speed)
-    {
-        speedStack.Add(speed);
-    }
-
-    public static void SpeedStackOut()
-    {
-        int idx = speedStack.Count - 1;
-        playerSpeed = speedStack[idx];
-        speedStack.RemoveAt(idx);
+        PlayerScript.I.ChangeSpeed();
     }
 
     // 게임 재시작
@@ -145,20 +138,8 @@ public class GameController : MonoBehaviour
         effGlasses = false;
         efftalisman = false;
 
-        esc = false;
-        inDiaglogue = false;
         nowDialogue = null;
-        inInven = false;
-        inShop = false;
-        inBox = false;
-        inRecord = false;
-        bossCut = false;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
-    }
-
-    public void COINTEST()
-    {
-        coin += 1;
     }
 }

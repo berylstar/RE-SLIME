@@ -83,8 +83,7 @@ public class SculptureScript : MonoBehaviour
         {
             if (type == SculptureType.WEB)
             {
-                GameController.SpeedStackOut();
-                PlayerScript.I.ApplyMoveSpeed();
+                GameController.ChangeSpeed(GameController.speedStack.Pop());
             }
         }
     }
@@ -92,14 +91,13 @@ public class SculptureScript : MonoBehaviour
     // 거미줄 효과 코루틴
     IEnumerator WebEffect()
     {
-        GameController.SpeedStackIn(GameController.playerSpeed);
-        GameController.playerSpeed /= 2;
-        PlayerScript.I.ApplyMoveSpeed();
+        GameController.speedStack.Push(-1 * GameController.playerSpeed / 2);
+
+        GameController.ChangeSpeed(GameController.speedStack.Peek());
 
         yield return GameController.delay_3s;
 
-        GameController.SpeedStackOut();
-        PlayerScript.I.ApplyMoveSpeed();
+        GameController.ChangeSpeed(-1 * GameController.speedStack.Pop());
 
         isEffected = false;
     }
@@ -117,6 +115,7 @@ public class SculptureScript : MonoBehaviour
         isEffected = false;
     }
 
+    // 벽 파괴 흔들리는 효과 코루틴
     IEnumerator BreakingWall()
     {
         transform.position = new Vector3(transform.position.x - 0.1f, transform.position.y, 0);

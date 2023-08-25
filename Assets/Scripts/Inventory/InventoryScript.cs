@@ -20,6 +20,8 @@ public class InventoryScript : MonoBehaviour
     public List<int> listOverlap = new List<int>();
     private List<Vector3> equipGrid = new List<Vector3>();
 
+    private bool isOpened = false;
+
     private void Awake()
     {
         // 싱글톤
@@ -37,6 +39,9 @@ public class InventoryScript : MonoBehaviour
 
     public void SAVE()
     {
+        if (listOverlap.Count > 0)
+            return;
+
         for (int i = 0; i < GottenEquips.Count; i++)
         {
             string strr = GottenEquips[i].number.ToString();
@@ -66,36 +71,41 @@ public class InventoryScript : MonoBehaviour
             all[int.Parse(ints[0])-1].LoadThis(poses);
         }
 
-        CheckAndEffect();
+        if (listOverlap.Count > 0)
+            OpenInventory();
+        else
+            EquipEffect();
+        
     }
 
     private void Update()
     {
-        // 장비가 겹쳐있으면 인벤토리가 닫히지 않음
-        if (GameController.inInven && CheckOverlap())
+        if (GameController.Pause(PauseType.INVEN))
             return;
 
-        if (Input.GetKeyDown(KeyCode.I) || (GameController.inInven && Input.GetKeyDown(KeyCode.Escape)))
+        if (!isOpened)
         {
-            if (!GameController.tutorial[0] || GameController.Pause(1))
-                return;
+            isOpened = true;
+            return;
+        }
 
-            EquipEffect();
-            OpenInventory();
+        objectOverlapped.SetActive(listOverlap.Count > 0);
+
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (CheckOverlap())
+                SoundManager.I.PlayEffect("EFFECT/Error");
+            else
+                CloseInventory();
         }
     }
 
-    // 인벤토리 열고 닫는 함수
     public void OpenInventory()
     {
-        GameController.inInven = !GameController.inInven;
+        cursor.SetActive(true);
 
-        cursor.SetActive(GameController.inInven);
-
-        if (GameController.inInven)
-            UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
-        else
-            UIScript.I.stackAssists.Pop();
+        UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
+        GameController.pause.Push(PauseType.INVEN);
 
         if (!GameController.tutorial[1])
         {
@@ -103,6 +113,23 @@ public class InventoryScript : MonoBehaviour
         }
 
         SoundManager.I.PlayEffect("EFFECT/InvenOpen");
+    }
+
+    private void CloseInventory()
+    {
+        cursor.SetActive(false);       
+
+        SoundManager.I.PlayEffect("EFFECT/InvenOpen");
+
+        StartCoroutine(CloseCo());
+    }
+
+    IEnumerator CloseCo()
+    {
+        yield return GameController.delay_frame;
+        isOpened = false;
+        UIScript.I.stackAssists.Pop();
+        GameController.pause.Pop();
     }
 
     // 인벤토리 좌표 초기화
@@ -169,14 +196,16 @@ public class InventoryScript : MonoBehaviour
         SoundManager.I.PlayEffect("EFFECT/EquipRegist");
     }
 
-    private bool CheckOverlap()
+    // 인벤토리 겹침 체크
+    public bool CheckOverlap()
     {
-        objectOverlapped.SetActive((listOverlap.Count > 0));
-
-        if (Input.GetKeyDown(KeyCode.I))
-            SoundManager.I.PlayEffect("EFFECT/Error");
-
-        return (listOverlap.Count > 0);
+        if (listOverlap.Count > 0)
+            return true;
+        else
+        {
+            EquipEffect();
+            return false;
+        }
     }
 
     // 장비 획득 후 겹쳐있지 않다면 장비 효과 발동
@@ -187,14 +216,6 @@ public class InventoryScript : MonoBehaviour
             if (!GottenEquips[i].isEffected)
                 GottenEquips[i].ApplyEffect();
         }
-    }
-
-    public void CheckAndEffect()
-    {
-        if (!CheckOverlap())
-            EquipEffect();
-        else
-            OpenInventory();
     }
 
     // 상점 판매를 위해 장비 리스트 셔플 => CoffinShopScript에서 사용

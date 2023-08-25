@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CursorScript : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    [HideInInspector] public GameObject pick = null;
+    [HideInInspector] public GameObject on = null;
 
+    private SpriteRenderer sr;
     private int posIndex = 0;
-    public GameObject pick = null;
-    public GameObject on = null;
 
     private void Start()
     {
@@ -31,7 +31,7 @@ public class CursorScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(1))
+        if (GameController.Pause(PauseType.INVEN))
             return;
 
         // Input : 스페이스 바 = 장비 선택/해제

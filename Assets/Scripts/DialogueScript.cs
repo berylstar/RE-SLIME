@@ -36,23 +36,23 @@ public class DialogueScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameController.inDiaglogue || GameController.Pause(0))
+        if (GameController.Pause(PauseType.DIALOGUE))
             return;
 
-        // 지금 대화하는게 내가 아니라면 리턴
+        // 지금 대화하는게 나인지 확인
         if (GameController.nowDialogue != this)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space) && !UIScript.I.onTexting)
         {
             index += 1;
-            EndDialogue();
+            NextDialogue();
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
             index = end + 1;
-            EndDialogue();
+            NextDialogue();
         }
     }
 
@@ -68,6 +68,7 @@ public class DialogueScript : MonoBehaviour
     public void StartDialogue(DialogueType tp)
     {
         UIScript.I.stackAssists.Push("'C':대화 스킵");
+        GameController.pause.Push(PauseType.DIALOGUE);
         SetDialogue(tp);
         index = start;
         GameController.nowDialogue = this;
@@ -103,22 +104,22 @@ public class DialogueScript : MonoBehaviour
         }
     }
 
-    // 스페이스바 때문에 바로 NPC와 대화를 막기위한 잠깐의 딜레이
-    IEnumerator CloseTutorial()
+    IEnumerator CloseDialogue()
     {
         GameController.nowDialogue = null;
+        UIScript.I.panelDialogue.SetActive(false);
 
-        yield return GameController.delay_01s;
-
-        UIScript.I.EndDialogue();
+        yield return GameController.delay_frame;
+        
+        UIScript.I.stackAssists.Pop();
+        GameController.pause.Pop();
     }
 
-    private void EndDialogue()
+    private void NextDialogue()
     {
         if (index >= end)
         {
-            StartCoroutine(CloseTutorial());
-            UIScript.I.stackAssists.Pop();
+            StartCoroutine(CloseDialogue());
 
             if (type == DialogueType.KINGSLIME)
             {

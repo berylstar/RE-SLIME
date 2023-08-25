@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("EFFECT")]
     public AudioSource effector;
-    public float effectVolume = 0.5f;
+    public float effectVolume = 1.0f;
 
     private void Awake()
     {
@@ -70,9 +70,9 @@ public class SoundManager : MonoBehaviour
         else if (type == "EFFECT")
         {
             if (effectVolume > 0)
-                effectVolume -= 0.125f;
+                effectVolume -= 0.25f;
             else
-                effectVolume = 0.5f;
+                effectVolume = 1f;
 
             effector.volume = effectVolume;
         }
