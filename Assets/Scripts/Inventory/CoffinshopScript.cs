@@ -61,18 +61,15 @@ public class CoffinshopScript : MonoBehaviour
                 PutEquipsOnStand();
             }
         }
-
-        ShowEquipInfo(si);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch"))
+        if (collision.CompareTag("Punch") && GameController.tutorial[0])
         {
             UIScript.I.panelShop.SetActive(true);
             UIScript.I.stackAssists.Push("'ESC' : 상점 닫기, 'R' : 목록 새로고침 (2코인)");
             GameController.pause.Push(PauseType.SHOP);
-
             SoundManager.I.PlayEffect("EFFECT/ShopOpen");
         }
     }
@@ -81,11 +78,12 @@ public class CoffinshopScript : MonoBehaviour
     {
         if (!InventoryScript.I.CheckOverlap())
         {
-            UIScript.I.stackAssists.Pop();
-
             UIScript.I.panelShop.SetActive(false);
             SoundManager.I.PlayEffect("EFFECT/ShopClose");
-            yield return GameController.delay_01s;
+
+            yield return GameController.delay_frame;
+
+            UIScript.I.stackAssists.Pop();
             GameController.pause.Pop();
         }
         else
@@ -107,6 +105,8 @@ public class CoffinshopScript : MonoBehaviour
 
         picks[si].SetActive(true);
         SoundManager.I.PlayEffect("EFFECT/UIMove");
+
+        ShowEquipInfo(si);
     }
 
     private void SetPick(int v)
@@ -120,6 +120,8 @@ public class CoffinshopScript : MonoBehaviour
 
         picks[si].SetActive(true);
         SoundManager.I.PlayEffect("EFFECT/UIMove");
+
+        ShowEquipInfo(si);
     }
 
     // 가판대 이미지 업데이트
@@ -175,6 +177,8 @@ public class CoffinshopScript : MonoBehaviour
                 DisplayEquip(i, onStands[i].ReturnSprite());
             }
         }
+
+        ShowEquipInfo(si);
     }
 
     // 가판대에서 장비 구매
@@ -190,5 +194,6 @@ public class CoffinshopScript : MonoBehaviour
         DisplayEquip(i-1, imgSoldout);
 
         SoundManager.I.PlayEffect("EFFECT/ShopBuy");
+        ShowEquipInfo(si);
     }
 }

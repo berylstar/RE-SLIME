@@ -89,6 +89,8 @@ public class InventoryScript : MonoBehaviour
             return;
         }
 
+        objectOverlapped.SetActive(listOverlap.Count > 0);
+
         if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (CheckOverlap())
@@ -98,7 +100,6 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
-    // 인벤토리 열고 닫는 함수
     public void OpenInventory()
     {
         cursor.SetActive(true);
@@ -116,10 +117,7 @@ public class InventoryScript : MonoBehaviour
 
     private void CloseInventory()
     {
-        cursor.SetActive(false);
-
-        if (!CheckOverlap())
-            EquipEffect();            
+        cursor.SetActive(false);       
 
         SoundManager.I.PlayEffect("EFFECT/InvenOpen");
 
@@ -128,7 +126,7 @@ public class InventoryScript : MonoBehaviour
 
     IEnumerator CloseCo()
     {
-        yield return new WaitForEndOfFrame();
+        yield return GameController.delay_frame;
         isOpened = false;
         UIScript.I.stackAssists.Pop();
         GameController.pause.Pop();
@@ -201,9 +199,13 @@ public class InventoryScript : MonoBehaviour
     // 인벤토리 겹침 체크
     public bool CheckOverlap()
     {
-        objectOverlapped.SetActive(listOverlap.Count > 0);
-
-        return listOverlap.Count > 0;
+        if (listOverlap.Count > 0)
+            return true;
+        else
+        {
+            EquipEffect();
+            return false;
+        }
     }
 
     // 장비 획득 후 겹쳐있지 않다면 장비 효과 발동

@@ -107,9 +107,6 @@ public class UIScript : MonoBehaviour
 
     public void ShowDialogue(Sprite character, string who, string talk)
     {
-        if (GameController.Pause(PauseType.DIALOGUE))
-            GameController.pause.Push(PauseType.DIALOGUE);
-
         panelDialogue.SetActive(true);
         imageCharacter.sprite = character;
         textTalker.text = who;
@@ -129,12 +126,6 @@ public class UIScript : MonoBehaviour
             yield return textDelay;
         }
         onTexting = false;
-    }
-
-    public void EndDialogue()
-    {
-        GameController.pause.Pop();
-        panelDialogue.SetActive(false);
     }
 
     public void TextBlink(string message)

@@ -7,47 +7,24 @@ public class EquipEffector : MonoBehaviour
 {
     public static EquipEffector I = null;
 
-    private readonly int banana = 25;
-    private readonly int binocular = 2;
-    private readonly int energydrink = 15;
-    private readonly int gloves = 6;
-    private readonly int halfstone = 10;
-    private readonly int heartstone = 25;
-    private readonly int helmet = 1;
-    private readonly int ice = 10;
-    private readonly int machine = 3;
-    private readonly int mandoo = 10;
-    private readonly int metaldetector = 3;
-    private readonly int pepper = 2;
-    private readonly int pizza = 15;
-    private readonly int quarterstone = 5;
-    private readonly int straw = 3;
-    // private readonly int bluerose = 1, -2;
-    private readonly int thunder = 5;
-    private readonly int goldenticket = 2; 
-    private readonly int yellowtail = 1;
-    // guitar - 4, 1, 10
-    // plask - 3, 10, -1
-    private readonly int magnet = 3;
-    private readonly int herb = 3;
-    private readonly int wax = 1;
-    private readonly int scissor = 2;
-
     private void Awake()
     {
         I = this;
     }
 
-    public void EquipEffect(int i, EquipScript equip)
+    // 효과 적용 / 해제
+    public void ApplyEffect(int i, EquipScript equip, bool onoff)
     {
+        int pm = onoff ? 1 : -1;
+
         if (i == 2)                  // 건전지
         {
-            GameController.effBattery = true;
+            GameController.effBattery = onoff;
         }
         else if (i == 3)             // 망원경
         {
-            GameController.probPotion += binocular;
-            GameController.probCoin += binocular;
+            GameController.probPotion += 2 * pm;
+            GameController.probCoin += 2 * pm;
         }
         else if (i == 4)             // 초승달
         {
@@ -55,77 +32,77 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 6)             // 에너지 드링크
         {
-            GameController.ChangeSpeed(energydrink);
+            GameController.ChangeSpeed(15 * pm);
         }
         else if (i == 7)             // 복싱 글러브
         {
-            GameController.playerAP += gloves;
+            GameController.playerAP += 6 * pm;
         }
         else if (i == 9)             // 반 돌
         {
-            GameController.playerMaxHP += halfstone;
+            GameController.playerMaxHP += 10 * pm;
             GameController.playerHP = Mathf.Max(GameController.playerHP, GameController.playerMaxHP);
         }
         else if (i == 10)            // 마음의 돌
         {
-            GameController.playerMaxHP += heartstone;
+            GameController.playerMaxHP += 25 * pm;
             GameController.playerHP = Mathf.Max(GameController.playerHP, GameController.playerMaxHP);
         }
         else if (i == 11)            // 하이바
         {
-            GameController.playerDP += helmet;
+            GameController.playerDP += 1 * pm;
         }
         else if (i == 12)            // 각얼음
         {
-            GameController.ChangeSpeed(ice);
+            GameController.ChangeSpeed(10 * pm);
         }
         else if (i == 13)            // ESP-8266
         {
-            GameController.probPotion += machine;
+            GameController.probPotion += 3 * pm;
         }
         else if (i == 16)            // 금속 탐지기
         {
-            GameController.probCoin += metaldetector;
+            GameController.probCoin += 3 * pm;
         }
         else if (i == 17)            // 청양 고추
         {
-            GameController.playerAP += pepper;
+            GameController.playerAP += 2 * pm;
         }
         else if (i == 18)            // 돼지 저금통
         {
-            GameController.RedCoin = true;
+            GameController.RedCoin = onoff;
         }
         else if (i == 20)            // 반의 반 돌
         {
-            GameController.playerMaxHP += quarterstone;
+            GameController.playerMaxHP += 5 * pm;
         }
         else if (i == 21)            // 인라인 스케이트
         {
-            GameController.effSkate = true;
+            GameController.effSkate = onoff;
         }
         else if (i == 23)            // 빨대
         {
-            GameController.potionEff += straw;
+            GameController.potionEff += 3 * pm;
         }
         else if (i == 24)            // 파란 장미
         {
-            GameController.playerDP += 1;
-            GameController.playerAP -= 2;
+            GameController.playerDP += 1 * pm;
+            GameController.playerAP -= 2 * pm;
         }
         else if (i == 26)            // 골든 티켓
         {
-            GameController.ShopGrade[0] += goldenticket;
-            GameController.ShopGrade[1] += goldenticket;
+            GameController.ShopGrade[0] += 3 * pm;
+            GameController.ShopGrade[1] += 3 * pm;
         }
         else if (i == 27)            // 대방어
         {
-            GameController.playerDP += yellowtail;
+            GameController.playerDP += 1 * pm;
         }
         else if (i == 28)            // 일렉 기타
         {
-            GameController.playerAP += 4;
-            GameController.playerDP += 1;
-            GameController.ChangeSpeed(10);
+            GameController.playerAP += 4 * pm;
+            GameController.playerDP += 1 * pm;
+            GameController.ChangeSpeed(10 * pm);
         }
         else if (i == 29)            // 마지막 잎새
         {
@@ -133,21 +110,21 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 30)            // 플라스크
         {
-            GameController.playerAP += 3;
-            GameController.ChangeSpeed(10);
-            GameController.playerDP -= 1;
+            GameController.playerAP += 3 * pm;
+            GameController.ChangeSpeed(10 * pm);
+            GameController.playerDP -= 1 * pm;
         }
         else if (i == 32)            // 3D 안경
         {
-            GameController.effGlasses = true;
+            GameController.effGlasses = onoff;
         }
         else if (i == 33)            // 말굽 자석
         {
-            GameController.probCoin += magnet;
+            GameController.probCoin += 3 * pm;
         }
         else if (i == 34)            // 약초
         {
-            GameController.probPotion += herb;
+            GameController.probPotion += 3 * pm;
         }
         else if (i == 35)            // 다이아몬드
         {
@@ -155,154 +132,20 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 37)           // 부적
         {
-            GameController.efftalisman = true;
+            GameController.efftalisman = onoff;
         }
         else if (i == 39)           // 헤어 왁스
         {
-            GameController.playerAP += wax;
+            GameController.playerAP += 1 * pm;
         }
         else if (i == 41)           // 거북이 등딱지
         {
-            GameController.playerMaxHP += 15;
-            GameController.ChangeSpeed(-10);
+            GameController.playerMaxHP += 15 * pm;
+            GameController.ChangeSpeed(-10 * pm);
         }
         else if (i == 42)           // 가위
         {
-            GameController.playerAP += scissor;
-        }
-        else
-            return;
-    }
-
-    public void EquipUnEffect(int i, EquipScript equip)
-    {
-        if (i == 2)                  // 건전지
-        {
-            GameController.effBattery = false;
-        }
-        else if(i == 3)              // 망원경
-        {
-            GameController.probPotion -= binocular;
-            GameController.probCoin -= binocular;
-        }
-        else if (i == 4)             // 초승달
-        {
-            GameController.effcrescent = false;
-        }
-        else if (i == 6)             // 에너지 드링크
-        {
-            GameController.ChangeSpeed(-energydrink);
-        }
-        else if (i == 7)             // 복싱 글러브
-        {
-            GameController.playerAP -= gloves;
-        }
-        else if (i == 9)             // 반 돌
-        {
-            GameController.playerMaxHP -= halfstone;
-        }
-        else if (i == 10)            // 마음의 돌
-        {
-            GameController.playerMaxHP -= heartstone;
-        }
-        else if (i == 11)            // 하이바
-        {
-            GameController.playerDP -= helmet;
-        }
-        else if (i == 12)            // 각얼음
-        {
-            GameController.ChangeSpeed(-ice);
-        }
-        else if (i == 13)            // ESP-8266
-        {
-            GameController.probPotion -= machine;
-        }
-        else if (i == 16)            // 금속 탐지기
-        {
-            GameController.probCoin -= metaldetector;
-        }
-        else if (i == 17)            // 청양 고추
-        {
-            GameController.playerAP -= pepper;
-        }
-        else if (i == 18)            // 돼지 저금통
-        {
-            GameController.RedCoin = false;
-        }
-        else if (i == 20)            // 반의 반 돌
-        {
-            GameController.playerMaxHP -= quarterstone;
-        }
-        else if (i == 21)            // 인라인 스케이트
-        {
-            GameController.effSkate = false;
-        }
-        else if (i == 23)            // 빨대
-        {
-            GameController.potionEff -= straw;
-        }
-        else if (i == 24)            // 파란 장미
-        {
-            GameController.playerDP -= 1;
-            GameController.playerAP += 2;
-        }
-        else if (i == 26)            // 골든 티켓
-        {
-            GameController.ShopGrade[0] -= goldenticket;
-            GameController.ShopGrade[1] -= goldenticket;
-        }
-        else if (i == 27)            // 대방어
-        {
-            GameController.playerDP -= yellowtail;
-        }
-        else if (i == 28)            // 일렉 기타
-        {
-            GameController.playerAP -= 4;
-            GameController.playerDP -= 1;
-            GameController.ChangeSpeed(-10);
-        }
-        else if (i == 29)            // 마지막 잎새
-        {
-            GameController.effLastleaf = null;
-        }
-        else if (i == 30)            // 플라스크
-        {
-            GameController.playerAP -= 3;
-            GameController.ChangeSpeed(-10);
-            GameController.playerDP += 1;
-        }
-        else if (i == 32)            // 3D 안경
-        {
-            GameController.effGlasses = false;
-        }
-        else if (i == 33)            // 말굽 자석
-        {
-            GameController.probCoin -= magnet;
-        }
-        else if (i == 34)            // 약초
-        {
-            GameController.probPotion -= herb;
-        }
-        else if (i == 35)            // 다이아몬드
-        {
-
-        }
-        else if (i == 37)           // 파란 장미
-        {
-            GameController.efftalisman = false;
-        }
-        else if (i == 39)           // 헤어 왁스
-        {
-            GameController.playerAP -= wax;
-        }
-        else if (i == 41)           // 거북이 등딱지
-        {
-            GameController.playerMaxHP -= 15;
-            GameController.ChangeSpeed(10);
-        }
-        else if (i == 42)           // 가위
-        {
-            GameController.playerAP -= scissor;
+            GameController.playerAP += 2 * pm;
         }
         else
             return;
@@ -312,7 +155,7 @@ public class EquipEffector : MonoBehaviour
     {
         if (i == 1)                 // 바나나
         {
-            GameController.ChangeHP(banana);
+            GameController.ChangeHP(25);
         }
         else if (i == 5)            // 슬롯 머신
         {
@@ -328,11 +171,11 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 15)           // 만두
         {
-            GameController.ChangeHP(mandoo);
+            GameController.ChangeHP(10);
         }
         else if (i == 19)           // 치즈 피자
         {
-            GameController.ChangeHP(pizza);
+            GameController.ChangeHP(15);
         }
         else if (i == 22 || i == 40)           // 마법서 or 종이배
         {
@@ -346,7 +189,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 25)           // 천둥 번개
         {
-            GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder(thunder);
+            GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder(5);
         }
         else if (i == 31)           // 레이저 건
         {

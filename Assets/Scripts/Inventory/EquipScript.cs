@@ -163,7 +163,7 @@ public class EquipScript : MonoBehaviour
         if (isEffected)
             return;
 
-        EquipEffector.I.EquipEffect(number, this);
+        EquipEffector.I.ApplyEffect(number, this, true);
 
         isEffected = true;
     }
@@ -173,7 +173,7 @@ public class EquipScript : MonoBehaviour
         if (!isEffected)
             return;
 
-        EquipEffector.I.EquipUnEffect(number, this);
+        EquipEffector.I.ApplyEffect(number, this, false);
 
         isEffected = false;
     }
