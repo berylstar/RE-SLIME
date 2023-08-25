@@ -150,19 +150,8 @@ public class GameController : MonoBehaviour
         effGlasses = false;
         efftalisman = false;
 
-        //esc = false;
-        //inDiaglogue = false;
-        //inInven = false;
-        //inShop = false;
-        //inBox = false;
-
         nowDialogue = null;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
-    }
-
-    public void COINTEST()
-    {
-        coin += 1;
     }
 }

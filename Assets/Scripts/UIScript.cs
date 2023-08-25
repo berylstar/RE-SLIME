@@ -81,14 +81,6 @@ public class UIScript : MonoBehaviour
         SoundManager.I.PauseBGM();
     }
 
-    public void ExitESC()
-    {
-        GameController.pause.Pop();
-        panelESC.SetActive(false);
-        Time.timeScale = 1;
-        SoundManager.I.PauseBGM();
-    }
-
     public void ShowDiePanel(int life)
     {
         if (life > 1)

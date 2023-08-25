@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using UnityEngine.SceneManagement;
 
 public class ESCScript : MonoBehaviour
@@ -38,9 +37,19 @@ public class ESCScript : MonoBehaviour
         {
             ActivePanel(0);
             menuIndex = 0;
-            UIScript.I.ExitESC();
+            StartCoroutine(ExitCo());
         }
-            
+    }
+
+    IEnumerator ExitCo()
+    {
+        Time.timeScale = 1f;
+        SoundManager.I.PauseBGM();
+
+        yield return GameController.delay_frame;
+
+        GameController.pause.Pop();
+        UIScript.I.panelESC.SetActive(false);
     }
 
     public void ButtonClick()
@@ -51,7 +60,7 @@ public class ESCScript : MonoBehaviour
             {
                 ActivePanel(0);
                 menuIndex = 0;
-                UIScript.I.ExitESC();
+                StartCoroutine(ExitCo());
             }
             else if (pickIndex == 1)
             {
@@ -95,7 +104,8 @@ public class ESCScript : MonoBehaviour
             }
             else if (pickIndex == 1)
             {
-                UIScript.I.ExitESC();
+                Time.timeScale = 1f;
+                SoundManager.I.PauseBGM();
                 SoundManager.I.PlayBGM("BGM/Title");
                 GameController.Restart();
                 SceneManager.LoadScene("TitleScene");
