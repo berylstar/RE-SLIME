@@ -42,14 +42,12 @@ public class InventoryScript : MonoBehaviour
         if (listOverlap.Count > 0)
             return;
 
-        for (int i = 0; i < GottenEquips.Count; i++)
+        foreach (EquipScript equip in GottenEquips)
         {
-            string strr = GottenEquips[i].number.ToString();
+            string strr = equip.number.ToString();
 
-            for (int j = 0; j < GottenEquips[i].posIndex.Count; j++)
-            {
-                strr += "," + GottenEquips[i].posIndex[j].ToString();
-            }
+            foreach (int idx in equip.posIndex)
+                strr += "," + idx.ToString();
 
             GameController.myEquips.Add(strr);
         }
@@ -57,10 +55,9 @@ public class InventoryScript : MonoBehaviour
 
     private void LOAD()
     {
-        for (int i = 0; i < GameController.myEquips.Count; i++)
+        foreach (string stringEquip in GameController.myEquips)
         {
-            string[] ints = GameController.myEquips[i].Split(',');
-
+            string[] ints = stringEquip.Split(',');
             List<int> poses = new List<int>();
 
             for (int j = 1; j < ints.Length; j++)
@@ -68,14 +65,13 @@ public class InventoryScript : MonoBehaviour
                 poses.Add(int.Parse(ints[j]));
             }
 
-            all[int.Parse(ints[0])-1].LoadThis(poses);
+            all[int.Parse(ints[0]) - 1].LoadThis(poses);
         }
 
         if (listOverlap.Count > 0)
             OpenInventory();
         else
             EquipEffect();
-        
     }
 
     private void Update()
@@ -211,10 +207,10 @@ public class InventoryScript : MonoBehaviour
     // 장비 획득 후 겹쳐있지 않다면 장비 효과 발동
     private void EquipEffect()
     {
-        for (int i = 0; i < GottenEquips.Count; i++)
+        foreach (EquipScript equip in GottenEquips)
         {
-            if (!GottenEquips[i].isEffected)
-                GottenEquips[i].ApplyEffect();
+            if (!equip.isEffected)
+                equip.EffectThis(true);
         }
     }
 
@@ -240,5 +236,18 @@ public class InventoryScript : MonoBehaviour
             list[random1] = list[random2];
             list[random2] = temp;
         }
+    }
+
+    // EquipScript에서 사용할 등급별 리스트 반환 함수
+    public List<EquipScript> ReturnGrade(EquipGrade grade)
+    {
+        if (grade == EquipGrade.NORMAL)
+            return equipsNormal;
+        else if (grade == EquipGrade.RARE)
+            return equipsRare;
+        else if (grade == EquipGrade.UNIQUE)
+            return equipsUnique;
+        else
+            return null;
     }
 }

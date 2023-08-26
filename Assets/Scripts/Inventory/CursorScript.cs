@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CursorScript : MonoBehaviour
 {
-    [HideInInspector] public GameObject pick = null;
-    [HideInInspector] public GameObject on = null;
+    private GameObject pick = null;
+    private GameObject on = null;
+    private GameObject check = null;
 
     private SpriteRenderer sr;
     private int posIndex = 0;
-
+    
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -26,7 +27,6 @@ public class CursorScript : MonoBehaviour
             UIScript.I.panelInvenInfo.SetActive(false);
             UIScript.I.stackAssists.Pop();
         }
-        
     }
 
     private void Update()
@@ -34,50 +34,68 @@ public class CursorScript : MonoBehaviour
         if (GameController.Pause(PauseType.INVEN))
             return;
 
+        // Input : 방향키 = 인벤토리 내 커서 조종
+        MoveCursor();
+
         // Input : 스페이스 바 = 장비 선택/해제
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (on == null)
+                return;
+
             if (!pick)
             {
                 pick = on;
+                sr.color = Color.yellow;
                 ShowInfo();
             }
             else
             {
                 pick = null;
+                check = null;
+                sr.color = Color.white;
                 UIScript.I.panelInvenInfo.SetActive(false);
                 UIScript.I.stackAssists.Pop();
             }
             SoundManager.I.PlayEffect("EFFECT/InvenClick");
         }
 
+        if (pick == null)
+            return;
+
         // Input : C = 장비 C 스킬 등록
-        if (Input.GetKeyDown(KeyCode.C) && pick)
+        if (Input.GetKeyDown(KeyCode.C))
         {
             InventoryScript.I.SetSkill("C", pick.GetComponent<EquipScript>());
             pick = null;
+            sr.color = Color.white;
         }
 
         // Input : V = 장비 V 스킬 등록
-        if (Input.GetKeyDown(KeyCode.V) && pick)
+        if (Input.GetKeyDown(KeyCode.V))
         {
             InventoryScript.I.SetSkill("V", pick.GetComponent<EquipScript>());
             pick = null;
+            sr.color = Color.white;
         }
 
         // Input : R = 장비 제거
-        if (Input.GetKeyDown(KeyCode.R) && pick)
+        if (Input.GetKeyDown(KeyCode.R))
         {
+            if (check != pick)
+            {
+                sr.color = Color.red;
+                check = pick;
+                return;
+            }
+
             pick.GetComponent<EquipScript>().RemoveThis();
             pick = null;
+            check = null;
+            sr.color = Color.white;
             UIScript.I.panelInvenInfo.SetActive(false);
             UIScript.I.stackAssists.Pop();
         }
-
-        sr.color = pick ? Color.yellow : Color.white;
-
-        // Input : 방향키 = 인벤토리 내 커서 조종
-        MoveCursor();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -117,8 +135,11 @@ public class CursorScript : MonoBehaviour
         posIndex = 0;
         transform.position = InventoryScript.I.ReturnGrid(0);
         pick = null;
+        check = null;
+        sr.color = Color.white;
     }
 
+    // 선택한 장비 정보 보여주기
     private void ShowInfo()
     {
         if (pick == null)

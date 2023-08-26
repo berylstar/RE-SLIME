@@ -29,10 +29,10 @@ public class EquipScript : MonoBehaviour
     public EquipType type;
     public EquipGrade grade;
     public int coolTime;
-    [HideInInspector] private bool inCoolTime = false;
+    private bool inCoolTime = false;
     [HideInInspector] public bool isEffected = false;
 
-    [Header("")]
+    [Header("UI")]
     public List<int> posIndex = new List<int>();
     public GameObject iconC, iconV;
 
@@ -61,24 +61,12 @@ public class EquipScript : MonoBehaviour
         }
     }
 
-    private List<EquipScript> ReturnGrade()
-    {
-        if (grade == EquipGrade.NORMAL)
-            return InventoryScript.I.equipsNormal;
-        else if (grade == EquipGrade.RARE)
-            return InventoryScript.I.equipsRare;
-        else if (grade == EquipGrade.UNIQUE)
-            return InventoryScript.I.equipsUnique;
-        else
-            return null;
-    }
-
     public void GetThis()
     {
         transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
 
         InventoryScript.I.GottenEquips.Add(this);
-        ReturnGrade().Remove(this);
+        InventoryScript.I.ReturnGrade(grade).Remove(this);
 
         gameObject.SetActive(true);
     }
@@ -86,9 +74,9 @@ public class EquipScript : MonoBehaviour
     public void RemoveThis()
     {
         InventoryScript.I.GottenEquips.Remove(this);
-        ReturnGrade().Add(this);
+        InventoryScript.I.ReturnGrade(grade).Add(this);
 
-        UnEffect();
+        EffectThis(false);
 
         if (iconC.activeInHierarchy)
         {
@@ -108,9 +96,9 @@ public class EquipScript : MonoBehaviour
     // 인벤토리 인덱스를 벗어나지 않게 설정
     public bool EquipMove(int m)
     {
-        for (int i = 0; i < posIndex.Count; i++)
+        foreach (int pos in posIndex)
         {
-            if ((m == 1 && posIndex[i] % 3 < 2) || (m == -1 && posIndex[i] % 3 > 0) || (m == 3 && posIndex[i] < 15) || (m == -3 && posIndex[i] > 2)) { }
+            if ((m == 1 && pos % 3 < 2) || (m == -1 && pos % 3 > 0) || (m == 3 && pos < 15) || (m == -3 && pos > 2)) { }
             else
                 return false;
         }
@@ -158,42 +146,26 @@ public class EquipScript : MonoBehaviour
         return sr.sprite;
     }
 
-    public void ApplyEffect()
+    // 효과 적용 / 해제 함수
+    public void EffectThis(bool onoff)
     {
-        if (isEffected)
+        if (isEffected == onoff)
             return;
 
-        EquipEffector.I.ApplyEffect(number, this, true);
+        EquipEffector.I.ApplyEffect(number, this, onoff);
 
-        isEffected = true;
-    }
-
-    public void UnEffect()
-    {
-        if (!isEffected)
-            return;
-
-        EquipEffector.I.ApplyEffect(number, this, false);
-
-        isEffected = false;
+        isEffected = onoff;
     }
 
     public void LoadThis(List<int> poses)
     {
-        SetPos(poses);
+        posIndex = poses;
+
         transform.position = InventoryScript.I.ReturnGrid(posIndex[0]);
 
         InventoryScript.I.GottenEquips.Add(this);
-        ReturnGrade().Remove(this);
+        InventoryScript.I.ReturnGrade(grade).Remove(this);
 
         gameObject.SetActive(true);
-    }
-
-    private void SetPos(List<int> poses)
-    {
-        for (int i = 0; i < poses.Count; i++)
-        {
-            posIndex[i] = poses[i];
-        }
     }
 }

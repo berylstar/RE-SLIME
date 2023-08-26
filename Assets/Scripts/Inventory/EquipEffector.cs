@@ -128,7 +128,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 35)            // 다이아몬드
         {
-
+            // NONE
         }
         else if (i == 37)           // 부적
         {
@@ -189,7 +189,7 @@ public class EquipEffector : MonoBehaviour
         }
         else if (i == 25)           // 천둥 번개
         {
-            GameObject.Find("CONTROLLER").GetComponent<BoardManager>().EquipThunder(5);
+            BoardManager.I.EquipThunder(5);
         }
         else if (i == 31)           // 레이저 건
         {
