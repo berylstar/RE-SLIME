@@ -9241,6 +9241,7 @@ MonoBehaviour:
   box: {fileID: 6910098259509927338}
   recorder: {fileID: 1359297805}
   bossDemon: {fileID: 4911125360518166886, guid: 966f0d4fd4a4b5a43aa9c39e6000cb6a, type: 3}
+  objectHolder: {fileID: 427903822}
 --- !u!114 &715514220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10879,9 +10880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04c8a8dc998cf45b772407af2be9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pick: {fileID: 0}
-  on: {fileID: 0}
-  check: {fileID: 0}
 --- !u!1 &833368774
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class BossDemon : MonsterScript
             }
             else
             {
-                Instantiate(crown, transform.position, Quaternion.identity, GameObject.Find("ObjectHolder").transform);
+                Instantiate(crown, transform.position, Quaternion.identity, BoardManager.I.objectHolder);
             }
         }
     }
@@ -111,8 +111,7 @@ public class BossDemon : MonsterScript
             GameObject[] mongroup = BoardManager.I.levels[Random.Range(0, 3)].monsters;
             GameObject monster = mongroup[Random.Range(0, mongroup.Length)];
 
-            GameObject product = Instantiate(monster, BoardManager.I.TeleportMonsterPosition(monster.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
-            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+            Instantiate(monster, BoardManager.I.TeleportMonsterPosition(monster.GetComponent<MovingObject>()), Quaternion.identity, BoardManager.I.objectHolder);
         }
     }
 
@@ -120,8 +119,7 @@ public class BossDemon : MonsterScript
     {
         for (int i = 0; i < 8; i++)
         {
-            GameObject product = Instantiate(lavas[Random.Range(0, lavas.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+            Instantiate(lavas[Random.Range(0, lavas.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity, BoardManager.I.objectHolder);
         }
     }
 }

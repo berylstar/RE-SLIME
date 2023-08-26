@@ -29,13 +29,6 @@ public class MonsterSpawner : MonsterScript
 
     private void Action()
     {
-        // 1. 랜덤 위치에 스폰
-        GameObject product = Instantiate(spawn[Random.Range(0, spawn.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
-
-        // 2. 자기 자리에 스폰하고 이동
-        //GameObject product = Instantiate(spawn[Random.Range(0, spawn.Length)], transform.position, Quaternion.identity) as GameObject;
-        //product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
-        //MoveRandom();
+        Instantiate(spawn[Random.Range(0, spawn.Length)], BoardManager.I.SpawnPosition(), Quaternion.identity, BoardManager.I.objectHolder);
     }
 }

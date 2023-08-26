@@ -37,7 +37,7 @@ public class BoardManager : MonoBehaviour
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
     private List<MonsterScript> livingMonsters = new List<MonsterScript>();
-    private Transform objectHolder;
+    public Transform objectHolder;
 
     private void Awake()
     {
@@ -131,8 +131,7 @@ public class BoardManager : MonoBehaviour
 
         for (int i = 0; i < objectCount; i++)
         {
-            GameObject instance = Instantiate(tileArray[Random.Range(0, tileArray.Length)], RandomPosition(), Quaternion.identity) as GameObject;
-            instance.transform.SetParent(objectHolder);
+            Instantiate(tileArray[Random.Range(0, tileArray.Length)], RandomPosition(), Quaternion.identity, objectHolder);
         }
     }
     
@@ -188,8 +187,12 @@ public class BoardManager : MonoBehaviour
         if (floor % 20 == 19 && floor != 99)
         {
             UIScript.I.panelBoss.SetActive(true);
+            GameController.pause.Push(PauseType.INBOSS);
+
             yield return GameController.delay_3s;
+
             UIScript.I.panelBoss.SetActive(false);
+            GameController.pause.Pop();
             SpawnBoss();
         }
         else
@@ -221,8 +224,7 @@ public class BoardManager : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(min, max+1); i++)
         {
-            GameObject inst = Instantiate(ObjectPerFloor(GameController.floor).walls[Random.Range(0, 10)], RandomPosition(), Quaternion.identity) as GameObject;
-            inst.transform.SetParent(objectHolder);
+            Instantiate(ObjectPerFloor(GameController.floor).walls[Random.Range(0, 10)], RandomPosition(), Quaternion.identity, objectHolder);
         }
     }
 
@@ -230,8 +232,7 @@ public class BoardManager : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(min, max + 1); i++)
         {
-            GameObject instance = Instantiate(ObjectPerFloor(GameController.floor).sculptures[Random.Range(0, 10)], RandomPosition(), Quaternion.identity) as GameObject;
-            instance.transform.SetParent(objectHolder);
+            Instantiate(ObjectPerFloor(GameController.floor).sculptures[Random.Range(0, 10)], RandomPosition(), Quaternion.identity, objectHolder);
         }
     }
 
@@ -239,8 +240,7 @@ public class BoardManager : MonoBehaviour
     {
         if (GameController.floor == 80 || GameController.floor == 100)
         {
-            GameObject instance = Instantiate(bossDemon, new Vector3(6, 4, 0), Quaternion.identity) as GameObject;
-            instance.transform.SetParent(objectHolder);
+            Instantiate(bossDemon, new Vector3(6, 4, 0), Quaternion.identity, objectHolder);
         }
         else if (GameController.floor % 20 == 19)
         {
@@ -258,8 +258,7 @@ public class BoardManager : MonoBehaviour
             for (int i = 0; i < Random.Range(min, max + 1); i++)
             {
                 GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, 10)];
-                GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
-                instance.transform.SetParent(objectHolder);
+                Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity, objectHolder);
             }
         }
     }
@@ -267,8 +266,7 @@ public class BoardManager : MonoBehaviour
     private void SpawnBoss()
     {
         GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, ObjectPerFloor(GameController.floor).bosses.Length)];
-        GameObject instance = Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
-        instance.transform.SetParent(objectHolder);
+        Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity, objectHolder);
     }
 
     private void SetBGM(int floor)
@@ -290,10 +288,9 @@ public class BoardManager : MonoBehaviour
     // 해당 층수에 맞게 레벨 세팅
     private void FloorSetup(int floor)
     {
-        if (GameObject.Find("ObjectHolder"))
-            Destroy(GameObject.Find("ObjectHolder"));
+        foreach (Transform child in objectHolder)
+            Destroy(child.gameObject);                                  // objectHolder 정리
 
-        objectHolder = new GameObject("ObjectHolder").transform;        // ObjectHolder 자식으로 오브젝트를 넣어서 하이라키 창 정리
         livingMonsters.Clear();
 
         SetBGM(floor);                                                  // 0. BGM 설정
@@ -346,8 +343,7 @@ public class BoardManager : MonoBehaviour
         else
             return;
 
-        GameObject instance = Instantiate(item, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity) as GameObject;
-        instance.transform.SetParent(objectHolder);
+        Instantiate(item, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity, objectHolder);
     }
 
     // 보스 잡으면 보상으로 박스 드롭

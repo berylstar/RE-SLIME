@@ -33,7 +33,6 @@ public class BossKingFrog : MonsterScript
 
     private void Spawn()
     {
-        GameObject product = Instantiate(frog, BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+        Instantiate(frog, BoardManager.I.SpawnPosition(), Quaternion.identity, BoardManager.I.objectHolder);
     }
 }

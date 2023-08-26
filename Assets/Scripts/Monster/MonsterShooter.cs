@@ -30,8 +30,7 @@ public class MonsterShooter : MonsterScript
     // Shooting
     private void Action()
     {
-        GameObject product = Instantiate(bullet, transform.position, Quaternion.identity);
-        product.GetComponent<BulletScript>().direction = direction;
-        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+        GameObject inst = Instantiate(bullet, transform.position, Quaternion.identity, BoardManager.I.objectHolder);
+        inst.GetComponent<BulletScript>().direction = direction;
     }
 }

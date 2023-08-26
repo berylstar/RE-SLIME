@@ -34,9 +34,9 @@ public class ResultSceneScript : MonoBehaviour
                           "         Ã³Ä¡ ¼ö : " + GameController.kills + "\n"; 
                           //+ "SLIME WILL BE RETURN";
 
-        for (int i = 0; i < imageEquips.Length; i++)
+        foreach (Image image in imageEquips)
         {
-            imageEquips[i].gameObject.SetActive(false);
+            image.gameObject.SetActive(false);
         }
 
         for (int i = 0; i < InventoryScript.I.GottenEquips.Count; i++)

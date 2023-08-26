@@ -14,10 +14,8 @@ public class BossTwinSkel : MonsterScript
 
         if (count > 0)
         {
-            //GameObject instance = Instantiate(this.gameObject, new Vector3(7.5f, 2.5f + count * 2, 0), Quaternion.identity) as GameObject;
-            GameObject others = Instantiate(this.gameObject, BoardManager.I.RandomMonsterPosition(GetComponent<MovingObject>()), Quaternion.identity) as GameObject;
+            GameObject others = Instantiate(this.gameObject, BoardManager.I.RandomMonsterPosition(GetComponent<MovingObject>()), Quaternion.identity, BoardManager.I.objectHolder);
             others.GetComponent<BossTwinSkel>().count = count - 1;
-            others.transform.SetParent(GameObject.Find("ObjectHolder").transform);
         }
     }
 
