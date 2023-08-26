@@ -43,9 +43,8 @@ public class BossMagma : MonsterScript
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject product = Instantiate(fire, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity);
+            GameObject product = Instantiate(fire, new Vector3((int)pos.x, (int)pos.y, 0), Quaternion.identity, BoardManager.I.objectHolder);
             product.GetComponent<BulletScript>().direction = i;
-            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
         }
     }
 }

@@ -37,13 +37,11 @@ public class BossScarecrow : MonsterScript
     {
         for (int i = 0; i < 2; i++)
         {
-            GameObject product = Instantiate(bat, BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+            Instantiate(bat, BoardManager.I.SpawnPosition(), Quaternion.identity, BoardManager.I.objectHolder);
         }
         
-        GameObject blet = Instantiate(crow, transform.position, Quaternion.identity);
+        GameObject blet = Instantiate(crow, transform.position, Quaternion.identity, BoardManager.I.objectHolder);
         blet.transform.localScale = new Vector3(10 / 3f, 10 / 3f, 1);
         blet.GetComponent<BulletScript>().direction = direction;
-        blet.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

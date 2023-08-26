@@ -38,10 +38,9 @@ public class BossGreatWizard : MonsterScript
 
     private void Action()
     {
-        for (int i = 0; i < spawn.Length; i++)
+        foreach (GameObject s in spawn)
         {
-            GameObject product = Instantiate(spawn[i], BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+            Instantiate(s, BoardManager.I.SpawnPosition(), Quaternion.identity, BoardManager.I.objectHolder);
         }
     }
 }

@@ -32,9 +32,7 @@ public class PlayerScript : MovingObject
     private void Update()
     {
         if (GameController.Pause(PauseType.NORMAL))
-        {
             return;
-        }
 
         if (!isAlive)
             return;
@@ -75,6 +73,7 @@ public class PlayerScript : MovingObject
             InventoryScript.I.OpenInventory();
         }
 
+        // Input : ESC = 메뉴
         if (Input.GetKeyDown(KeyCode.Escape))
             UIScript.I.EnterESC();
 
@@ -82,8 +81,6 @@ public class PlayerScript : MovingObject
         {
             StartCoroutine(PlayerDie());
         }
-
-        // transform.position = new Vector3(transform.position.x, transform.position.y, -1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -120,11 +117,11 @@ public class PlayerScript : MovingObject
     }
 
     // 시간 데미지 코루틴
-    private IEnumerator TimeDamage()
+    IEnumerator TimeDamage()
     {
         while (isAlive)
         {
-            if (GameController.Pause(PauseType.ESC))
+            if (GameController.pause.Peek() == PauseType.NORMAL)
                 GameController.ChangeHP(-1);
 
             GameController.inTime += 1;
@@ -231,14 +228,6 @@ public class PlayerScript : MovingObject
         }
     }
 
-    public void DirectionMove()
-    {
-        if (direction == 0)      Move(-1, 0);
-        else if (direction == 1) Move(1, 0);
-        else if (direction == 2) Move(0, 1);
-        else if (direction == 3) Move(0, -1);
-    }
-
     //////////////////////////////////////////////////////////////////////////////////////////
     private bool EquipBattery()
     {
@@ -285,8 +274,7 @@ public class PlayerScript : MovingObject
 
     public void EquipLasergun()
     {
-        GameObject product = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject product = Instantiate(bullet, transform.position, Quaternion.identity, BoardManager.I.objectHolder) as GameObject;
         product.GetComponent<BulletScript>().direction = direction;
-        product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
     }
 }

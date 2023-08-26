@@ -44,8 +44,7 @@ public class SculptureScript : MonoBehaviour
 
                 if (type == SculptureType.MINIBOX)
                 {
-                    GameObject instance = Instantiate(BoardManager.I.items[Random.Range(0, 2)], transform.position, Quaternion.identity) as GameObject;
-                    instance.transform.SetParent(gameObject.transform.Find("objectHolder"));
+                    Instantiate(BoardManager.I.items[Random.Range(0, 2)], transform.position, Quaternion.identity, BoardManager.I.objectHolder);
                 }
             }
         }

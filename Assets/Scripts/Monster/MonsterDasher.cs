@@ -58,5 +58,4 @@ public class MonsterDasher : MonsterScript
             sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
         }
     }
-
 }

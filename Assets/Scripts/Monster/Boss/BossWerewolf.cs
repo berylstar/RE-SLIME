@@ -40,8 +40,7 @@ public class BossWerewolf : MonsterScript
     {
         for (int i = 0; i < 3; i++)
         {
-            GameObject product = Instantiate(wolf, BoardManager.I.SpawnPosition(), Quaternion.identity) as GameObject;
-            product.transform.SetParent(GameObject.Find("ObjectHolder").transform);
+            Instantiate(wolf, BoardManager.I.SpawnPosition(), Quaternion.identity, BoardManager.I.objectHolder);
         }
     }
 }

@@ -16,6 +16,15 @@ public class BoxScript : MonoBehaviour
     private void OnEnable()
     {
         GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
+
+        stands[0].sprite = coinMunch;
+        stands[1].sprite = potion;
+        isPicked = false;
+        bi = 0;
+        foreach (GameObject pick in picks)
+        {
+            pick.SetActive(false);
+        }
     }
 
     private void Update()
@@ -28,7 +37,7 @@ public class BoxScript : MonoBehaviour
             if (isPicked)
                 StartCoroutine(CloseBox());
             else if (bi != 0)
-                GetReward(bi);
+                GetReward();
         }
 
         // 박스 커서 이동
@@ -37,8 +46,6 @@ public class BoxScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow)) SetPick(1);
             if (Input.GetKeyDown(KeyCode.RightArrow)) SetPick(2);
         }
-
-        ShowRewardInfo(bi);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,42 +63,33 @@ public class BoxScript : MonoBehaviour
         UIScript.I.panelBox.SetActive(false);
         SoundManager.I.PlayEffect("EFFECT/BoxClose");
 
-        yield return GameController.delay_01s;
+        yield return GameController.delay_frame;
 
         GameController.pause.Pop();
-        SetReward();
         this.gameObject.SetActive(false);
-    }
-
-    private void SetReward()
-    {
-        stands[0].sprite = coinMunch;
-        stands[1].sprite = potion;
-        isPicked = false;
-        SetPick(0);
-        picks[bi].SetActive(false);
     }
 
     private void SetPick(int idx)
     {
-        for (int i = 0; i < 3; ++i)
+        foreach (GameObject pick in picks)
         {
-            picks[i].SetActive(false);
+            pick.SetActive(false);
         }
 
         bi = idx;
         picks[bi].SetActive(true);
+        ShowRewardInfo();
     }
 
-    private void ShowRewardInfo(int idx)
+    private void ShowRewardInfo()
     {
-        if (idx == 1)
+        if (bi == 1)
         {
             textName.text = "코인 더미";
             textAdject.text = "이제 나도 부자 ?";
-            textEffect.text = "COIN + 5";
+            textEffect.text = "COIN + 10";
         }
-        else if (idx == 2)
+        else if (bi == 2)
         {
             textName.text = "대용량 포션";
             textAdject.text = "갈증 완벽 해결";
@@ -111,12 +109,11 @@ public class BoxScript : MonoBehaviour
         }
     }
 
-    private void GetReward(int idx)
+    private void GetReward()
     {
-        if (idx == 1)
-            GameController.coin += 5;
-
-        else if (idx == 2)
+        if (bi == 1)
+            GameController.coin += 10;
+        else if (bi == 2)
             GameController.ChangeHP(50);
 
         stands[0].sprite = nope;

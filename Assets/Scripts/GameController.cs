@@ -34,6 +34,7 @@ public enum PauseType
     INVEN = 2,
     SHOP = 3,
     BOX = 4,
+    INBOSS = 5,
     NORMAL = 10,
 }
 
