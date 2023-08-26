@@ -25,8 +25,8 @@ public class BulletScript : MonoBehaviour
     // MovingObject 이동 함수
     protected void Move(int direction)
     {
-        int xDir = 0;
-        int yDir = 0;
+        int xDir;
+        int yDir;
 
         if      (direction == 0) { xDir = -1; yDir = 0; sr.flipX = false; }
         else if (direction == 1) { xDir = 1; yDir = 0; sr.flipX = true; }
@@ -37,9 +37,9 @@ public class BulletScript : MonoBehaviour
         Vector2 start = transform.position;
         Vector2 end = start + new Vector2(xDir, yDir);
 
-        RaycastHit2D hit = Physics2D.Linecast(start, end, LayerMask.GetMask("BlockingLayer"));   // end, end 에서 실험용으로 바꿔봄
+        RaycastHit2D hit = Physics2D.Linecast(start, end, LayerMask.GetMask("BlockingLayer"));
 
-        if (hit && (hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
+        if (hit && (hit.transform.CompareTag("Wall")))
             Destroy(this.gameObject);
 
         if (end.x < 0 || end.x > 9 || end.y < 0 || end.y > 9)

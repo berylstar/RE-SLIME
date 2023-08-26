@@ -38,17 +38,12 @@ public class MonsterScript : MovingObject
     // 무작위 방향으로 이동
     protected void MoveRandom()
     {
-        int xDir = 0;
-        int yDir = 0;
-
         int iRand = Random.Range(0, 9);
 
-        if      (iRand <= 1) { xDir = 1; }
-        else if (iRand <= 3) { xDir = -1; }
-        else if (iRand <= 5) { yDir = 1; }
-        else if (iRand <= 7) { yDir = -1; }
-
-        Move(xDir, yDir);
+        if (iRand <= 1) Move(1, 0);
+        else if (iRand <= 3) Move(-1, 0);
+        else if (iRand <= 5) Move(0, 1);
+        else if (iRand <= 7) Move(0, -1);
     }
 
     // 플레이어를 향해 이동
@@ -134,7 +129,6 @@ public class MonsterScript : MovingObject
 
     ////////////////////////////////////
     
-
     // BoardManager에서 EquipThunder용 함수
     public void MonsterDamage(int d)
     {

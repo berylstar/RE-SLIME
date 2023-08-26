@@ -34,10 +34,6 @@ public class MovingObject : MonoBehaviour
         else if (yDir > 0) { direction = 2; }
         else if (yDir < 0) { direction = 3; }
 
-        //Vector2 start = transform.position;
-        //Vector2 end = start + new Vector2(xDir, yDir);
-        //RaycastHit2D hit = Physics2D.Linecast(end, end, LayerMask.GetMask("BlockingLayer"));
-
         Vector3 end = transform.position + new Vector3(xDir, yDir, 0);
         Vector3 cast = bc2D.bounds.center + new Vector3(xDir, yDir, 0);
 
@@ -46,21 +42,17 @@ public class MovingObject : MonoBehaviour
         bc2D.enabled = true;
 
         if (hit && (hit.transform.CompareTag("NPC") || hit.transform.CompareTag("Wall")))       // 이동 불가 케이스
-        {
             return false;
-        }
 
         if (end.x < 0 || end.x > 9 || end.y < 0 || end.y > 9)
             return false;
 
-        if (!isMoving)
-        {
-            StartCoroutine(SmoothMovement(end));
-            sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
-            return true;
-        }
-        else
+        if (isMoving)
             return false;
+
+        StartCoroutine(SmoothMovement(end));
+        sr.sortingOrder = 10 - (int)end.y;          // Y 값에 따라 sorting layer 변경 => 아래쪽일 수록 앞에 보이게
+        return true;
     }
 
     // 매끄러운 이동을 위한 코루틴
