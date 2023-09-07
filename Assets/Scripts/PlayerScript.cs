@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PlayerScript : MovingObject
 {
@@ -68,10 +69,10 @@ public class PlayerScript : MovingObject
         }
 
         // Input : I = 인벤토리
-        if (Input.GetKeyDown(KeyCode.I) && GameController.tutorial[0])
-        {
-            InventoryScript.I.OpenInventory();
-        }
+        //if (Input.GetKeyDown(KeyCode.I) && GameController.tutorial[0])
+        //{
+        //    InventoryScript.I.OpenInventory();
+        //}
 
         // Input : ESC = 메뉴
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -81,6 +82,15 @@ public class PlayerScript : MovingObject
         {
             StartCoroutine(PlayerDie());
         }
+    }
+
+    private void OnOpenInventory()
+    {
+        if (GameController.Pause(PauseType.NORMAL) || !GameController.tutorial[0])
+            return;
+
+        print("I");
+        InventoryScript.I.OpenInventory();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

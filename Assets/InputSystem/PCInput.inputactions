@@ -6,7 +6,7 @@
             "id": "c2eeea14-8dac-41f2-8eb1-c48c7659a40b",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "OpenInventory",
                     "type": "Button",
                     "id": "d8465a60-322a-4fd9-bb4c-9338f598296d",
                     "expectedControlType": "Button",
@@ -19,18 +19,18 @@
                 {
                     "name": "",
                     "id": "7f29f2a8-63d3-4e3d-ae5d-6e0a341c725c",
-                    "path": "",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "New action",
+                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Story",
+            "name": "Skipable",
             "id": "5406758d-ad6c-486d-aef2-c006a4e0d2fd",
             "actions": [
                 {
@@ -69,7 +69,7 @@
             ]
         },
         {
-            "name": "Title",
+            "name": "Menu",
             "id": "11e2480c-ed4a-4368-948f-7de82fd7d6ab",
             "actions": [
                 {
@@ -153,6 +153,166 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "ESC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "bb2826af-7aa3-4ce7-97f8-71084314e669",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "918d57f5-87f3-4a21-801b-ba7348693cbb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "0dbcf06e-e9c8-43bb-b0a3-584e6daeb8a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f3d2132b-e26a-4afc-93ab-672a5f9e3327",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4ae8bfa-331f-46a5-95e7-8ba4a774422c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Inventory",
+            "id": "76d2eb63-db2b-45c1-8a33-4a00d348a4ab",
+            "actions": [
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "bf7234ec-8bd4-42f8-b4be-5217ab48cce0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "715b5547-b783-4b3d-9c49-4261d2ac9fe3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cursor",
+            "id": "90ba63ce-cf00-4be4-82cf-28e7a4a9a5e1",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "5495be46-5089-4ffe-b938-dea3804c4a15",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a159bac5-f59e-4f39-83b0-92b16d0af748",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Shop",
+            "id": "7e4c08da-b042-43c8-9918-1b561f882945",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "2575ca4d-38c2-46d7-8c19-0b1ba1d46512",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4a46f1dd-b2e8-49aa-a6a9-6fc019979450",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Box",
+            "id": "a466816e-899c-410f-bd75-83158cb1b98b",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "ab639004-7d51-4832-96e2-1de821c998cd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ff700538-b27f-4299-8ec9-65492ffeef5a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

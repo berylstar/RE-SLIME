@@ -3,46 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class ESCScript : MonoBehaviour
 {
-    public GameObject[] panel;
+    public GameObject[] panels;
     public GameObject pick;
     public Text textBGM, textEFFECT;
 
-    private int menuIndex = 0;
-    private List<int> mmi = new List<int>() { 2, 3, 2 };
+    private Stack<int> uiStack = new Stack<int>();
+    private List<int> maxIndex = new List<int>() { 2, 3, 2 };
     private int pickIndex = 0;
 
-    private void Start()
+    private void OnEnable()
     {
         ActivePanel(0);
-        menuIndex = 0;
     }
 
-    private void Update()
+    private void OnUpDown(InputValue value)
     {
         if (GameController.Pause(PauseType.ESC))
             return;
 
-        if (Input.GetKeyDown(KeyCode.DownArrow)) SetIndex(Mathf.Min(pickIndex + 1, mmi[menuIndex]));
-        if (Input.GetKeyDown(KeyCode.UpArrow)) SetIndex(Mathf.Max(pickIndex - 1, 0));
+        float v = value.Get<float>();
 
-        pick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, pickIndex * -100, 0f);
+        if (v > 0)
+            pickIndex += (pickIndex < maxIndex[uiStack.Peek()]) ? 1 : 0;
+        else if (v < 0)
+            pickIndex += (pickIndex > 0) ? -1 : 0;
+        else
+            return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            ButtonClick();
+        SetIndex(pickIndex);
+    }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ActivePanel(0);
-            menuIndex = 0;
-            StartCoroutine(ExitCo());
-        }
+    private void OnPick()
+    {
+        if (GameController.Pause(PauseType.ESC))
+            return;
+
+        ButtonClick();
+    }
+
+    private void OnESC()
+    {
+        if (GameController.Pause(PauseType.ESC))
+            return;
+
+        StartCoroutine(ExitCo());
     }
 
     IEnumerator ExitCo()
     {
+        uiStack.Clear();
         Time.timeScale = 1f;
         SoundManager.I.PauseBGM();
 
@@ -54,62 +67,69 @@ public class ESCScript : MonoBehaviour
 
     public void ButtonClick()
     {
-        if (menuIndex == 0)
+        switch (uiStack.Peek())
         {
-            if (pickIndex == 0)
-            {
-                ActivePanel(0);
-                menuIndex = 0;
-                StartCoroutine(ExitCo());
-            }
-            else if (pickIndex == 1)
-            {
-                textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
-                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 100) + "%";
-                ActivePanel(1);
-            }
-            else
-            {
-                ActivePanel(2);
-            }
-        }
-        else if (menuIndex == 1)
-        {
-            if (pickIndex == 0)
-            {
-                SoundManager.I.ChangeVolume("BGM");
-                textBGM.text = "BGM:" + (int)(SoundManager.I.bgmVolume * 200) + "%";
-            }
-            else if (pickIndex == 1)
-            {
-                SoundManager.I.ChangeVolume("EFFECT");
-                textEFFECT.text = "SFX:" + (int)(SoundManager.I.effectVolume * 100) + "%";
-            }
-            else if (pickIndex == 2)
-            {
-                SoundManager.I.Mute();
-                textBGM.text = "BGM:0%";
-                textEFFECT.text = "SFX:0%";
-            }
-            else
-            {
-                ActivePanel(0);
-            }
-        }
-        else if (menuIndex == 2)
-        {
-            if (pickIndex == 0)
-            {
-                ActivePanel(0);
-            }
-            else if (pickIndex == 1)
-            {
-                Time.timeScale = 1f;
-                SoundManager.I.PauseBGM();
-                SoundManager.I.PlayBGM("BGM/Title");
-                GameController.Restart();
-                SceneManager.LoadScene("TitleScene");
-            }
+            case 0:
+                switch (pickIndex)
+                {
+                    case 0:
+                        StartCoroutine(ExitCo());
+                        break;
+
+                    case 1:
+                        textBGM.text = SoundManager.I.ReturnText("BGM");
+                        textEFFECT.text = SoundManager.I.ReturnText("EFFECT");
+
+                        ActivePanel(1);
+                        break;
+
+                    default:
+                        ActivePanel(2);
+                        break;
+                }
+                break;
+            
+            case 1:
+                switch (pickIndex)
+                {
+                    case 0:
+                        SoundManager.I.ChangeVolume("BGM");
+                        textBGM.text = SoundManager.I.ReturnText("BGM");
+                        break;
+
+                    case 1:
+                        SoundManager.I.ChangeVolume("EFFECT");
+                        textEFFECT.text = SoundManager.I.ReturnText("EFFECT");
+                        break;
+
+                    case 2:
+                        SoundManager.I.Mute();
+                        textBGM.text = "BGM:0%";
+                        textEFFECT.text = "SFX:0%";
+                        break;
+
+                    default:
+                        ActivePanel(-1);
+                        break;
+                }
+                break;
+
+            case 2:
+                switch (pickIndex)
+                {
+                    case 0:
+                        ActivePanel(-1);
+                        break;
+
+                    default:
+                        Time.timeScale = 1f;
+                        SoundManager.I.PauseBGM();
+                        SoundManager.I.PlayBGM("BGM/Title");
+                        GameController.Restart();
+                        SceneManager.LoadScene("TitleScene");
+                        break;
+                }
+                break;
         }
 
         SoundManager.I.PlayEffect("EFFECT/UIPick");
@@ -117,20 +137,28 @@ public class ESCScript : MonoBehaviour
 
     private void ActivePanel(int idx)
     {
-        for (int i = 0; i < panel.Length; i++)
+        if (idx < 0)
+            uiStack.Pop();
+        else
+            uiStack.Push(idx);
+
+        foreach (GameObject panel in panels)
         {
-            panel[i].SetActive(false);
+            panel.SetActive(false);
         }
 
-        menuIndex = idx;
         pickIndex = 0;
-        panel[idx].SetActive(true);
+        pick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, 0f, 0f);
+
+        panels[uiStack.Peek()].SetActive(true);
     }
 
     // PointerEnter 감지용 함수
     public void SetIndex(int i)
     {
         pickIndex = i;
+        pick.GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, pickIndex * -100, 0f);
+
         SoundManager.I.PlayEffect("EFFECT/UIMove");
     }
 }

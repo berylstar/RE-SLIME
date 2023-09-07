@@ -58,23 +58,25 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeVolume(string type)
     {
-        if (type == "BGM")
+        switch (type)
         {
-            if (bgmVolume > 0)
-                bgmVolume -= 0.125f;
-            else
-                bgmVolume = 0.5f;
+            case "BGM":
+                if (bgmVolume > 0)
+                    bgmVolume -= 0.125f;
+                else
+                    bgmVolume = 0.5f;
 
-            bgm.volume = bgmVolume;
-        }
-        else if (type == "EFFECT")
-        {
-            if (effectVolume > 0)
-                effectVolume -= 0.25f;
-            else
-                effectVolume = 1f;
+                bgm.volume = bgmVolume;
+                break;
 
-            effector.volume = effectVolume;
+            case "EFFECT":
+                if (effectVolume > 0)
+                    effectVolume -= 0.25f;
+                else
+                    effectVolume = 1f;
+
+                effector.volume = effectVolume;
+                break;
         }
     }
 
@@ -85,5 +87,13 @@ public class SoundManager : MonoBehaviour
 
         bgm.volume = bgmVolume;
         effector.volume = effectVolume;
+    }
+
+    public string ReturnText(string type)
+    {
+        if (type == "BGM")
+            return $"BGM:{bgmVolume * 200}%";
+        else
+            return $"SFX:{effectVolume * 100}%";
     }
 }

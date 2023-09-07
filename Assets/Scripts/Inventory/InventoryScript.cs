@@ -89,11 +89,13 @@ public class InventoryScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
         {
-            if (CheckOverlap())
-                SoundManager.I.PlayEffect("EFFECT/Error");
-            else
-                CloseInventory();
+            CloseInventory();
         }
+    }
+
+    private void OnOpenInventory()
+    {
+
     }
 
     public void OpenInventory()
@@ -111,13 +113,20 @@ public class InventoryScript : MonoBehaviour
         SoundManager.I.PlayEffect("EFFECT/InvenOpen");
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
-        cursor.SetActive(false);       
+        if (CheckOverlap())
+        {
+            SoundManager.I.PlayEffect("EFFECT/Error");
+        }
+        else
+        {
+            cursor.SetActive(false);
 
-        SoundManager.I.PlayEffect("EFFECT/InvenOpen");
+            SoundManager.I.PlayEffect("EFFECT/InvenOpen");
 
-        StartCoroutine(CloseCo());
+            StartCoroutine(CloseCo());
+        }        
     }
 
     IEnumerator CloseCo()

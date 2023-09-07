@@ -28,10 +28,10 @@ public class ResultSceneScript : MonoBehaviour
             textEnd.text = "GAME OVER...";
         }
 
-        textResult.text = "     이번 슬라임은 " + GameController.floor + " 층까지...\n" +
-                          "던전에 머문 시간 : " + Time(GameController.inTime) + "\n" +
-                          "     획득한 코인 : " + GameController.getCoin + "\n" +
-                          "         처치 수 : " + GameController.kills + "\n"; 
+        textResult.text = $"     이번 슬라임은 {GameController.floor} 층까지...\n" +
+                          $"던전에 머문 시간 : {Time(GameController.inTime)}\n" +
+                          $"     획득한 코인 : {GameController.getCoin}\n" +
+                          $"         처치 수 : {GameController.kills}\n"; 
                           //+ "SLIME WILL BE RETURN";
 
         foreach (Image image in imageEquips)
@@ -49,13 +49,15 @@ public class ResultSceneScript : MonoBehaviour
         StartCoroutine(Delay());
     }
 
-    private void Update()
+    private void OnSkip()
     {
         if (!ready)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            BackToIntro();
+        GameController.Restart();
+        DataManager.I.RemoveData();
+        SceneManager.LoadScene("TitleScene");
+        SoundManager.I.PlayBGM("BGM/Title");
     }
 
     IEnumerator Delay()
@@ -65,19 +67,11 @@ public class ResultSceneScript : MonoBehaviour
         textRestart.gameObject.SetActive(true);
     }
 
-    private void BackToIntro()
-    {
-        GameController.Restart();
-        DataManager.I.RemoveData();
-        SceneManager.LoadScene("TitleScene");
-        SoundManager.I.PlayBGM("BGM/Title");
-    }
-
     private string Time(int time)
     {
         int min = (int)(time / 60);
         int sec = time - min * 60;
 
-        return "[" + string.Format("{0:D2}", min) + ":" + sec + "]";
+        return $"[{string.Format("{0:D2}", min)}:{sec}]";
     }
 }

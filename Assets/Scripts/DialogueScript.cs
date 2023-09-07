@@ -34,26 +34,22 @@ public class DialogueScript : MonoBehaviour
         GetComponent<SpriteRenderer>().sortingOrder = 10 - (int)transform.position.y;
     }
 
-    private void Update()
+    private void OnNext()
     {
-        if (GameController.Pause(PauseType.DIALOGUE))
+        if (GameController.Pause(PauseType.DIALOGUE) || GameController.nowDialogue != this || UIScript.I.onTexting)
             return;
 
-        // 지금 대화하는게 나인지 확인
-        if (GameController.nowDialogue != this)
+        index += 1;
+        NextDialogue();
+    }
+
+    private void OnSkip()
+    {
+        if (GameController.Pause(PauseType.DIALOGUE) || GameController.nowDialogue != this)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && !UIScript.I.onTexting)
-        {
-            index += 1;
-            NextDialogue();
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            index = end + 1;
-            NextDialogue();
-        }
+        index = end + 1;
+        NextDialogue();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,26 +77,29 @@ public class DialogueScript : MonoBehaviour
         // start : 대화 시작 element
         // end : 대화 마지막 element + 1
 
-        if (tp == DialogueType.SIGN)
+        switch (tp)
         {
-            if (GameController.floor == 0) { start = 0; end = 1; }
-            else if (GameController.floor == 80) { start = 2; end = 3; }
-            else { start = 1; end = 2; }
-        }
+            case DialogueType.SIGN:
+                if      (GameController.floor == 0)  { start = 0; end = 1; }
+                else if (GameController.floor == 80) { start = 2; end = 3; }
+                else                                 { start = 1; end = 2; }
+                break;
 
-        else if (tp == DialogueType.KINGSLIME)
-        {
-            if (!GameController.tutorial[0]) { start = 0; end = 23; }
-            else if (!GameController.tutorial[1]) { start = 32; end = 33; }
-            else { start = 23; end = 25; }
-        }
+            case DialogueType.KINGSLIME:
+                if      (!GameController.tutorial[0]) { start = 0; end = 23; }
+                else if (!GameController.tutorial[1]) { start = 32; end = 33; }
+                else                                  { start = 23; end = 25; }
+                break;
 
-        else if (tp == DialogueType.InvenTutorial) { start = 25; end = 32; }
+            case DialogueType.InvenTutorial:
+                start = 25;
+                end = 32;
+                break;
 
-        else if (tp == DialogueType.DEMON)
-        {
-            if (GameController.floor == 80) { start = 0; end = 6; }
-            else if (GameController.floor == 100) { start = 6; end = 10; }
+            case DialogueType.DEMON:
+                if      (GameController.floor == 80)  { start = 0; end = 6; }
+                else if (GameController.floor == 100) { start = 6; end = 10; }
+                break;
         }
     }
 
