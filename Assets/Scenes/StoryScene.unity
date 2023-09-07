@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 205898408}
   - component: {fileID: 205898407}
   - component: {fileID: 205898411}
+  - component: {fileID: 205898413}
   - component: {fileID: 205898412}
   m_Layer: 5
   m_Name: Canvas
@@ -544,6 +545,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textSkip: {fileID: 481860281}
+--- !u!114 &205898413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205898406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0a0d587bac1c0e74ca153c87b42dbc43, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: PC
+  m_DefaultActionMap: 5406758d-ad6c-486d-aef2-c006a4e0d2fd
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &243829752
 GameObject:
   m_ObjectHideFlags: 0
