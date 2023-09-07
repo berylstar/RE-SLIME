@@ -39,14 +39,14 @@ public class PlayerScript : MovingObject
             return;
 
         // Input : 방향키 = 플레이어 이동
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            PlayerMove(-1, 0);
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-            PlayerMove(1, 0);
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            PlayerMove(0, 1);
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            PlayerMove(0, -1);
+        //if (Input.GetKeyDown(KeyCode.LeftArrow))
+        //    PlayerMove(-1, 0);
+        //else if (Input.GetKeyDown(KeyCode.RightArrow))
+        //    PlayerMove(1, 0);
+        //else if (Input.GetKeyDown(KeyCode.UpArrow))
+        //    PlayerMove(0, 1);
+        //else if (Input.GetKeyDown(KeyCode.DownArrow))
+        //    PlayerMove(0, -1);
 
         punchZip.transform.position = transform.position;
 
@@ -68,12 +68,6 @@ public class PlayerScript : MovingObject
             GameController.skillV.Skill();
         }
 
-        // Input : I = 인벤토리
-        //if (Input.GetKeyDown(KeyCode.I) && GameController.tutorial[0])
-        //{
-        //    InventoryScript.I.OpenInventory();
-        //}
-
         // Input : ESC = 메뉴
         if (Input.GetKeyDown(KeyCode.Escape))
             UIScript.I.EnterESC();
@@ -84,13 +78,30 @@ public class PlayerScript : MovingObject
         }
     }
 
-    private void OnOpenInventory()
+    private void OnMove(InputValue value)
     {
-        if (GameController.Pause(PauseType.NORMAL) || !GameController.tutorial[0])
+        if (GameController.Pause(PauseType.NORMAL))
             return;
 
-        print("I");
-        InventoryScript.I.OpenInventory();
+        Vector2 dir = value.Get<Vector2>();
+        PlayerMove((int)dir.x, (int)dir.y);
+    }
+
+    private void OnInventory()
+    {
+        if (!GameController.tutorial[0])
+            return;
+
+        if (GameController.Pause(PauseType.NORMAL))
+        {
+            print("CLOSE");
+            InventoryScript.I.CloseInventory();
+        }
+        else if (GameController.Pause(PauseType.INVEN))
+        {
+            print("OPEN");
+            InventoryScript.I.OpenInventory();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -148,6 +159,8 @@ public class PlayerScript : MovingObject
             ani.SetTrigger("MoveUp");
         else if (dy == -1)
             ani.SetTrigger("MoveDown");
+        else
+            return;
 
          if (Move(dx, dy))
             SoundManager.I.PlayEffect("EFFECT/SlimeMove");

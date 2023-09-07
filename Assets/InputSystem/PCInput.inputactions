@@ -6,13 +6,22 @@
             "id": "c2eeea14-8dac-41f2-8eb1-c48c7659a40b",
             "actions": [
                 {
-                    "name": "OpenInventory",
+                    "name": "Inventory",
                     "type": "Button",
                     "id": "d8465a60-322a-4fd9-bb4c-9338f598296d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "70685215-57ad-4af4-9de9-c1c0907e1537",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -23,9 +32,64 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "OpenInventory",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "5a0f2815-02c8-4187-a1d2-1a70a42f5896",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "98394d07-2220-4787-9b35-e7ca64d68f23",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "82cf6a1e-b2f2-4634-84d9-1d89da0998c4",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "6e8e94a6-0a6c-45dd-a054-16e0ce3ec710",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "96b4dc68-01f3-465f-b3e0-95f25de6f0b7",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

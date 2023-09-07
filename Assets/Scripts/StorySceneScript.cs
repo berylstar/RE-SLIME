@@ -7,6 +7,11 @@ public class StorySceneScript : MonoBehaviour
 {
     public GameObject textSkip;
 
+    //private void Awake()
+    //{
+    //    Screen.SetResolution(1366, 768, false);
+    //}
+
     private void Start()
     {
         if (GameController.floor == 100)
