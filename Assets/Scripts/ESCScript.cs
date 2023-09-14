@@ -45,7 +45,7 @@ public class ESCScript : MonoBehaviour
         ButtonClick();
     }
 
-    private void OnESC()
+    private void OnClose()
     {
         if (GameController.Pause(PauseType.ESC))
             return;

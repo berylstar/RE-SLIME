@@ -22,6 +22,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "b61aa502-24bf-46e6-a251-708e9185a272",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skill",
+                    "type": "Button",
+                    "id": "1f3d5671-2d1e-472d-b651-7ed425e1786d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "5aa4bcba-3a70-4996-885c-cd04e8fa2d92",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,6 +117,61 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "6009cee4-2a08-403e-98ad-db8ef5feb020",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skill",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "89db7b0f-c071-47bf-88ce-f8fb8ac6e3b8",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "37ab223f-28c4-4a63-b046-a6df403907a4",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "058629f2-3e01-427a-a13f-caabd33dfe28",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b545c30-6fde-4bb5-97d9-ff4d1401206f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -155,7 +237,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ESC",
+                    "name": "Close",
                     "type": "Button",
                     "id": "e9e92667-55b8-4e11-8930-fc7cb5d43c1f",
                     "expectedControlType": "Button",
@@ -216,7 +298,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "ESC",
+                    "action": "Close",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -265,34 +347,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Skip",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Inventory",
-            "id": "76d2eb63-db2b-45c1-8a33-4a00d348a4ab",
-            "actions": [
-                {
-                    "name": "OpenInventory",
-                    "type": "Button",
-                    "id": "bf7234ec-8bd4-42f8-b4be-5217ab48cce0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "715b5547-b783-4b3d-9c49-4261d2ac9fe3",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "OpenInventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

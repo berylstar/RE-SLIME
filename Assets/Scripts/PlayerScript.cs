@@ -35,47 +35,50 @@ public class PlayerScript : MovingObject
         if (GameController.Pause(PauseType.NORMAL))
             return;
 
-        if (!isAlive)
-            return;
-
-        // Input : 방향키 = 플레이어 이동
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
-        //    PlayerMove(-1, 0);
-        //else if (Input.GetKeyDown(KeyCode.RightArrow))
-        //    PlayerMove(1, 0);
-        //else if (Input.GetKeyDown(KeyCode.UpArrow))
-        //    PlayerMove(0, 1);
-        //else if (Input.GetKeyDown(KeyCode.DownArrow))
-        //    PlayerMove(0, -1);
-
         punchZip.transform.position = transform.position;
-
-        // Input : 스페이스바 = 펀치 공격
-        if (Input.GetKeyDown(KeyCode.Space) && canPunch)
-        {
-            StartCoroutine(PunchAttack());
-        }
-
-        // Input : C = 스킬 1
-        if (Input.GetKeyDown(KeyCode.C) && GameController.skillC)
-        {
-            GameController.skillC.Skill();
-        }
-
-        // Input : V = 스킬 2
-        if (Input.GetKeyDown(KeyCode.V) && GameController.skillV)
-        {
-            GameController.skillV.Skill();
-        }
-
-        // Input : ESC = 메뉴
-        if (Input.GetKeyDown(KeyCode.Escape))
-            UIScript.I.EnterESC();
 
         if (GameController.playerHP <= 0 && !EquipCresent())
         {
             StartCoroutine(PlayerDie());
         }
+    }
+
+    #region InputSystem
+    private void OnInventory()
+    {
+        if (!GameController.tutorial[0])
+            return;
+
+        if (GameController.Pause(PauseType.NORMAL))
+        {
+            InventoryScript.I.CloseInventory();
+        }
+        else if (GameController.Pause(PauseType.INVEN))
+        {
+            InventoryScript.I.OpenInventory();
+        }
+    }
+
+    private void OnSkill(InputValue value)
+    {
+        switch(value.Get<float>())
+        {
+            case 1:
+                if (GameController.skillC) GameController.skillC.Skill();
+                break;
+
+            case -1:
+                if (GameController.skillV) GameController.skillV.Skill();
+                break;
+        }
+    }
+
+    private void OnPause()
+    {
+        if (GameController.Pause(PauseType.NORMAL))
+            return;
+
+        UIScript.I.EnterESC();
     }
 
     private void OnMove(InputValue value)
@@ -87,22 +90,14 @@ public class PlayerScript : MovingObject
         PlayerMove((int)dir.x, (int)dir.y);
     }
 
-    private void OnInventory()
+    private void OnPunch()
     {
-        if (!GameController.tutorial[0])
+        if (GameController.Pause(PauseType.NORMAL) || !canPunch)
             return;
 
-        if (GameController.Pause(PauseType.NORMAL))
-        {
-            print("CLOSE");
-            InventoryScript.I.CloseInventory();
-        }
-        else if (GameController.Pause(PauseType.INVEN))
-        {
-            print("OPEN");
-            InventoryScript.I.OpenInventory();
-        }
+        StartCoroutine(PunchAttack());
     }
+    #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -223,6 +218,7 @@ public class PlayerScript : MovingObject
     IEnumerator PlayerDie()
     {
         isAlive = false;
+        GameController.pause.Push(PauseType.DIE);
         ani.SetTrigger("PlayerDie");
         SoundManager.I.PlayEffect("EFFECT/SlimeDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
@@ -231,6 +227,7 @@ public class PlayerScript : MovingObject
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
+        GameController.pause.Pop();
         if (GameController.playerLife > 1 || EquipLastleaf())
         {
             // REBORN

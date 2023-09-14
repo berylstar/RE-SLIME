@@ -42,7 +42,7 @@ public class TitleScript : MonoBehaviour
         ButtonClick();
     }
 
-    private void OnESC()
+    private void OnClose()
     {
         if (uiStack.Peek() <= 0)
             return;
