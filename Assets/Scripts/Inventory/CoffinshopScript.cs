@@ -28,7 +28,7 @@ public class CoffinshopScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.SHOP))
+        if (GameController.situation.Peek() != SituationType.SHOP)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -73,7 +73,7 @@ public class CoffinshopScript : MonoBehaviour
         {
             UIScript.I.panelShop.SetActive(true);
             UIScript.I.stackAssists.Push("'ESC' : 상점 닫기, 'R' : 목록 새로고침 (2코인)");
-            GameController.pause.Push(PauseType.SHOP);
+            GameController.situation.Push(SituationType.SHOP);
             SoundManager.I.PlayEffect("EFFECT/ShopOpen");
         }
     }
@@ -89,7 +89,7 @@ public class CoffinshopScript : MonoBehaviour
             yield return GameController.delay_frame;
 
             UIScript.I.stackAssists.Pop();
-            GameController.pause.Pop();
+            GameController.situation.Pop();
         }
         else
         {

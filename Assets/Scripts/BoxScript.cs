@@ -29,7 +29,7 @@ public class BoxScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.BOX))
+        if (GameController.situation.Peek() != SituationType.BOX)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -53,7 +53,7 @@ public class BoxScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             UIScript.I.panelBox.SetActive(true);
-            GameController.pause.Push(PauseType.BOX);
+            GameController.situation.Push(SituationType.BOX);
             SoundManager.I.PlayEffect("EFFECT/BoxOpen");
         }
     }
@@ -65,7 +65,7 @@ public class BoxScript : MonoBehaviour
 
         yield return GameController.delay_frame;
 
-        GameController.pause.Pop();
+        GameController.situation.Pop();
         this.gameObject.SetActive(false);
     }
 

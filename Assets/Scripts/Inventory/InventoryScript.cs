@@ -74,7 +74,7 @@ public class InventoryScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.INVEN))
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
             return;
 
         objectOverlapped.SetActive(listOverlap.Count > 0);
@@ -85,7 +85,7 @@ public class InventoryScript : MonoBehaviour
         cursor.SetActive(true);
 
         UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
-        GameController.pause.Push(PauseType.INVEN);
+        GameController.situation.Push(SituationType.INVENTORY);
 
         if (!GameController.tutorial[1])
         {
@@ -115,7 +115,7 @@ public class InventoryScript : MonoBehaviour
     {
         yield return GameController.delay_frame;
         UIScript.I.stackAssists.Pop();
-        GameController.pause.Pop();
+        GameController.situation.Pop();
     }
 
     // 인벤토리 좌표 초기화

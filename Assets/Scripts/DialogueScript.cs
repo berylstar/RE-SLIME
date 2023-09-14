@@ -36,7 +36,7 @@ public class DialogueScript : MonoBehaviour
 
     private void OnNext()
     {
-        if (GameController.Pause(PauseType.DIALOGUE) || GameController.nowDialogue != this || UIScript.I.onTexting)
+        if (GameController.situation.Peek() != SituationType.DIALOGUE || GameController.nowDialogue != this || UIScript.I.onTexting)
             return;
 
         index += 1;
@@ -45,7 +45,7 @@ public class DialogueScript : MonoBehaviour
 
     private void OnSkip()
     {
-        if (GameController.Pause(PauseType.DIALOGUE) || GameController.nowDialogue != this)
+        if (GameController.situation.Peek() != SituationType.DIALOGUE || GameController.nowDialogue != this)
             return;
 
         index = end + 1;
@@ -64,7 +64,7 @@ public class DialogueScript : MonoBehaviour
     public void StartDialogue(DialogueType tp)
     {
         UIScript.I.stackAssists.Push("'C':¥Î»≠ Ω∫≈µ");
-        GameController.pause.Push(PauseType.DIALOGUE);
+        GameController.situation.Push(SituationType.DIALOGUE);
         SetDialogue(tp);
         index = start;
         GameController.nowDialogue = this;
@@ -111,7 +111,7 @@ public class DialogueScript : MonoBehaviour
         yield return GameController.delay_frame;
         
         UIScript.I.stackAssists.Pop();
-        GameController.pause.Pop();
+        GameController.situation.Pop();
     }
 
     private void NextDialogue()

@@ -32,8 +32,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.NORMAL))
-            return;
+        print(GameController.situation.Peek());
 
         punchZip.transform.position = transform.position;
 
@@ -49,18 +48,23 @@ public class PlayerScript : MovingObject
         if (!GameController.tutorial[0])
             return;
 
-        if (GameController.Pause(PauseType.NORMAL))
+        switch (GameController.situation.Peek())
         {
-            InventoryScript.I.CloseInventory();
-        }
-        else if (GameController.Pause(PauseType.INVEN))
-        {
-            InventoryScript.I.OpenInventory();
+            case SituationType.INVENTORY:
+                InventoryScript.I.CloseInventory();
+                break;
+
+            case SituationType.NORMAL:
+                InventoryScript.I.OpenInventory();
+                break;
         }
     }
 
     private void OnSkill(InputValue value)
     {
+        if (GameController.situation.Peek() != SituationType.NORMAL)
+            return;
+
         switch(value.Get<float>())
         {
             case 1:
@@ -75,7 +79,7 @@ public class PlayerScript : MovingObject
 
     private void OnPause()
     {
-        if (GameController.Pause(PauseType.NORMAL))
+        if (GameController.situation.Peek() != SituationType.NORMAL)
             return;
 
         UIScript.I.EnterESC();
@@ -83,7 +87,7 @@ public class PlayerScript : MovingObject
 
     private void OnMove(InputValue value)
     {
-        if (GameController.Pause(PauseType.NORMAL))
+        if (GameController.situation.Peek() != SituationType.NORMAL)
             return;
 
         Vector2 dir = value.Get<Vector2>();
@@ -92,7 +96,7 @@ public class PlayerScript : MovingObject
 
     private void OnPunch()
     {
-        if (GameController.Pause(PauseType.NORMAL) || !canPunch)
+        if (GameController.situation.Peek() != SituationType.NORMAL || !canPunch)
             return;
 
         StartCoroutine(PunchAttack());
@@ -137,7 +141,7 @@ public class PlayerScript : MovingObject
     {
         while (isAlive)
         {
-            if (GameController.pause.Peek() == PauseType.NORMAL)
+            if (GameController.situation.Peek() == SituationType.NORMAL)
                 GameController.ChangeHP(-1);
 
             GameController.inTime += 1;
@@ -218,7 +222,7 @@ public class PlayerScript : MovingObject
     IEnumerator PlayerDie()
     {
         isAlive = false;
-        GameController.pause.Push(PauseType.DIE);
+        GameController.situation.Push(SituationType.DIE);
         ani.SetTrigger("PlayerDie");
         SoundManager.I.PlayEffect("EFFECT/SlimeDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
@@ -227,7 +231,7 @@ public class PlayerScript : MovingObject
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
-        GameController.pause.Pop();
+        GameController.situation.Pop();
         if (GameController.playerLife > 1 || EquipLastleaf())
         {
             // REBORN
@@ -272,7 +276,7 @@ public class PlayerScript : MovingObject
     
     private bool EquipCresent()
     {
-        if (GameController.effcrescent && Random.Range(0, 19) <= 0)
+        if (GameController.effcrescent && Random.Range(0, 20) <= 0)
         {
             GameController.ChangeHP(GameController.playerMaxHP / 2);
             return true;

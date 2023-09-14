@@ -75,7 +75,7 @@ public class UIScript : MonoBehaviour
 
     public void EnterESC()
     {
-        GameController.pause.Push(PauseType.ESC);
+        GameController.situation.Push(SituationType.ESC);
         panelESC.SetActive(true);
         Time.timeScale = 0;
         SoundManager.I.PauseBGM();

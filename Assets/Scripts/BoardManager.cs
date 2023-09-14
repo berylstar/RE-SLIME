@@ -187,12 +187,12 @@ public class BoardManager : MonoBehaviour
         if (floor % 20 == 19 && floor != 99)
         {
             UIScript.I.panelBoss.SetActive(true);
-            GameController.pause.Push(PauseType.INBOSS);
+            GameController.situation.Push(SituationType.BOSS_APPEAR);
 
             yield return GameController.delay_3s;
 
             UIScript.I.panelBoss.SetActive(false);
-            GameController.pause.Pop();
+            GameController.situation.Pop();
             SpawnBoss();
         }
         else

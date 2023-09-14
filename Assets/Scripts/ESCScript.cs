@@ -22,7 +22,7 @@ public class ESCScript : MonoBehaviour
 
     private void OnUpDown(InputValue value)
     {
-        if (GameController.Pause(PauseType.ESC))
+        if (GameController.situation.Peek() != SituationType.ESC)
             return;
 
         float v = value.Get<float>();
@@ -39,7 +39,7 @@ public class ESCScript : MonoBehaviour
 
     private void OnPick()
     {
-        if (GameController.Pause(PauseType.ESC))
+        if (GameController.situation.Peek() != SituationType.ESC)
             return;
 
         ButtonClick();
@@ -47,7 +47,7 @@ public class ESCScript : MonoBehaviour
 
     private void OnClose()
     {
-        if (GameController.Pause(PauseType.ESC))
+        if (GameController.situation.Peek() != SituationType.ESC)
             return;
 
         StartCoroutine(ExitCo());
@@ -61,7 +61,7 @@ public class ESCScript : MonoBehaviour
 
         yield return GameController.delay_frame;
 
-        GameController.pause.Pop();
+        GameController.situation.Pop();
         UIScript.I.panelESC.SetActive(false);
     }
 

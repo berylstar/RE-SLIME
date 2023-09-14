@@ -31,7 +31,7 @@ public class CursorScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.INVEN))
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
             return;
 
         // Input : 방향키 = 인벤토리 내 커서 조종
