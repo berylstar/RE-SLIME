@@ -83,38 +83,48 @@ public class BoxScript : MonoBehaviour
 
     private void ShowRewardInfo()
     {
-        if (bi == 1)
+        switch (bi)
         {
-            textName.text = "코인 더미";
-            textAdject.text = "이제 나도 부자 ?";
-            textEffect.text = "COIN + 10";
-        }
-        else if (bi == 2)
-        {
-            textName.text = "대용량 포션";
-            textAdject.text = "갈증 완벽 해결";
-            textEffect.text = "HP + 50";
-        }
-        else if (!isPicked)
-        {
-            textName.text = "하나를 고르세요.";
-            textAdject.text = "";
-            textEffect.text = "왼쪽 or 오른쪽";
-        }
-        else
-        {
-            textName.text = "";
-            textAdject.text = "";
-            textEffect.text = "";
+            case 1:
+                textName.text = "코인 더미";
+                textAdject.text = "이제 나도 부자 ?";
+                textEffect.text = "COIN + 10";
+                break;
+
+            case 2:
+                textName.text = "대용량 포션";
+                textAdject.text = "갈증 완벽 해결";
+                textEffect.text = "HP + 50";
+                break;
+
+            default:
+                if (!isPicked)
+                {
+                    textName.text = "하나를 고르세요.";
+                    textAdject.text = "";
+                    textEffect.text = "왼쪽 or 오른쪽";
+                }
+                else
+                {
+                    textName.text = "";
+                    textAdject.text = "";
+                    textEffect.text = "";
+                }
+                break;
         }
     }
 
     private void GetReward()
     {
-        if (bi == 1)
-            GameController.coin += 10;
-        else if (bi == 2)
-            GameController.ChangeHP(50);
+        switch (bi)
+        {
+            case 1:
+                GameController.coin += 10;
+                break;
+            case 2:
+                GameController.ChangeHP(50);
+                break;
+        }
 
         stands[0].sprite = nope;
         stands[1].sprite = nope;

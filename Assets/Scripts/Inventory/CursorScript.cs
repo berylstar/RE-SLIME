@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CursorScript : MonoBehaviour
 {
@@ -29,75 +30,6 @@ public class CursorScript : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (GameController.situation.Peek() != SituationType.INVENTORY)
-            return;
-
-        // Input : 방향키 = 인벤토리 내 커서 조종
-        MoveCursor();
-
-        // Input : 스페이스 바 = 장비 선택/해제
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (on == null)
-                return;
-
-            if (!pick)
-            {
-                pick = on;
-                sr.color = Color.yellow;
-                ShowInfo();
-            }
-            else
-            {
-                pick = null;
-                check = null;
-                sr.color = Color.white;
-                UIScript.I.panelInvenInfo.SetActive(false);
-                UIScript.I.stackAssists.Pop();
-            }
-            SoundManager.I.PlayEffect("EFFECT/InvenClick");
-        }
-
-        if (pick == null)
-            return;
-
-        // Input : C = 장비 C 스킬 등록
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            InventoryScript.I.SetSkill("C", pick.GetComponent<EquipScript>());
-            pick = null;
-            sr.color = Color.white;
-        }
-
-        // Input : V = 장비 V 스킬 등록
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            InventoryScript.I.SetSkill("V", pick.GetComponent<EquipScript>());
-            pick = null;
-            sr.color = Color.white;
-        }
-
-        // Input : R = 장비 제거
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (check != pick)
-            {
-                sr.color = Color.red;
-                check = pick;
-                return;
-            }
-
-            pick.GetComponent<EquipScript>().RemoveThis();
-            pick = null;
-            check = null;
-            sr.color = Color.white;
-            UIScript.I.panelInvenInfo.SetActive(false);
-            UIScript.I.stackAssists.Pop();
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         on = null;
@@ -109,17 +41,20 @@ public class CursorScript : MonoBehaviour
             on = collision.gameObject;
     }
 
-    // 커서 이동 함수
-    private void MoveCursor()
+    private void OnMove(InputValue value)
     {
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
+            return;
+
+        Vector2 dir = value.Get<Vector2>();
         int change;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && posIndex % 3 > 0) change = -1;
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && posIndex % 3 < 2) change = 1;
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && posIndex > 2) change = -3;
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && posIndex < 15) change = 3;
-        else return;
-        
+        if (dir == Vector2.left && posIndex % 3 > 0) { change = -1; }
+        else if (dir == Vector2.right && posIndex % 3 < 2) { change = 1; }
+        else if (dir == Vector2.up && posIndex > 2) { change = -3; }
+        else if (dir == Vector2.down && posIndex < 15) { change = 3; }
+        else { return; }
+
         if (pick && !pick.GetComponent<EquipScript>().EquipMove(change))
             return;
 
@@ -127,6 +62,77 @@ public class CursorScript : MonoBehaviour
 
         transform.position = InventoryScript.I.ReturnGrid(posIndex);
         SoundManager.I.PlayEffect("EFFECT/UIMove");
+    }
+
+    private void OnPick()
+    {
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
+            return;
+
+        if (on == null)
+            return;
+
+        if (!pick)
+        {
+            pick = on;
+            sr.color = Color.yellow;
+            ShowInfo();
+        }
+        else
+        {
+            pick = null;
+            check = null;
+            sr.color = Color.white;
+            UIScript.I.panelInvenInfo.SetActive(false);
+            UIScript.I.stackAssists.Pop();
+        }
+        SoundManager.I.PlayEffect("EFFECT/InvenClick");
+    }
+
+    private void OnSetSkill(InputValue value)
+    {
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
+            return;
+
+        if (pick == null)
+            return;
+
+        switch (value.Get<float>())
+        {
+            case 1:
+                InventoryScript.I.SetSkill("C", pick.GetComponent<EquipScript>());
+                break;
+
+            case -1:
+                InventoryScript.I.SetSkill("V", pick.GetComponent<EquipScript>());
+                break;
+        }
+
+        pick = null;
+        sr.color = Color.white;
+    }
+
+    private void OnRemove()
+    {
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
+            return;
+
+        if (pick == null)
+            return;
+
+        if (check != pick)
+        {
+            sr.color = Color.red;
+            check = pick;
+            return;
+        }
+
+        pick.GetComponent<EquipScript>().RemoveThis();
+        pick = null;
+        check = null;
+        sr.color = Color.white;
+        UIScript.I.panelInvenInfo.SetActive(false);
+        UIScript.I.stackAssists.Pop();
     }
 
     // 인벤토리 열었을 때 커서 초기화

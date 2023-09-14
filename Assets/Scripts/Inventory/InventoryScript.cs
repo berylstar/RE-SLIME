@@ -144,40 +144,41 @@ public class InventoryScript : MonoBehaviour
         if (equip.type == EquipType.PASSIVE)
             return;
 
-        if (cv == "C")
+        switch (cv)
         {
-            if (GameController.skillC && equip != GameController.skillC)
-            {
-                GameController.skillC.iconC.SetActive(false);
-            }
+            case "C":
+                if (GameController.skillC && equip != GameController.skillC)
+                {
+                    GameController.skillC.iconC.SetActive(false);
+                }
 
-            if (equip == GameController.skillV)
-            {
-                GameController.skillV = null;
-                equip.iconV.SetActive(false);
-            }
+                if (equip == GameController.skillV)
+                {
+                    GameController.skillV = null;
+                    equip.iconV.SetActive(false);
+                }
 
-            GameController.skillC = equip;
-            equip.iconC.SetActive(true);
+                GameController.skillC = equip;
+                equip.iconC.SetActive(true);
+                break;
+            case "V":
+                if (GameController.skillV && equip != GameController.skillV)
+                {
+                    GameController.skillV.iconV.SetActive(false);
+                }
+
+                if (equip == GameController.skillC)
+                {
+                    GameController.skillC = null;
+                    equip.iconC.SetActive(false);
+                }
+
+                GameController.skillV = equip;
+                equip.iconV.SetActive(true);
+                break;
+            default:
+                return;
         }
-        else if (cv == "V")
-        {
-            if (GameController.skillV && equip != GameController.skillV)
-            {
-                GameController.skillV.iconV.SetActive(false);
-            }
-
-            if (equip == GameController.skillC)
-            {
-                GameController.skillC = null;
-                equip.iconC.SetActive(false);
-            }
-
-            GameController.skillV = equip;
-            equip.iconV.SetActive(true);
-        }
-        else
-            return;
 
         SoundManager.I.PlayEffect("EFFECT/EquipRegist");
     }

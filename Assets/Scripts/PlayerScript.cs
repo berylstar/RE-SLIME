@@ -32,7 +32,10 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        print(GameController.situation.Peek());
+        if (Input.GetKeyDown(KeyCode.Y))
+            GameController.coin += 1;
+
+        // print(GameController.situation.Peek());
 
         punchZip.transform.position = transform.position;
 
@@ -65,7 +68,7 @@ public class PlayerScript : MovingObject
         if (GameController.situation.Peek() != SituationType.NORMAL)
             return;
 
-        switch(value.Get<float>())
+        switch (value.Get<float>())
         {
             case 1:
                 if (GameController.skillC) GameController.skillC.Skill();

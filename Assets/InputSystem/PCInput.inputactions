@@ -325,6 +325,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SetSkill",
+                    "type": "Button",
+                    "id": "37637018-daff-4991-896b-b7ce7eed2978",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Remove",
+                    "type": "Button",
+                    "id": "f429532d-cfdf-416a-ac24-dd4d4c3711e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -349,6 +367,50 @@
                     "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "079e00c8-bb12-4aeb-91b2-73251653b1b7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetSkill",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "a7a177a3-173a-4c7d-9ffa-f8435921a1a8",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SetSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "eaa525d9-5b6d-434f-8d5b-070a3bb038d4",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SetSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "81df5f55-690a-4949-9e06-e6d616d866f6",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Remove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -357,9 +419,36 @@
             "id": "90ba63ce-cf00-4be4-82cf-28e7a4a9a5e1",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "Move",
+                    "type": "Value",
                     "id": "5495be46-5089-4ffe-b938-dea3804c4a15",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Pick",
+                    "type": "Button",
+                    "id": "d9e1e1b0-d7c6-4513-89d0-0ad3414331f6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SetSkill",
+                    "type": "Button",
+                    "id": "f1ffa192-771c-4d0b-bd93-8a9e1d5c5b9a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Remove",
+                    "type": "Button",
+                    "id": "43241487-9748-4b0c-a3a4-9096fe5eda06",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -368,13 +457,112 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "a159bac5-f59e-4f39-83b0-92b16d0af748",
-                    "path": "",
+                    "name": "2D Vector",
+                    "id": "ea2a80f2-efd9-43c1-a2f2-d4a7928c35c2",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "c3604975-3165-4ac5-bb35-d31458c84911",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "New action",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "80db1d64-e70d-48c4-b4b7-5ee60a26ef9f",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "904c9e32-bf77-42b9-a07c-62f5059b8b82",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "bfda8a0e-4060-41c7-b78c-140c1475349d",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ed9878db-6ce6-44c4-bf88-57fd029182bf",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Pick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "3f89f352-de1c-4bf4-bd03-949ecd197ae4",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetSkill",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "0b0c2480-760d-401f-82f7-de976d68c1fb",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SetSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "49201341-bb72-402e-ae37-6cb1eacfccc6",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "SetSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fb71b38e-8ad5-4f7e-8be5-1fe2225cf4db",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Remove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -383,58 +571,14 @@
         {
             "name": "Shop",
             "id": "7e4c08da-b042-43c8-9918-1b561f882945",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "2575ca4d-38c2-46d7-8c19-0b1ba1d46512",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "4a46f1dd-b2e8-49aa-a6a9-6fc019979450",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         },
         {
             "name": "Box",
             "id": "a466816e-899c-410f-bd75-83158cb1b98b",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "ab639004-7d51-4832-96e2-1de821c998cd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "ff700538-b27f-4299-8ec9-65492ffeef5a",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
