@@ -41,7 +41,8 @@ public class UIScript : MonoBehaviour
     [Header("PanelBox")]
     public GameObject panelBox;
 
-    [Header("PanelInvenInfo")]
+    [Header("PanelInven")]
+    public GameObject panelForInven;
     public GameObject panelInvenInfo;
     public Text textName, textGrade, textPrice, textEffect;
 

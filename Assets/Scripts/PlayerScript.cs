@@ -32,17 +32,7 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
-            GameController.coin += 1;
-        else if (Input.GetKeyDown(KeyCode.U))
-            GameController.ChangeHP(100);
-
         punchZip.transform.position = transform.position;
-
-        if (GameController.playerHP <= 0 && !EquipCresent())
-        {
-            StartCoroutine(PlayerDie());
-        }
     }
 
     #region InputSystem
@@ -221,8 +211,16 @@ public class PlayerScript : MovingObject
         }
     }
 
+    public void Die()
+    {
+        if (GameController.playerHP <= 0 && !EquipCresent())
+        {
+            StartCoroutine(PlayerDieCo());
+        }
+    }
+
     // 플레이어 HP가 0이하가 되면 실행되는 코루틴
-    IEnumerator PlayerDie()
+    IEnumerator PlayerDieCo()
     {
         isAlive = false;
         GameController.situation.Push(SituationType.DIE);

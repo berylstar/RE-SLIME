@@ -91,9 +91,19 @@ public class GameController : MonoBehaviour
     // HP 변동 함수
     public static void ChangeHP(int val)
     {
-        if (playerHP + val > playerMaxHP) playerHP = playerMaxHP;
-        else if (playerHP + val < 0)      playerHP = 0;
-        else                              playerHP += val;
+        if (playerHP + val > playerMaxHP)
+        {
+            playerHP = playerMaxHP;
+        }
+        else if (playerHP + val <= 0)
+        {
+            playerHP = 0;
+            PlayerScript.I.Die();
+        }
+        else
+        {
+            playerHP += val;
+        }
     }
 
     // 속도 변경 관련 함수
@@ -132,5 +142,25 @@ public class GameController : MonoBehaviour
         efftalisman = false;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
+    }
+
+    public void TEST_COINUP()
+    {
+        coin += 10;
+    }
+
+    public void TEST_FULLHP()
+    {
+        ChangeHP(150);
+    }
+
+    public void TEST_LOWHP()
+    {
+        ChangeHP(-80);
+    }
+
+    public void TEST_LIFEUP()
+    {
+        playerLife += 1;
     }
 }

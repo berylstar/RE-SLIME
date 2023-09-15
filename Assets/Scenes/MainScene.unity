@@ -9524,6 +9524,7 @@ MonoBehaviour:
   textDialogue: {fileID: 1617543608}
   panelShop: {fileID: 1200077765}
   panelBox: {fileID: 1208244637}
+  panelForInven: {fileID: 1262818283}
   panelInvenInfo: {fileID: 1340359197}
   textName: {fileID: 688966359}
   textGrade: {fileID: 421215923}
@@ -9556,7 +9557,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: bb2826af-7aa3-4ce7-97f8-71084314e669
+  m_DefaultActionMap: Dialogue
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &716722254
@@ -16165,7 +16166,7 @@ GameObject:
   - component: {fileID: 1262818286}
   - component: {fileID: 1262818285}
   m_Layer: 5
-  m_Name: ScreenForInven
+  m_Name: PanelForInven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17212,7 +17213,6 @@ MonoBehaviour:
   GottenEquips: []
   objectOverlapped: {fileID: 1108502671}
   cursor: {fileID: 826197181}
-  screenForInven: {fileID: 1262818283}
   listOverlap: 
 --- !u!114 &1303250850
 MonoBehaviour:
