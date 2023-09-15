@@ -138,31 +138,34 @@ public class BoardManager : MonoBehaviour
     
     private void LayoutStair(int floor)
     {
-        if (floor == 100)
+        switch (floor)
         {
-            StairScript.I.transform.position = new Vector3(20f, 20f, 0f);
-            sign.SetActive(false);
-        }
-        else if (floor == 99)
-        {
-            StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
-            StairScript.I.Open();
-        }
-        else if (floor == 18 || floor == 38 || floor == 58 || floor == 78)
-        {
-            for (int i = 3; i < 7; i++)
-                RemovePositionAwayFrom(DesiredPosition(i, 9));
+            case 18:
+            case 38:
+            case 58:
+            case 78:
+                for (int i = 3; i < 7; i++)
+                    RemovePositionAwayFrom(DesiredPosition(i, 9));
 
-            StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
+                StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
+                sign.SetActive(true);
+                break;
 
-            sign.SetActive(true);
-        }
-        else
-        {
-            StairScript.I.transform.position = RandomPosition();
-            RemovePositionAwayFrom(StairScript.I.transform.position);
+            case 99:
+                StairScript.I.transform.position = new Vector3(4.5f, 9f, 0f);
+                StairScript.I.Open();
+                break;
 
-            sign.SetActive(false);
+            case 100:
+                StairScript.I.transform.position = new Vector3(20f, 20f, 0f);
+                sign.SetActive(false);
+                break;
+
+            default:
+                StairScript.I.transform.position = RandomPosition();
+                RemovePositionAwayFrom(StairScript.I.transform.position);
+                sign.SetActive(false);
+                break;
         }
     }
 
@@ -185,22 +188,27 @@ public class BoardManager : MonoBehaviour
     {
         SoundManager.I.PlayEffect("EFFECT/NextFloor");
 
-        if (floor % 20 == 19 && floor != 99)
+        switch (floor)
         {
-            UIScript.I.panelBoss.SetActive(true);
-            GameController.situation.Push(SituationType.BOSS_APPEAR);
+            case 19:
+            case 39:
+            case 59:
+            case 79:
+                UIScript.I.panelBoss.SetActive(true);
+                GameController.situation.Push(SituationType.BOSS_APPEAR);
 
-            yield return GameController.delay_3s;
+                yield return GameController.delay_3s;
 
-            UIScript.I.panelBoss.SetActive(false);
-            GameController.situation.Pop();
-            SpawnBoss();
-        }
-        else
-        {
-            UIScript.I.panelNextFloor.SetActive(true);
-            yield return GameController.delay_01s;
-            UIScript.I.panelNextFloor.SetActive(false);
+                UIScript.I.panelBoss.SetActive(false);
+                GameController.situation.Pop();
+                SpawnBoss();
+                break;
+
+            default:
+                UIScript.I.panelNextFloor.SetActive(true);
+                yield return GameController.delay_01s;
+                UIScript.I.panelNextFloor.SetActive(false);
+                break;
         }
     }
 
@@ -239,29 +247,36 @@ public class BoardManager : MonoBehaviour
 
     private void SetMonsters(int floor)
     {
-        if (GameController.floor == 80 || GameController.floor == 100)
+        switch (floor)
         {
-            demon.SetActive(true);
-        }
-        else if (GameController.floor % 20 == 19)
-        {
-            // NextFloorEffect 에서 보스 구현
-        }
-        else
-        {
-            int min, max;
-            if (floor % 20 <= 5) { min = 2; max = 4; }
-            else if (floor % 20 <= 10) { min = 3; max = 6; }
-            else if (floor % 20 <= 15) { min = 4; max = 7; }
-            else if (floor % 20 <= 20) { min = 5; max = 7; }
-            else { min = 2; max = 8; }
+            case 80:
+            case 100:
+                demon.SetActive(true);
+                break;
 
-            for (int i = 0; i < Random.Range(min, max + 1); i++)
-            {
-                GameObject go = ObjectPerFloor(GameController.floor).monsters[Random.Range(0, 10)];
-                Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity, objectHolder);
-            }
-        }
+            case 19:
+            case 39:
+            case 59:
+            case 79:
+            case 99:
+                // NextFloorEffect 에서 보스 구현
+                break;
+
+            default:
+                int min, max;
+                if      (floor % 20 <= 5)  { min = 2; max = 4; }
+                else if (floor % 20 <= 10) { min = 3; max = 6; }
+                else if (floor % 20 <= 15) { min = 4; max = 7; }
+                else if (floor % 20 <= 20) { min = 5; max = 7; }
+                else                       { min = 2; max = 8; }
+
+                for (int i = 0; i < Random.Range(min, max + 1); i++)
+                {
+                    GameObject go = ObjectPerFloor(floor).monsters[Random.Range(0, 10)];
+                    Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity, objectHolder);
+                }
+                break;
+        }    
     }
 
     private void SpawnBoss()
@@ -278,17 +293,24 @@ public class BoardManager : MonoBehaviour
 
     private void SetBGM(int floor)
     {
-        if (floor == 80 || floor == 100)
+        switch (floor)
         {
-            SoundManager.I.PlayBGM("BGM/FinalBoss");
-        }
-        else if (floor % 20 == 19)
-        {
-            SoundManager.I.PlayBGM("BGM/Boss");
-        }
-        else
-        {
-            SoundManager.I.PlayBGM("BGM/Stage" + (int)(floor / 20 + 1));
+            case 19:
+            case 39:
+            case 59:
+            case 79:
+            case 99:
+                SoundManager.I.PlayBGM("BGM/Boss");
+                break;
+
+            case 80:
+            case 100:
+                SoundManager.I.PlayBGM("BGM/FinalBoss");
+                break;
+
+            default:
+                SoundManager.I.PlayBGM($"BGM/Stage{(floor / 20 + 1)}");
+                break;
         }
     }
 

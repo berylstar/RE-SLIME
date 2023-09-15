@@ -133,11 +133,11 @@ public class CoffinshopScript : MonoBehaviour
         }
         else
         {
-            textName.text = "- " + onStands[idx-1].EName + " -";
+            textName.text = $"- {onStands[idx - 1].EName} -";
             textAdject.text = onStands[idx-1].adject;
             textEffect.text = onStands[idx-1].effect;
             textGrade.text = onStands[idx-1].grade.ToString();
-            textPrice.text = "x " + onStands[idx-1].price;
+            textPrice.text = $"x {onStands[idx - 1].price}";
         }
     }
 
