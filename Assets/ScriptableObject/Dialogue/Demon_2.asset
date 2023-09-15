@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4597ced33fe91044f9c97cb6600f6e2c, type: 3}
-  m_Name: Boss_2
+  m_Name: Demon_2
   m_EditorClassIdentifier: 
   dialogues:
   - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}

@@ -86,7 +86,6 @@ public class GameController : MonoBehaviour
 
     // GAME SYSYTEM
     public static Stack<SituationType> situation = new Stack<SituationType>() { };
-    public static DialogueScript nowDialogue = null;
     public static List<bool> tutorial = new List<bool>() { false, false};
 
     // HP 변동 함수
@@ -131,8 +130,6 @@ public class GameController : MonoBehaviour
         effLastleaf = null;
         effGlasses = false;
         efftalisman = false;
-
-        nowDialogue = null;
 
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
     }

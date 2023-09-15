@@ -34,8 +34,8 @@ public class PlayerScript : MovingObject
     {
         if (Input.GetKeyDown(KeyCode.Y))
             GameController.coin += 1;
-
-        // print(GameController.situation.Peek());
+        else if (Input.GetKeyDown(KeyCode.U))
+            GameController.ChangeHP(100);
 
         punchZip.transform.position = transform.position;
 
@@ -226,14 +226,15 @@ public class PlayerScript : MovingObject
     {
         isAlive = false;
         GameController.situation.Push(SituationType.DIE);
+        UIScript.I.stackAssists.Push("저장중...");
         ani.SetTrigger("PlayerDie");
         SoundManager.I.PlayEffect("EFFECT/SlimeDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
-        UIScript.I.TextBlink("저장중...");
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
+        UIScript.I.stackAssists.Pop();
         GameController.situation.Pop();
         if (GameController.playerLife > 1 || EquipLastleaf())
         {

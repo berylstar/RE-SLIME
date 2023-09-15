@@ -219,3 +219,6 @@
 2023.09.14
 - 기존의 Input.GetKeyDown 방식 대신 InputSystem을 도입
 - 새로운 시스템으로 바꾸면서 모든 Input을 하나의 스크립트로 관리할 수 있을까 ?
+
+2023.09.15
+- ScriptableObject를 이용해 Dialogue를 데이터화

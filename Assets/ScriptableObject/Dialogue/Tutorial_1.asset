@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4597ced33fe91044f9c97cb6600f6e2c, type: 3}
   m_Name: Tutorial_1
   m_EditorClassIdentifier: 
+  type: 
   dialogues:
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
@@ -41,9 +42,12 @@ MonoBehaviour:
     talk: "\uBB50\uBD80\uD130 \uD558\uBA74 \uB418\uB294\uAC70\uC8E0?"
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
-    talk: "\uC74C... \uC77C\uB2E8 [\uBC29\uD5A5\uD0A4]\uB85C \uC6C0\uC9C1\uC774\uACE0\n[\uC2A4\uD398\uC774\uC2A4
-      \uBC14]\uB85C \uACF5\uACA9\uD560 \uC218 \uC788\uB2E4\uB124.\n\uC5EC\uAE30\uAE4C\uC9C0\uB294
-      \uC54C\uACE0 \uC788\uB2E4\uACE0 \uCE58\uACE0."
+    talk: "\uC74C...\n\uC77C\uB2E8 [\uBC29\uD5A5\uD0A4]\uB85C \uC6C0\uC9C1\uC774\uB294
+      \uAC74\n\uC54C\uACE0 \uC788\uC744\uD14C\uACE0"
+  - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+    talker: "\uD0B9 \uC2AC\uB77C\uC784"
+    talk: "[\uC2A4\uD398\uC774\uC2A4 \uBC14]\uB85C\n\uC790\uB124\uAC00 \uBC14\uB77C\uBCF4\uB294
+      \uBC29\uD5A5\uC73C\uB85C\n\uC8FC\uBA39\uC744 \uB0A0\uB824\uBCF4\uAC8C"
   - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
     talker: "\uD0B9 \uC2AC\uB77C\uC784"
     talk: "\uB9C8\uC655\uC774 \uC788\uB294 100\uCE35\uC5D0 \uC62C\uB77C\uAC00\uB294\n\uAC83\uC774

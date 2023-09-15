@@ -159,6 +159,6 @@ public class CursorScript : MonoBehaviour
         UIScript.I.textPrice.text = "x " + pickEquip.price;
         UIScript.I.textEffect.text = pickEquip.effect;
 
-        UIScript.I.stackAssists.Push("'C'/'V' : 스킬 등록, 'R' : 장비 제거");
+        UIScript.I.stackAssists.Push("[C][V] 스킬 등록, [R] 장비 제거");
     }
 }

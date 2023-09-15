@@ -31,16 +31,15 @@ public class UIScript : MonoBehaviour
     public GameObject panelDialogue;
     public Image imageCharacter;
     public Text textTalker, textDialogue;
-    public bool onTexting = false;
+    private DialogueData nowDialogue = null;
+    private int indexD = 0;
+    private bool onTexting = false;
 
     [Header("PanelShop")]
     public GameObject panelShop;
 
     [Header("PanelBox")]
     public GameObject panelBox;
-
-    [Header("PanelRecode")]
-    public GameObject PanelRecorder;
 
     [Header("PanelInvenInfo")]
     public GameObject panelInvenInfo;
@@ -97,12 +96,50 @@ public class UIScript : MonoBehaviour
         panelDie.SetActive(true);
     }
 
-    public void ShowDialogue(Sprite character, string who, string talk)
+    #region DIALOGUE
+
+    private void OnNext()
     {
+        if (GameController.situation.Peek() != SituationType.DIALOGUE || onTexting)
+            return;
+
+        if (indexD < nowDialogue.dialogues.Count - 1)
+        {
+            indexD += 1;
+            ShowDialogue(indexD);
+        }
+        else
+        {
+            EndDialogue();
+        }
+    }
+
+    private void OnSkip()
+    {
+        if (GameController.situation.Peek() != SituationType.DIALOGUE)
+            return;
+
+        EndDialogue();
+    }
+
+    public void StartDialogue(DialogueData data)
+    {
+        nowDialogue = data;
+
         panelDialogue.SetActive(true);
-        imageCharacter.sprite = character;
-        textTalker.text = who;
-        StartCoroutine(TextAnimation(textDialogue, talk));
+
+        stackAssists.Push("[C] 대화 스킵");
+        GameController.situation.Push(SituationType.DIALOGUE);
+
+        indexD = 0;
+        ShowDialogue(indexD);
+    }
+
+    public void ShowDialogue(int idx)
+    {
+        imageCharacter.sprite = nowDialogue.dialogues[idx].img;
+        textTalker.text = nowDialogue.dialogues[idx].talker;
+        StartCoroutine(TextAnimation(textDialogue, nowDialogue.dialogues[idx].talk));
     }
 
     // 한글자씩 보이는 텍스트 효과
@@ -117,20 +154,47 @@ public class UIScript : MonoBehaviour
             text.text = write;
             yield return textDelay;
         }
+
         onTexting = false;
     }
 
-    public void TextBlink(string message)
+    private void EndDialogue()
     {
-        StartCoroutine(TextBlinkCo(message));
+        switch (nowDialogue.name)
+        {
+            case "Tutorial_1":
+                GameController.tutorial[0] = true;
+                GameController.coin += 5;
+                break;
+
+            case "Tutorial_Inventory":
+                GameController.tutorial[1] = true;
+                StairScript.I.Open();
+                break;
+
+            case "Recoder":
+                DataManager.I.SaveData();
+                break;
+
+            case "Demon_1":
+            case "Demon_2":
+                BoardManager.I.bossDemon.GetComponent<BossDemon>().enabled = true;
+                break;
+        }
+
+        StartCoroutine(CloseDialogue());
     }
 
-    IEnumerator TextBlinkCo(string message)
+    IEnumerator CloseDialogue()
     {
-        stackAssists.Push(message);
+        panelDialogue.SetActive(false);
+        nowDialogue = null;
 
-        yield return GameController.delay_3s;
+        yield return GameController.delay_frame;
 
         stackAssists.Pop();
+        GameController.situation.Pop();
     }
+
+    #endregion
 }

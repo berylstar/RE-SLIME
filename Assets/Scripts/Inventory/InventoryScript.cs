@@ -6,6 +6,8 @@ public class InventoryScript : MonoBehaviour
 {
     public static InventoryScript I = null;
 
+    public DialogueData invenTutorial;
+
     [Header("EQUIPS")]
     public List<EquipScript> all = new List<EquipScript>();
     public List<EquipScript> equipsNormal = new List<EquipScript>();
@@ -84,12 +86,12 @@ public class InventoryScript : MonoBehaviour
     {
         cursor.SetActive(true);
 
-        UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
+        UIScript.I.stackAssists.Push("[I] 인벤토리 열기/닫기, [SPACE] : 장비 선택");
         GameController.situation.Push(SituationType.INVENTORY);
 
         if (!GameController.tutorial[1])
         {
-            BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
+            UIScript.I.StartDialogue(invenTutorial);
         }
 
         SoundManager.I.PlayEffect("EFFECT/InvenOpen");
