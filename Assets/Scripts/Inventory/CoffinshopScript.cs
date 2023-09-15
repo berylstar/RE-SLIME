@@ -69,7 +69,7 @@ public class CoffinshopScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch") && GameController.tutorial[0])
+        if (collision.CompareTag("Punch") && GameController.tutorial[1])
         {
             UIScript.I.panelShop.SetActive(true);
             UIScript.I.stackAssists.Push("[ESC] 상점 닫기, [R] 목록 새로고침 (2코인)");

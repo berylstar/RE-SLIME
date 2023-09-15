@@ -222,3 +222,4 @@
 
 2023.09.15
 - ScriptableObject를 이용해 Dialogue를 데이터화
+- DialogueScript 최소화

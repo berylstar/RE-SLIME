@@ -33,7 +33,7 @@ public class DialogueScript : MonoBehaviour
                     break;
 
                 case "N_CoffinShop":
-                    if (GameController.tutorial[0]) return;
+                    if (GameController.tutorial[1]) return;
                     break;
 
                 case "M_Demon":

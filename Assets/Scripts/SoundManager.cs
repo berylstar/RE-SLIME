@@ -28,6 +28,9 @@ public class SoundManager : MonoBehaviour
         bgm.volume = bgmVolume;
         effector.volume = effectVolume;
 
+        bgm.volume = 0.05f;
+        effector.volume = 0.1f;
+
         bgm.Play();
     }
 

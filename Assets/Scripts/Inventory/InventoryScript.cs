@@ -18,6 +18,7 @@ public class InventoryScript : MonoBehaviour
     [Header("INVENTORY")]
     public GameObject objectOverlapped;
     public GameObject cursor;
+    public GameObject screenForInven;
 
     public List<int> listOverlap = new List<int>();
     private List<Vector3> equipGrid = new List<Vector3>();
@@ -85,6 +86,7 @@ public class InventoryScript : MonoBehaviour
     public void OpenInventory()
     {
         cursor.SetActive(true);
+        screenForInven.SetActive(true);
 
         UIScript.I.stackAssists.Push("[I] 인벤토리 열기/닫기, [SPACE] : 장비 선택");
         GameController.situation.Push(SituationType.INVENTORY);
@@ -106,6 +108,7 @@ public class InventoryScript : MonoBehaviour
         else
         {
             cursor.SetActive(false);
+            screenForInven.SetActive(false);
 
             SoundManager.I.PlayEffect("EFFECT/InvenOpen");
 
