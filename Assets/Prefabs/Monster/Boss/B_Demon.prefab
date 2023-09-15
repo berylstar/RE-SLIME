@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 4911125360518166890}
   - component: {fileID: 4911125360518166885}
   - component: {fileID: 4911125360518166884}
-  - component: {fileID: 4911125360518166887}
   m_Layer: 6
-  m_Name: M_Demon
-  m_TagString: NPC
+  m_Name: B_Demon
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4911125360518166886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 4, z: -1}
+  m_LocalPosition: {x: 6, y: 4, z: 0}
   m_LocalScale: {x: 1.6666666, y: 1.6666666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4911125360518166886}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 700eecaf144239c4fba78e787e9c06c8, type: 3}
   m_Name: 
@@ -204,18 +203,3 @@ MonoBehaviour:
   - {fileID: 8657204143166584080, guid: fe47de4e32a093b47a2875a957bd57b9, type: 3}
   - {fileID: 8944636350297974269, guid: 187c3f6b3691efd4d8c11078d9f95b0e, type: 3}
   crown: {fileID: 762917513435438198, guid: 3ca445f2c34bdc14bb3a24d5108de2ae, type: 3}
---- !u!114 &4911125360518166887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911125360518166886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3661dc370d4c22340a74d9665b2b292f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataSO:
-  - {fileID: 11400000, guid: 3008edc396f70b044aba5ad8abce2b70, type: 2}
-  - {fileID: 11400000, guid: 3020c92378dc14a458259694fac22ff7, type: 2}

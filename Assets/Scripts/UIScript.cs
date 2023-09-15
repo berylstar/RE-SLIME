@@ -179,7 +179,8 @@ public class UIScript : MonoBehaviour
 
             case "Demon_1":
             case "Demon_2":
-                BoardManager.I.bossDemon.GetComponent<BossDemon>().enabled = true;
+                BoardManager.I.SpawnDemon();
+                //BoardManager.I.bossDemon.GetComponent<BossDemon>().enabled = true;
                 break;
         }
 

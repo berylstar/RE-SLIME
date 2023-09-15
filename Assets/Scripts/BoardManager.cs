@@ -23,6 +23,7 @@ public class BoardManager : MonoBehaviour
 
     [Header("LEVELS")]
     public LevelStruct[] levels;
+    public GameObject bossDemon;
 
     [Header("ITEMS")]
     public GameObject[] items;
@@ -33,7 +34,7 @@ public class BoardManager : MonoBehaviour
     public GameObject coffin;
     public GameObject box;
     public GameObject recorder;
-    public GameObject bossDemon;
+    public GameObject demon;
 
     private readonly List<Vector3> gridPositions = new List<Vector3>();
     private List<MonsterScript> livingMonsters = new List<MonsterScript>();
@@ -240,7 +241,7 @@ public class BoardManager : MonoBehaviour
     {
         if (GameController.floor == 80 || GameController.floor == 100)
         {
-            Instantiate(bossDemon, new Vector3(6, 4, 0), Quaternion.identity, objectHolder);
+            demon.SetActive(true);
         }
         else if (GameController.floor % 20 == 19)
         {
@@ -267,6 +268,12 @@ public class BoardManager : MonoBehaviour
     {
         GameObject go = ObjectPerFloor(GameController.floor).bosses[Random.Range(0, ObjectPerFloor(GameController.floor).bosses.Length)];
         Instantiate(go, RandomMonsterPosition(go.GetComponent<MovingObject>()), Quaternion.identity, objectHolder);
+    }
+
+    public void SpawnDemon()
+    {
+        Instantiate(bossDemon);
+        demon.SetActive(false);
     }
 
     private void SetBGM(int floor)
@@ -360,6 +367,7 @@ public class BoardManager : MonoBehaviour
         coffin.SetActive(false);
         box.SetActive(false);
         recorder.SetActive(false);
+        demon.SetActive(false);
     }
 
     ////////////////////////////////////

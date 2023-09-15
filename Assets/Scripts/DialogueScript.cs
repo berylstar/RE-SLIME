@@ -36,7 +36,7 @@ public class DialogueScript : MonoBehaviour
                     if (GameController.tutorial[1]) return;
                     break;
 
-                case "M_Demon":
+                case "N_Demon":
                     if (GameController.floor == 80) { idx = 0; }
                     else if (GameController.floor == 100) { idx = 1; }
                     break;

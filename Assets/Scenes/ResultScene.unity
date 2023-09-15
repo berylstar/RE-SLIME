@@ -1712,7 +1712,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "'\uC2A4\uD398\uC774\uC2A4' or 'ESC' : \uC2A4\uD0B5 "
+  m_Text: "[SPACE]/[ESC] \uC2A4\uD0B5 "
 --- !u!222 &1673017478
 CanvasRenderer:
   m_ObjectHideFlags: 0
