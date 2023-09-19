@@ -28,7 +28,7 @@ public class CoffinshopScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.SHOP))
+        if (GameController.situation.Peek() != SituationType.SHOP)
             return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -69,11 +69,11 @@ public class CoffinshopScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Punch") && GameController.tutorial[0])
+        if (collision.CompareTag("Punch") && GameController.tutorial[1])
         {
             UIScript.I.panelShop.SetActive(true);
-            UIScript.I.stackAssists.Push("'ESC' : 상점 닫기, 'R' : 목록 새로고침 (2코인)");
-            GameController.pause.Push(PauseType.SHOP);
+            UIScript.I.stackAssists.Push("[ESC] 상점 닫기, [R] 목록 새로고침 (2코인)");
+            GameController.situation.Push(SituationType.SHOP);
             SoundManager.I.PlayEffect("EFFECT/ShopOpen");
         }
     }
@@ -89,7 +89,7 @@ public class CoffinshopScript : MonoBehaviour
             yield return GameController.delay_frame;
 
             UIScript.I.stackAssists.Pop();
-            GameController.pause.Pop();
+            GameController.situation.Pop();
         }
         else
         {
@@ -133,11 +133,11 @@ public class CoffinshopScript : MonoBehaviour
         }
         else
         {
-            textName.text = "- " + onStands[idx-1].EName + " -";
+            textName.text = $"- {onStands[idx - 1].EName} -";
             textAdject.text = onStands[idx-1].adject;
             textEffect.text = onStands[idx-1].effect;
             textGrade.text = onStands[idx-1].grade.ToString();
-            textPrice.text = "x " + onStands[idx-1].price;
+            textPrice.text = $"x {onStands[idx - 1].price}";
         }
     }
 

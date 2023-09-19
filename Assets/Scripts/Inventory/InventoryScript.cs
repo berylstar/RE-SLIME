@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 public class InventoryScript : MonoBehaviour
 {
     public static InventoryScript I = null;
+
+    public DialogueData invenTutorial;
 
     [Header("EQUIPS")]
     public List<EquipScript> all = new List<EquipScript>();
@@ -19,8 +22,6 @@ public class InventoryScript : MonoBehaviour
 
     public List<int> listOverlap = new List<int>();
     private List<Vector3> equipGrid = new List<Vector3>();
-
-    private bool isOpened = false;
 
     private void Awake()
     {
@@ -44,12 +45,19 @@ public class InventoryScript : MonoBehaviour
 
         foreach (EquipScript equip in GottenEquips)
         {
-            string strr = equip.number.ToString();
+            //string strr = equip.number.ToString();
+
+            //foreach (int idx in equip.posIndex)
+            //    strr += "," + idx.ToString();
+
+            //GameController.myEquips.Add(strr);
+
+            StringBuilder strr = new StringBuilder(equip.number.ToString());
 
             foreach (int idx in equip.posIndex)
-                strr += "," + idx.ToString();
+                strr.Append($",{idx}");
 
-            GameController.myEquips.Add(strr);
+            GameController.myEquips.Add(strr.ToString());
         }
     }
 
@@ -76,56 +84,50 @@ public class InventoryScript : MonoBehaviour
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.INVEN))
+        if (GameController.situation.Peek() != SituationType.INVENTORY)
             return;
-
-        if (!isOpened)
-        {
-            isOpened = true;
-            return;
-        }
 
         objectOverlapped.SetActive(listOverlap.Count > 0);
-
-        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (CheckOverlap())
-                SoundManager.I.PlayEffect("EFFECT/Error");
-            else
-                CloseInventory();
-        }
     }
 
     public void OpenInventory()
     {
         cursor.SetActive(true);
+        UIScript.I.panelForInven.SetActive(true);
 
-        UIScript.I.stackAssists.Push("'I' : 인벤토리 열기/닫기, '스페이스' : 장비 선택");
-        GameController.pause.Push(PauseType.INVEN);
+        UIScript.I.stackAssists.Push("[I] 인벤토리 열기/닫기, [SPACE] 장비 선택");
+        GameController.situation.Push(SituationType.INVENTORY);
 
         if (!GameController.tutorial[1])
         {
-            BoardManager.I.kingslime.GetComponent<DialogueScript>().StartDialogue(DialogueType.InvenTutorial);
+            UIScript.I.StartDialogue(invenTutorial);
         }
 
         SoundManager.I.PlayEffect("EFFECT/InvenOpen");
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
-        cursor.SetActive(false);       
+        if (CheckOverlap())
+        {
+            SoundManager.I.PlayEffect("EFFECT/Error");
+        }
+        else
+        {
+            cursor.SetActive(false);
+            UIScript.I.panelForInven.SetActive(false);
 
-        SoundManager.I.PlayEffect("EFFECT/InvenOpen");
+            SoundManager.I.PlayEffect("EFFECT/InvenOpen");
 
-        StartCoroutine(CloseCo());
+            StartCoroutine(CloseCo());
+        }        
     }
 
     IEnumerator CloseCo()
     {
         yield return GameController.delay_frame;
-        isOpened = false;
         UIScript.I.stackAssists.Pop();
-        GameController.pause.Pop();
+        GameController.situation.Pop();
     }
 
     // 인벤토리 좌표 초기화
@@ -154,40 +156,41 @@ public class InventoryScript : MonoBehaviour
         if (equip.type == EquipType.PASSIVE)
             return;
 
-        if (cv == "C")
+        switch (cv)
         {
-            if (GameController.skillC && equip != GameController.skillC)
-            {
-                GameController.skillC.iconC.SetActive(false);
-            }
+            case "C":
+                if (GameController.skillC && equip != GameController.skillC)
+                {
+                    GameController.skillC.iconC.SetActive(false);
+                }
 
-            if (equip == GameController.skillV)
-            {
-                GameController.skillV = null;
-                equip.iconV.SetActive(false);
-            }
+                if (equip == GameController.skillV)
+                {
+                    GameController.skillV = null;
+                    equip.iconV.SetActive(false);
+                }
 
-            GameController.skillC = equip;
-            equip.iconC.SetActive(true);
+                GameController.skillC = equip;
+                equip.iconC.SetActive(true);
+                break;
+            case "V":
+                if (GameController.skillV && equip != GameController.skillV)
+                {
+                    GameController.skillV.iconV.SetActive(false);
+                }
+
+                if (equip == GameController.skillC)
+                {
+                    GameController.skillC = null;
+                    equip.iconC.SetActive(false);
+                }
+
+                GameController.skillV = equip;
+                equip.iconV.SetActive(true);
+                break;
+            default:
+                return;
         }
-        else if (cv == "V")
-        {
-            if (GameController.skillV && equip != GameController.skillV)
-            {
-                GameController.skillV.iconV.SetActive(false);
-            }
-
-            if (equip == GameController.skillC)
-            {
-                GameController.skillC = null;
-                equip.iconC.SetActive(false);
-            }
-
-            GameController.skillV = equip;
-            equip.iconV.SetActive(true);
-        }
-        else
-            return;
 
         SoundManager.I.PlayEffect("EFFECT/EquipRegist");
     }
@@ -241,13 +244,12 @@ public class InventoryScript : MonoBehaviour
     // EquipScript에서 사용할 등급별 리스트 반환 함수
     public List<EquipScript> ReturnGrade(EquipGrade grade)
     {
-        if (grade == EquipGrade.NORMAL)
-            return equipsNormal;
-        else if (grade == EquipGrade.RARE)
-            return equipsRare;
-        else if (grade == EquipGrade.UNIQUE)
-            return equipsUnique;
-        else
-            return null;
+        switch (grade)
+        {
+            case EquipGrade.NORMAL:     return equipsNormal;
+            case EquipGrade.RARE:       return equipsRare;
+            case EquipGrade.UNIQUE:     return equipsUnique;
+            default:                    return null;
+        }
     }
 }

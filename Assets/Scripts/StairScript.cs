@@ -47,17 +47,22 @@ public class StairScript : MonoBehaviour
         bc2d.isTrigger = false;
         tag = "Wall";
 
-        if (GameController.floor % 20 == 18)
+        switch (GameController.floor)
         {
-            sr.sprite = imgStairCloseLong;
-            bc2d.size = new Vector2(2.4f, 0.5f);
+            case 18:
+            case 38:
+            case 58:
+            case 78:
+                sr.sprite = imgStairCloseLong;
+                bc2d.size = new Vector2(2.4f, 0.5f);
+                break;
+
+            default:
+                sr.sprite = imgStairClose;
+                bc2d.size = new Vector2(0.5f, 0.5f);
+                break;
         }
-        else
-        {
-            sr.sprite = imgStairClose;
-            bc2d.size = new Vector2(0.5f, 0.5f);
-        }
-            
+
     }
 
     public void Open()
@@ -65,22 +70,26 @@ public class StairScript : MonoBehaviour
         bc2d.isTrigger = true;
         tag = "Stair";
 
-        int floor = GameController.floor;
+        switch (GameController.floor)
+        {
+            case 0:
+            case 18:
+            case 38:
+            case 58:
+            case 78:
+                sr.sprite = imgStairOpenLong;
+                bc2d.size = new Vector2(2.4f, 0.5f);
+                break;
 
-        if (floor == 0 || floor == 18 || floor == 38 || floor == 58 || floor == 78)
-        {
-            sr.sprite = imgStairOpenLong;
-            bc2d.size = new Vector2(2.4f, 0.5f);
-        }
-        else if (floor == 99)
-        {
-            sr.sprite = imgStairFinalBoss;
-            bc2d.size = new Vector2(2.4f, 0.5f);
-        }
-        else
-        {
-            sr.sprite = imgStairOpen;
-            bc2d.size = new Vector2(0.5f, 0.5f);
+            case 99:
+                sr.sprite = imgStairFinalBoss;
+                bc2d.size = new Vector2(2.4f, 0.5f);
+                break;
+
+            default:
+                sr.sprite = imgStairOpen;
+                bc2d.size = new Vector2(0.5f, 0.5f);
+                break;
         }
     }
 }

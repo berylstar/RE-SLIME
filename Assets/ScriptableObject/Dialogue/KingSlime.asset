@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4597ced33fe91044f9c97cb6600f6e2c, type: 3}
+  m_Name: KingSlime
+  m_EditorClassIdentifier: 
+  dialogues:
+  - img: {fileID: 21300000, guid: 51c6089aca2ca344c8eea2e5bd808135, type: 3}
+    talker: "\uC2AC\uB77C\uC784"
+    talk: "\uD639\uC2DC \uB3C8 \uC870\uAE08 \uB354 \uC788\uB098\uC694 ?"
+  - img: {fileID: 21300000, guid: a64c50f9ff6e7de4aa184166b0c77d4c, type: 3}
+    talker: "\uD0B9 \uC2AC\uB77C\uC784"
+    talk: "...\uC774\uC81C \uC5C6\uB2E4\uB124."

@@ -11,9 +11,6 @@ public class BossDemon : MonsterScript
 
     protected override void Start()
     {
-        tag = "Monster";
-        GetComponent<DialogueScript>().enabled = false;
-
         base.Start();
 
         SoundManager.I.PlayBGM("BGM/Floor100");

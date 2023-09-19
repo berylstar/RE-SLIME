@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PlayerScript : MovingObject
 {
@@ -31,57 +32,69 @@ public class PlayerScript : MovingObject
 
     private void Update()
     {
-        if (GameController.Pause(PauseType.NORMAL))
-            return;
-
-        if (!isAlive)
-            return;
-
-        // Input : 방향키 = 플레이어 이동
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            PlayerMove(-1, 0);
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-            PlayerMove(1, 0);
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            PlayerMove(0, 1);
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            PlayerMove(0, -1);
-
         punchZip.transform.position = transform.position;
+    }
 
-        // Input : 스페이스바 = 펀치 공격
-        if (Input.GetKeyDown(KeyCode.Space) && canPunch)
+    #region InputSystem
+    private void OnInventory()
+    {
+        if (!GameController.tutorial[0])
+            return;
+
+        switch (GameController.situation.Peek())
         {
-            StartCoroutine(PunchAttack());
-        }
+            case SituationType.INVENTORY:
+                InventoryScript.I.CloseInventory();
+                break;
 
-        // Input : C = 스킬 1
-        if (Input.GetKeyDown(KeyCode.C) && GameController.skillC)
-        {
-            GameController.skillC.Skill();
-        }
-
-        // Input : V = 스킬 2
-        if (Input.GetKeyDown(KeyCode.V) && GameController.skillV)
-        {
-            GameController.skillV.Skill();
-        }
-
-        // Input : I = 인벤토리
-        if (Input.GetKeyDown(KeyCode.I) && GameController.tutorial[0])
-        {
-            InventoryScript.I.OpenInventory();
-        }
-
-        // Input : ESC = 메뉴
-        if (Input.GetKeyDown(KeyCode.Escape))
-            UIScript.I.EnterESC();
-
-        if (GameController.playerHP <= 0 && !EquipCresent())
-        {
-            StartCoroutine(PlayerDie());
+            case SituationType.NORMAL:
+                InventoryScript.I.OpenInventory();
+                break;
         }
     }
+
+    private void OnSkill(InputValue value)
+    {
+        if (GameController.situation.Peek() != SituationType.NORMAL)
+            return;
+
+        switch (value.Get<float>())
+        {
+            case 1:
+                if (GameController.skillC) GameController.skillC.Skill();
+                break;
+
+            case -1:
+                if (GameController.skillV) GameController.skillV.Skill();
+                break;
+        }
+    }
+
+    private void OnPause()
+    {
+        if (GameController.situation.Peek() != SituationType.NORMAL)
+            return;
+
+        UIScript.I.EnterESC();
+    }
+
+    private void OnMove(InputValue value)
+    {
+        if (GameController.situation.Peek() != SituationType.NORMAL)
+            return;
+
+        Vector2 dir = value.Get<Vector2>();
+        PlayerMove((int)dir.x, (int)dir.y);
+    }
+
+    private void OnPunch()
+    {
+        if (GameController.situation.Peek() != SituationType.NORMAL || !canPunch)
+            return;
+
+        StartCoroutine(PunchAttack());
+    }
+    #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -121,7 +134,7 @@ public class PlayerScript : MovingObject
     {
         while (isAlive)
         {
-            if (GameController.pause.Peek() == PauseType.NORMAL)
+            if (GameController.situation.Peek() == SituationType.NORMAL)
                 GameController.ChangeHP(-1);
 
             GameController.inTime += 1;
@@ -138,6 +151,8 @@ public class PlayerScript : MovingObject
             ani.SetTrigger("MoveUp");
         else if (dy == -1)
             ani.SetTrigger("MoveDown");
+        else
+            return;
 
          if (Move(dx, dy))
             SoundManager.I.PlayEffect("EFFECT/SlimeMove");
@@ -196,18 +211,29 @@ public class PlayerScript : MovingObject
         }
     }
 
+    public void Die()
+    {
+        if (GameController.playerHP <= 0 && !EquipCresent())
+        {
+            StartCoroutine(PlayerDieCo());
+        }
+    }
+
     // 플레이어 HP가 0이하가 되면 실행되는 코루틴
-    IEnumerator PlayerDie()
+    IEnumerator PlayerDieCo()
     {
         isAlive = false;
+        GameController.situation.Push(SituationType.DIE);
+        UIScript.I.stackAssists.Push("저장중...");
         ani.SetTrigger("PlayerDie");
         SoundManager.I.PlayEffect("EFFECT/SlimeDie");
         yield return GameController.delay_3s;       // 애니메이터에서 함수로 실행시키자
 
-        UIScript.I.TextBlink("저장중...");
         UIScript.I.ShowDiePanel(GameController.playerLife);
         yield return GameController.delay_3s;
 
+        UIScript.I.stackAssists.Pop();
+        GameController.situation.Pop();
         if (GameController.playerLife > 1 || EquipLastleaf())
         {
             // REBORN
@@ -252,7 +278,7 @@ public class PlayerScript : MovingObject
     
     private bool EquipCresent()
     {
-        if (GameController.effcrescent && Random.Range(0, 19) <= 0)
+        if (GameController.effcrescent && Random.Range(0, 20) <= 0)
         {
             GameController.ChangeHP(GameController.playerMaxHP / 2);
             return true;

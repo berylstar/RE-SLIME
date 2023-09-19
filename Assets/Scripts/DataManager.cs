@@ -113,8 +113,8 @@ public class DataManager : MonoBehaviour
 
         GameController.myEquips = newDATA.myEquips;
 
-        GameController.pause.Clear();
-        GameController.pause.Push(PauseType.NORMAL);
+        GameController.situation.Clear();
+        GameController.situation.Push(SituationType.NORMAL);
 
         GameController.tutorial = newDATA.tutorial;
     }
@@ -135,8 +135,8 @@ public class DataManager : MonoBehaviour
 
         GameController.myEquips = newDATA.myEquips;
 
-        GameController.pause.Clear();
-        GameController.pause.Push(PauseType.NORMAL);
+        GameController.situation.Clear();
+        GameController.situation.Push(SituationType.NORMAL);
 
         GameController.tutorial = newDATA.tutorial;
 

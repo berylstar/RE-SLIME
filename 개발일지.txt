@@ -215,3 +215,11 @@
 2023.08.10
 - 오랜만에 수정사항. InvenScript에서 장비 겹침 관련 로직을 리셋하고 새로 만들었다. 기존의 격자에 값을 더하고 빼는 방식이 아닌 collier를 이용해 구현했다.
 - 게임 난이도 조절을 위해 포션, 코인 드롭률을 증가시켰다.
+
+2023.09.14
+- 기존의 Input.GetKeyDown 방식 대신 InputSystem을 도입
+- 새로운 시스템으로 바꾸면서 모든 Input을 하나의 스크립트로 관리할 수 있을까 ?
+
+2023.09.15
+- ScriptableObject를 이용해 Dialogue를 데이터화
+- DialogueScript 로직 변경

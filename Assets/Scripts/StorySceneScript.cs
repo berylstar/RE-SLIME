@@ -7,35 +7,32 @@ public class StorySceneScript : MonoBehaviour
 {
     public GameObject textSkip;
 
+    //private void Awake()
+    //{
+    //    Screen.SetResolution(1366, 768, false);
+    //}
+
     private void Start()
     {
         if (GameController.floor == 100)
-            GameObject.Find("INVENTORY").transform.position = new Vector3(100, 100, 1);
+            InventoryScript.I.transform.position = new Vector3(100, 100, 1);
     }
 
-    private void Update()
+    // InputSystem
+    private void OnSkip()
     {
-        if (GameController.floor == 100)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!textSkip.activeInHierarchy)
-                textSkip.SetActive(true);
-            else
-                EndStory();
-        }
+        if (!textSkip.activeInHierarchy)
+            textSkip.SetActive(true);
+        else
+            EndStory();
     }
 
+    // 애니매이션 끝날 때 자동 실행
     public void EndStory()
     {
         if (GameController.floor == 100)
-        {
             SceneManager.LoadScene("ResultScene");
-        }
         else
-        {
             SceneManager.LoadScene("TitleScene");
-        }
     }
 }

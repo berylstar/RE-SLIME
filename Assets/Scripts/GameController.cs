@@ -27,15 +27,16 @@ public class GameData
     public GameData(int slot) { slotNumber = slot; }
 }
 
-public enum PauseType
+public enum SituationType
 {
-    ESC = 0,
-    DIALOGUE = 1,
-    INVEN = 2,
-    SHOP = 3,
-    BOX = 4,
-    INBOSS = 5,
-    NORMAL = 10,
+    ESC         = 0,
+    DIE         = 1,
+    BOSS_APPEAR = 2,
+    DIALOGUE    = 3,
+    INVENTORY   = 4,
+    SHOP        = 5,
+    BOX         = 6,
+    NORMAL      = 100,
 }
 
 public class GameController : MonoBehaviour
@@ -84,24 +85,25 @@ public class GameController : MonoBehaviour
     public static bool efftalisman = false;
 
     // GAME SYSYTEM
-    public static Stack<PauseType> pause = new Stack<PauseType>() { };
-    public static DialogueScript nowDialogue = null;
+    public static Stack<SituationType> situation = new Stack<SituationType>() { };
     public static List<bool> tutorial = new List<bool>() { false, false};
-
-    public static bool Pause(PauseType type)
-    {
-        if (pause.Count > 0 && pause.Peek() != type)
-            return true;
-        else
-            return false;
-    }
 
     // HP 변동 함수
     public static void ChangeHP(int val)
     {
-        if (playerHP + val > playerMaxHP) playerHP = playerMaxHP;
-        else if (playerHP + val < 0)      playerHP = 0;
-        else                              playerHP += val;
+        if (playerHP + val > playerMaxHP)
+        {
+            playerHP = playerMaxHP;
+        }
+        else if (playerHP + val <= 0)
+        {
+            playerHP = 0;
+            PlayerScript.I.Die();
+        }
+        else
+        {
+            playerHP += val;
+        }
     }
 
     // 속도 변경 관련 함수
@@ -139,8 +141,26 @@ public class GameController : MonoBehaviour
         effGlasses = false;
         efftalisman = false;
 
-        nowDialogue = null;
-
         Destroy(GameObject.Find("INVENTORY"));  // 인벤토리 파괴함으로써 리셋
+    }
+
+    public void TEST_COINUP()
+    {
+        coin += 10;
+    }
+
+    public void TEST_FULLHP()
+    {
+        ChangeHP(150);
+    }
+
+    public void TEST_LOWHP()
+    {
+        ChangeHP(-80);
+    }
+
+    public void TEST_LIFEUP()
+    {
+        playerLife += 1;
     }
 }
