@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -44,12 +45,19 @@ public class InventoryScript : MonoBehaviour
 
         foreach (EquipScript equip in GottenEquips)
         {
-            string strr = equip.number.ToString();
+            //string strr = equip.number.ToString();
+
+            //foreach (int idx in equip.posIndex)
+            //    strr += "," + idx.ToString();
+
+            //GameController.myEquips.Add(strr);
+
+            StringBuilder strr = new StringBuilder(equip.number.ToString());
 
             foreach (int idx in equip.posIndex)
-                strr += "," + idx.ToString();
+                strr.Append($",{idx}");
 
-            GameController.myEquips.Add(strr);
+            GameController.myEquips.Add(strr.ToString());
         }
     }
 
