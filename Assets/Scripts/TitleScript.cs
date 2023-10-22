@@ -19,12 +19,12 @@ public class TitleScript : MonoBehaviour
 
     private InputManager _input;
 
-    private void Start()
+    private void OnEnable()
     {
         _input = InputManager.Instance;
 
         _input.MenuState.OnMove = UpDownMenuIndex;
-        _input.MenuState.OnSpace = PickMenuIndex;
+        _input.MenuState.OnSpace = ButtonClick;
         _input.MenuState.OnESC = BackMenuIndex;
 
         _input.StateEnqueue(_input.MenuState);
@@ -46,12 +46,6 @@ public class TitleScript : MonoBehaviour
             return;
 
         SetIndex(pickIndex);
-    }
-    
-
-    private void PickMenuIndex()
-    {
-        ButtonClick();
     }
 
     private void BackMenuIndex()

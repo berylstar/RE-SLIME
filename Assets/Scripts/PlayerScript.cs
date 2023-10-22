@@ -18,6 +18,8 @@ public class PlayerScript : MovingObject
     public GameObject bullet;
     public GameObject sight;
 
+    private InputManager _input;
+
     private void Awake()
     {
         I = this;
@@ -26,6 +28,10 @@ public class PlayerScript : MovingObject
     protected override void Start()
     {
         base.Start();
+
+        _input = InputManager.Instance;
+        _input.IdleState.OnESC = UIScript.I.EnterESC;
+        _input.IdleState.OnMove = PlayerMove;
 
         moveSpeed = GameController.playerSpeed;
     }
@@ -70,22 +76,22 @@ public class PlayerScript : MovingObject
         }
     }
 
-    private void OnPause()
-    {
-        if (GameController.situation.Peek() != SituationType.NORMAL)
-            return;
+    //private void OnPause()
+    //{
+    //    if (GameController.situation.Peek() != SituationType.NORMAL)
+    //        return;
 
-        UIScript.I.EnterESC();
-    }
+    //    UIScript.I.EnterESC();
+    //}
 
-    private void OnMove(InputValue value)
-    {
-        if (GameController.situation.Peek() != SituationType.NORMAL)
-            return;
+    //private void OnMove(InputValue value)
+    //{
+    //    if (GameController.situation.Peek() != SituationType.NORMAL)
+    //        return;
 
-        Vector2 dir = value.Get<Vector2>();
-        PlayerMove((int)dir.x, (int)dir.y);
-    }
+    //    Vector2 dir = value.Get<Vector2>();
+    //    PlayerMove((int)dir.x, (int)dir.y);
+    //}
 
     private void OnPunch()
     {
@@ -143,18 +149,41 @@ public class PlayerScript : MovingObject
     }
 
     // Input 받아서 MovingObject의 Move 함수 실행
-    private void PlayerMove(int dx, int dy)
-    {
-        if (dx != 0)
-            ani.SetTrigger("MoveLR");
-        else if (dy == 1)
-            ani.SetTrigger("MoveUp");
-        else if (dy == -1)
-            ani.SetTrigger("MoveDown");
-        else
-            return;
+    //private void PlayerMove(int dx, int dy)
+    //{
+    //    if (dx != 0)
+    //        ani.SetTrigger("MoveLR");
+    //    else if (dy == 1)
+    //        ani.SetTrigger("MoveUp");
+    //    else if (dy == -1)
+    //        ani.SetTrigger("MoveDown");
+    //    else
+    //        return;
 
-         if (Move(dx, dy))
+    //     if (Move(dx, dy))
+    //        SoundManager.I.PlayEffect("EFFECT/SlimeMove");
+    //}
+
+    private void PlayerMove(Vector2 input)
+    {
+        if (input == Vector2.zero)
+        {
+            return;
+        }    
+        else if (input == Vector2.up)
+        {
+            ani.SetTrigger("MoveUp");
+        }
+        else if (input == Vector2.down)
+        {
+            ani.SetTrigger("MoveDown");
+        }
+        else
+        {
+            ani.SetTrigger("MoveLR");
+        }
+
+        if (Move((int)input.x, (int)input.y))
             SoundManager.I.PlayEffect("EFFECT/SlimeMove");
     }
 

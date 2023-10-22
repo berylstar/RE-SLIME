@@ -11,50 +11,76 @@ public class ESCScript : MonoBehaviour
     public GameObject pick;
     public Text textBGM, textEFFECT;
 
-    private Stack<int> uiStack = new Stack<int>();
-    private List<int> maxIndex = new List<int>() { 2, 3, 2 };
+    private readonly Stack<int> uiStack = new Stack<int>();
+    private readonly List<int> maxIndex = new List<int>() { 2, 3, 2 };
     private int pickIndex = 0;
 
+    private InputManager _input;
+ 
     private void OnEnable()
     {
+        _input = InputManager.Instance;
+
+        _input.MenuState.OnMove = UpDownMenuIndex;
+        _input.MenuState.OnSpace = ButtonClick;
+        _input.MenuState.OnESC = () => { StartCoroutine(ExitCo()); };
+        _input.StateEnqueue(_input.MenuState);
+
         ActivePanel(0);
     }
 
-    private void OnUpDown(InputValue value)
+    private void UpDownMenuIndex(Vector2 input)
     {
-        if (GameController.situation.Peek() != SituationType.ESC)
-            return;
-
-        float v = value.Get<float>();
-
-        if (v > 0)
-            pickIndex += (pickIndex < maxIndex[uiStack.Peek()]) ? 1 : 0;
-        else if (v < 0)
+        if (input == Vector2.up)
+        {
             pickIndex += (pickIndex > 0) ? -1 : 0;
+        }
+        else if (input == Vector2.down)
+        {
+            pickIndex += (pickIndex < maxIndex[uiStack.Peek()]) ? 1 : 0;
+        }
         else
             return;
 
         SetIndex(pickIndex);
     }
 
-    private void OnPick()
-    {
-        if (GameController.situation.Peek() != SituationType.ESC)
-            return;
+    //private void OnUpDown(InputValue value)
+    //{
+    //    if (GameController.situation.Peek() != SituationType.ESC)
+    //        return;
 
-        ButtonClick();
-    }
+    //    float v = value.Get<float>();
 
-    private void OnClose()
-    {
-        if (GameController.situation.Peek() != SituationType.ESC)
-            return;
+    //    if (v > 0)
+    //        pickIndex += (pickIndex < maxIndex[uiStack.Peek()]) ? 1 : 0;
+    //    else if (v < 0)
+    //        pickIndex += (pickIndex > 0) ? -1 : 0;
+    //    else
+    //        return;
 
-        StartCoroutine(ExitCo());
-    }
+    //    SetIndex(pickIndex);
+    //}
+
+    //private void OnPick()
+    //{
+    //    if (GameController.situation.Peek() != SituationType.ESC)
+    //        return;
+
+    //    ButtonClick();
+    //}
+
+    //private void OnClose()
+    //{
+    //    if (GameController.situation.Peek() != SituationType.ESC)
+    //        return;
+
+    //    StartCoroutine(ExitCo());
+    //}
 
     IEnumerator ExitCo()
     {
+        _input.StateDequeue();
         uiStack.Clear();
         Time.timeScale = 1f;
         SoundManager.I.PauseBGM();
@@ -122,6 +148,7 @@ public class ESCScript : MonoBehaviour
                         break;
 
                     default:
+                        _input.StateDequeue();
                         Time.timeScale = 1f;
                         SoundManager.I.PauseBGM();
                         SoundManager.I.PlayBGM("BGM/Title");
