@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class StorySceneScript : MonoBehaviour
 {
-    public GameObject textSkip;
+    [SerializeField] private GameObject textSkip;
+    [SerializeField] private bool isStart;
+
+    private InputManager _input;
 
     //private void Awake()
     //{
@@ -14,12 +17,18 @@ public class StorySceneScript : MonoBehaviour
 
     private void Start()
     {
-        if (GameController.floor == 100)
+        _input = InputManager.Instance;
+
+        _input.StoryState.OnSpace = SkipStory;
+        _input.StoryState.OnESC = SkipStory;
+        _input.StateEnqueue(_input.StoryState);
+
+        if (!isStart)
             InventoryScript.I.transform.position = new Vector3(100, 100, 1);
     }
 
     // InputSystem
-    private void OnSkip()
+    private void SkipStory()
     {
         if (!textSkip.activeInHierarchy)
             textSkip.SetActive(true);
@@ -30,7 +39,9 @@ public class StorySceneScript : MonoBehaviour
     // 애니매이션 끝날 때 자동 실행
     public void EndStory()
     {
-        if (GameController.floor == 100)
+        _input.StateDequeue();
+
+        if (!isStart)
             SceneManager.LoadScene("ResultScene");
         else
             SceneManager.LoadScene("TitleScene");

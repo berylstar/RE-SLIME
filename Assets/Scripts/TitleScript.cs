@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class TitleScript : MonoBehaviour
 {
@@ -13,36 +12,49 @@ public class TitleScript : MonoBehaviour
     public Text textBGM, textEFFECT, textSlot;
     public Button buttonLoad;
 
-    private Stack<int> uiStack = new Stack<int>();
+    private readonly Stack<int> uiStack = new Stack<int>();
     private readonly List<int> maxIndex = new List<int>() { 2, 3, 2, 3 };
     private int pickIndex = 0;
     private int slot = 0;
 
-    private void OnEnable()
+    private InputManager _input;
+
+    private void Start()
     {
+        _input = InputManager.Instance;
+
+        _input.MenuState.OnMove = UpDownMenuIndex;
+        _input.MenuState.OnSpace = PickMenuIndex;
+        _input.MenuState.OnESC = BackMenuIndex;
+
+        _input.StateEnqueue(_input.MenuState);
+
         ActivePanel(0);
     }
 
-    private void OnUpDown(InputValue value)
+    private void UpDownMenuIndex(Vector2 input)
     {
-        float v = value.Get<float>();
-
-        if (v > 0)
-            pickIndex += (pickIndex < maxIndex[uiStack.Peek()]) ? 1 : 0;
-        else if (v < 0)
+        if (input == Vector2.up)
+        {
             pickIndex += (pickIndex > 0) ? -1 : 0;
+        }
+        else if (input == Vector2.down)
+        {
+            pickIndex += (pickIndex < maxIndex[uiStack.Peek()]) ? 1 : 0;
+        }
         else
             return;
 
         SetIndex(pickIndex);
     }
+    
 
-    private void OnPick()
+    private void PickMenuIndex()
     {
         ButtonClick();
     }
 
-    private void OnClose()
+    private void BackMenuIndex()
     {
         if (uiStack.Peek() <= 0)
             return;
@@ -101,11 +113,13 @@ public class TitleScript : MonoBehaviour
                         if (!buttonLoad.interactable)
                             return;
 
+                        _input.StateDequeue();
                         DataManager.I.LoadData(slot);
                         SceneManager.LoadScene("MainScene");
                         break;
 
                     case 1:
+                        _input.StateDequeue();
                         DataManager.I.NewData(slot);
                         SceneManager.LoadScene("MainScene");
                         break;

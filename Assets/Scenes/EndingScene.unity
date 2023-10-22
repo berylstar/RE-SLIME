@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textSkip: {fileID: 481860281}
+  isStart: 0
 --- !u!1 &243829752
 GameObject:
   m_ObjectHideFlags: 0
